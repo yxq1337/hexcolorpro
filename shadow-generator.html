@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS Box Shadow Generator - Free Online Tool | HexColor Pro</title>
+  <meta name="description" content="Create beautiful CSS box shadows with live preview. Adjust offset, blur, spread, color, and opacity. Copy the CSS code with one click.">
+  <meta name="keywords" content="box shadow generator, css shadow, box shadow, drop shadow, shadow generator, css code generator">
+  <link rel="canonical" href="https://hexcolorpro.pages.dev/shadow-generator">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #0f172a; --surface: #1e293b; --surface-light: #334155;
+      --text: #f1f5f9; --text-muted: #94a3b8; --accent: #6366f1;
+      --radius: 12px; --shadow: 0 4px 20px rgba(0,0,0,0.3);
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg); color: var(--text); line-height: 1.6; min-height: 100vh;
+    }
+    .container { max-width: 1100px; margin: 0 auto; padding: 20px; }
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 16px 0; margin-bottom: 20px; }
+    .logo {
+      font-size: 1.4rem; font-weight: 700;
+      background: linear-gradient(135deg, #6366f1, #ec4899);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+      text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 20px; }
+    .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 0.95rem; }
+    .nav-links a:hover { color: var(--text); }
+    .page-header { text-align: center; margin: 20px 0 30px; }
+    .page-header h1 {
+      font-size: 2.2rem; font-weight: 700;
+      background: linear-gradient(135deg, #6366f1, #ec4899);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .page-header p { color: var(--text-muted); margin-top: 8px; font-size: 1.05rem; }
+    .breadcrumb { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 16px; }
+    .breadcrumb a { color: var(--accent); text-decoration: none; }
+
+    .main-grid {
+      display: grid; grid-template-columns: 1fr 320px; gap: 24px; margin-bottom: 24px;
+    }
+    @media (max-width: 768px) { .main-grid { grid-template-columns: 1fr; } }
+
+    .preview-card {
+      background: var(--surface); border-radius: var(--radius); padding: 40px;
+      box-shadow: var(--shadow); display: flex; align-items: center; justify-content: center;
+      min-height: 350px;
+    }
+    .preview-box {
+      width: 180px; height: 180px; background: linear-gradient(135deg, #6366f1, #ec4899);
+      border-radius: 20px; transition: all 0.2s;
+    }
+    .preview-actions { display: flex; gap: 10px; margin-top: 20px; justify-content: center; }
+
+    .controls-card {
+      background: var(--surface); border-radius: var(--radius); padding: 20px;
+      box-shadow: var(--shadow);
+    }
+    .controls-card h3 { font-size: 1rem; margin-bottom: 16px; color: var(--accent); }
+
+    .slider-group { margin-bottom: 16px; }
+    .slider-group label {
+      display: flex; justify-content: space-between; font-size: 0.85rem;
+      color: var(--text-muted); margin-bottom: 6px;
+    }
+    .slider-group label span { color: var(--text); font-weight: 600; font-family: 'Courier New', monospace; }
+    input[type="range"] {
+      width: 100%; height: 6px; -webkit-appearance: none; appearance: none;
+      background: var(--surface-light); border-radius: 3px; outline: none; cursor: pointer;
+    }
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none; appearance: none; width: 16px; height: 16px;
+      border-radius: 50%; background: var(--accent); cursor: pointer;
+    }
+
+    .color-row {
+      display: flex; gap: 10px; align-items: center; margin-bottom: 16px;
+    }
+    .color-row input[type="color"] {
+      width: 40px; height: 40px; border: none; border-radius: 6px; cursor: pointer; background: none;
+    }
+    .color-row input[type="text"] {
+      flex: 1; padding: 10px; border: 2px solid var(--surface-light);
+      border-radius: 6px; background: var(--bg); color: var(--text);
+      font-family: 'Courier New', monospace; font-size: 0.85rem;
+    }
+
+    .toggle-row {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 12px;
+    }
+    .toggle-row label { font-size: 0.9rem; color: var(--text-muted); }
+    .toggle {
+      position: relative; width: 44px; height: 24px; cursor: pointer;
+      background: var(--surface-light); border-radius: 12px; transition: background 0.2s;
+    }
+    .toggle.active { background: var(--accent); }
+    .toggle::after {
+      content: ''; position: absolute; top: 3px; left: 3px;
+      width: 18px; height: 18px; background: white; border-radius: 50%; transition: left 0.2s;
+    }
+    .toggle.active::after { left: 23px; }
+
+    .presets-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 8px;
+    }
+    .preset-btn {
+      padding: 16px 8px; border: 2px solid var(--surface-light); border-radius: 8px;
+      background: var(--bg); color: var(--text); font-size: 0.7rem; cursor: pointer;
+      text-align: center; transition: border-color 0.2s;
+    }
+    .preset-btn:hover { border-color: var(--accent); }
+
+    .code-card {
+      background: var(--surface); border-radius: var(--radius); padding: 20px;
+      box-shadow: var(--shadow); margin-bottom: 24px;
+    }
+    .code-card h3 {
+      font-size: 1rem; margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center;
+    }
+    .copy-btn {
+      padding: 6px 14px; font-size: 0.8rem; border: none; border-radius: 6px;
+      background: var(--accent); color: white; cursor: pointer; font-weight: 600;
+    }
+    .copy-btn:hover { background: #818cf8; }
+    .code-block {
+      background: var(--bg); padding: 16px; border-radius: 8px;
+      font-family: 'Courier New', monospace; font-size: 0.85rem;
+      color: #86efac; overflow-x: auto; line-height: 1.7;
+    }
+
+    .ad-placeholder {
+      background: var(--surface); border: 2px dashed var(--surface-light);
+      border-radius: var(--radius); padding: 24px; text-align: center;
+      margin: 24px 0; color: var(--text-muted); font-size: 0.85rem;
+      min-height: 90px; display: flex; align-items: center; justify-content: center;
+    }
+    .ad-slot.ad-live {
+      margin: 24px 0; text-align: center; min-height: 0;
+      display: block; background: transparent; border: none; padding: 0;
+    }
+
+    .guide-section { margin-top: 40px; }
+    .guide-section h2 { font-size: 1.5rem; margin-bottom: 16px; }
+    .guide-section h3 { font-size: 1.2rem; margin: 20px 0 10px; color: var(--accent); }
+    .guide-section p { color: var(--text-muted); margin-bottom: 12px; }
+    .guide-section ul { margin: 12px 0 16px 20px; color: var(--text-muted); }
+    .guide-section li { margin-bottom: 6px; }
+
+    footer {
+      margin-top: 60px; padding: 30px 20px; border-top: 1px solid var(--surface-light);
+      color: var(--text-muted); font-size: 0.9rem; text-align: center;
+    }
+    footer a { color: var(--accent); text-decoration: none; margin: 0 8px; }
+
+    #toast {
+      position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%);
+      background: #10b981; color: white; padding: 12px 24px; border-radius: 8px;
+      font-size: 0.9rem; font-weight: 600; z-index: 1000; opacity: 0; pointer-events: none;
+      transition: opacity 0.3s;
+    }
+    #toast.show { opacity: 1; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <nav>
+      <a href="index" class="logo">🎨 HexColor Pro</a>
+      <div class="nav-links">
+        <a href="index#tools">All Tools</a>
+        <a href="blog">Blog</a>
+      </div>
+    </nav>
+
+    <div class="breadcrumb"><a href="index">Home</a> / Shadow Generator</div>
+
+    <div class="page-header">
+      <h1>CSS Box Shadow Generator</h1>
+      <p>Create beautiful, smooth shadows with live preview. Copy the CSS in one click.</p>
+    </div>
+
+    <div class="ad-slot" data-ad-slot="top" id="adTop">
+      <div class="ad-placeholder">Advertisement</div>
+    </div>
+
+    <div class="main-grid">
+      <div>
+        <div class="preview-card">
+          <div class="preview-box" id="previewBox"></div>
+        </div>
+        <div class="preview-actions">
+          <button class="copy-btn" onclick="copyCSS()">📋 Copy CSS</button>
+          <button class="copy-btn" style="background: var(--surface-light);" onclick="resetShadow()">↺ Reset</button>
+        </div>
+      </div>
+
+      <div class="controls-card">
+        <h3>⚙️ Shadow Controls</h3>
+
+        <div class="slider-group">
+          <label>Offset X <span id="offsetXVal">5</span>px</label>
+          <input type="range" id="offsetX" min="-100" max="100" value="5">
+        </div>
+        <div class="slider-group">
+          <label>Offset Y <span id="offsetYVal">8</span>px</label>
+          <input type="range" id="offsetY" min="-100" max="100" value="8">
+        </div>
+        <div class="slider-group">
+          <label>Blur Radius <span id="blurVal">15</span>px</label>
+          <input type="range" id="blur" min="0" max="200" value="15">
+        </div>
+        <div class="slider-group">
+          <label>Spread Radius <span id="spreadVal">0</span>px</label>
+          <input type="range" id="spread" min="-50" max="100" value="0">
+        </div>
+        <div class="slider-group">
+          <label>Opacity <span id="opacityVal">25</span>%</label>
+          <input type="range" id="opacity" min="1" max="100" value="25">
+        </div>
+
+        <div class="color-row">
+          <label style="font-size: 0.85rem; color: var(--text-muted);">Color</label>
+          <input type="color" id="shadowColor" value="#000000">
+          <input type="text" id="shadowHex" value="#000000">
+        </div>
+
+        <div class="toggle-row">
+          <label>Inset Shadow</label>
+          <div class="toggle" id="insetToggle" onclick="toggleInset()"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" style="background: var(--surface); border-radius: var(--radius); padding: 20px; box-shadow: var(--shadow); margin-bottom: 24px;">
+      <h3 style="margin-bottom: 12px;">💡 Popular Presets</h3>
+      <div class="presets-grid">
+        <button class="preset-btn" onclick="applyPreset('subtle')">Subtle</button>
+        <button class="preset-btn" onclick="applyPreset('medium')">Medium</button>
+        <button class="preset-btn" onclick="applyPreset('deep')">Deep</button>
+        <button class="preset-btn" onclick="applyPreset('glow')">Glow</button>
+        <button class="preset-btn" onclick="applyPreset('neon')">Neon</button>
+        <button class="preset-btn" onclick="applyPreset('hard')">Hard</button>
+      </div>
+    </div>
+
+    <div class="code-card">
+      <h3>📝 Generated CSS <button class="copy-btn" onclick="copyCSS()">Copy</button></h3>
+      <div class="code-block" id="codeBlock">box-shadow: 5px 8px 15px 0px rgba(0, 0, 0, 0.25);</div>
+    </div>
+
+    <div class="ad-slot" data-ad-slot="bottom" id="adBottom">
+      <div class="ad-placeholder">Advertisement</div>
+    </div>
+
+    <div class="guide-section">
+      <h2>Understanding CSS Box Shadow</h2>
+
+      <h3>📐 The Syntax</h3>
+      <p><code>box-shadow: offset-x offset-y blur spread color inset;</code></p>
+      <ul>
+        <li><strong>offset-x</strong> — Horizontal distance (positive = right, negative = left)</li>
+        <li><strong>offset-y</strong> — Vertical distance (positive = down, negative = up)</li>
+        <li><strong>blur</strong> — Softness of the shadow edge (0 = hard edge)</li>
+        <li><strong>spread</strong> — Size increase/decrease of the shadow</li>
+        <li><strong>color</strong> — Shadow color (use rgba for transparency)</li>
+        <li><strong>inset</strong> — Optional keyword for inner shadows</li>
+      </ul>
+
+      <h3>🎯 Design Tips</h3>
+      <ul>
+        <li>Use low opacity (10-30%) for natural-looking shadows</li>
+        <li>Pair multiple shadows for realism: a soft one + a harder one</li>
+        <li>Match shadow direction to your light source for consistency</li>
+        <li>Lighter, larger shadows feel more "floating"; tight dark shadows feel "pressed"</li>
+        <li>For dark mode, use colored shadows (match the element's hue) instead of black</li>
+      </ul>
+
+      <h3>✨ Multiple Shadows</h3>
+      <p>You can layer multiple shadows by comma-separating them. This creates more depth than a single shadow:</p>
+      <div class="code-block">box-shadow:
+  0 1px 2px rgba(0,0,0,0.05),
+  0 10px 20px rgba(0,0,0,0.1),
+  0 20px 40px rgba(0,0,0,0.15);</div>
+    </div>
+
+    <footer>
+      <p>© 2026 HexColor Pro · <a href="index">Home</a> · <a href="privacy">Privacy</a> · <a href="terms">Terms</a> · <a href="contact">Contact</a></p>
+    </footer>
+  </div>
+
+  <div id="toast"></div>
+
+  <script>
+    function hexToRgb(hex) {
+      hex = hex.replace('#', '');
+      return { r: parseInt(hex.slice(0,2),16), g: parseInt(hex.slice(2,4),16), b: parseInt(hex.slice(4,6),16) };
+    }
+
+    function getShadowString() {
+      const ox = document.getElementById('offsetX').value;
+      const oy = document.getElementById('offsetY').value;
+      const blur = document.getElementById('blur').value;
+      const spread = document.getElementById('spread').value;
+      const opacity = (document.getElementById('opacity').value / 100).toFixed(2);
+      const hex = document.getElementById('shadowHex').value;
+      const rgb = hexToRgb(hex);
+      const inset = document.getElementById('insetToggle').classList.contains('active') ? 'inset ' : '';
+      return `${inset}${ox}px ${oy}px ${blur}px ${spread}px rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, ${opacity})`;
+    }
+
+    function updateShadow() {
+      const shadow = getShadowString();
+      document.getElementById('previewBox').style.boxShadow = shadow;
+      document.getElementById('codeBlock').textContent = `box-shadow: ${shadow};`;
+    }
+
+    ['offsetX','offsetY','blur','spread','opacity'].forEach(id => {
+      const valId = id + 'Val';
+      document.getElementById(id).addEventListener('input', e => {
+        document.getElementById(valId).textContent = e.target.value;
+        updateShadow();
+      });
+    });
+
+    document.getElementById('shadowColor').addEventListener('input', e => {
+      document.getElementById('shadowHex').value = e.target.value;
+      updateShadow();
+    });
+
+    document.getElementById('shadowHex').addEventListener('input', e => {
+      let v = e.target.value.trim();
+      if (!v.startsWith('#')) v = '#' + v;
+      if (/^#[0-9A-Fa-f]{6}$/.test(v)) {
+        document.getElementById('shadowColor').value = v;
+        updateShadow();
+      }
+    });
+
+    function toggleInset() {
+      document.getElementById('insetToggle').classList.toggle('active');
+      updateShadow();
+    }
+
+    const presets = {
+      subtle:   { ox: 0, oy: 1, blur: 2, spread: 0, opacity: 5, color: '#000000', inset: false },
+      medium:   { ox: 0, oy: 4, blur: 12, spread: 0, opacity: 15, color: '#000000', inset: false },
+      deep:     { ox: 0, oy: 20, blur: 40, spread: -5, opacity: 30, color: '#000000', inset: false },
+      glow:     { ox: 0, oy: 0, blur: 30, spread: 5, opacity: 50, color: '#6366f1', inset: false },
+      neon:     { ox: 0, oy: 0, blur: 20, spread: 2, opacity: 80, color: '#00ff88', inset: false },
+      hard:     { ox: 6, oy: 6, blur: 0, spread: 0, opacity: 100, color: '#000000', inset: false }
+    };
+
+    function applyPreset(name) {
+      const p = presets[name];
+      document.getElementById('offsetX').value = p.ox;
+      document.getElementById('offsetY').value = p.oy;
+      document.getElementById('blur').value = p.blur;
+      document.getElementById('spread').value = p.spread;
+      document.getElementById('opacity').value = p.opacity;
+      document.getElementById('shadowColor').value = p.color;
+      document.getElementById('shadowHex').value = p.color;
+      ['offsetXVal','offsetYVal','blurVal','spreadVal','opacityVal'].forEach((id, i) => {
+        document.getElementById(id).textContent = [p.ox, p.oy, p.blur, p.spread, p.opacity][i];
+      });
+      const tog = document.getElementById('insetToggle');
+      if (p.inset) tog.classList.add('active'); else tog.classList.remove('active');
+      updateShadow();
+    }
+
+    function resetShadow() { applyPreset('subtle'); }
+
+    function copyCSS() {
+      const code = `box-shadow: ${getShadowString()};`;
+      navigator.clipboard.writeText(code).then(() => showToast('CSS copied!'));
+    }
+
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg; t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 1500);
+    }
+
+    updateShadow();
+  </script>
+  <script src="ads.js?v=3"></script>
+</body>
+</html>

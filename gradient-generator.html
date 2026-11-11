@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gradient Generator - Free CSS Gradient Maker | HexColor Pro</title>
+  <meta name="description" content="Create beautiful CSS gradients with our free gradient generator. Linear, radial, and conic gradients with multiple color stops. Copy CSS code instantly.">
+  <meta name="keywords" content="gradient generator, css gradient, linear gradient, radial gradient, gradient maker, background gradient">
+  <link rel="canonical" href="https://hexcolorpro.pages.dev/gradient-generator">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #0f172a; --surface: #1e293b; --surface-light: #334155;
+      --text: #f1f5f9; --text-muted: #94a3b8; --accent: #6366f1;
+      --accent-hover: #818cf8; --radius: 12px; --shadow: 0 4px 20px rgba(0,0,0,0.3);
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg); color: var(--text); line-height: 1.6; min-height: 100vh;
+    }
+    .container { max-width: 1000px; margin: 0 auto; padding: 20px; }
+    nav {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 16px 0; margin-bottom: 20px;
+    }
+    .logo {
+      font-size: 1.4rem; font-weight: 700;
+      background: linear-gradient(135deg, #6366f1, #ec4899);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+      text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 20px; }
+    .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 0.95rem; }
+    .nav-links a:hover { color: var(--text); }
+
+    .page-header { text-align: center; margin: 20px 0 30px; }
+    .page-header h1 {
+      font-size: 2.2rem; font-weight: 700;
+      background: linear-gradient(135deg, #6366f1, #ec4899, #f59e0b);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .page-header p { color: var(--text-muted); margin-top: 8px; font-size: 1.05rem; }
+
+    .card {
+      background: var(--surface); border-radius: var(--radius);
+      padding: 28px; box-shadow: var(--shadow); margin-bottom: 24px;
+    }
+    .card h2 { font-size: 1.3rem; margin-bottom: 16px; }
+
+    .gradient-preview {
+      width: 100%; height: 260px; border-radius: var(--radius);
+      margin-bottom: 20px; border: 2px solid var(--surface-light);
+      transition: background 0.2s;
+    }
+
+    .controls-row {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 16px; margin-bottom: 20px;
+    }
+
+    .control-group label {
+      display: block; font-size: 0.85rem; color: var(--text-muted);
+      margin-bottom: 6px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;
+    }
+    .control-group select, .control-group input[type="number"] {
+      width: 100%; padding: 10px 14px; border: 2px solid var(--surface-light);
+      border-radius: 8px; background: var(--bg); color: var(--text); font-size: 0.95rem;
+    }
+    .control-group select:focus, .control-group input:focus {
+      outline: none; border-color: var(--accent);
+    }
+
+    .angle-slider {
+      width: 100%; padding: 8px 0;
+    }
+    input[type="range"] {
+      width: 100%; height: 6px; border-radius: 3px; background: var(--surface-light);
+      -webkit-appearance: none; appearance: none;
+    }
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none; appearance: none;
+      width: 20px; height: 20px; border-radius: 50%; background: var(--accent);
+      cursor: pointer; border: 3px solid white;
+    }
+
+    .stops-container { margin: 16px 0; }
+    .color-stop {
+      display: flex; align-items: center; gap: 10px; margin-bottom: 10px;
+      background: var(--bg); padding: 10px; border-radius: 8px;
+    }
+    .color-stop input[type="color"] {
+      width: 44px; height: 44px; border: none; border-radius: 8px; cursor: pointer; background: none; flex-shrink: 0;
+    }
+    .color-stop input[type="text"] {
+      flex: 1; padding: 8px 12px; border: 2px solid var(--surface-light);
+      border-radius: 6px; background: var(--bg); color: var(--text);
+      font-family: 'Courier New', monospace; font-size: 0.9rem;
+    }
+    .color-stop input[type="number"] {
+      width: 70px; padding: 8px; border: 2px solid var(--surface-light);
+      border-radius: 6px; background: var(--bg); color: var(--text); font-size: 0.9rem;
+      text-align: center;
+    }
+    .remove-stop {
+      width: 36px; height: 36px; border: none; border-radius: 6px;
+      background: #ef4444; color: white; cursor: pointer; font-size: 1.1rem;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .remove-stop:hover { background: #dc2626; }
+    .remove-stop:disabled { background: var(--surface-light); cursor: not-allowed; opacity: 0.5; }
+
+    .btn {
+      padding: 12px 24px; border: none; border-radius: 8px;
+      cursor: pointer; font-size: 0.95rem; font-weight: 600;
+      transition: background 0.2s, transform 0.1s;
+    }
+    .btn:active { transform: scale(0.98); }
+    .btn-primary { background: var(--accent); color: white; }
+    .btn-primary:hover { background: var(--accent-hover); }
+    .btn-secondary { background: var(--surface-light); color: var(--text); }
+    .btn-secondary:hover { background: #475569; }
+
+    .btn-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 16px; }
+
+    .code-block {
+      background: var(--bg); border-radius: 8px; padding: 16px;
+      font-family: 'Courier New', monospace; font-size: 0.9rem;
+      overflow-x: auto; border: 2px solid var(--surface-light);
+      position: relative;
+    }
+    .code-block code { color: #93c5fd; }
+    .copy-code-btn {
+      position: absolute; top: 8px; right: 8px;
+      padding: 6px 12px; font-size: 0.8rem;
+    }
+
+    .preset-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+      gap: 10px; margin-top: 12px;
+    }
+    .preset-gradient {
+      height: 60px; border-radius: 8px; cursor: pointer;
+      border: 2px solid transparent; transition: transform 0.15s, border-color 0.15s;
+    }
+    .preset-gradient:hover { transform: scale(1.05); border-color: var(--accent); }
+
+    .ad-placeholder {
+      background: var(--surface); border: 2px dashed var(--surface-light);
+      border-radius: var(--radius); padding: 24px; text-align: center;
+      margin: 24px 0; color: var(--text-muted); font-size: 0.85rem;
+      min-height: 90px; display: flex; align-items: center; justify-content: center;
+    }
+    .ad-slot.ad-live {
+      margin: 24px 0; text-align: center; min-height: 0;
+      display: block; background: transparent; border: none; padding: 0;
+    }
+    .ad-slot.ad-live ins, .ad-slot.ad-live iframe { margin: 0 auto; display: block; }
+
+    .guide-section { margin-top: 40px; }
+    .guide-section h2 { font-size: 1.5rem; margin-bottom: 16px; }
+    .guide-section h3 { font-size: 1.2rem; margin: 20px 0 10px; color: var(--accent); }
+    .guide-section p { color: var(--text-muted); margin-bottom: 12px; }
+    .guide-section ul { margin: 12px 0 16px 20px; color: var(--text-muted); }
+    .guide-section li { margin-bottom: 6px; }
+    .guide-section code {
+      background: var(--surface-light); padding: 2px 8px; border-radius: 4px;
+      font-family: 'Courier New', monospace; font-size: 0.9em; color: #93c5fd;
+    }
+
+    footer {
+      margin-top: 60px; padding: 30px 20px; border-top: 1px solid var(--surface-light);
+      color: var(--text-muted); font-size: 0.9rem; text-align: center;
+    }
+    footer a { color: var(--accent); text-decoration: none; margin: 0 8px; }
+
+    #toast {
+      position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%);
+      background: #10b981; color: white; padding: 12px 24px; border-radius: 8px;
+      font-size: 0.9rem; font-weight: 600; z-index: 1000; box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      opacity: 0; pointer-events: none; transition: opacity 0.3s;
+    }
+    #toast.show { opacity: 1; }
+
+    .breadcrumb {
+      color: var(--text-muted); font-size: 0.9rem; margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--accent); text-decoration: none; }
+
+    @media (max-width: 600px) {
+      .page-header h1 { font-size: 1.6rem; }
+      .gradient-preview { height: 180px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <nav>
+      <a href="index" class="logo">🎨 HexColor Pro</a>
+      <div class="nav-links">
+        <a href="index#tools">All Tools</a>
+        <a href="blog">Blog</a>
+      </div>
+    </nav>
+
+    <div class="breadcrumb">
+      <a href="index">Home</a> / Gradient Generator
+    </div>
+
+    <div class="page-header">
+      <h1>CSS Gradient Generator</h1>
+      <p>Create stunning CSS gradients. Linear, radial, and conic — with live preview and one-click copy.</p>
+    </div>
+
+    <div class="ad-slot" data-ad-slot="top" id="adTop">
+      <div class="ad-placeholder">Advertisement</div>
+    </div>
+
+    <div class="card">
+      <div class="gradient-preview" id="gradientPreview" style="background: linear-gradient(135deg, #667eea, #764ba2);"></div>
+
+      <div class="controls-row">
+        <div class="control-group">
+          <label>Type</label>
+          <select id="gradientType">
+            <option value="linear">Linear</option>
+            <option value="radial">Radial</option>
+            <option value="conic">Conic</option>
+          </select>
+        </div>
+        <div class="control-group" id="angleGroup">
+          <label>Angle: <span id="angleValue">135°</span></label>
+          <input type="range" id="angleSlider" min="0" max="360" value="135" class="angle-slider">
+        </div>
+      </div>
+
+      <h3 style="font-size: 1rem; margin-bottom: 12px; color: var(--text-muted);">Color Stops</h3>
+      <div class="stops-container" id="stopsContainer"></div>
+      
+      <button class="btn btn-secondary" onclick="addStop()">+ Add Color Stop</button>
+
+      <h3 style="font-size: 1rem; margin: 24px 0 12px; color: var(--text-muted);">CSS Code</h3>
+      <div class="code-block">
+        <button class="btn btn-primary copy-code-btn" onclick="copyCSS()">Copy</button>
+        <code id="cssCode">background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);</code>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Preset Gradients</h2>
+      <p style="color: var(--text-muted); margin-bottom: 12px;">Click any preset to apply it instantly.</p>
+      <div class="preset-grid" id="presetGrid"></div>
+    </div>
+
+    <div class="ad-slot" data-ad-slot="bottom" id="adBottom">
+      <div class="ad-placeholder">Advertisement</div>
+    </div>
+
+    <div class="guide-section">
+      <h2>How to Use CSS Gradients</h2>
+
+      <h3>📐 Linear Gradients</h3>
+      <p>The most common type. Colors transition along a straight line. Use the angle slider to rotate the direction.</p>
+      <ul>
+        <li><code>to right</code> — left to right (equivalent to 90°)</li>
+        <li><code>to bottom right</code> — diagonal gradient</li>
+        <li><code>135deg</code> — precise angle control</li>
+      </ul>
+
+      <h3>⭕ Radial Gradients</h3>
+      <p>Colors transition outward from a center point. Great for backgrounds, buttons, and spotlight effects.</p>
+
+      <h3>🎠 Conic Gradients</h3>
+      <p>Colors transition around a center point (like a color wheel). Perfect for pie charts, color wheels, and creative effects.</p>
+
+      <h3>💡 Pro Tips</h3>
+      <ul>
+        <li>Use 3-5 color stops for a rich, natural gradient</li>
+        <li>Adjust stop positions to control where each color starts and ends</li>
+        <li>Pair with the <a href="color-picker">Color Picker</a> to find the perfect starting colors</li>
+        <li>Use subtle gradients (similar hues) for backgrounds, bold ones for accents</li>
+      </ul>
+
+      <h3>🎯 More Tools</h3>
+      <p>Try our <a href="palette-generator">Palette Generator</a> to build full color schemes, or the <a href="contrast-checker">Contrast Checker</a> to ensure accessibility.</p>
+    </div>
+
+    <footer>
+      <p>© 2026 HexColor Pro · <a href="index">Home</a> · <a href="privacy">Privacy</a> · <a href="terms">Terms</a> · <a href="contact">Contact</a></p>
+    </footer>
+  </div>
+
+  <div id="toast"></div>
+
+  <script>
+    let stops = [
+      { color: '#667eea', position: 0 },
+      { color: '#764ba2', position: 100 }
+    ];
+
+    const presets = [
+      ['#667eea', '#764ba2'],
+      ['#f093fb', '#f5576c'],
+      ['#4facfe', '#00f2fe'],
+      ['#43e97b', '#38f9d7'],
+      ['#fa709a', '#fee140'],
+      ['#30cfd0', '#330867'],
+      ['#a8edea', '#fed6e3'],
+      ['#ff9a9e', '#fecfef'],
+      ['#ffecd2', '#fcb69f'],
+      ['#a1c4fd', '#c2e9fb'],
+      ['#d299c2', '#fef9d7'],
+      ['#89f7fe', '#66a6ff'],
+      ['#fdcbf1', '#e6dee9'],
+      ['#fddb92', '#d1fdff'],
+      ['#f6d365', '#fda085'],
+      ['#84fab0', '#8fd3f4'],
+      ['#fbc2eb', '#a6c1ee'],
+      ['#f093fb', '#f5576c'],
+      ['#5ee7df', '#b490ca'],
+      ['#d4fc79', '#96e6a1']
+    ];
+
+    function hexToRgb(hex) {
+      hex = hex.replace('#', '');
+      if (hex.length === 3) hex = hex.split('').map(c => c + c).join('');
+      return {
+        r: parseInt(hex.substring(0, 2), 16),
+        g: parseInt(hex.substring(2, 4), 16),
+        b: parseInt(hex.substring(4, 6), 16)
+      };
+    }
+
+    function isValidHex(hex) {
+      return /^#?([0-9A-Fa-f]{3}|[0-9A-Fa-f]{6})$/.test(hex);
+    }
+
+    function generateGradient() {
+      const type = document.getElementById('gradientType').value;
+      const angle = document.getElementById('angleSlider').value;
+      
+      const sorted = [...stops].sort((a, b) => a.position - b.position);
+      const stopsStr = sorted.map(s => `${s.color} ${s.position}%`).join(', ');
+      
+      let css;
+      if (type === 'linear') {
+        css = `linear-gradient(${angle}deg, ${stopsStr})`;
+      } else if (type === 'radial') {
+        css = `radial-gradient(circle, ${stopsStr})`;
+      } else {
+        css = `conic-gradient(from ${angle}deg, ${stopsStr})`;
+      }
+      
+      document.getElementById('gradientPreview').style.background = css;
+      document.getElementById('cssCode').textContent = `background: ${css};`;
+      
+      document.getElementById('angleGroup').style.display = type === 'radial' ? 'none' : 'block';
+    }
+
+    function renderStops() {
+      const container = document.getElementById('stopsContainer');
+      container.innerHTML = stops.map((stop, i) => `
+        <div class="color-stop">
+          <input type="color" value="${stop.color}" onchange="updateStop(${i}, 'color', this.value)">
+          <input type="text" value="${stop.color}" maxlength="7" oninput="updateStop(${i}, 'hex', this.value)" onblur="this.value = stops[${i}].color">
+          <input type="number" value="${stop.position}" min="0" max="100" onchange="updateStop(${i}, 'position', this.value)">
+          <button class="remove-stop" onclick="removeStop(${i})" ${stops.length <= 2 ? 'disabled' : ''}>×</button>
+        </div>
+      `).join('');
+      generateGradient();
+    }
+
+    function updateStop(index, field, value) {
+      if (field === 'hex') {
+        let v = value;
+        if (!v.startsWith('#')) v = '#' + v;
+        if (isValidHex(v)) {
+          stops[index].color = v.toLowerCase();
+          generateGradient();
+        }
+      } else if (field === 'color') {
+        stops[index].color = value;
+        renderStops();
+      } else if (field === 'position') {
+        stops[index].position = Math.max(0, Math.min(100, parseInt(value) || 0));
+        generateGradient();
+      }
+    }
+
+    function addStop() {
+      if (stops.length >= 8) {
+        showToast('Max 8 stops');
+        return;
+      }
+      const last = stops[stops.length - 1];
+      stops.push({
+        color: '#' + Math.floor(Math.random()*16777215).toString(16).padStart(6, '0'),
+        position: Math.min(100, last.position + 25)
+      });
+      renderStops();
+    }
+
+    function removeStop(index) {
+      if (stops.length <= 2) return;
+      stops.splice(index, 1);
+      renderStops();
+    }
+
+    function applyPreset(colors) {
+      stops = colors.map((c, i) => ({
+        color: c,
+        position: Math.round((i / (colors.length - 1)) * 100)
+      }));
+      renderStops();
+    }
+
+    function renderPresets() {
+      const grid = document.getElementById('presetGrid');
+      grid.innerHTML = presets.map(p => `
+        <div class="preset-gradient" 
+             style="background: linear-gradient(135deg, ${p[0]}, ${p[1]});"
+             onclick="applyPreset(['${p[0]}', '${p[1]}'])"
+             title="${p[0]} → ${p[1]}">
+        </div>
+      `).join('');
+    }
+
+    function copyCSS() {
+      const css = document.getElementById('cssCode').textContent;
+      navigator.clipboard.writeText(css).then(() => showToast('CSS copied!'));
+    }
+
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg; t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 1500);
+    }
+
+    document.getElementById('gradientType').addEventListener('change', generateGradient);
+    document.getElementById('angleSlider').addEventListener('input', e => {
+      document.getElementById('angleValue').textContent = e.target.value + '°';
+      generateGradient();
+    });
+
+    renderStops();
+    renderPresets();
+  </script>
+  <script src="ads.js?v=3"></script>
+</body>
+</html>

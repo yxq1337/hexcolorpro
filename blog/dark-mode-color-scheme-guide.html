@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dark Mode Color Scheme Design: Complete Best Practices Guide | HexColor Pro Blog</title>
+  <meta name="description" content="How to design dark mode colors that don't strain eyes, maintain hierarchy, and pass accessibility tests. Includes 10 ready-to-use palettes.">
+  <meta name="keywords" content="dark mode color scheme, dark mode design, dark theme color palette">
+  <link rel="canonical" href="https://hexcolorpro.pages.dev/blog/dark-mode-color-scheme-guide">
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #0f172a; --surface: #1e293b; --surface-light: #334155;
+      --text: #f1f5f9; --text-muted: #94a3b8; --accent: #6366f1;
+      --radius: 12px; --shadow: 0 4px 20px rgba(0,0,0,0.3);
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg); color: var(--text); line-height: 1.7; min-height: 100vh;
+    }
+    .container { max-width: 800px; margin: 0 auto; padding: 20px; }
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 16px 0; margin-bottom: 20px; }
+    .logo {
+      font-size: 1.4rem; font-weight: 700;
+      background: linear-gradient(135deg, #6366f1, #ec4899);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+      text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 20px; }
+    .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 0.95rem; }
+    .nav-links a:hover { color: var(--text); }
+    .breadcrumb { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 24px; }
+    .breadcrumb a { color: var(--accent); text-decoration: none; }
+    .hero {
+      text-align: center; margin: 30px 0 40px;
+      padding: 40px 30px; border-radius: var(--radius);
+      background: linear-gradient(135deg, rgba(99,102,241,0.25), rgba(30,41,59,0.5));
+    }
+    .hero .tag {
+      display: inline-block; padding: 6px 14px; background: #6366f1;
+      color: white; border-radius: 20px; font-size: 0.8rem; font-weight: 600;
+      margin-bottom: 16px;
+    }
+    .hero h1 { font-size: 2rem; font-weight: 800; line-height: 1.3; margin-bottom: 12px; }
+    .hero p { color: var(--text-muted); margin-bottom: 16px; }
+    .hero .meta { font-size: 0.85rem; color: var(--text-muted); }
+    .article-body { font-size: 1.05rem; }
+    .article-body h2 { font-size: 1.6rem; margin: 36px 0 16px; color: #6366f1; }
+    .article-body h3 { font-size: 1.25rem; margin: 28px 0 12px; }
+    .article-body p { margin-bottom: 16px; color: #cbd5e1; }
+    .article-body ul, .article-body ol { margin: 16px 0 20px 24px; color: #cbd5e1; }
+    .article-body li { margin-bottom: 8px; }
+    .article-body strong { color: var(--text); }
+    .article-body code {
+      background: var(--surface); padding: 2px 8px; border-radius: 4px;
+      font-family: 'Courier New', monospace; font-size: 0.9rem;
+    }
+    .article-body pre {
+      background: var(--surface); padding: 16px; border-radius: 8px;
+      overflow-x: auto; margin: 20px 0; font-size: 0.9rem;
+      font-family: 'Courier New', monospace; color: #e2e8f0;
+    }
+    .tip-box {
+      background: rgba(16,185,129,0.1); border-left: 4px solid #10b981;
+      padding: 16px 20px; border-radius: 0 8px 8px 0; margin: 20px 0;
+    }
+    .tip-box strong { color: #10b981; }
+    .warn-box {
+      background: rgba(239,68,68,0.1); border-left: 4px solid #ef4444;
+      padding: 16px 20px; border-radius: 0 8px 8px 0; margin: 20px 0;
+    }
+    .warn-box strong { color: #ef4444; }
+    .ratio-table {
+      width: 100%; border-collapse: collapse; margin: 20px 0;
+      background: var(--surface); border-radius: 8px; overflow: hidden;
+    }
+    .ratio-table th, .ratio-table td {
+      padding: 12px 16px; text-align: left; border-bottom: 1px solid var(--surface-light);
+    }
+    .ratio-table th { background: var(--surface-light); font-weight: 600; }
+    .ratio-table .pass { color: #10b981; font-weight: 600; }
+    .ratio-table .fail { color: #ef4444; font-weight: 600; }
+    .related { margin-top: 50px; padding-top: 30px; border-top: 1px solid var(--surface-light); }
+    .related h3 { margin-bottom: 16px; }
+    .related-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .related-card {
+      background: var(--surface); padding: 16px; border-radius: 8px; text-decoration: none;
+      color: inherit; transition: background 0.2s;
+    }
+    .related-card:hover { background: var(--surface-light); }
+    .related-card h4 { font-size: 0.95rem; margin-bottom: 4px; }
+    .related-card span { font-size: 0.8rem; color: var(--text-muted); }
+    .ad-placeholder {
+      background: var(--surface); border: 2px dashed var(--surface-light);
+      border-radius: var(--radius); padding: 24px; text-align: center;
+      margin: 30px 0; color: var(--text-muted); font-size: 0.85rem;
+      min-height: 90px; display: flex; align-items: center; justify-content: center;
+    }
+    .ad-slot.ad-live { margin: 30px 0; text-align: center; min-height: 0; display: block; background: transparent; border: none; padding: 0; }
+    footer {
+      margin-top: 60px; padding: 30px 20px; border-top: 1px solid var(--surface-light);
+      color: var(--text-muted); font-size: 0.9rem; text-align: center;
+    }
+    footer a { color: var(--accent); text-decoration: none; margin: 0 8px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <nav>
+      <a href="../index" class="logo">🎨 HexColor Pro</a>
+      <div class="nav-links">
+        <a href="../index#tools">All Tools</a>
+        <a href="../blog">Blog</a>
+      </div>
+    </nav>
+
+    <div class="breadcrumb">
+      <a href="../index">Home</a> / <a href="../blog">Blog</a> / Dark Mode Color Scheme Design
+    </div>
+
+    <div class="hero">
+      <span class="tag">DESIGN</span>
+      <h1>Dark Mode Color Scheme Design: Complete Best Practices Guide</h1>
+      <p>How to design dark mode colors that don't strain eyes, maintain hierarchy, and pass accessibility tests. Includes 10 ready-to-use palettes.</p>
+      <div class="meta">Nov 8, 2026 · 2000 words · 8 min read</div>
+    </div>
+
+    <div class="ad-slot" data-ad-slot="top" id="adTop">
+      <div class="ad-placeholder">Advertisement</div>
+    </div>
+
+    <div class="article-body">
+    
+    <h2>Why Dark Mode Design Is Hard</h2>
+    <p>Dark mode isn't just "invert the colors." If you take a light theme, flip white to black and black to white, you'll get something that looks off — harsh, washed out, and hard to read. Good dark mode design is a whole different discipline.</p>
+    <p>The challenge comes from how human vision works. In bright environments, our eyes use photopic vision (cones). In dim environments, we switch to scotopic vision (rods). These two systems perceive color and contrast differently, and a palette that works in one mode won't necessarily work in the other.</p>
+
+    <div class="tip-box">
+      <strong>🧠 Science fact:</strong> In dark mode, blue light appears brighter than it actually is (the Purkinje effect). That's why pure blue text on dark backgrounds can glow and be hard to read — even if it technically passes contrast tests.
+    </div>
+
+    <h2>Dark Mode Color Principles</h2>
+    <h3>1. Never use pure black (#000000)</h3>
+    <p>Pure black backgrounds cause halation — bright text literally bleeds into the dark background, making text appear fuzzy. Use a dark gray instead, like <code>#0F172A</code> or <code>#121212</code> (Material Design's recommendation).</p>
+
+    <h3>2. Never use pure white (#FFFFFF) for body text</h3>
+    <p>Pure white on dark is too high contrast and causes eye strain over long sessions. Use an off-white like <code>#E2E8F0</code> or <code>#F1F5F9</code> for body text. Save pure white for headings and accents only.</p>
+
+    <h3>3. Lower your saturation</h3>
+    <p>Colors appear more saturated on dark backgrounds. A brand color that looks perfect in light mode might feel blinding in dark mode. Desaturate by 10-30% for dark mode variants.</p>
+
+    <h3>4. Elevation = lighter, not darker</h3>
+    <p>In light mode, elevation is shown with shadows (darker). In dark mode, it's the opposite — elevated surfaces are <em>lighter</em> than the background. Cards should be lighter than the page background, not darker.</p>
+
+    <h2>The Material Design Dark Theme Approach</h2>
+    <p>Google's Material Design has one of the most well-researched dark mode systems. Here's how they structure it:</p>
+    <table class="ratio-table">
+      <tr><th>Elevation</th><th>Color</th><th>Opacity Overlay</th><th>Use For</th></tr>
+      <tr><td>0 (Background)</td><td style="background:#121212;color:#fff;text-align:center;">■ #121212</td><td>0%</td><td>Base page background</td></tr>
+      <tr><td>1 (Card)</td><td style="background:#1e1e1e;color:#fff;text-align:center;">■ #1E1E1E</td><td>5% white overlay</td><td>Cards, sheets, menus</td></tr>
+      <tr><td>2 (Raised)</td><td style="background:#222222;color:#fff;text-align:center;">■ #222222</td><td>7% white overlay</td><td>Raised buttons, search bars</td></tr>
+      <tr><td>3 (Modal)</td><td style="background:#242424;color:#fff;text-align:center;">■ #242424</td><td>8% white overlay</td><td>Dialogs, popovers</td></tr>
+      <tr><td>4 (Top)</td><td style="background:#272727;color:#fff;text-align:center;">■ #272727</td><td>9% white overlay</td><td>Navigation, top bars</td></tr>
+    </table>
+    <p>The key insight: instead of having separate colors for each elevation level, you start with your base dark color and overlay white at different opacities. This creates a consistent, natural-feeling elevation system.</p>
+
+    <h2>10 Ready-to-Use Dark Mode Color Palettes</h2>
+    <h3>1. Slate (Developer Favorite)</h3>
+    <p>Background <code>#0F172A</code> · Surface <code>#1E293B</code> · Text <code>#E2E8F0</code> · Primary <code>#818CF8</code> · Accent <code>#22D3EE</code></p>
+    <p>Our pick for developer tools, dashboards, and technical products. Inspired by Tailwind's slate palette. Easy on the eyes during all-night coding sessions.</p>
+
+    <h3>2. Deep Purple (Creative Tools)</h3>
+    <p>Background <code>#1A0B2E</code> · Surface <code>#2D1B4E</code> · Text <code>#E9D5FF</code> · Primary <code>#A855F7</code> · Accent <code>#F0ABFC</code></p>
+    <p>For creative tools, design apps, and entertainment products. Feels premium and imaginative.</p>
+
+    <h3>3. Midnight Navy (Finance & SaaS)</h3>
+    <p>Background <code>#0C1929</code> · Surface <code>#162A45</code> · Text <code>#CBD5E1</code> · Primary <code>#60A5FA</code> · Accent <code>#34D399</code></p>
+    <p>Professional and trustworthy. Perfect for fintech, analytics, and B2B dashboards.</p>
+
+    <h3>4. Forest Green (Health & Wellness)</h3>
+    <p>Background <code>#0A1F1C</code> · Surface <code>#14332D</code> · Text <td><code>#A7F3D0</code> · Primary <code>#34D399</code> · Accent <code>#FBBF24</code></p>
+    <p>Calm, natural, and grounded. Great for health, wellness, and eco-focused products.</p>
+
+    <h3>5. Warm Charcoal (Content & Reading)</h3>
+    <p>Background <code>#1C1917</code> · Surface <code>#292524</code> · Text <code>#D6D3D1</code> · Primary <code>#FB923C</code> · Accent <code>#FBBF24</code></p>
+    <p>Easy on the eyes for long-form reading. The warm tones reduce eye strain compared to cool grays.</p>
+
+    <h3>6. Solarized Dark (Classic)</h3>
+    <p>Background <code>#002B36</code> · Surface <code>#073642</code> · Text <code>#93A1A1</code> · Primary <code>#268BD2</code> · Accent <code>#B58900</code></p>
+    <p>The classic. Developed by Ethan Schoonover with precise CIELAB lightness relationships. Still beloved by coders and writers.</p>
+
+    <h3>7. Dracula (Developer Iconic)</h3>
+    <p>Background <code>#282A36</code> · Surface <code>#44475A</code> · Text <code>#F8F8F2</code> · Primary <code>#BD93F9</code> · Accent <code>#FF79C6</code></p>
+    <p>Possibly the most popular dark theme in the world. Purple/pink palette that works across 300+ apps. Instantly recognizable.</p>
+
+    <h3>8. Nord (Minimalist)</h3>
+    <p>Background <code>#2E3440</code> · Surface <code>#3B4252</code> · Text <code>#ECEFF4</code> · Primary <code>#88C0D0</code> · Accent <code>#8FBCBB</code></p>
+    <p>Arctic-inspired, cool blue-gray palette. Clean, minimal, and very calming. Popular in the developer community.</p>
+
+    <h3>9. Rose (Warm & Feminine)</h3>
+    <p>Background <code>#1F1217</code> · Surface <code>#301D24</code> · Text <code>#FECDD3</code> · Primary <code>#FB7185</code> · Accent <code>#F472B6</code></p>
+    <p>Warm, inviting, and modern. Great for beauty, lifestyle, and creative community products.</p>
+
+    <h3>10. Monochrome (Ultra-Minimal)</h3>
+    <p>Background <code>#18181B</code> · Surface <code>#27272A</code> · Text <code>#D4D4D8</code> · Primary <code>#FAFAFA</code> · Accent <code>#A1A1AA</code></p>
+    <p>For content-first products where color should stay out of the way. All focus goes to imagery and text.</p>
+
+    <div class="warn-box">
+      <strong>⚠️ Don't just desaturate your light palette:</strong> Desaturating light mode colors gives you murky, lifeless dark mode colors. Instead, start from the dark side — pick your darkest background first, then work upward.
+    </div>
+
+    <h2>Dark Mode Typography Colors</h2>
+    <p>Don't use the same text colors as light mode. Use a 3-4 level text hierarchy:</p>
+    <table class="ratio-table">
+      <tr><th>Level</th><th>Color (Slate Dark)</th><th>Use For</th><th>Contrast</th></tr>
+      <tr><td>Primary Text</td><td><code>#F1F5F9</code> (slate-100)</td><td>Headings, important info</td><td>15.8:1 (AAA)</td></tr>
+      <tr><td>Body Text</td><td><code>#CBD5E1</code> (slate-300)</td><td>Body copy, paragraphs</td><td>10.6:1 (AAA)</td></tr>
+      <tr><td>Secondary</td><td><code>#94A3B8</code> (slate-400)</td><td>Captions, meta, labels</td><td>6.0:1 (AA)</td></tr>
+      <tr><td>Disabled</td><td><code>#64748B</code> (slate-500)</td><td>Disabled text, placeholders</td><td>2.7:1 (below AA)</td></tr>
+    </table>
+
+    <h2>Accessibility in Dark Mode</h2>
+    <p>Dark mode doesn't automatically mean accessible. You still need to check:</p>
+    <ul>
+      <li><strong>Contrast ratios:</strong> 4.5:1 minimum for body text. Our <a href="../contrast-checker">Contrast Checker</a> works for both light and dark backgrounds.</li>
+      <li><strong>Halation:</strong> Light text on very dark backgrounds can appear to glow and blur. Slightly off-white text + slightly off-black background fixes this.</li>
+      <li><strong>Blue light:</strong> Highly saturated blue text or UI elements on dark backgrounds cause more eye strain. Desaturate blues or warm them up.</li>
+      <li><strong>Focus states:</strong> Dark mode focus rings are often too subtle. Make them thick and high-contrast.</li>
+    </ul>
+
+    <h2>Implementation Tips for CSS</h2>
+    <p>Use CSS custom properties with a <code>dark</code> class or <code>prefers-color-scheme</code> media query:</p>
+    <pre>
+:root {
+  --bg: #ffffff;
+  --surface: #f8fafc;
+  --text: #0f172a;
+  --primary: #6366f1;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0f172a;
+    --surface: #1e293b;
+    --text: #e2e8f0;
+    --primary: #818cf8;
+  }
+}
+    </pre>
+
+    <h2>Start Designing</h2>
+    <p>Ready to build your dark mode palette? Use our <a href="../palette-generator">Palette Generator</a> to find complementary colors, then generate tint/shade scales with our <a href="../color-shades-generator">Shades Generator</a>. Always test with the <a href="../contrast-checker">Contrast Checker</a> before shipping.</p>
+
+    </div>
+
+    
+    <div class="tip-box" style="margin-top: 40px;">
+      <strong>🧰 Related Tools</strong><br><br>
+      <a href="../palette-generator">Palette Generator</a> — Generate harmonious color schemes<br>
+      <a href="../color-shades-generator">Color Shades Generator</a> — Create tint and shade scales
+    </div>
+    
+
+    <div class="ad-slot" data-ad-slot="bottom" id="adBottom">
+      <div class="ad-placeholder">Advertisement</div>
+    </div>
+
+    <div class="related">
+      <h3>Related Articles</h3>
+      <div class="related-grid">
+          <a href="hex-to-rgb-conversion-guide" class="related-card">
+        <h4>Hex to RGB</h4>
+        <span>COLOR THEORY</span>
+      </a>
+          <a href="wcag-contrast-ratio-guide" class="related-card">
+        <h4>WCAG Contrast Ratio Explained</h4>
+        <span>ACCESSIBILITY</span>
+      </a>
+          <a href="what-is-hsl-color" class="related-card">
+        <h4>What Is HSL Color? A Beginner's Guide to Hue, Saturation & Lightness</h4>
+        <span>COLOR THEORY</span>
+      </a>
+          <a href="how-many-hex-colors-are-there" class="related-card">
+        <h4>How Many Hex Colors Are There? (And Why It's Not Exactly 16 Million)</h4>
+        <span>COLOR BASICS</span>
+      </a>
+    
+      </div>
+    </div>
+
+
+    <section class="related-posts">
+      <h2>Related Articles</h2>
+      <div class="related-grid">
+      <a class="related-card" href="dark-mode-design-best-practices">
+        <div class="related-cover" style="background: linear-gradient(135deg, #1e1b4b, #6366f1);">📖</div>
+        <div>
+          <span class="related-tag">Design Tips</span>
+          <h4>Dark Mode Design Best Practices</h4>
+        </div>
+      </a>
+      <a class="related-card" href="wcag-contrast-ratio-guide">
+        <div class="related-cover" style="background: linear-gradient(135deg, #f59e0b, #10b981);">📖</div>
+        <div>
+          <span class="related-tag">Accessibility</span>
+          <h4>WCAG Contrast Ratio: How to Calculate & Pass</h4>
+        </div>
+      </a>
+      <a class="related-card" href="contrast-accessibility-guide">
+        <div class="related-cover" style="background: linear-gradient(135deg, #f59e0b, #ef4444);">📖</div>
+        <div>
+          <span class="related-tag">Accessibility</span>
+          <h4>Color Contrast & Accessibility Guide</h4>
+        </div>
+      </a>
+      </div>
+    </section>
+
+    <footer>
+      <p>© 2026 HexColor Pro · <a href="../index">Home</a> · <a href="../privacy">Privacy</a> · <a href="../terms">Terms</a> · <a href="../contact">Contact</a></p>
+    </footer>
+  </div>
+
+  <div id="toast"></div>
+  <script src="../assets/ads.js"></script>
+  <script src="../assets/toast.js"></script>
+  <script>
+    // Init ads
+    if (typeof initAds === 'function') initAds();
+  </script>
+</body>
+</html>

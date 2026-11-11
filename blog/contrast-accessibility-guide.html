@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Complete Guide to Color Contrast & Accessibility | HexColor Pro Blog</title>
+  <meta name="description" content="Everything you need to know about WCAG contrast ratios, how to measure contrast, common accessibility mistakes, and practical design tips.">
+  <meta name="keywords" string="true">color contrast, accessibility, WCAG, web accessibility, contrast ratio, accessible design">
+  <link rel="canonical" href="https://hexcolorpro.pages.dev/blog/contrast-accessibility-guide">
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #0f172a; --surface: #1e293b; --surface-light: #334155;
+      --text: #f1f5f9; --text-muted: #94a3b8; --accent: #6366f1;
+      --radius: 12px; --shadow: 0 4px 20px rgba(0,0,0,0.3);
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg); color: var(--text); line-height: 1.7; min-height: 100vh;
+    }
+    .container { max-width: 800px; margin: 0 auto; padding: 20px; }
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 16px 0; margin-bottom: 20px; }
+    .logo {
+      font-size: 1.4rem; font-weight: 700;
+      background: linear-gradient(135deg, #6366f1, #ec4899);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+      text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 20px; }
+    .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 0.95rem; }
+    .nav-links a:hover { color: var(--text); }
+    .breadcrumb { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 24px; }
+    .breadcrumb a { color: var(--accent); text-decoration: none; }
+    .hero {
+      text-align: center; margin: 30px 0 40px;
+      padding: 40px 30px; border-radius: var(--radius);
+      background: linear-gradient(135deg, rgba(245,158,11,0.2), rgba(239,68,68,0.2));
+    }
+    .hero .tag {
+      display: inline-block; padding: 6px 14px; background: #f59e0b;
+      color: white; border-radius: 20px; font-size: 0.8rem; font-weight: 600;
+      margin-bottom: 16px;
+    }
+    .hero h1 { font-size: 2rem; font-weight: 800; line-height: 1.3; margin-bottom: 12px; }
+    .hero p { color: var(--text-muted); margin-bottom: 16px; }
+    .hero .meta { font-size: 0.85rem; color: var(--text-muted); }
+    .article-body { font-size: 1.05rem; }
+    .article-body h2 { font-size: 1.6rem; margin: 36px 0 16px; color: #f59e0b; }
+    .article-body h3 { font-size: 1.25rem; margin: 28px 0 12px; }
+    .article-body p { margin-bottom: 16px; color: #cbd5e1; }
+    .article-body ul, .article-body ol { margin: 16px 0 20px 24px; color: #cbd5e1; }
+    .article-body li { margin-bottom: 8px; }
+    .article-body strong { color: var(--text); }
+    .article-body code {
+      background: var(--surface); padding: 2px 8px; border-radius: 4px;
+      font-family: 'Courier New', monospace; font-size: 0.9rem;
+    }
+    .tip-box {
+      background: rgba(16,185,129,0.1); border-left: 4px solid #10b981;
+      padding: 16px 20px; border-radius: 0 8px 8px 0; margin: 20px 0;
+    }
+    .tip-box strong { color: #10b981; }
+    .warn-box {
+      background: rgba(239,68,68,0.1); border-left: 4px solid #ef4444;
+      padding: 16px 20px; border-radius: 0 8px 8px 0; margin: 20px 0;
+    }
+    .warn-box strong { color: #ef4444; }
+    .ratio-table {
+      width: 100%; border-collapse: collapse; margin: 20px 0;
+      background: var(--surface); border-radius: 8px; overflow: hidden;
+    }
+    .ratio-table th, .ratio-table td {
+      padding: 12px 16px; text-align: left; border-bottom: 1px solid var(--surface-light);
+    }
+    .ratio-table th { background: var(--surface-light); font-weight: 600; }
+    .ratio-table .pass { color: #10b981; font-weight: 600; }
+    .ratio-table .fail { color: #ef4444; font-weight: 600; }
+    .related { margin-top: 50px; padding-top: 30px; border-top: 1px solid var(--surface-light); }
+    .related h3 { margin-bottom: 16px; }
+    .related-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .related-card {
+      background: var(--surface); padding: 16px; border-radius: 8px; text-decoration: none;
+      color: inherit; transition: background 0.2s;
+    }
+    .related-card:hover { background: var(--surface-light); }
+    .related-card h4 { font-size: 0.95rem; margin-bottom: 4px; }
+    .related-card span { font-size: 0.8rem; color: var(--text-muted); }
+    .ad-placeholder {
+      background: var(--surface); border: 2px dashed var(--surface-light);
+      border-radius: var(--radius); padding: 24px; text-align: center;
+      margin: 30px 0; color: var(--text-muted); font-size: 0.85rem;
+      min-height: 90px; display: flex; align-items: center; justify-content: center;
+    }
+    .ad-slot.ad-live { margin: 30px 0; text-align: center; min-height: 0; display: block; background: transparent; border: none; padding: 0; }
+    footer {
+      margin-top: 60px; padding: 30px 20px; border-top: 1px solid var(--surface-light);
+      color: var(--text-muted); font-size: 0.9rem; text-align: center;
+    }
+    footer a { color: var(--accent); text-decoration: none; margin: 0 8px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <nav>
+      <a href="../index" class="logo">🎨 HexColor Pro</a>
+      <div class="nav-links">
+        <a href="../index#tools">All Tools</a>
+        <a href="../blog">Blog</a>
+      </div>
+    </nav>
+
+    <div class="breadcrumb"><a href="../index">Home</a> / <a href="../blog">Blog</a> / Accessibility</div>
+
+    <div class="hero">
+      <span class="tag">Accessibility</span>
+      <h1>The Complete Guide to Color Contrast & Accessibility</h1>
+      <p>WCAG standards explained, plus how to measure contrast and avoid common mistakes.</p>
+      <div class="meta">Nov 7, 2026 · 10 min read</div>
+    </div>
+
+    <div class="ad-slot" data-ad-slot="top" id="adTop">
+      <div class="ad-placeholder">Advertisement</div>
+    </div>
+
+    <div class="article-body">
+      <p>Accessible color design isn't just a nice-to-have — it's essential for creating products that work for everyone. About 1 in 12 men and 1 in 200 women have some form of color vision deficiency. Many more have low vision or read their phones in bright sunlight. Good contrast ensures your content is readable by all.</p>
+
+      <p>In this guide, we'll break down the WCAG standards, explain how contrast ratios work, and give you practical tips for designing accessible color schemes.</p>
+
+      <h2>What is Contrast Ratio?</h2>
+      <p>Contrast ratio measures the difference in luminance (brightness) between two colors, typically text and its background. The ratio ranges from 1:1 (same color, zero contrast) to 21:1 (pure white on pure black).</p>
+
+      <p>It's calculated using a formula based on relative luminance — how bright a color appears to the human eye. Green contributes most to perceived brightness, blue the least, which is why blue text on black can be hard to read even though the hue difference seems obvious.</p>
+
+      <h2>WCAG Standards at a Glance</h2>
+      <p>The Web Content Accessibility Guidelines (WCAG) define two levels of contrast compliance:</p>
+
+      <table class="ratio-table">
+        <tr><th>Element</th><th>AA (minimum)</th><th>AAA (enhanced)</th></tr>
+        <tr><td>Normal text</td><td class="pass">4.5:1</td><td class="pass">7:1</td></tr>
+        <tr><td>Large text (18pt+ / 14pt bold)</td><td class="pass">3:1</td><td class="pass">4.5:1</td></tr>
+        <tr><td>UI components & graphics</td><td class="pass">3:1</td><td>—</td></tr>
+      </table>
+
+      <div class="tip-box">
+        <strong>💡 What's "large text"?</strong> In WCAG terms, large text is 18pt (24px) or larger, or 14pt (18.66px) and bold. Most body text falls under the "normal text" category and needs 4.5:1 minimum.
+      </div>
+
+      <h3>Why Aim for AA vs AAA?</h3>
+      <p>WCAG AA is the legal baseline in many regions (EU's EN 301 549, US Section 508, Canada's AODA). AAA is a higher standard that's harder to meet — many brand colors simply can't reach 7:1 on white. For most products, AA compliance is the practical target, with AAA as a stretch goal for body text where possible.</p>
+
+      <h2>Common Accessibility Mistakes</h2>
+
+      <h3>1. Light Gray Text on White</h3>
+      <p>This is the #1 culprit. Designers love "subtle" gray text for secondary info, but #999 on white is only about 2.8:1 — well below the 4.5:1 minimum. If you must use light gray, make sure it's truly decorative or non-essential. For important secondary text, use a darker gray like #666 or #555.</p>
+
+      <h3>2. Color as the Only Indicator</h3>
+      <p>"The red button is delete, the green one is save" — that's a problem for color-blind users. Always pair color with another cue: iconography, text labels, patterns, or position. Error states should have an icon and message, not just a red border.</p>
+
+      <div class="warn-box">
+        <strong>⚠️ Common mistake:</strong> Form validation that only shows a red border on error fields. Add an error icon or message too.
+      </div>
+
+      <h3>3. Low-Contrast Hover States</h3>
+      <p>Buttons look fine in their default state but the hover/active state drops contrast. Always test all interactive states — default, hover, active, focus, disabled — for contrast.</p>
+
+      <h3>4. Pure White Text on Bright Colors</h3>
+      <p>White text on bright colors like #6366f1 (indigo) looks great but might fall short. Let's check: white (#ffffff) on indigo (#6366f1) has a contrast ratio of about 4.0:1 — close but below 4.5:1 for body text. For buttons and headlines (large text), it passes AA at 3:1. Just be aware of the distinction.</p>
+
+      <h2>How to Check Contrast</h2>
+      <p>There are several easy ways to test contrast ratios:</p>
+
+      <ul>
+        <li><strong>Use our Contrast Checker</strong> — plug in any two colors and get an instant WCAG pass/fail result</li>
+        <li><strong>Browser DevTools</strong> — in Chrome DevTools, inspect text elements and the color picker shows contrast ratio</li>
+        <li><strong>Extensions</strong> — tools like axe DevTools or Wave can scan whole pages for contrast issues</li>
+        <li><strong>Grayscale test</strong> — convert your design to black and white. If it's hard to read in grayscale, the contrast is too low</li>
+      </ul>
+
+      <div class="tip-box">
+        <strong>🎯 Quick check:</strong> If you squint and can still read the text comfortably, the contrast is probably good. If you have to strain, it's too low.
+      </div>
+
+      <h2>Designing Accessible Color Palettes</h2>
+
+      <h3>Start with Value Contrast</h3>
+      <p>Here's a trick: design your palette in grayscale first. Get the value relationships right — dark enough text, light enough backgrounds, clear hierarchy — then add color on top. If your design works in grayscale, it will pass contrast checks and be readable by everyone.</p>
+
+      <h3>Use Darker Shades for Text</h3>
+      <p>Your brand color might be a bright blue, but that doesn't mean text needs to be the same blue. Create a darker version of your brand color specifically for text links. It will still read as "your brand" but will be much more readable.</p>
+
+      <h3>Test with Real Content</h3>
+      <p>Contrast tools test pure color swatches against each other. Real-world factors like font rendering, anti-aliasing, and font weight affect readability too. Always test with actual text at actual sizes on actual screens.</p>
+
+      <h3>Consider Color Blindness</h3>
+      <p>Contrast ratio is about luminance, not color difference, so it already helps with many forms of color blindness. But you should also check that color-coded information doesn't rely on hue alone. Use tools like Coblis or Color Safe to simulate how your design looks to people with different types of color vision deficiency.</p>
+
+      <h2>Accessible Dark Mode</h2>
+      <p>Dark mode has its own accessibility challenges. Pure black (#000000) backgrounds with pure white (#ffffff) text have maximum contrast (21:1) but can cause eye strain and halation for some users, especially at night. A better approach:</p>
+
+      <ul>
+        <li>Use a dark gray like #0f172a or #18181b instead of pure black</li>
+        <li>Use off-white text like #e2e8f0 instead of #ffffff</li>
+        <li>Make sure body text still meets 4.5:1 (it will — #e2e8f0 on #0f172a is about 14:1)</li>
+        <li>Reduce the number of saturated accent colors — they vibrate more on dark backgrounds</li>
+      </ul>
+
+      <h2>The Business Case for Accessibility</h2>
+      <p>Beyond the ethical and legal reasons, accessible design is just good design. Better contrast means your content is more readable in all conditions — bright sunlight, low-quality screens, old monitors, glanceable moments. Designing for the edges improves the experience for everyone.</p>
+
+      <p>Ready to check your colors? Use our <a href="../contrast-checker" style="color:#f59e0b">Color Contrast Checker</a> to test any pair against WCAG standards.</p>
+    </div>
+
+    <div class="ad-slot" data-ad-slot="bottom" id="adBottom">
+      <div class="ad-placeholder">Advertisement</div>
+    </div>
+
+    <div class="related">
+      <h3>Related Articles</h3>
+      <div class="related-grid">
+        <a class="related-card" href="color-theory-basics">
+          <h4>Color Theory Basics Every Designer Should Know</h4>
+          <span>Color Theory · 8 min</span>
+        </a>
+        <a class="related-card" href="dark-mode-design-best-practices">
+          <h4>Dark Mode Color Design: Best Practices & Pitfalls</h4>
+          <span>Dark Mode · 7 min</span>
+        </a>
+      </div>
+    </div>
+
+
+    <section class="related-posts">
+      <h2>Related Articles</h2>
+      <div class="related-grid">
+      <a class="related-card" href="wcag-contrast-ratio-guide">
+        <div class="related-cover" style="background: linear-gradient(135deg, #f59e0b, #10b981);">📖</div>
+        <div>
+          <span class="related-tag">Accessibility</span>
+          <h4>WCAG Contrast Ratio: How to Calculate & Pass</h4>
+        </div>
+      </a>
+      <a class="related-card" href="accessible-color-palette-healthcare">
+        <div class="related-cover" style="background: linear-gradient(135deg, #10b981, #3b82f6);">📖</div>
+        <div>
+          <span class="related-tag">Accessibility</span>
+          <h4>Accessible Color Palettes for Healthcare</h4>
+        </div>
+      </a>
+      <a class="related-card" href="dark-mode-color-scheme-guide">
+        <div class="related-cover" style="background: linear-gradient(135deg, #1e293b, #64748b);">📖</div>
+        <div>
+          <span class="related-tag">Design Tips</span>
+          <h4>Dark Mode Color Schemes: Engineering Guide</h4>
+        </div>
+      </a>
+      </div>
+    </section>
+
+    <footer>
+      <p>© 2026 HexColor Pro · <a href="../index">Home</a> · <a href="../privacy">Privacy</a> · <a href="../terms">Terms</a> · <a href="../contact">Contact</a></p>
+    </footer>
+  </div>
+  <script src="../ads.js?v=3"></script>
+</body>
+</html>

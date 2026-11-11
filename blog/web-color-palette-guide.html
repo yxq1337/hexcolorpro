@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How to Choose a Perfect Color Palette for Your Website | HexColor Pro Blog</title>
+  <meta name="description" content="A step-by-step guide to creating beautiful, effective website color palettes — from understanding your brand to picking the right accent colors.">
+  <meta name="keywords" string="true">website color palette, color scheme, web design, branding colors, how to choose colors">
+  <link rel="canonical" href="https://hexcolorpro.pages.dev/blog/web-color-palette-guide">
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #0f172a; --surface: #1e293b; --surface-light: #334155;
+      --text: #f1f5f9; --text-muted: #94a3b8; --accent: #6366f1;
+      --radius: 12px;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg); color: var(--text); line-height: 1.7; min-height: 100vh;
+    }
+    .container { max-width: 800px; margin: 0 auto; padding: 20px; }
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 16px 0; margin-bottom: 20px; }
+    .logo {
+      font-size: 1.4rem; font-weight: 700;
+      background: linear-gradient(135deg, #6366f1, #ec4899);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+      text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 20px; }
+    .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 0.95rem; }
+    .nav-links a:hover { color: var(--text); }
+    .breadcrumb { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 24px; }
+    .breadcrumb a { color: var(--accent); text-decoration: none; }
+    .hero {
+      text-align: center; margin: 30px 0 40px;
+      padding: 40px 30px; border-radius: var(--radius);
+      background: linear-gradient(135deg, rgba(99,102,241,0.2), rgba(168,85,247,0.2));
+    }
+    .hero .tag {
+      display: inline-block; padding: 6px 14px; background: #a855f7;
+      color: white; border-radius: 20px; font-size: 0.8rem; font-weight: 600;
+      margin-bottom: 16px;
+    }
+    .hero h1 { font-size: 2rem; font-weight: 800; line-height: 1.3; margin-bottom: 12px; }
+    .hero p { color: var(--text-muted); margin-bottom: 16px; }
+    .hero .meta { font-size: 0.85rem; color: var(--text-muted); }
+    .article-body { font-size: 1.05rem; }
+    .article-body h2 { font-size: 1.6rem; margin: 36px 0 16px; color: #a855f7; }
+    .article-body h3 { font-size: 1.25rem; margin: 28px 0 12px; }
+    .article-body p { margin-bottom: 16px; color: #cbd5e1; }
+    .article-body ul, .article-body ol { margin: 16px 0 20px 24px; color: #cbd5e1; }
+    .article-body li { margin-bottom: 8px; }
+    .article-body strong { color: var(--text); }
+    .article-body code {
+      background: var(--surface); padding: 2px 8px; border-radius: 4px;
+      font-family: 'Courier New', monospace; font-size: 0.9rem;
+    }
+    .tip-box {
+      background: rgba(16,185,129,0.1); border-left: 4px solid #10b981;
+      padding: 16px 20px; border-radius: 0 8px 8px 0; margin: 20px 0;
+    }
+    .tip-box strong { color: #10b981; }
+    .step-number {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 32px; height: 32px; background: #a855f7; color: white;
+      border-radius: 50%; font-weight: 700; margin-right: 10px;
+    }
+    .palette-row {
+      display: flex; height: 80px; border-radius: 8px; overflow: hidden; margin: 16px 0;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+    .palette-color { flex: 1; display: flex; align-items: center; justify-content: center;
+      font-family: 'Courier New', monospace; font-size: 0.75rem; font-weight: 600;
+      color: rgba(255,255,255,0.9); }
+    .related { margin-top: 50px; padding-top: 30px; border-top: 1px solid var(--surface-light); }
+    .related h3 { margin-bottom: 16px; }
+    .related-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .related-card {
+      background: var(--surface); padding: 16px; border-radius: 8px; text-decoration: none;
+      color: inherit; transition: background 0.2s;
+    }
+    .related-card:hover { background: var(--surface-light); }
+    .related-card h4 { font-size: 0.95rem; margin-bottom: 4px; }
+    .related-card span { font-size: 0.8rem; color: var(--text-muted); }
+    .ad-placeholder {
+      background: var(--surface); border: 2px dashed var(--surface-light);
+      border-radius: var(--radius); padding: 24px; text-align: center;
+      margin: 30px 0; color: var(--text-muted); font-size: 0.85rem;
+      min-height: 90px; display: flex; align-items: center; justify-content: center;
+    }
+    .ad-slot.ad-live { margin: 30px 0; text-align: center; min-height: 0; display: block; background: transparent; border: none; padding: 0; }
+    footer {
+      margin-top: 60px; padding: 30px 20px; border-top: 1px solid var(--surface-light);
+      color: var(--text-muted); font-size: 0.9rem; text-align: center;
+    }
+    footer a { color: var(--accent); text-decoration: none; margin: 0 8px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <nav>
+      <a href="../index" class="logo">🎨 HexColor Pro</a>
+      <div class="nav-links">
+        <a href="../index#tools">All Tools</a>
+        <a href="../blog">Blog</a>
+      </div>
+    </nav>
+
+    <div class="breadcrumb"><a href="../index">Home</a> / <a href="../blog">Blog</a> / Design Tips</div>
+
+    <div class="hero">
+      <span class="tag">Design Tips</span>
+      <h1>How to Choose a Perfect Color Palette for Your Website</h1>
+      <p>A step-by-step framework for creating beautiful, on-brand, high-converting color schemes.</p>
+      <div class="meta">Nov 7, 2026 · 11 min read</div>
+    </div>
+
+    <div class="ad-slot" data-ad-slot="top" id="adTop">
+      <div class="ad-placeholder">Advertisement</div>
+    </div>
+
+    <div class="article-body">
+      <p>Choosing the right color palette is one of the most impactful decisions in web design. Colors set the mood, convey your brand personality, and even influence whether visitors take action. But with millions of colors to choose from, where do you start?</p>
+
+      <p>This guide walks you through a proven, step-by-step process for creating a website color palette that looks great, works for your brand, and converts visitors.</p>
+
+      <h2><span class="step-number">1</span>Start with Your Brand & Audience</h2>
+      <p>Before you open any color picker, answer these questions:</p>
+      <ul>
+        <li><strong>What's your brand personality?</strong> Playful? Serious? Luxurious? Friendly?</li>
+        <li><strong>Who's your audience?</strong> Young? Professional? Niche hobbyists?</li>
+        <li><strong>What action do you want visitors to take?</strong> Buy? Sign up? Read?</li>
+      </ul>
+      <p>A kids' toy store and a law firm should not have the same color palette — even if you personally love both styles. Let the brand and audience guide you, not your personal taste.</p>
+
+      <h2><span class="step-number">2</span>Pick a Primary Color</h2>
+      <p>Your primary color is the most recognizable color of your brand — the one people associate with you. It should appear in your logo, buttons, and key interactive elements.</p>
+
+      <p>Here's a quick guide to common primary color associations:</p>
+      <ul>
+        <li><strong>Blue</strong> — trust, stability, professionalism (most common for tech and finance)</li>
+        <li><strong>Red</strong> — energy, passion, urgency (great for CTAs and food)</li>
+        <li><strong>Green</strong> — nature, growth, health (perfect for eco and wellness brands)</li>
+        <li><strong>Purple</strong> — luxury, creativity, mystery (popular with beauty and design)</li>
+        <li><strong>Orange</strong> — friendliness, enthusiasm, affordability (great for value brands)</li>
+        <li><strong>Pink</strong> — playfulness, warmth, femininity (fashion and lifestyle)</li>
+        <li><strong>Yellow</strong> — optimism, happiness, attention-grabbing (use sparingly!)</li>
+      </ul>
+
+      <div class="tip-box">
+        <strong>💡 Rule of thumb:</strong> Pick a primary color you can live with for years. Trending colors change. Your brand color should outlast a design cycle.
+      </div>
+
+      <h2><span class="step-number">3</span>Choose Your Neutrals</h2>
+      <p>Neutrals do most of the heavy lifting on any website — backgrounds, text, borders, cards. Get these wrong and your site will feel off, no matter how good your primary color is.</p>
+
+      <p>A good neutral palette needs:</p>
+      <ul>
+        <li>1 background color (near-white for light mode, near-black for dark mode)</li>
+        <li>2-3 surface colors (for cards, nav bars, inputs)</li>
+        <li>3-4 text colors (primary text, secondary text, subtle/muted)</li>
+        <li>Border/divider colors</li>
+      </ul>
+
+      <p>Pro tip: don't use pure gray. Add a tiny hint of your primary color to your grays — it makes the whole palette feel cohesive and intentional. For example, instead of #666666, try #64748b (slate gray with blue undertones).</p>
+
+      <div class="palette-row">
+        <div class="palette-color" style="background:#f8fafc">#F8FAFC</div>
+        <div class="palette-color" style="background:#e2e8f0">#E2E8F0</div>
+        <div class="palette-color" style="background:#94a3b8">#94A3B8</div>
+        <div class="palette-color" style="background:#475569">#475569</div>
+        <div class="palette-color" style="background:#0f172a">#0F172A</div>
+      </div>
+      <p style="text-align:center;color:var(--text-muted);font-size:0.9rem;margin-top:-8px">Slate neutrals — warm gray with blue undertones</p>
+
+      <h2><span class="step-number">4</span>Pick 1-2 Accent Colors</h2>
+      <p>Accent colors are for highlights, CTAs, success/error states, and visual interest. Less is more here — too many accent colors make a design feel busy and cluttered.</p>
+
+      <p>For most websites, you'll need:</p>
+      <ul>
+        <li>1 bold accent for primary CTAs (can be your primary color)</li>
+        <li>1 success color (typically green) for positive states</li>
+        <li>1 error color (typically red/rose) for warnings and errors</li>
+      </ul>
+
+      <p>For visual interest, you might add one more accent — but be careful. If your primary is blue, a soft purple or teal accent works well because they're adjacent on the color wheel.</p>
+
+      <h2><span class="step-number">5</span>Follow the 60-30-10 Rule</h2>
+      <p>Once you have your colors, apply them with the classic 60-30-10 ratio:</p>
+      <ul>
+        <li><strong>60%</strong> — Dominant neutral (background, page chrome)</li>
+        <li><strong>30%</strong> — Secondary neutral or primary (cards, sidebars, headers)</li>
+        <li><strong>10%</strong> — Accent color (buttons, links, highlights)</li>
+      </ul>
+      <p>This ratio ensures your accent color has the most impact because it's used sparingly. When everything is a highlight, nothing is a highlight.</p>
+
+      <h2><span class="step-number">6</span>Test, Test, Test</h2>
+
+      <h3>Contrast Check</h3>
+      <p>Run every text/background pair through a contrast checker. Body text needs at least 4.5:1 ratio for WCAG AA. Buttons and interactive elements need 3:1 minimum. Use our <a href="../contrast-checker" style="color:#a855f7">Contrast Checker</a> to test quickly.</p>
+
+      <h3>Apply to Real Content</h3>
+      <p>Colors look different in context. Don't judge a palette by swatches alone — drop them into a real page with real text, images, and components. You might find that a color that looked great as a swatch feels overwhelming at scale.</p>
+
+      <h3>Test on Actual Screens</h3>
+      <p>Colors shift dramatically between monitors. What looks perfect on your fancy calibrated display might be washed out on a cheap laptop or a phone in bright sunlight. Test on multiple devices.</p>
+
+      <h2><span class="step-number">7</span>Create System Scale</h2>
+      <p>Don't just pick 3-5 colors and call it done. For a production-ready palette, create a scale of shades and tints for each color. This gives you flexibility while staying on brand.</p>
+
+      <p>A typical scale has 9-10 steps from 50 (lightest) to 900 (darkest):</p>
+      <ul>
+        <li><strong>50-200</strong> — Light tints, great for backgrounds and subtle states</li>
+        <li><strong>300-500</strong> — Mid tones, use for hover states, secondary elements</li>
+        <li><strong>500-600</strong> — The "base" of the color, your brand color</li>
+        <li><strong>700-900</strong> — Dark shades, use for text and active states</li>
+      </ul>
+
+      <p>Our <a href="../color-picker" style="color:#a855f7">Color Picker</a> tool automatically generates a full 50-900 scale from any color.</p>
+
+      <h2>Common Mistakes to Avoid</h2>
+
+      <h3>Too Many Colors</h3>
+      <p>The #1 mistake beginners make. A website is not a rainbow. Stick to 1 primary + neutrals + 1-2 accents max. You can add variety with shades and tints, not new hues.</p>
+
+      <h3>All Saturated, No Rest</h3>
+      <p>If every color is fully saturated, the design vibrates and feels overwhelming. Use desaturated neutrals as breathing room. Saturated colors should be reserved for the elements that matter most.</p>
+
+      <h3>Ignoring State Colors</h3>
+      <p>Don't forget hover, active, focus, disabled, success, and error states. Plan these into your palette from the start — don't improvise them later.</p>
+
+      <h3>Skipping Dark Mode</h3>
+      <p>If you're building a modern website, dark mode isn't optional for much longer. Design both modes at the same time. You'll save yourself a painful retrofit later.</p>
+
+      <h2>Final Checklist</h2>
+      <p>Before finalizing your palette, run through this list:</p>
+      <ol>
+        <li>✅ Primary color clearly communicates brand personality</li>
+        <li>✅ Neutrals have enough range (light → dark) for clear hierarchy</li>
+        <li>✅ All text passes WCAG AA contrast (4.5:1 minimum)</li>
+        <li>✅ Accent colors are used sparingly (max 10% of the design)</li>
+        <li>✅ Palette works in both light and dark mode</li>
+        <li>✅ Colors look good on actual screens, not just swatches</li>
+        <li>✅ You have a scale of shades (50-900) for flexibility</li>
+      </ol>
+
+      <p>Ready to build your palette? Start with our <a href="../palette-generator" style="color:#a855f7">Color Palette Generator</a> — pick a base color and get a complete, balanced palette in seconds.</p>
+    </div>
+
+    <div class="ad-slot" data-ad-slot="bottom" id="adBottom">
+      <div class="ad-placeholder">Advertisement</div>
+    </div>
+
+    <div class="related">
+      <h3>Related Articles</h3>
+      <div class="related-grid">
+        <a class="related-card" href="color-theory-basics">
+          <h4>Color Theory Basics Every Designer Should Know</h4>
+          <span>Color Theory · 8 min</span>
+        </a>
+        <a class="related-card" href="color-psychology-branding">
+          <h4>Color Psychology in Branding: What Your Colors Say</h4>
+          <span>Branding · 9 min</span>
+        </a>
+      </div>
+    </div>
+
+
+    <section class="related-posts">
+      <h2>Related Articles</h2>
+      <div class="related-grid">
+      <a class="related-card" href="saas-dashboard-color-palette">
+        <div class="related-cover" style="background: linear-gradient(135deg, #6366f1, #8b5cf6);">📖</div>
+        <div>
+          <span class="related-tag">Design Systems</span>
+          <h4>Best Color Palettes for SaaS Dashboards</h4>
+        </div>
+      </a>
+      <a class="related-card" href="color-psychology-branding">
+        <div class="related-cover" style="background: linear-gradient(135deg, #ec4899, #8b5cf6);">📖</div>
+        <div>
+          <span class="related-tag">Color Theory</span>
+          <h4>Color Psychology in Branding</h4>
+        </div>
+      </a>
+      <a class="related-card" href="monochromatic-color-palette-generator">
+        <div class="related-cover" style="background: linear-gradient(135deg, #64748b, #334155);">📖</div>
+        <div>
+          <span class="related-tag">Design Tips</span>
+          <h4>Monochromatic Color Palette Generator Guide</h4>
+        </div>
+      </a>
+      </div>
+    </section>
+
+    <footer>
+      <p>© 2026 HexColor Pro · <a href="../index">Home</a> · <a href="../privacy">Privacy</a> · <a href="../terms">Terms</a> · <a href="../contact">Contact</a></p>
+    </footer>
+  </div>
+  <script src="../ads.js?v=3"></script>
+</body>
+</html>

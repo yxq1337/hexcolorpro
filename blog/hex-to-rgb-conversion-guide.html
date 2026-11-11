@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hex to RGB: The Complete Conversion Guide (With Examples) | HexColor Pro Blog</title>
+  <meta name="description" content="Learn how to convert hex color codes to RGB manually or with a calculator. Includes formula, examples, and a free online converter tool.">
+  <meta name="keywords" content="hex to rgb, hex to rgb converter, convert hex to rgb, hex color to rgb">
+  <link rel="canonical" href="https://hexcolorpro.pages.dev/blog/hex-to-rgb-conversion-guide">
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #0f172a; --surface: #1e293b; --surface-light: #334155;
+      --text: #f1f5f9; --text-muted: #94a3b8; --accent: #6366f1;
+      --radius: 12px; --shadow: 0 4px 20px rgba(0,0,0,0.3);
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg); color: var(--text); line-height: 1.7; min-height: 100vh;
+    }
+    .container { max-width: 800px; margin: 0 auto; padding: 20px; }
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 16px 0; margin-bottom: 20px; }
+    .logo {
+      font-size: 1.4rem; font-weight: 700;
+      background: linear-gradient(135deg, #6366f1, #ec4899);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+      text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 20px; }
+    .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 0.95rem; }
+    .nav-links a:hover { color: var(--text); }
+    .breadcrumb { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 24px; }
+    .breadcrumb a { color: var(--accent); text-decoration: none; }
+    .hero {
+      text-align: center; margin: 30px 0 40px;
+      padding: 40px 30px; border-radius: var(--radius);
+      background: linear-gradient(135deg, rgba(245,158,11,0.2), rgba(239,68,68,0.15));
+    }
+    .hero .tag {
+      display: inline-block; padding: 6px 14px; background: #f59e0b;
+      color: white; border-radius: 20px; font-size: 0.8rem; font-weight: 600;
+      margin-bottom: 16px;
+    }
+    .hero h1 { font-size: 2rem; font-weight: 800; line-height: 1.3; margin-bottom: 12px; }
+    .hero p { color: var(--text-muted); margin-bottom: 16px; }
+    .hero .meta { font-size: 0.85rem; color: var(--text-muted); }
+    .article-body { font-size: 1.05rem; }
+    .article-body h2 { font-size: 1.6rem; margin: 36px 0 16px; color: #f59e0b; }
+    .article-body h3 { font-size: 1.25rem; margin: 28px 0 12px; }
+    .article-body p { margin-bottom: 16px; color: #cbd5e1; }
+    .article-body ul, .article-body ol { margin: 16px 0 20px 24px; color: #cbd5e1; }
+    .article-body li { margin-bottom: 8px; }
+    .article-body strong { color: var(--text); }
+    .article-body code {
+      background: var(--surface); padding: 2px 8px; border-radius: 4px;
+      font-family: 'Courier New', monospace; font-size: 0.9rem;
+    }
+    .article-body pre {
+      background: var(--surface); padding: 16px; border-radius: 8px;
+      overflow-x: auto; margin: 20px 0; font-size: 0.9rem;
+      font-family: 'Courier New', monospace; color: #e2e8f0;
+    }
+    .tip-box {
+      background: rgba(16,185,129,0.1); border-left: 4px solid #10b981;
+      padding: 16px 20px; border-radius: 0 8px 8px 0; margin: 20px 0;
+    }
+    .tip-box strong { color: #10b981; }
+    .warn-box {
+      background: rgba(239,68,68,0.1); border-left: 4px solid #ef4444;
+      padding: 16px 20px; border-radius: 0 8px 8px 0; margin: 20px 0;
+    }
+    .warn-box strong { color: #ef4444; }
+    .ratio-table {
+      width: 100%; border-collapse: collapse; margin: 20px 0;
+      background: var(--surface); border-radius: 8px; overflow: hidden;
+    }
+    .ratio-table th, .ratio-table td {
+      padding: 12px 16px; text-align: left; border-bottom: 1px solid var(--surface-light);
+    }
+    .ratio-table th { background: var(--surface-light); font-weight: 600; }
+    .ratio-table .pass { color: #10b981; font-weight: 600; }
+    .ratio-table .fail { color: #ef4444; font-weight: 600; }
+    .related { margin-top: 50px; padding-top: 30px; border-top: 1px solid var(--surface-light); }
+    .related h3 { margin-bottom: 16px; }
+    .related-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .related-card {
+      background: var(--surface); padding: 16px; border-radius: 8px; text-decoration: none;
+      color: inherit; transition: background 0.2s;
+    }
+    .related-card:hover { background: var(--surface-light); }
+    .related-card h4 { font-size: 0.95rem; margin-bottom: 4px; }
+    .related-card span { font-size: 0.8rem; color: var(--text-muted); }
+    .ad-placeholder {
+      background: var(--surface); border: 2px dashed var(--surface-light);
+      border-radius: var(--radius); padding: 24px; text-align: center;
+      margin: 30px 0; color: var(--text-muted); font-size: 0.85rem;
+      min-height: 90px; display: flex; align-items: center; justify-content: center;
+    }
+    .ad-slot.ad-live { margin: 30px 0; text-align: center; min-height: 0; display: block; background: transparent; border: none; padding: 0; }
+    footer {
+      margin-top: 60px; padding: 30px 20px; border-top: 1px solid var(--surface-light);
+      color: var(--text-muted); font-size: 0.9rem; text-align: center;
+    }
+    footer a { color: var(--accent); text-decoration: none; margin: 0 8px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <nav>
+      <a href="../index" class="logo">🎨 HexColor Pro</a>
+      <div class="nav-links">
+        <a href="../index#tools">All Tools</a>
+        <a href="../blog">Blog</a>
+      </div>
+    </nav>
+
+    <div class="breadcrumb">
+      <a href="../index">Home</a> / <a href="../blog">Blog</a> / Hex to RGB
+    </div>
+
+    <div class="hero">
+      <span class="tag">COLOR THEORY</span>
+      <h1>Hex to RGB: The Complete Conversion Guide (With Examples)</h1>
+      <p>Learn how to convert hex color codes to RGB manually or with a calculator. Includes formula, examples, and a free online converter tool.</p>
+      <div class="meta">Nov 8, 2026 · 1800 words · 8 min read</div>
+    </div>
+
+    <div class="ad-slot" data-ad-slot="top" id="adTop">
+      <div class="ad-placeholder">Advertisement</div>
+    </div>
+
+    <div class="article-body">
+    
+    <h2>What Is a Hex Color Code?</h2>
+    <p>A hex color code is a six-character (plus an optional two for alpha) representation of a color using the hexadecimal numbering system. It always starts with a <code>#</code> symbol followed by six characters from <code>0-9</code> and <code>A-F</code>.</p>
+    <p>The six characters are split into three pairs: <strong>RR</strong> for red, <strong>GG</strong> for green, and <strong>BB</strong> for blue. Each pair represents a value from 0 to 255 — exactly matching RGB channels.</p>
+    <p>For example, <code>#FF0000</code> means full red (255), no green (0), and no blue (0) — pure red.</p>
+
+    <div class="tip-box">
+      <strong>💡 Quick fact:</strong> Hex codes are case-insensitive. <code>#FF0000</code> and <code>#ff0000</code> are identical. Most designers use uppercase for readability.
+    </div>
+
+    <h2>The Hex to RGB Formula</h2>
+    <p>Converting hex to RGB is straightforward once you know how base-16 works. Here's the step-by-step formula:</p>
+    <ol>
+      <li>Take the six-digit hex code and remove the <code>#</code></li>
+      <li>Split it into three pairs: first two = red, middle two = green, last two = blue</li>
+      <li>For each pair, convert the hexadecimal value to a decimal number from 0-255</li>
+    </ol>
+    <p>The hex-to-decimal conversion works like this: each position represents 16 raised to a power. The left character is the "16s place" (16<sup>1</sup>) and the right character is the "1s place" (16<sup>0</sup>).</p>
+    <p>For pair <code>FF</code>: F (15) × 16 + F (15) × 1 = 240 + 15 = <strong>255</strong></p>
+    <p>For pair <code>80</code>: 8 × 16 + 0 × 1 = 128 + 0 = <strong>128</strong></p>
+
+    <h2>Example 1: Convert #2563EB to RGB</h2>
+    <p>Let's walk through a real example — the indigo blue used in many modern designs.</p>
+    <table class="ratio-table">
+      <tr><th>Component</th><th>Hex Pair</th><th>Calculation</th><th>Decimal Value</th></tr>
+      <tr><td>Red</td><td>25</td><td>2 × 16 + 5 = 37</td><td>37</td></tr>
+      <tr><td>Green</td><td>63</td><td>6 × 16 + 3 = 99</td><td>99</td></tr>
+      <tr><td>Blue</td><td>EB</td><td>14 × 16 + 11 = 235</td><td>235</td></tr>
+    </table>
+    <p>Result: <code>rgb(37, 99, 235)</code> — which is Tailwind's blue-600.</p>
+
+    <h2>Example 2: Convert #10B981 to RGB</h2>
+    <p>An emerald green, common in success states and fintech designs.</p>
+    <table class="ratio-table">
+      <tr><th>Component</th><th>Hex Pair</th><th>Calculation</th><th>Decimal Value</th></tr>
+      <tr><td>Red</td><td>10</td><td>1 × 16 + 0 = 16</td><td>16</td></tr>
+      <tr><td>Green</td><td>B9</td><td>11 × 16 + 9 = 185</td><td>185</td></tr>
+      <tr><td>Blue</td><td>81</td><td>8 × 16 + 1 = 129</td><td>129</td></tr>
+    </table>
+    <p>Result: <code>rgb(16, 185, 129)</code> — the famous emerald-500.</p>
+
+    <h2>What About 3-Digit Hex Codes?</h2>
+    <p>You'll sometimes see shorthand hex codes like <code>#F00</code> for red or <code>#0AF</code> for blue. These are valid in CSS and work by doubling each character.</p>
+    <p><code>#F00</code> → <code>#FF0000</code> → <code>rgb(255, 0, 0)</code></p>
+    <p><code>#0AF</code> → <code>#00AAFF</code> → <code>rgb(0, 170, 255)</code></p>
+    <p>Shorthand hex only works when both characters in each pair are identical. It's mainly used for saving bytes in CSS.</p>
+
+    <h2>8-Digit Hex: Adding Transparency</h2>
+    <p>Modern CSS supports 8-digit hex codes where the last two digits represent the alpha (transparency) channel. The same conversion applies:</p>
+    <p><code>#FF000080</code> → red: FF (255), green: 00 (0), blue: 00 (0), alpha: 80 (128/255 ≈ 50% opacity)</p>
+    <p>The alpha value 00 means fully transparent, and FF means fully opaque. This is equivalent to <code>rgba(255, 0, 0, 0.5)</code>.</p>
+
+    <div class="warn-box">
+      <strong>⚠️ Browser support:</strong> 8-digit hex codes work in all modern browsers (Chrome 62+, Firefox 52+, Safari 10+). For older browser support, use rgba() instead.
+    </div>
+
+    <h2>Fastest Way to Convert Hex to RGB</h2>
+    <p>Doing the math by hand is fine for understanding, but in practice you'll want a faster method. Here are three options:</p>
+    <ol>
+      <li><strong>Online converter tool:</strong> Use our <a href="../color-converter">Color Converter</a> — paste your hex code and instantly get RGB, HSL, HSV, and CMYK values.</li>
+      <li><strong>Browser DevTools:</strong> In Chrome DevTools, click any color swatch in the Styles panel to toggle between hex, rgb, and hsl formats.</li>
+      <li><strong>Design software:</strong> Figma, Sketch, and Photoshop all show hex and RGB side by side in the color picker.</li>
+    </ol>
+
+    <h2>Common Mistakes to Avoid</h2>
+    <ul>
+      <li><strong>Confusing the pair order:</strong> Hex is always RR-GG-BB, never any other order.</li>
+      <li><strong>Forgetting case insensitivity:</strong> <code>#abcdef</code> and <code>#ABCDEF</code> are the same color.</li>
+      <li><strong>Adding spaces:</strong> Hex codes have no spaces. <code>#FF 00 00</code> is invalid.</li>
+      <li><strong>Using 4-digit hex for opacity:</strong> <code>#F008</code> = 50% red, but only works if you know the shorthand rule.</li>
+    </ul>
+
+    <h2>Next Steps</h2>
+    <p>Now that you understand hex to RGB conversion, you might want to explore other color models. Head over to our <a href="../color-converter">Color Converter</a> to try converting between 7 different color formats instantly.</p>
+
+    </div>
+
+    
+    <div class="tip-box" style="margin-top: 40px;">
+      <strong>🧰 Related Tools</strong><br><br>
+      <a href="../color-converter">Color Converter</a> — Convert between 8+ color formats<br>
+      <a href="../color-shades-generator">Color Shades Generator</a> — Create tint and shade scales
+    </div>
+    
+
+    <div class="ad-slot" data-ad-slot="bottom" id="adBottom">
+      <div class="ad-placeholder">Advertisement</div>
+    </div>
+
+    <div class="related">
+      <h3>Related Articles</h3>
+      <div class="related-grid">
+          <a href="wcag-contrast-ratio-guide" class="related-card">
+        <h4>WCAG Contrast Ratio Explained</h4>
+        <span>ACCESSIBILITY</span>
+      </a>
+          <a href="what-is-hsl-color" class="related-card">
+        <h4>What Is HSL Color? A Beginner's Guide to Hue, Saturation & Lightness</h4>
+        <span>COLOR THEORY</span>
+      </a>
+          <a href="how-many-hex-colors-are-there" class="related-card">
+        <h4>How Many Hex Colors Are There? (And Why It's Not Exactly 16 Million)</h4>
+        <span>COLOR BASICS</span>
+      </a>
+          <a href="saas-dashboard-color-palette" class="related-card">
+        <h4>Best Color Palettes for SaaS Dashboards in 2026</h4>
+        <span>DESIGN</span>
+      </a>
+    
+      </div>
+    </div>
+
+
+    <section class="related-posts">
+      <h2>Related Articles</h2>
+      <div class="related-grid">
+      <a class="related-card" href="what-color-is-ff0000">
+        <div class="related-cover" style="background: linear-gradient(135deg, #dc2626, #f97316);">📖</div>
+        <div>
+          <span class="related-tag">Color Basics</span>
+          <h4>What Color Is #FF0000? Understanding Hex Codes</h4>
+        </div>
+      </a>
+      <a class="related-card" href="what-is-hsl-color">
+        <div class="related-cover" style="background: linear-gradient(135deg, #22c55e, #eab308);">📖</div>
+        <div>
+          <span class="related-tag">Color Theory</span>
+          <h4>What Is HSL Color? A Developer's Guide</h4>
+        </div>
+      </a>
+      <a class="related-card" href="cmyk-to-rgb-difference">
+        <div class="related-cover" style="background: linear-gradient(135deg, #0ea5e9, #f472b6);">📖</div>
+        <div>
+          <span class="related-tag">Color Theory</span>
+          <h4>CMYK vs RGB: Why Colors Look Different</h4>
+        </div>
+      </a>
+      </div>
+    </section>
+
+    <footer>
+      <p>© 2026 HexColor Pro · <a href="../index">Home</a> · <a href="../privacy">Privacy</a> · <a href="../terms">Terms</a> · <a href="../contact">Contact</a></p>
+    </footer>
+  </div>
+
+  <div id="toast"></div>
+  <script src="../assets/ads.js"></script>
+  <script src="../assets/toast.js"></script>
+  <script>
+    // Init ads
+    if (typeof initAds === 'function') initAds();
+  </script>
+</body>
+</html>

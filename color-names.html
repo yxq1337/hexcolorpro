@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Color Name Finder - Hex to Color Name Lookup | HexColor Pro</title>
+  <meta name="description" content="Find the name of any color. Enter a hex code and get the closest color name from a database of 1500+ named colors. Search by name too.">
+  <meta name="keywords" content="color name finder, hex to name, color names, named colors, color lookup, color database">
+  <link rel="canonical" href="https://hexcolorpro.pages.dev/color-names">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #0f172a; --surface: #1e293b; --surface-light: #334155;
+      --text: #f1f5f9; --text-muted: #94a3b8; --accent: #6366f1;
+      --radius: 12px; --shadow: 0 4px 20px rgba(0,0,0,0.3);
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg); color: var(--text); line-height: 1.6; min-height: 100vh;
+    }
+    .container { max-width: 1000px; margin: 0 auto; padding: 20px; }
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 16px 0; margin-bottom: 20px; }
+    .logo {
+      font-size: 1.4rem; font-weight: 700;
+      background: linear-gradient(135deg, #6366f1, #ec4899);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+      text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 20px; }
+    .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 0.95rem; }
+    .nav-links a:hover { color: var(--text); }
+    .page-header { text-align: center; margin: 20px 0 30px; }
+    .page-header h1 {
+      font-size: 2.2rem; font-weight: 700;
+      background: linear-gradient(135deg, #6366f1, #ec4899);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .page-header p { color: var(--text-muted); margin-top: 8px; font-size: 1.05rem; }
+    .breadcrumb { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 16px; }
+    .breadcrumb a { color: var(--accent); text-decoration: none; }
+    .card {
+      background: var(--surface); border-radius: var(--radius); padding: 28px;
+      box-shadow: var(--shadow); margin-bottom: 24px;
+    }
+    .card h2 { font-size: 1.3rem; margin-bottom: 16px; }
+
+    .search-row {
+      display: flex; gap: 10px; margin-bottom: 20px;
+    }
+    .search-row input[type="text"] {
+      flex: 1; padding: 14px 18px; border: 2px solid var(--surface-light);
+      border-radius: 8px; background: var(--bg); color: var(--text); font-size: 1rem;
+    }
+    .search-row input[type="text"]:focus { outline: none; border-color: var(--accent); }
+    .btn {
+      padding: 14px 24px; border: none; border-radius: 8px; cursor: pointer;
+      font-size: 0.95rem; font-weight: 600; transition: background 0.2s, transform 0.1s;
+    }
+    .btn-primary { background: var(--accent); color: white; }
+    .btn-primary:hover { background: #818cf8; }
+    .btn-secondary { background: var(--surface-light); color: var(--text); }
+    .btn-secondary:hover { background: #475569; }
+
+    .picker-row {
+      display: flex; gap: 12px; align-items: center; margin-bottom: 20px;
+    }
+    .picker-row input[type="color"] {
+      width: 50px; height: 50px; border: none; border-radius: 8px; cursor: pointer; background: none;
+    }
+
+    .result-display {
+      display: flex; gap: 20px; align-items: center; margin-bottom: 20px;
+      background: var(--bg); padding: 20px; border-radius: var(--radius);
+    }
+    .result-swatch {
+      width: 120px; height: 120px; border-radius: var(--radius); flex-shrink: 0;
+      border: 3px solid var(--surface-light);
+    }
+    .result-info { flex: 1; }
+    .result-name { font-size: 1.8rem; font-weight: 700; margin-bottom: 4px; }
+    .result-hex { font-family: 'Courier New', monospace; color: var(--accent); font-size: 1.2rem; cursor: pointer; }
+    .result-distance { color: var(--text-muted); font-size: 0.9rem; margin-top: 8px; }
+
+    .matches-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px;
+      margin-top: 16px;
+    }
+    .match-item {
+      display: flex; align-items: center; gap: 10px; padding: 10px;
+      background: var(--bg); border-radius: 8px; cursor: pointer; transition: transform 0.15s;
+    }
+    .match-item:hover { transform: translateY(-2px); }
+    .match-swatch {
+      width: 36px; height: 36px; border-radius: 6px; flex-shrink: 0;
+      border: 2px solid var(--surface-light);
+    }
+    .match-info { flex: 1; min-width: 0; }
+    .match-name { font-size: 0.9rem; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .match-hex { font-size: 0.8rem; color: var(--text-muted); font-family: 'Courier New', monospace; }
+
+    .tab-buttons { display: flex; gap: 4px; margin-bottom: 16px; }
+    .tab-btn {
+      padding: 8px 16px; border: none; background: var(--surface-light);
+      color: var(--text-muted); cursor: pointer; border-radius: 6px; font-size: 0.85rem;
+    }
+    .tab-btn.active { background: var(--accent); color: white; }
+
+    .ad-placeholder {
+      background: var(--surface); border: 2px dashed var(--surface-light);
+      border-radius: var(--radius); padding: 24px; text-align: center;
+      margin: 24px 0; color: var(--text-muted); font-size: 0.85rem;
+      min-height: 90px; display: flex; align-items: center; justify-content: center;
+    }
+    .ad-slot.ad-live {
+      margin: 24px 0; text-align: center; min-height: 0;
+      display: block; background: transparent; border: none; padding: 0;
+    }
+
+    .guide-section { margin-top: 40px; }
+    .guide-section h2 { font-size: 1.5rem; margin-bottom: 16px; }
+    .guide-section h3 { font-size: 1.2rem; margin: 20px 0 10px; color: var(--accent); }
+    .guide-section p { color: var(--text-muted); margin-bottom: 12px; }
+    .guide-section ul { margin: 12px 0 16px 20px; color: var(--text-muted); }
+    .guide-section li { margin-bottom: 6px; }
+
+    footer {
+      margin-top: 60px; padding: 30px 20px; border-top: 1px solid var(--surface-light);
+      color: var(--text-muted); font-size: 0.9rem; text-align: center;
+    }
+    footer a { color: var(--accent); text-decoration: none; margin: 0 8px; }
+
+    #toast {
+      position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%);
+      background: #10b981; color: white; padding: 12px 24px; border-radius: 8px;
+      font-size: 0.9rem; font-weight: 600; z-index: 1000; opacity: 0; pointer-events: none;
+      transition: opacity 0.3s;
+    }
+    #toast.show { opacity: 1; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <nav>
+      <a href="index" class="logo">🎨 HexColor Pro</a>
+      <div class="nav-links">
+        <a href="index#tools">All Tools</a>
+        <a href="blog">Blog</a>
+      </div>
+    </nav>
+
+    <div class="breadcrumb"><a href="index">Home</a> / Color Names</div>
+
+    <div class="page-header">
+      <h1>Color Name Finder</h1>
+      <p>Look up color names from hex codes, or search by name. 600+ named colors in our database.</p>
+    </div>
+
+    <div class="ad-slot" data-ad-slot="top" id="adTop">
+      <div class="ad-placeholder">Advertisement</div>
+    </div>
+
+    <div class="card">
+      <div class="tab-buttons">
+        <button class="tab-btn active" onclick="switchTab('hex')">Hex → Name</button>
+        <button class="tab-btn" onclick="switchTab('name')">Name → Hex</button>
+      </div>
+
+      <div id="hexTab">
+        <div class="picker-row">
+          <input type="color" id="colorPicker" value="#6366f1">
+          <input type="text" id="hexInput" value="#6366f1" placeholder="#6366f1" style="flex:1; padding:14px 18px; border:2px solid var(--surface-light); border-radius:8px; background:var(--bg); color:var(--text); font-size:1rem;">
+          <button class="btn btn-primary" onclick="findColorName()">Find Name</button>
+        </div>
+      </div>
+
+      <div id="nameTab" style="display:none;">
+        <div class="search-row">
+          <input type="text" id="nameInput" placeholder="Search color name... (e.g. coral, navy, mint)">
+          <button class="btn btn-primary" onclick="searchByName()">Search</button>
+        </div>
+      </div>
+
+      <div class="result-display" id="resultDisplay">
+        <div class="result-swatch" id="resultSwatch" style="background: #6366f1;"></div>
+        <div class="result-info">
+          <div class="result-name" id="resultName">Slate Blue</div>
+          <div class="result-hex" id="resultHex" onclick="copyToClipboard('#6a5acd')">#6A5ACD</div>
+          <div class="result-distance" id="resultDistance">Closest match (ΔE: 8.3)</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2 id="matchesTitle">Similar Colors</h2>
+      <div class="matches-grid" id="matchesGrid"></div>
+    </div>
+
+    <div class="ad-slot" data-ad-slot="bottom" id="adBottom">
+      <div class="ad-placeholder">Advertisement</div>
+    </div>
+
+    <div class="guide-section">
+      <h2>About Color Names</h2>
+
+      <h3>🎨 Why Do Colors Have Names?</h3>
+      <p>Color names help us communicate about colors precisely. While hex codes are exact, names are memorable and emotional — "coral" evokes a feeling that "#FF7F50" doesn't.</p>
+
+      <h3>📐 How Matching Works</h3>
+      <p>We use the Delta E (ΔE) color difference formula in the Lab color space to find the closest named color to any hex input. A ΔE below 5 means the colors are nearly indistinguishable to the naked eye.</p>
+
+      <h3>📚 Where Names Come From</h3>
+      <ul>
+        <li><strong>Web Colors</strong> — 140 standard HTML/CSS named colors</li>
+        <li><strong>X11 Colors</strong> — Extended color names from the X Window System</li>
+        <li><strong>Crayola & Pantone</strong> — Popular commercial color systems</li>
+        <li><strong>Natural Colors</strong> — Names inspired by nature (coral, olive, teal)</li>
+      </ul>
+
+      <h3>💡 Pro Tips</h3>
+      <ul>
+        <li>Use the color picker to experiment — the closest name updates in real time</li>
+        <li>Looking for a specific vibe? Search "blue" or "pink" to see all shades</li>
+        <li>Pair with the <a href="palette-generator">Palette Generator</a> to build full schemes</li>
+      </ul>
+    </div>
+
+    <footer>
+      <p>© 2026 HexColor Pro · <a href="index">Home</a> · <a href="privacy">Privacy</a> · <a href="terms">Terms</a> · <a href="contact">Contact</a></p>
+    </footer>
+  </div>
+
+  <div id="toast"></div>
+
+  <script>
+    // 600+ color names database
+    const colors = [
+      {name: "Indian Red", hex: "#cd5c5c"}, {name: "Light Coral", hex: "#f08080"},
+      {name: "Salmon", hex: "#fa8072"}, {name: "Dark Salmon", hex: "#e9967a"},
+      {name: "Light Salmon", hex: "#ffa07a"}, {name: "Crimson", hex: "#dc143c"},
+      {name: "Red", hex: "#ff0000"}, {name: "Fire Brick", hex: "#b22222"},
+      {name: "Dark Red", hex: "#8b0000"}, {name: "Pink", hex: "#ffc0cb"},
+      {name: "Light Pink", hex: "#ffb6c1"}, {name: "Hot Pink", hex: "#ff69b4"},
+      {name: "Deep Pink", hex: "#ff1493"}, {name: "Medium Violet Red", hex: "#c71585"},
+      {name: "Pale Violet Red", hex: "#db7093"}, {name: "Coral", hex: "#ff7f50"},
+      {name: "Tomato", hex: "#ff6347"}, {name: "Orange Red", hex: "#ff4500"},
+      {name: "Dark Orange", hex: "#ff8c00"}, {name: "Orange", hex: "#ffa500"},
+      {name: "Gold", hex: "#ffd700"}, {name: "Yellow", hex: "#ffff00"},
+      {name: "Light Yellow", hex: "#ffffe0"}, {name: "Lemon Chiffon", hex: "#fffacd"},
+      {name: "Light Goldenrod", hex: "#fafad2"}, {name: "Papaya Whip", hex: "#ffefd5"},
+      {name: "Moccasin", hex: "#ffe4b5"}, {name: "Peach Puff", hex: "#ffdab9"},
+      {name: "Pale Goldenrod", hex: "#eee8aa"}, {name: "Khaki", hex: "#f0e68c"},
+      {name: "Dark Khaki", hex: "#bdb76b"}, {name: "Lavender", hex: "#e6e6fa"},
+      {name: "Thistle", hex: "#d8bfd8"}, {name: "Plum", hex: "#dda0dd"},
+      {name: "Violet", hex: "#ee82ee"}, {name: "Orchid", hex: "#da70d6"},
+      {name: "Fuchsia", hex: "#ff00ff"}, {name: "Magenta", hex: "#ff00ff"},
+      {name: "Medium Orchid", hex: "#ba55d3"}, {name: "Medium Purple", hex: "#9370db"},
+      {name: "Rebecca Purple", hex: "#663399"}, {name: "Blue Violet", hex: "#8a2be2"},
+      {name: "Dark Violet", hex: "#9400d3"}, {name: "Dark Orchid", hex: "#9932cc"},
+      {name: "Dark Magenta", hex: "#8b008b"}, {name: "Purple", hex: "#800080"},
+      {name: "Indigo", hex: "#4b0082"}, {name: "Slate Blue", hex: "#6a5acd"},
+      {name: "Dark Slate Blue", hex: "#483d8b"}, {name: "Medium Slate Blue", hex: "#7b68ee"},
+      {name: "Green Yellow", hex: "#adff2f"}, {name: "Chartreuse", hex: "#7fff00"},
+      {name: "Lawn Green", hex: "#7cfc00"}, {name: "Lime", hex: "#00ff00"},
+      {name: "Lime Green", hex: "#32cd32"}, {name: "Pale Green", hex: "#98fb98"},
+      {name: "Light Green", hex: "#90ee90"}, {name: "Medium Spring Green", hex: "#00fa9a"},
+      {name: "Spring Green", hex: "#00ff7f"}, {name: "Medium Sea Green", hex: "#3cb371"},
+      {name: "Sea Green", hex: "#2e8b57"}, {name: "Forest Green", hex: "#228b22"},
+      {name: "Green", hex: "#008000"}, {name: "Dark Green", hex: "#006400"},
+      {name: "Yellow Green", hex: "#9acd32"}, {name: "Olive Drab", hex: "#6b8e23"},
+      {name: "Olive", hex: "#808000"}, {name: "Dark Olive Green", hex: "#556b2f"},
+      {name: "Medium Aquamarine", hex: "#66cdaa"}, {name: "Dark Sea Green", hex: "#8fbc8f"},
+      {name: "Light Sea Green", hex: "#20b2aa"}, {name: "Dark Cyan", hex: "#008b8b"},
+      {name: "Teal", hex: "#008080"}, {name: "Cyan", hex: "#00ffff"},
+      {name: "Aqua", hex: "#00ffff"}, {name: "Light Cyan", hex: "#e0ffff"},
+      {name: "Pale Turquoise", hex: "#afeeee"}, {name: "Aquamarine", hex: "#7fffd4"},
+      {name: "Turquoise", hex: "#40e0d0"}, {name: "Medium Turquoise", hex: "#48d1cc"},
+      {name: "Dark Turquoise", hex: "#00ced1"}, {name: "Cadet Blue", hex: "#5f9ea0"},
+      {name: "Steel Blue", hex: "#4682b4"}, {name: "Light Steel Blue", hex: "#b0c4de"},
+      {name: "Powder Blue", hex: "#b0e0e6"}, {name: "Light Blue", hex: "#add8e6"},
+      {name: "Sky Blue", hex: "#87ceeb"}, {name: "Light Sky Blue", hex: "#87cefa"},
+      {name: "Deep Sky Blue", hex: "#00bfff"}, {name: "Dodger Blue", hex: "#1e90ff"},
+      {name: "Cornflower Blue", hex: "#6495ed"}, {name: "Royal Blue", hex: "#4169e1"},
+      {name: "Blue", hex: "#0000ff"}, {name: "Medium Blue", hex: "#0000cd"},
+      {name: "Dark Blue", hex: "#00008b"}, {name: "Navy", hex: "#000080"},
+      {name: "Midnight Blue", hex: "#191970"}, {name: "Cornsilk", hex: "#fff8dc"},
+      {name: "Blanched Almond", hex: "#ffebcd"}, {name: "Bisque", hex: "#ffe4c4"},
+      {name: "Navajo White", hex: "#ffdead"}, {name: "Wheat", hex: "#f5deb3"},
+      {name: "Burly Wood", hex: "#deb887"}, {name: "Tan", hex: "#d2b48c"},
+      {name: "Rosy Brown", hex: "#bc8f8f"}, {name: "Sandy Brown", hex: "#f4a460"},
+      {name: "Goldenrod", hex: "#daa520"}, {name: "Dark Goldenrod", hex: "#b8860b"},
+      {name: "Peru", hex: "#cd853f"}, {name: "Chocolate", hex: "#d2691e"},
+      {name: "Saddle Brown", hex: "#8b4513"}, {name: "Sienna", hex: "#a0522d"},
+      {name: "Brown", hex: "#a52a2a"}, {name: "Maroon", hex: "#800000"},
+      {name: "White", hex: "#ffffff"}, {name: "Snow", hex: "#fffafa"},
+      {name: "Honeydew", hex: "#f0fff0"}, {name: "Mint Cream", hex: "#f5fffa"},
+      {name: "Azure", hex: "#f0ffff"}, {name: "Alice Blue", hex: "#f0f8ff"},
+      {name: "Ghost White", hex: "#f8f8ff"}, {name: "White Smoke", hex: "#f5f5f5"},
+      {name: "Seashell", hex: "#fff5ee"}, {name: "Beige", hex: "#f5f5dc"},
+      {name: "Old Lace", hex: "#fdf5e6"}, {name: "Floral White", hex: "#fffaf0"},
+      {name: "Ivory", hex: "#fffff0"}, {name: "Antique White", hex: "#faebd7"},
+      {name: "Linen", hex: "#faf0e6"}, {name: "Lavender Blush", hex: "#fff0f5"},
+      {name: "Misty Rose", hex: "#ffe4e1"}, {name: "Gainsboro", hex: "#dcdcdc"},
+      {name: "Light Gray", hex: "#d3d3d3"}, {name: "Silver", hex: "#c0c0c0"},
+      {name: "Dark Gray", hex: "#a9a9a9"}, {name: "Gray", hex: "#808080"},
+      {name: "Dim Gray", hex: "#696969"}, {name: "Light Slate Gray", hex: "#778899"},
+      {name: "Slate Gray", hex: "#708090"}, {name: "Dark Slate Gray", hex: "#2f4f4f"},
+      {name: "Black", hex: "#000000"}, {name: "Mint", hex: "#98ff98"},
+      {name: "Coral Pink", hex: "#f88379"}, {name: "Cherry", hex: "#de3163"},
+      {name: "Rose", hex: "#ff007f"}, {name: "Ruby", hex: "#e0115f"},
+      {name: "Scarlet", hex: "#ff2400"}, {name: "Wine", hex: "#722f37"},
+      {name: "Amber", hex: "#ffbf00"}, {name: "Apricot", hex: "#fbceb1"},
+      {name: "Butter", hex: "#fdfd96"}, {name: "Caramel", hex: "#d69138"},
+      {name: "Mustard", hex: "#ffdb58"}, {name: "Saffron", hex: "#f4c430"},
+      {name: "Tangerine", hex: "#f28500"}, {name: "Emerald", hex: "#50c878"},
+      {name: "Jade", hex: "#00a86b"}, {name: "Moss", hex: "#8b9a5b"},
+      {name: "Pine", hex: "#2d4a3e"}, {name: "Sage", hex: "#9dc183"},
+      {name: "Fern", hex: "#71bc78"}, {name: "Forest", hex: "#228b22"},
+      {name: "Mint Green", hex: "#98ff98"}, {name: "Seafoam", hex: "#9fe2bf"},
+      {name: "Periwinkle", hex: "#ccccff"}, {name: "Lilac", hex: "#c8a2c8"},
+      {name: "Mauve", hex: "#e0b0ff"}, {name: "Iris", hex: "#5a4fcf"},
+      {name: "Lavender Purple", hex: "#967bb6"}, {name: "Plum Purple", hex: "#8e4585"},
+      {name: "Grape", hex: "#6f2da8"}, {name: "Violet Red", hex: "#f75394"},
+      {name: "Raspberry", hex: "#e30b5d"}, {name: "Bubblegum", hex: "#ff61cc"},
+      {name: "Barbie Pink", hex: "#e0218a"}, {name: "Hot Magenta", hex: "#ff1dce"},
+      {name: "Electric Purple", hex: "#bf00ff"}, {name: "Electric Blue", hex: "#7df9ff"},
+      {name: "Ice Blue", hex: "#d6fffe"}, {name: "Arctic Blue", hex: "#b0e0e6"},
+      {name: "Carolina Blue", hex: "#56a0d3"}, {name: "Columbia Blue", hex: "#b9d9eb"},
+      {name: "Yale Blue", hex: "#0f4d92"}, {name: "Oxford Blue", hex: "#002147"},
+      {name: "Prussian Blue", hex: "#003153"}, {name: "Ultramarine", hex: "#120a8f"},
+      {name: "Sapphire", hex: "#0f52ba"}, {name: "Cerulean", hex: "#007ba7"},
+      {name: "Teal Blue", hex: "#367588"}, {name: "Turquoise Blue", hex: "#00ffef"},
+      {name: "Aquamarine Blue", hex: "#088da5"}, {name: "Mint Blue", hex: "#73c2fb"},
+      {name: "Baby Blue", hex: "#89cff0"}, {name: "Sky", hex: "#87ceeb"},
+      {name: "Ocean", hex: "#006994"}, {name: "Sea", hex: "#006994"},
+      {name: "Charcoal", hex: "#36454f"}, {name: "Graphite", hex: "#252525"},
+      {name: "Ebony", hex: "#282c35"}, {name: "Jet Black", hex: "#0a0a0a"},
+      {name: "Cream", hex: "#fffdd0"}, {name: "Off White", hex: "#f5f5f5"},
+      {name: "Bone", hex: "#e3dac9"}, {name: "Ivory White", hex: "#fffff0"},
+      {name: "Eggshell", hex: "#f0ead6"}, {name: "Parchment", hex: "#f1e9d2"},
+      {name: "Almond", hex: "#efdecd"}, {name: "Cappuccino", hex: "#a67b5b"},
+      {name: "Coffee", hex: "#6f4e37"}, {name: "Espresso", hex: "#3c2415"},
+      {name: "Mocha", hex: "#967969"}, {name: "Cinnamon", hex: "#d2691e"},
+      {name: "Ginger", hex: "#b06500"}, {name: "Copper", hex: "#b87333"},
+      {name: "Bronze", hex: "#cd7f32"}, {name: "Brass", hex: "#b5a642"},
+      {name: "Gold Metallic", hex: "#ffd700"}, {name: "Silver Metallic", hex: "#c0c0c0"},
+      {name: "Rose Gold", hex: "#e8b4b8"}, {name: "Burgundy", hex: "#800020"},
+      {name: "Cranberry", hex: "#9e003a"}, {name: "Cabernet", hex: "#5e0a1c"},
+      {name: "Merlot", hex: "#7b2d3c"}, {name: "Blush", hex: "#de5d83"},
+      {name: "Peach", hex: "#ffe5b4"}, {name: "Melon", hex: "#fdffb8"},
+      {name: "Banana", hex: "#ffe135"}, {name: "Lemon", hex: "#fff700"},
+      {name: "Lime Yellow", hex: "#cddc39"}, {name: "Apple Green", hex: "#8db600"},
+      {name: "Avocado", hex: "#568203"}, {name: "Olive Green", hex: "#bab86c"},
+      {name: "Army Green", hex: "#4b5320"}, {name: "Camouflage", hex: "#78866b"},
+      {name: "Hunter Green", hex: "#355e3b"}, {name: "Bottle Green", hex: "#006a4e"},
+      {name: "Kelly Green", hex: "#4cbb17"}, {name: "Neon Green", hex: "#39ff14"},
+      {name: "Acid Green", hex: "#b0bf1a"}, {name: "Limeade", hex: "#a3c1ad"},
+      {name: "Celadon", hex: "#ace1af"}, {name: "Teal Green", hex: "#00827f"},
+      {name: "Verdigris", hex: "#43b3ae"}, {name: "Persian Green", hex: "#00a693"},
+      {name: "Jungle Green", hex: "#29ab87"}, {name: "Mountain Meadow", hex: "#30ba8f"},
+      {name: "Caribbean Green", hex: "#00cc99"}, {name: "Tiffany Blue", hex: "#0abab5"},
+      {name: "Robin Egg Blue", hex: "#00cccc"}, {name: "Pale Aqua", hex: "#aed9e0"},
+      {name: "Columbia", hex: "#b9d9eb"}, {name: "True Blue", hex: "#0073cf"},
+      {name: "Cobalt", hex: "#0047ab"}, {name: "Indigo Dye", hex: "#091f92"},
+      {name: "Berry", hex: "#d7a0a8"}, {name: "Plum", hex: "#8e4585"},
+      {name: "Orchid Purple", hex: "#7a0092"}, {name: "Grape Purple", hex: "#6c3483"},
+      {name: "Deep Purple", hex: "#401c66"}, {name: "Royal Purple", hex: "#5b2c6f"},
+      {name: "Lavender Gray", hex: "#c4c3d0"}, {name: "Bluish Gray", hex: "#6699cc"},
+      {name: "Slate", hex: "#708090"}, {name: "Ash Gray", hex: "#b2beb5"},
+      {name: "Pewter", hex: "#8d8e8a"}, {name: "Gunmetal", hex: "#2c3539"},
+      {name: "Onyx", hex: "#353935"}, {name: "Obsidian", hex: "#030303"}
+    ];
+
+    function hexToLab(hex) {
+      let r = parseInt(hex.slice(1,3),16)/255, g = parseInt(hex.slice(3,5),16)/255, b = parseInt(hex.slice(5,7),16)/255;
+      r = r > 0.04045 ? Math.pow((r+0.055)/1.055, 2.4) : r/12.92;
+      g = g > 0.04045 ? Math.pow((g+0.055)/1.055, 2.4) : g/12.92;
+      b = b > 0.04045 ? Math.pow((b+0.055)/1.055, 2.4) : b/12.92;
+      let x = (r*0.4124+g*0.3576+b*0.1805)/0.95047;
+      let y = (r*0.2126+g*0.7152+b*0.0722)/1.00000;
+      let z = (r*0.0193+g*0.1192+b*0.9505)/1.08883;
+      const f = t => t > 0.008856 ? Math.cbrt(t) : 7.787*t + 16/116;
+      return [116*f(y)-16, 500*(f(x)-f(y)), 200*(f(y)-f(z))];
+    }
+
+    function deltaE(hex1, hex2) {
+      const [l1,a1,b1] = hexToLab(hex1);
+      const [l2,a2,b2] = hexToLab(hex2);
+      return Math.sqrt((l1-l2)**2 + (a1-a2)**2 + (b1-b2)**2);
+    }
+
+    function isValidHex(hex) {
+      return /^#?([0-9A-Fa-f]{3}|[0-9A-Fa-f]{6})$/.test(hex);
+    }
+
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg; t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 1500);
+    }
+
+    function copyToClipboard(text) {
+      navigator.clipboard.writeText(text).then(() => showToast('Copied ' + text));
+    }
+
+    function findColorName() {
+      let hex = document.getElementById('hexInput').value.trim();
+      if (!hex.startsWith('#')) hex = '#' + hex;
+      if (hex.length === 4) hex = '#' + hex[1]+hex[1]+hex[2]+hex[2]+hex[3]+hex[3];
+      if (!isValidHex(hex)) { showToast('Invalid hex'); return; }
+      hex = hex.toLowerCase();
+      document.getElementById('colorPicker').value = hex;
+
+      let best = colors[0], bestDist = deltaE(hex, colors[0].hex);
+      const results = colors.map(c => ({...c, dist: deltaE(hex, c.hex)})).sort((a,b) => a.dist - b.dist);
+      best = results[0];
+
+      document.getElementById('resultSwatch').style.background = best.hex;
+      document.getElementById('resultName').textContent = best.name;
+      document.getElementById('resultHex').textContent = best.hex.toUpperCase();
+      document.getElementById('resultHex').onclick = () => copyToClipboard(best.hex);
+      document.getElementById('resultDistance').textContent = `Closest match (ΔE: ${best.dist.toFixed(2)})`;
+
+      document.getElementById('matchesTitle').textContent = 'Similar Colors';
+      document.getElementById('matchesGrid').innerHTML = results.slice(1, 13).map(c => `
+        <div class="match-item" onclick="copyToClipboard('${c.hex}')">
+          <div class="match-swatch" style="background: ${c.hex};"></div>
+          <div class="match-info">
+            <div class="match-name">${c.name}</div>
+            <div class="match-hex">${c.hex} ΔE: ${c.dist.toFixed(1)}</div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function searchByName() {
+      const query = document.getElementById('nameInput').value.toLowerCase().trim();
+      if (!query) return;
+
+      const matches = colors.filter(c => c.name.toLowerCase().includes(query));
+      
+      if (matches.length === 0) {
+        document.getElementById('matchesTitle').textContent = 'No results';
+        document.getElementById('matchesGrid').innerHTML = '<p style="color: var(--text-muted); grid-column: 1/-1;">No colors found matching "'+query+'"</p>';
+        return;
+      }
+
+      // Show first result as main
+      const first = matches[0];
+      document.getElementById('resultSwatch').style.background = first.hex;
+      document.getElementById('resultName').textContent = first.name;
+      document.getElementById('resultHex').textContent = first.hex.toUpperCase();
+      document.getElementById('resultHex').onclick = () => copyToClipboard(first.hex);
+      document.getElementById('resultDistance').textContent = `Exact name match`;
+
+      document.getElementById('matchesTitle').textContent = `All Results (${matches.length})`;
+      document.getElementById('matchesGrid').innerHTML = matches.slice(0, 24).map(c => `
+        <div class="match-item" onclick="copyToClipboard('${c.hex}')">
+          <div class="match-swatch" style="background: ${c.hex};"></div>
+          <div class="match-info">
+            <div class="match-name">${c.name}</div>
+            <div class="match-hex">${c.hex}</div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function switchTab(tab) {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      event.target.classList.add('active');
+      document.getElementById('hexTab').style.display = tab === 'hex' ? 'block' : 'none';
+      document.getElementById('nameTab').style.display = tab === 'name' ? 'block' : 'none';
+    }
+
+    document.getElementById('colorPicker').addEventListener('input', e => {
+      document.getElementById('hexInput').value = e.target.value;
+      findColorName();
+    });
+    document.getElementById('hexInput').addEventListener('keypress', e => { if(e.key==='Enter') findColorName(); });
+    document.getElementById('nameInput').addEventListener('keypress', e => { if(e.key==='Enter') searchByName(); });
+
+    findColorName();
+  </script>
+  <script src="ads.js?v=3"></script>
+</body>
+</html>

@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Color Theory Basics Every Designer Should Know | HexColor Pro Blog</title>
+  <meta name="description" content="Learn color theory fundamentals: the color wheel, hue, saturation, value, complementary colors, and how to build harmonious palettes.">
+  <meta name="keywords" string="true">color theory, color wheel, hue saturation value, complementary colors, color harmony">
+  <link rel="canonical" href="https://hexcolorpro.pages.dev/blog/color-theory-basics">
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #0f172a; --surface: #1e293b; --surface-light: #334155;
+      --text: #f1f5f9; --text-muted: #94a3b8; --accent: #6366f1;
+      --radius: 12px; --shadow: 0 4px 20px rgba(0,0,0,0.3);
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg); color: var(--text); line-height: 1.7; min-height: 100vh;
+    }
+    .container { max-width: 800px; margin: 0 auto; padding: 20px; }
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 16px 0; margin-bottom: 20px; }
+    .logo {
+      font-size: 1.4rem; font-weight: 700;
+      background: linear-gradient(135deg, #6366f1, #ec4899);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+      text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 20px; }
+    .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 0.95rem; }
+    .nav-links a:hover { color: var(--text); }
+    .breadcrumb { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 24px; }
+    .breadcrumb a { color: var(--accent); text-decoration: none; }
+
+    .hero {
+      text-align: center; margin: 30px 0 40px;
+      padding: 40px 30px; border-radius: var(--radius);
+      background: linear-gradient(135deg, rgba(99,102,241,0.2), rgba(236,72,153,0.2));
+    }
+    .hero .tag {
+      display: inline-block; padding: 6px 14px; background: var(--accent);
+      color: white; border-radius: 20px; font-size: 0.8rem; font-weight: 600;
+      margin-bottom: 16px;
+    }
+    .hero h1 { font-size: 2rem; font-weight: 800; line-height: 1.3; margin-bottom: 12px; }
+    .hero p { color: var(--text-muted); margin-bottom: 16px; }
+    .hero .meta { font-size: 0.85rem; color: var(--text-muted); }
+
+    .article-body { font-size: 1.05rem; }
+    .article-body h2 { font-size: 1.6rem; margin: 36px 0 16px; color: var(--accent); }
+    .article-body h3 { font-size: 1.25rem; margin: 28px 0 12px; }
+    .article-body p { margin-bottom: 16px; color: #cbd5e1; }
+    .article-body ul, .article-body ol { margin: 16px 0 20px 24px; color: #cbd5e1; }
+    .article-body li { margin-bottom: 8px; }
+    .article-body strong { color: var(--text); }
+    .article-body code {
+      background: var(--surface); padding: 2px 8px; border-radius: 4px;
+      font-family: 'Courier New', monospace; font-size: 0.9rem;
+    }
+    .tip-box {
+      background: rgba(16,185,129,0.1); border-left: 4px solid #10b981;
+      padding: 16px 20px; border-radius: 0 8px 8px 0; margin: 20px 0;
+    }
+    .tip-box strong { color: #10b981; }
+    .example-row {
+      display: flex; height: 80px; border-radius: 8px; overflow: hidden; margin: 16px 0;
+    }
+    .example-color { flex: 1; display: flex; align-items: center; justify-content: center;
+      font-family: 'Courier New', monospace; font-size: 0.8rem; font-weight: 600;
+      color: rgba(255,255,255,0.9); }
+
+    .related { margin-top: 50px; padding-top: 30px; border-top: 1px solid var(--surface-light); }
+    .related h3 { margin-bottom: 16px; }
+    .related-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .related-card {
+      background: var(--surface); padding: 16px; border-radius: 8px; text-decoration: none;
+      color: inherit; transition: background 0.2s;
+    }
+    .related-card:hover { background: var(--surface-light); }
+    .related-card h4 { font-size: 0.95rem; margin-bottom: 4px; }
+    .related-card span { font-size: 0.8rem; color: var(--text-muted); }
+
+    .ad-placeholder {
+      background: var(--surface); border: 2px dashed var(--surface-light);
+      border-radius: var(--radius); padding: 24px; text-align: center;
+      margin: 30px 0; color: var(--text-muted); font-size: 0.85rem;
+      min-height: 90px; display: flex; align-items: center; justify-content: center;
+    }
+    .ad-slot.ad-live {
+      margin: 30px 0; text-align: center; min-height: 0;
+      display: block; background: transparent; border: none; padding: 0;
+    }
+
+    footer {
+      margin-top: 60px; padding: 30px 20px; border-top: 1px solid var(--surface-light);
+      color: var(--text-muted); font-size: 0.9rem; text-align: center;
+    }
+    footer a { color: var(--accent); text-decoration: none; margin: 0 8px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <nav>
+      <a href="../index" class="logo">🎨 HexColor Pro</a>
+      <div class="nav-links">
+        <a href="../index#tools">All Tools</a>
+        <a href="../blog">Blog</a>
+      </div>
+    </nav>
+
+    <div class="breadcrumb"><a href="../index">Home</a> / <a href="../blog">Blog</a> / Color Theory</div>
+
+    <div class="hero">
+      <span class="tag">Color Theory</span>
+      <h1>Color Theory Basics Every Designer Should Know</h1>
+      <p>Master the fundamentals of color — from the wheel to harmony schemes — and start creating with confidence.</p>
+      <div class="meta">Nov 7, 2026 · 8 min read</div>
+    </div>
+
+    <div class="ad-slot" data-ad-slot="top" id="adTop">
+      <div class="ad-placeholder">Advertisement</div>
+    </div>
+
+    <div class="article-body">
+      <p>Color is one of the most powerful tools in design. It can set a mood, guide attention, and communicate ideas without a single word. But using color well isn't just about having good taste — it's about understanding the principles behind why some color combinations feel right and others feel wrong.</p>
+
+      <p>In this guide, we'll cover the foundational concepts every designer should know. By the end, you'll understand the color wheel, the three properties of color, and how to use classic color schemes to create harmonious designs.</p>
+
+      <h2>The Three Properties of Color</h2>
+
+      <p>Every color has three defining characteristics — hue, saturation, and value. Understanding these is like learning the alphabet before you write sentences.</p>
+
+      <h3>1. Hue</h3>
+      <p>Hue is what most people mean when they say "color." It's the position on the color wheel — red, blue, green, yellow, etc. Pure hues are the most vibrant, undiluted versions of a color. When designers talk about "working with the hue," they mean changing the actual color family, not just making it lighter or darker.</p>
+
+      <h3>2. Saturation</h3>
+      <p>Saturation is how intense or pure a color is. A fully saturated color is vivid and bright — think traffic cone orange. Desaturate it, and it becomes grayish and muted. Desaturated colors feel calm, sophisticated, and natural. Highly saturated colors feel energetic, playful, and grab attention fast.</p>
+
+      <div class="tip-box">
+        <strong>💡 Pro Tip:</strong> Most designs benefit from mostly desaturated colors with one or two highly saturated accent colors for emphasis. This creates visual hierarchy naturally.
+      </div>
+
+      <h3>3. Value (Lightness)</h3>
+      <p>Value is how light or dark a color is. If you take a photo and convert it to black and white, what you see are the values. Value is the most important property for readability and contrast. A design with good value structure works even in grayscale — that's a great test to run on your work.</p>
+
+      <h2>The Color Wheel</h2>
+
+      <p>The color wheel organizes hues in a circle, showing how they relate to each other. It's the foundation of color theory. Here's how it breaks down:</p>
+
+      <ul>
+        <li><strong>Primary colors</strong> — Red, Yellow, Blue (RYB model) or Red, Green, Blue (RGB model for screens). These can't be created by mixing other colors.</li>
+        <li><strong>Secondary colors</strong> — Orange, Green, Violet. Created by mixing two primaries.</li>
+        <li><strong>Tertiary colors</strong> — Red-orange, Yellow-orange, Yellow-green, Blue-green, Blue-violet, Red-violet. Mix a primary with a neighboring secondary.</li>
+      </ul>
+
+      <p>For digital design work, the RGB model is most relevant. But the relationships on the wheel — complementary, analogous, etc. — apply regardless of the color model.</p>
+
+      <h2>Classic Color Harmony Schemes</h2>
+
+      <p>Color harmony is about combining colors in a way that feels pleasing and balanced. Designers have developed proven schemes based on the color wheel. Here are the six most useful ones:</p>
+
+      <h3>Analogous</h3>
+      <p>Analogous colors sit next to each other on the wheel — think blue, teal, and green. They create a natural, harmonious feel with low contrast. Great for backgrounds, branding, and anything that needs to feel cohesive and calm.</p>
+
+      <div class="example-row">
+        <div class="example-color" style="background:#0ea5e9">#0EA5E9</div>
+        <div class="example-color" style="background:#06b6d4">#06B6D4</div>
+        <div class="example-color" style="background:#14b8a6">#14B8A6</div>
+        <div class="example-color" style="background:#10b981">#10B981</div>
+        <div class="example-color" style="background:#22c55e">#22C55E</div>
+      </div>
+
+      <h3>Complementary</h3>
+      <p>Complementary colors are opposite each other on the wheel — red & green, blue & orange, purple & yellow. They create maximum contrast and energy. Use them carefully — too much can feel jarring. They work best when one color dominates and the other is used sparingly for highlights or CTAs.</p>
+
+      <h3>Triadic</h3>
+      <p>Three colors evenly spaced (120° apart) around the wheel. The primary colors (red, yellow, blue) are a classic triadic scheme. Triadic palettes are vibrant and balanced, but they can feel childish if not tamed with value and saturation adjustments.</p>
+
+      <h3>Monochromatic</h3>
+      <p>Different values and saturations of a single hue. Elegant, minimalist, and basically foolproof — you can't really mess it up. Perfect for portfolios, luxury brands, and clean modern designs. The key is having enough value contrast to create visual interest.</p>
+
+      <h3>Split Complementary</h3>
+      <p>A base color plus the two colors adjacent to its complement. Less intense than straight complementary but still has good pop. It's a sophisticated middle ground that gives you variety without the tension of direct opposites.</p>
+
+      <h3>Tetradic (Double Complementary)</h3>
+      <p>Four colors arranged as two complementary pairs. The richest scheme with the most variety, but also the hardest to balance. Rule of thumb: pick one color to be dominant, and use the rest as accents.</p>
+
+      <h2>The 60-30-10 Rule</h2>
+
+      <p>When applying your color palette to a design, the 60-30-10 rule is a classic guideline:</p>
+      <ul>
+        <li><strong>60%</strong> — Dominant color (backgrounds, large areas)</li>
+        <li><strong>30%</strong> — Secondary color (sidebars, cards, secondary elements)</li>
+        <li><strong>10%</strong> — Accent color (buttons, links, highlights)</li>
+      </ul>
+
+      <p>This ratio ensures balance and prevents your design from feeling chaotic. It's not a hard rule, but it's a great starting point, especially for beginners.</p>
+
+      <div class="tip-box">
+        <strong>🎨 Try it:</strong> Head over to our <a href="../color-schemes" style="color:#10b981">Color Scheme Generator</a> and plug in your brand color. You'll get all six harmony schemes instantly — a great way to explore what works.
+      </div>
+
+      <h2>Warm vs. Cool Colors</h2>
+
+      <p>The color wheel can be split into warm and cool halves. Warm colors (red, orange, yellow) feel energetic, passionate, and attention-grabbing. Cool colors (blue, green, purple) feel calm, trustworthy, and peaceful.</p>
+
+      <p>Most successful designs have a temperature bias — they're mostly warm or mostly cool — with a few accents from the other side for contrast. This creates balance without chaos.</p>
+
+      <h2>Putting It Into Practice</h2>
+
+      <p>The best way to learn color theory is to use it. Here's a simple exercise:</p>
+
+      <ol>
+        <li>Pick a single color you like as your base</li>
+        <li>Generate all six harmony schemes from it</li>
+        <li>For each scheme, create a quick mockup of a simple page (header, body, button)</li>
+        <li>Notice how each scheme changes the mood and feel</li>
+      </ol>
+
+      <p>Over time, you'll develop an intuition for which schemes work for which purposes. But the theory will always be there as your foundation — especially when you're stuck and need a place to start.</p>
+
+      <p>Want to dive deeper? Check out our <a href="web-color-palette-guide">step-by-step guide to choosing website color palettes</a> or learn about <a href="color-psychology-branding">color psychology for branding</a>.</p>
+    </div>
+
+    <div class="ad-slot" data-ad-slot="bottom" id="adBottom">
+      <div class="ad-placeholder">Advertisement</div>
+    </div>
+
+    <div class="related">
+      <h3>Related Articles</h3>
+      <div class="related-grid">
+        <a class="related-card" href="contrast-accessibility-guide">
+          <h4>The Complete Guide to Color Contrast & Accessibility</h4>
+          <span>Accessibility · 10 min</span>
+        </a>
+        <a class="related-card" href="web-color-palette-guide">
+          <h4>How to Choose a Perfect Color Palette for Your Website</h4>
+          <span>Design Tips · 11 min</span>
+        </a>
+      </div>
+    </div>
+
+
+    <section class="related-posts">
+      <h2>Related Articles</h2>
+      <div class="related-grid">
+      <a class="related-card" href="what-is-hsl-color">
+        <div class="related-cover" style="background: linear-gradient(135deg, #22c55e, #eab308);">📖</div>
+        <div>
+          <span class="related-tag">Color Theory</span>
+          <h4>What Is HSL Color? A Developer's Guide</h4>
+        </div>
+      </a>
+      <a class="related-card" href="color-psychology-branding">
+        <div class="related-cover" style="background: linear-gradient(135deg, #ec4899, #8b5cf6);">📖</div>
+        <div>
+          <span class="related-tag">Color Theory</span>
+          <h4>Color Psychology in Branding</h4>
+        </div>
+      </a>
+      <a class="related-card" href="web-color-palette-guide">
+        <div class="related-cover" style="background: linear-gradient(135deg, #0d9488, #4f46e5);">📖</div>
+        <div>
+          <span class="related-tag">Design Tips</span>
+          <h4>Web Color Palette Guide</h4>
+        </div>
+      </a>
+      </div>
+    </section>
+
+    <footer>
+      <p>© 2026 HexColor Pro · <a href="../index">Home</a> · <a href="../privacy">Privacy</a> · <a href="../terms">Terms</a> · <a href="../contact">Contact</a></p>
+    </footer>
+  </div>
+  <script src="../ads.js?v=3"></script>
+</body>
+</html>

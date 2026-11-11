@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HexColor Pro 发布文案 · 一键复制</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif; background: #0f172a; color: #e2e8f0; padding: 16px; padding-bottom: 60px; }
+  .header { text-align: center; padding: 20px 0 28px; }
+  .header h1 { font-size: 22px; font-weight: 700; margin-bottom: 6px; }
+  .header p { font-size: 13px; color: #94a3b8; }
+  .section { margin-bottom: 32px; }
+  .section-title { font-size: 15px; font-weight: 600; color: #38bdf8; margin-bottom: 14px; padding-left: 10px; border-left: 3px solid #38bdf8; }
+  .card { background: #1e293b; border-radius: 12px; margin-bottom: 14px; overflow: hidden; }
+  .card-header { display: flex; align-items: center; justify-content: space-between; padding: 14px 16px; border-bottom: 1px solid #334155; }
+  .card-title { font-size: 14px; font-weight: 600; flex: 1; padding-right: 10px; }
+  .copy-btn { background: #3b82f6; color: white; border: none; border-radius: 6px; padding: 6px 14px; font-size: 12px; font-weight: 500; cursor: pointer; flex-shrink: 0; transition: background .15s; }
+  .copy-btn:active { background: #2563eb; transform: scale(0.97); }
+  .copy-btn.copied { background: #10b981; }
+  .card-body { padding: 14px 16px; font-size: 13px; line-height: 1.7; max-height: 300px; overflow-y: auto; color: #cbd5e1; }
+  .card-body h2 { font-size: 14px; margin: 14px 0 8px; color: #f1f5f9; }
+  .card-body h3 { font-size: 13px; margin: 12px 0 6px; color: #f1f5f9; }
+  .card-body p { margin-bottom: 8px; }
+  .card-body code { background: #0f172a; padding: 2px 6px; border-radius: 4px; font-size: 12px; color: #a5b4fc; font-family: ui-monospace, Menlo, monospace; }
+  .card-body ul, .card-body ol { padding-left: 20px; margin-bottom: 8px; }
+  .card-body li { margin-bottom: 4px; }
+  .card-body strong { color: #f1f5f9; }
+  .card-body a { color: #38bdf8; }
+  .card-body blockquote { border-left: 3px solid #475569; padding-left: 12px; color: #94a3b8; margin: 8px 0; }
+  .tag { display: inline-block; background: #334155; color: #94a3b8; padding: 2px 8px; border-radius: 4px; font-size: 11px; margin-right: 4px; margin-bottom: 4px; }
+  .meta-tags { margin-top: 10px; padding-top: 10px; border-top: 1px dashed #334155; }
+  .day-badge { display: inline-block; background: #334155; color: #94a3b8; font-size: 11px; padding: 2px 8px; border-radius: 10px; margin-left: 8px; font-weight: 400; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>📋 HexColor Pro 发布文案</h1>
+  <p>点开每篇右上角的「复制」按钮，然后去 App 里粘贴</p>
+</div>
+
+<!-- 掘金 -->
+<div class="section">
+  <div class="section-title">掘金 · 3 篇</div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">工具合集 <span class="day-badge">第 1 天</span></div>
+      <button class="copy-btn" onclick="copyText('juejin1')">复制</button>
+    </div>
+    <div class="card-body" id="juejin1">
+<h2>纯前端实现 11 个颜色工具，我把设计师常用的颜色操作都集成在了一个站</h2>
+
+<p>大家好，我是搞副业的独立开发者。最近做了一个纯前端的颜色工具站，把设计师和前端平时经常要用的 11 种颜色操作全部集成到了一个地方，全部免费、无需注册、没有弹窗。</p>
+
+<h3>为什么要做这个</h3>
+<p>每次做 UI 设计或者写 CSS 的时候，我都要来回切好几个网站：</p>
+<ul>
+<li>取个 hex 颜色 → 去 colorpicker.com</li>
+<li>转成 hsl → 再开一个</li>
+<li>检查对比度 → 再开一个</li>
+<li>生成色板 → 又一个</li>
+</ul>
+<p>这些网站的共同问题：广告弹窗多、UI 老、有的还要注册。所以我干脆自己做了一套。</p>
+
+<h3>都有哪些工具</h3>
+<p><strong>🎨 基础类</strong></p>
+<ul>
+<li>Color Picker — 完整取色器，支持 hex/rgb/hsl/hsv/cmyk</li>
+<li>Color Converter — 批量转换 7 种颜色格式</li>
+<li>Color Name Finder — 给颜色起名字（1400+ 命名色）</li>
+</ul>
+
+<p><strong>🎯 设计类</strong></p>
+<ul>
+<li>Palette Generator — 生成 7 种经典配色方案</li>
+<li>Color Shades Generator — 生成 21 级明暗色阶（设计系统神器）</li>
+<li>Gradient Generator — 线性/径向/锥形渐变</li>
+<li>Color Mixer — 两种颜色任意比例混合</li>
+<li>Random Color Generator — 随机颜色灵感</li>
+</ul>
+
+<p><strong>♿ 可用性类</strong></p>
+<ul>
+<li>Contrast Checker — WCAG AA/AAA 对比度检测，带计算公式</li>
+<li>Text Color Generator — 自动算出背景色上最可读的文字颜色</li>
+</ul>
+
+<p><strong>🌡️ 特殊类</strong></p>
+<ul>
+<li>Color Temperature — hex ↔ 开尔文色温互转</li>
+<li>Box Shadow Generator — CSS 阴影生成器</li>
+</ul>
+
+<h3>技术实现</h3>
+<p>全部用 <strong>原生 JavaScript</strong> 写的，没有用任何框架：</p>
+<ul>
+<li>所有颜色计算都在浏览器端完成（零后端）</li>
+<li>支持复制到剪贴板</li>
+<li>支持深色模式</li>
+<li>响应式布局</li>
+<li>部署在 Cloudflare Pages</li>
+</ul>
+
+<h3>完整站点</h3>
+<p>🔗 <strong>https://hexcolorpro.pages.dev/</strong></p>
+<p>还有 16 篇关于颜色理论、可访问性、深色模式、SaaS 仪表盘配色的深度文章，感兴趣的可以看看。</p>
+<p>如果觉得好用，欢迎收藏，也可以告诉我你还想要什么工具～</p>
+
+<div class="meta-tags">
+<strong>标签：</strong>
+<span class="tag">前端</span><span class="tag">JavaScript</span><span class="tag">设计工具</span><span class="tag">独立开发</span>
+</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">WCAG 对比度深度 <span class="day-badge">第 3 天</span></div>
+      <button class="copy-btn" onclick="copyText('juejin2')">复制</button>
+    </div>
+    <div class="card-body" id="juejin2">
+<h2>深入 WCAG 对比度计算公式：为什么你的深色模式文字"看起来够亮"却过不了 AA</h2>
+
+<h3>先说结论</h3>
+<p>你用 #333333 文字配 #FFFFFF 背景，对比度是 12.6:1，轻松过 AAA。</p>
+<p>但你用 #CCCCCC 文字配 #121212 深色背景，对比度只有 5.2:1 —— 刚过 AA，但很多人感觉"不够亮"。</p>
+<p>为什么？因为 WCAG 的对比度公式有一个已知的偏差：<strong>在低亮度区间，它系统性地高估了对比度。</strong></p>
+
+<h3>对比度到底怎么算的</h3>
+<p>四步走：</p>
+
+<p><strong>1. sRGB → 线性 RGB</strong></p>
+<p>每个颜色通道（R, G, B）先从 0-255 归一化到 0-1，然后：</p>
+<p><code>function srgbToLinear(c) { return c <= 0.04045 ? c / 12.92 : Math.pow((c + 0.055) / 1.055, 2.4); }</code></p>
+
+<p><strong>2. 计算相对亮度</strong></p>
+<p><code>const L = 0.2126 * R + 0.7152 * G + 0.0722 * B;</code></p>
+<p>权重来自人眼对不同颜色的敏感度 —— 绿色最亮，蓝色最暗。</p>
+
+<p><strong>3. 计算对比度</strong></p>
+<p><code>const ratio = (L1 + 0.05) / (L2 + 0.05);</code></p>
+<p>其中 L1 是更亮的颜色，L2 是更暗的。那个 +0.05 是因为显示器有眩光（flare），纯黑不是真正的纯黑。</p>
+
+<p><strong>4. 判断是否通过</strong></p>
+<ul>
+<li>正文（18px 以下）：AA ≥ 4.5:1，AAA ≥ 7:1</li>
+<li>大文字（18px 以上或加粗 14px 以上）：AA ≥ 3:1，AAA ≥ 4.5:1</li>
+</ul>
+
+<h3>为什么我说这个公式有问题</h3>
+<p>2008 年的 WCAG 2.0 用的就是上面这个公式，到 2026 年了还在用。</p>
+<p>问题在于：<strong>人眼感知的亮度差和物理亮度差不是线性的。</strong> 在深色区域，一点点亮度的增加，人眼感知到的差异比同样增量在浅色区域小得多。</p>
+<p>WCAG 3.0 提出了 APCA 来解决这个问题，但浏览器支持度还不够。</p>
+
+<h3>我做了个工具</h3>
+<p>我做了一个对比度检测器，它不仅告诉你 pass/fail，还把<strong>每一步计算过程</strong>都列出来了，包括线性 RGB 值、相对亮度、最终比值：</p>
+<p>🔗 https://hexcolorpro.pages.dev/contrast-checker</p>
+
+<h3>实际建议</h3>
+<p>做深色模式的时候：</p>
+<ol>
+<li>不要用纯黑 (#000000) 做背景，用 #121212 或 #0F172A</li>
+<li>不要用纯白 (#FFFFFF) 做文字，用 #E5E5E5 或 #F1F5F9</li>
+<li>主色调在深色模式下要<strong>降低饱和度 15-30%</strong>，否则刺眼</li>
+<li>永远用工具测一下对比度，别相信眼睛</li>
+</ol>
+
+<div class="meta-tags">
+<strong>标签：</strong>
+<span class="tag">可访问性</span><span class="tag">前端</span><span class="tag">CSS</span><span class="tag">设计</span><span class="tag">WCAG</span>
+</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">SaaS 仪表盘配色 <span class="day-badge">第 6 天</span></div>
+      <button class="copy-btn" onclick="copyText('juejin3')">复制</button>
+    </div>
+    <div class="card-body" id="juejin3">
+<h2>我看了 30 个顶级 SaaS 仪表盘，总结出了这套配色方法论</h2>
+
+<h3>为什么仪表盘配色难</h3>
+<p>普通网站配色：主色 + 辅助色 + 中性色 = 搞定。</p>
+<p>仪表盘配色：主色 + 成功/警告/错误/信息 4 种状态色 + 数据可视化 6-12 色 + 3-5 层表面色 + 边框/分割线/文字等级 = 头大。</p>
+<p>我研究了 Linear, Stripe, Vercel, Notion, Figma, Mixpanel 等 30 个产品的仪表盘，总结了一套可落地的配色体系。</p>
+
+<h3>一、颜色系统的基础结构</h3>
+<p>一个完整的仪表盘配色需要 4 层：</p>
+
+<p><strong>1. Brand Color（品牌色）- 1 个</strong></p>
+<p>这是你的主色调，用于 CTA 按钮、选中态、重点数据。推荐：蓝色系（信任、专业）或紫色系（科技、创新）。避开：红色（容易和错误色混淆）</p>
+
+<p><strong>2. Semantic Colors（语义色）- 4 个</strong></p>
+<ul>
+<li>Success（成功）：绿色系，#10B981 左右</li>
+<li>Warning（警告）：橙/黄色系，#F59E0B 左右</li>
+<li>Error（错误）：红色系，#EF4444 左右</li>
+<li>Info（信息）：蓝色系，#3B82F6 左右</li>
+</ul>
+<p>关键原则：<strong>不仅靠颜色区分，还要有图标和文字辅助。</strong> 色弱用户占男性 8%。</p>
+
+<p><strong>3. Data Viz Colors（数据色）- 6 到 12 个</strong></p>
+<p>做图表用的调色板，三大原则：</p>
+<ol>
+<li><strong>同等亮度和饱和度</strong> —— 不然有的色块会"跳出来"</li>
+<li><strong>色相差均匀</strong> —— 按色轮等距分布</li>
+<li><strong>在灰度下也可区分</strong> —— 打印出来也能看</li>
+</ol>
+<p>我做了一个调色板生成器，可以一键生成仪表盘友好的数据色板：</p>
+<p>🔗 https://hexcolorpro.pages.dev/palette-generator</p>
+
+<p><strong>4. Neutral Scale（中性色阶）- 10 到 14 个</strong></p>
+<p>不是黑白灰那么简单。一个好的中性色阶：</p>
+<ul>
+<li>950 → 50，共 10 级（参考 Tailwind 的命名）</li>
+<li>背景用 50-100，卡片用 0（白）或 50</li>
+<li>边框用 200-300</li>
+<li>次要文字用 500，主要文字用 900</li>
+</ul>
+
+<h3>二、深色模式怎么搞</h3>
+<p>直接说结论：<strong>不要做一套浅色然后 invert，做两套独立的。</strong></p>
+<p>深色模式有自己的规则：</p>
+<ul>
+<li>背景不是纯黑，是 #0F172A 或 #121212</li>
+<li>表面颜色用"越往上越亮"的原则（模拟光从上方来）</li>
+<li>文字最亮也不要超过 #E2E8F0（纯白伤眼）</li>
+<li>主色调在深色下要降低饱和度</li>
+</ul>
+<p>我写了一篇完整的深色模式工程指南：</p>
+<p>📖 https://hexcolorpro.pages.dev/blog/dark-mode-color-scheme-guide</p>
+
+<h3>三、实际案例拆解</h3>
+<ul>
+<li><strong>Linear</strong>：紫色主色 + 极其克制的状态色 + 数据色全部同亮度</li>
+<li><strong>Stripe Dashboard</strong>：蓝色 + 极简中性色阶 + 状态色饱和度极低</li>
+<li><strong>Vercel</strong>：黑白为主 + 偶尔一个高饱和品牌色做点缀</li>
+<li><strong>Mixpanel</strong>：数据色极其丰富但都统一在同一亮度水平</li>
+</ul>
+
+<h3>四、工具推荐</h3>
+<ul>
+<li>🎨 配色生成：https://hexcolorpro.pages.dev/palette-generator</li>
+<li>🌗 色阶生成：https://hexcolorpro.pages.dev/color-shades-generator</li>
+<li>♿ 对比度检测：https://hexcolorpro.pages.dev/contrast-checker</li>
+<li>📖 完整指南：https://hexcolorpro.pages.dev/blog/saas-dashboard-color-palette</li>
+</ul>
+
+<div class="meta-tags">
+<strong>标签：</strong>
+<span class="tag">设计系统</span><span class="tag">前端</span><span class="tag">SaaS</span><span class="tag">UI设计</span><span class="tag">配色</span>
+</div>
+    </div>
+  </div>
+</div>
+
+<!-- 知乎 -->
+<div class="section">
+  <div class="section-title">知乎 · 3 篇</div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">工具推荐回答 <span class="day-badge">第 1 天</span></div>
+      <button class="copy-btn" onclick="copyText('zhihu1')">复制</button>
+    </div>
+    <div class="card-body" id="zhihu1">
+<p>作为一个折腾了无数设计工具的独立开发者，来推荐几个真正免费、好用、不弹窗、不强制注册的在线工具。</p>
+<p>以下全是我自己日常在用的，按使用频率排序：</p>
+
+<h3>1. HexColor Pro — 颜色工具合集</h3>
+<p><strong>网址：</strong>https://hexcolorpro.pages.dev/</p>
+<p>我自己做的（先自卖自夸），一个站集成了 11 个颜色工具：</p>
+<ul>
+<li>颜色取色器 + 7 种格式转换</li>
+<li>WCAG 对比度检测器（带数学公式解释）</li>
+<li>配色方案生成器（7 种经典模式）</li>
+<li>渐变生成器（支持 3 种类型）</li>
+<li>色阶生成器（做设计系统必备）</li>
+<li>颜色混合器</li>
+<li>随机颜色生成</li>
+<li>色温转换（hex ↔ 开尔文）</li>
+<li>文字颜色自动匹配</li>
+<li>颜色命名（1400+ 种命名色）</li>
+<li>CSS 阴影生成器</li>
+</ul>
+<p><strong>为什么推荐：</strong> 全部纯前端，打开就用，没有任何注册登录，界面干净。</p>
+
+<h3>2. Can I Use — 浏览器兼容性查询</h3>
+<p><strong>网址：</strong>https://caniuse.com</p>
+<p>每个前端都该收藏的站。查某个 CSS 属性、JS API 在各浏览器的支持情况一目了然，还能看全球使用率统计。</p>
+
+<h3>3. TinyPNG — 图片智能压缩</h3>
+<p><strong>网址：</strong>https://tinypng.com</p>
+<p>上线前压缩图片必备。PNG 和 JPEG 都支持，压缩率很高而且肉眼几乎看不出差异。支持批量上传，免费用户每月 500 张。</p>
+
+<h3>4. RegExr — 正则表达式可视化调试</h3>
+<p><strong>网址：</strong>https://regexr.com</p>
+<p>写正则的救星。实时匹配测试，可视化展示每一组的捕获结果，还有详细的语法速查表。</p>
+
+<h3>5. Color Safe — 无障碍配色检查</h3>
+<p><strong>网址：</strong>http://colorsafe.co</p>
+<p>做产品必须考虑可访问性。输入背景色和文字色，自动计算对比度是否符合 WCAG 标准。</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">对比度回答 <span class="day-badge">第 4 天</span></div>
+      <button class="copy-btn" onclick="copyText('zhihu2')">复制</button>
+    </div>
+    <div class="card-body" id="zhihu2">
+<p>因为<strong>看不清 = 用不了</strong>。</p>
+<p>对比度是可访问性（accessibility）里最基础也是最重要的一条。全球有 2.53 亿视力障碍人士，加上在户外阳光下看手机的正常人，对比度不够的界面 = 把一部分用户直接排除了。</p>
+
+<h3>先给一个直观的概念</h3>
+<p>WCAG（Web 内容可访问性指南）规定：</p>
+<ul>
+<li><strong>AA 级</strong>：正文文字对比度 ≥ 4.5:1，大文字 ≥ 3:1</li>
+<li><strong>AAA 级</strong>：正文文字对比度 ≥ 7:1，大文字 ≥ 4.5:1</li>
+</ul>
+<p>这是什么概念呢？</p>
+<ul>
+<li>#000000 配 #FFFFFF = 21:1（满分）</li>
+<li>#333333 配 #FFFFFF = 12.6:1（AAA 稳过）</li>
+<li>#666666 配 #FFFFFF = 5.7:1（AA 过，AAA 不过）</li>
+<li>#999999 配 #FFFFFF = 2.8:1（都不过，但很多网站还在用）</li>
+</ul>
+<p>很多设计师喜欢用浅灰色文字显得"高级"，但 #999 配白底是过不了 WCAG 最低标准的。</p>
+
+<h3>对比度怎么算的？</h3>
+<p>四步：</p>
+<ol>
+<li><strong>sRGB 转线性 RGB</strong>：因为人眼感知的亮度和像素值不是线性关系</li>
+<li><strong>算相对亮度</strong>：L = 0.2126R + 0.7152G + 0.0722B（绿色权重最高，因为人眼对绿色最敏感）</li>
+<li><strong>算对比度</strong>：(L1 + 0.05) / (L2 + 0.05)</li>
+<li><strong>对比阈值</strong>：≥4.5 过 AA，≥7 过 AAA</li>
+</ol>
+<p>我做了一个工具，可以实时看到每一步的计算过程：</p>
+<p>https://hexcolorpro.pages.dev/contrast-checker</p>
+
+<h3>常见的对比度误区</h3>
+<p><strong>误区 1：深色模式下眼睛自动适应，所以可以降低标准</strong></p>
+<p>错。深色模式下反而更容易出现对比度不够的问题，因为人眼在暗光下的视觉敏锐度下降。WCAG 标准对深浅模式是一样的。</p>
+
+<p><strong>误区 2：设计师说"看起来够清楚"就行了</strong></p>
+<p>错。人眼的感知会被周围环境影响。在纯白界面上看起来够亮的灰色，放到有颜色的背景上可能就不够了。用工具测，别靠感觉。</p>
+
+<p><strong>误区 3：色弱和色盲是一回事</strong></p>
+<p>不对。色盲是完全无法区分某些颜色（最常见红绿色盲），色弱是区分能力下降。8% 的男性有不同程度的色觉障碍。</p>
+
+<h3>实际建议</h3>
+<ol>
+<li>正文永远用 AA 及以上</li>
+<li>关键操作按钮用 AAA</li>
+<li>不要只用颜色传递信息（红绿色盲分不清错误和成功）</li>
+<li>用专业工具检测，别相信眼睛</li>
+</ol>
+<p>我做的对比度检测工具，免费无广告：</p>
+<p>https://hexcolorpro.pages.dev/contrast-checker</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">HSL 专栏 <span class="day-badge">第 7 天</span></div>
+      <button class="copy-btn" onclick="copyText('zhihu3')">复制</button>
+    </div>
+    <div class="card-body" id="zhihu3">
+<h2>为什么我写 CSS 再也不用 RGB 了，全换成 HSL</h2>
+
+<h3>先讲一个故事</h3>
+<p>刚做前端的时候，我调颜色全靠 rgb()。想要"再亮一点的蓝"？rgb(59, 130, 246) → 试试 rgb(80, 150, 255) → 不对，怎么变粉了？再试 rgb(50, 120, 250) → 嗯……好像更暗了。</p>
+<p>直到我开始用 HSL，调颜色的效率至少提升了 3 倍。</p>
+
+<h3>HSL 是什么</h3>
+<p>HSL = <strong>Hue（色相）</strong> + <strong>Saturation（饱和度）</strong> + <strong>Lightness（亮度）</strong></p>
+<ul>
+<li><strong>Hue</strong>：0-360 度，对应色轮上的位置。0 是红，120 是绿，240 是蓝。</li>
+<li><strong>Saturation</strong>：0-100%，越高越鲜艳，0% 就是灰色。</li>
+<li><strong>Lightness</strong>：0-100%，0% 是黑，100% 是白，50% 是"正常"颜色。</li>
+</ul>
+<p>用 HSL 调颜色，你想调什么就调什么，不用猜。</p>
+
+<h3>HSL 比 RGB 好在哪里</h3>
+<p><strong>1. 直觉性</strong></p>
+<p>RGB 三个值互相影响，调一个值颜色的三个维度（色相、饱和度、亮度）都会变。HSL 三个通道各管各的，你想让颜色"更亮 10%"，直接 lightness + 10% 就完了。</p>
+
+<p><strong>2. 生成配色方案变得简单</strong></p>
+<p>想要互补色？色相 +180 度。想要类似色？色相 ±30 度。想要三角色？色相 ±120 度。用 RGB？那得算半天。</p>
+
+<p><strong>3. 设计系统 token 化的最佳拍档</strong></p>
+<p>Tailwind 的色阶（50, 100, 200, ..., 900）本质上就是同色相、同饱和度、不同亮度的一组颜色。用 HSL 生成这种色阶就是一行代码的事。</p>
+<p>色阶生成器：https://hexcolorpro.pages.dev/color-shades-generator</p>
+
+<h3>但 HSL 也有坑</h3>
+<p><strong>坑 1：HSL 的"亮度"不是感知亮度</strong></p>
+<p>hsl(0, 100%, 50%)（纯红）和 hsl(120, 100%, 50%)（纯绿），HSL 说它们亮度都是 50%，但人眼看着绿色明显亮得多。</p>
+<p>如果需要感知亮度一致的调色板，要用 CIELAB 或 OKLCH。</p>
+
+<p><strong>坑 2：低饱和度下色相不准</strong></p>
+<p>灰色（饱和度 0%）的色相值没有意义，但不同浏览器可能渲染出细微差异。</p>
+
+<h3>我的建议</h3>
+<p>日常写 CSS，用 HSL 就够了，效率比 RGB 高得多。</p>
+<p>如果是做专业的设计系统、数据可视化调色板，可以研究一下 OKLCH —— 这是目前最好的感知均匀的颜色模型，Chrome/Safari/Firefox 都已经支持 oklch() 函数了。</p>
+
+<p><strong>工具推荐：</strong></p>
+<ul>
+<li>颜色格式转换：https://hexcolorpro.pages.dev/color-converter</li>
+<li>色阶生成器：https://hexcolorpro.pages.dev/color-shades-generator</li>
+<li>配色方案生成器：https://hexcolorpro.pages.dev/palette-generator</li>
+</ul>
+    </div>
+  </div>
+</div>
+
+<!-- Reddit -->
+<div class="section">
+  <div class="section-title">Reddit · 5 篇</div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">r/SideProject <span class="day-badge">第 10 天</span></div>
+      <button class="copy-btn" onclick="copyText('reddit1')">复制</button>
+    </div>
+    <div class="card-body" id="reddit1">
+<p><strong>Title:</strong> Show r/sideproject: I built a free color toolset with 11 tools (ad-supported, no signup)</p>
+<p><strong>Body:</strong></p>
+<p>Hey everyone,</p>
+<p>I've been working on HexColor Pro for the past few weeks — a clean, fast color tool site aimed at designers and devs.</p>
+<p><strong>Stats so far:</strong></p>
+<ul>
+<li>11 tools (color picker, converter, contrast checker, palette generator, gradient maker, shades, mixer, random color, color temp, text color, shadow generator)</li>
+<li>16 in-depth blog posts on color theory, accessibility, SaaS design, dark mode</li>
+<li>Built with vanilla JS — no framework, no build step, no backend</li>
+<li>Hosted on Cloudflare Pages (free tier)</li>
+<li>Monetized with Adsterra (just got approved last week)</li>
+</ul>
+<p><strong>Why I built it:</strong></p>
+<p>I kept opening 4-5 different sites every time I worked on a design project. Figured I could build one clean place with better UI, more features, and no newsletter popups.</p>
+<p>Check it out: https://hexcolorpro.pages.dev/</p>
+<p>Would love any feedback on:</p>
+<ul>
+<li>Tools that are missing</li>
+<li>UI/UX improvements</li>
+<li>Better monetization ideas for a tool site (Ezoic was 250k monthly sessions minimum which is way out of reach)</li>
+</ul>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">r/webdev <span class="day-badge">第 12 天</span></div>
+      <button class="copy-btn" onclick="copyText('reddit2')">复制</button>
+    </div>
+    <div class="card-body" id="reddit2">
+<p><strong>Title:</strong> I built 11 free color tools for devs (no signup, no ads popups, open source logic)</p>
+<p><strong>Body:</strong></p>
+<p>Hey r/webdev,</p>
+<p>I've been building HexColor Pro as a side project — a collection of color tools I keep reaching for but couldn't find a single clean place for.</p>
+<p>What's there right now:</p>
+<ul>
+<li>🎨 Color Picker with eyedropper + RGB/HSL/HSV/CMYK conversion</li>
+<li>🔄 Color Converter (bulk convert between 7 color models)</li>
+<li>🎲 Random Color Generator (great for placeholder states, design brainstorming)</li>
+<li>🌗 Color Shades Generator (tints + shades, perfect for design system tokens)</li>
+<li>📊 Contrast Checker (WCAG AA / AAA with the actual math explained)</li>
+<li>🎨 Palette Generator (analogous, complementary, triadic, monochromatic)</li>
+<li>🌡️ Color Temperature (hex ↔ Kelvin conversion)</li>
+<li>➕ 5 more: Gradient Generator, Color Mixer, Text Color Generator, Color Name Finder, Box Shadow Generator</li>
+</ul>
+<p>All of them run 100% in the browser — no server, no tracking, no account. Just color math and fast UI.</p>
+<p>Blog has deep dives on WCAG contrast math, HSL color theory, dark mode color engineering, and SaaS dashboard color systems if that's your thing.</p>
+<p>Check it out: https://hexcolorpro.pages.dev/</p>
+<p>Would love feedback on what's missing or what could be better.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">r/Frontend <span class="day-badge">第 14 天</span></div>
+      <button class="copy-btn" onclick="copyText('reddit3')">复制</button>
+    </div>
+    <div class="card-body" id="reddit3">
+<p><strong>Title:</strong> The math behind WCAG contrast ratios (and how to calculate it in 4 lines of JS)</p>
+<p><strong>Body:</strong></p>
+<p>If you've ever wondered <em>why</em> the contrast checker says your colors pass or fail, here's the actual math:</p>
+<ol>
+<li><strong>Convert sRGB to linear RGB</strong>: For each channel, if value ≤ 0.04045, divide by 12.92. Otherwise, ((value + 0.055) / 1.055) ^ 2.4</li>
+<li><strong>Calculate relative luminance</strong>: L = 0.2126 × R + 0.7152 × G + 0.0722 × B</li>
+<li><strong>Compute ratio</strong>: (L1 + 0.05) / (L2 + 0.05) where L1 is the lighter color</li>
+</ol>
+<p>That's it. 4.5:1 passes AA for normal text, 7:1 for AAA. 3:1 for large text.</p>
+<p>The 0.05 offset is because WCAG assumes the display flares about 5% — so pure black in real life isn't actually 0 luminance.</p>
+<p>I built a tool that shows the calculation step-by-step if you want to verify: https://hexcolorpro.pages.dev/contrast-checker</p>
+<p>And wrote the full guide here: https://hexcolorpro.pages.dev/blog/wcag-contrast-ratio-guide</p>
+<p>The wild thing? This formula hasn't changed since WCAG 2.0 in 2008, and it's known to overestimate contrast on dark colors and underestimate on light ones. WCAG 3.0 (APCA) is supposed to fix it but adoption is glacial.</p>
+<p>What's your team using for contrast validation?</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">r/web_design <span class="day-badge">第 16 天</span></div>
+      <button class="copy-btn" onclick="copyText('reddit4')">复制</button>
+    </div>
+    <div class="card-body" id="reddit4">
+<p><strong>Title:</strong> Free color palette generator + 10 other color tools (no signup, all client-side)</p>
+<p><strong>Body:</strong></p>
+<p>Hi r/web_design,</p>
+<p>Built HexColor Pro as a side project for fellow designers who are tired of jumping between 5 different sites to pick colors.</p>
+<p>The full toolset:</p>
+<ul>
+<li><strong>Palette Generator</strong> — analogous, complementary, triadic, tetradic, monochromatic schemes from any base color</li>
+<li><strong>Color Shades Generator</strong> — 21-step tint/shade scale, great for design tokens</li>
+<li><strong>Contrast Checker</strong> — WCAG AA/AAA with luminance math explained</li>
+<li><strong>Gradient Generator</strong> — linear/radial/conic with custom stops</li>
+<li><strong>Color Mixer</strong> — blend two colors at any ratio</li>
+<li><strong>Color Converter</strong> — hex ↔ rgb ↔ hsl ↔ hsv ↔ cmyk</li>
+<li><strong>Random Color Generator</strong> — quick inspiration</li>
+<li><strong>Color Temperature</strong> — Kelvin ↔ RGB conversion</li>
+<li><strong>Text Color Generator</strong> — auto-pick readable text color for any background</li>
+<li><strong>Color Picker + Color Name Finder</strong></li>
+</ul>
+<p>100% free, no signup, no paywalls. Everything runs in the browser.</p>
+<p>Also wrote a bunch of in-depth guides on color theory, accessibility, SaaS dashboard palettes, dark mode engineering, etc.</p>
+<p>Check it out: https://hexcolorpro.pages.dev/</p>
+<p>Always open to feedback — what color tool do you wish existed?</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">r/design <span class="day-badge">第 18 天</span></div>
+      <button class="copy-btn" onclick="copyText('reddit5')">复制</button>
+    </div>
+    <div class="card-body" id="reddit5">
+<p><strong>Title:</strong> Dark mode color schemes aren't just "invert everything" — here's the engineering behind it</p>
+<p><strong>Body:</strong></p>
+<p>Hey designers,</p>
+<p>I've been doing a deep dive on dark mode color systems and the more I dig, the more it feels like engineering, not design:</p>
+<ol>
+<li><strong>Surface elevation doesn't use black</strong> — it uses <em>lighter</em> grays as surfaces rise. Google Material uses 5 elevation levels; Apple uses 4.</li>
+<li><strong>Pure white on dark background burns eyes</strong> — #FFFFFF on #000000 has a 21:1 ratio but causes halation. 90% white (#E5E5E5) on 10% black (#121212) is the sweet spot.</li>
+<li><strong>Saturated colors fail contrast in dark mode</strong> — that beautiful blue accent you use in light mode? It probably fails AA on dark backgrounds. You need to desaturate 15-30%.</li>
+<li><strong>You can't just use the same palette inverted</strong> — the perceptual lightness of a color doesn't scale linearly with its HSL lightness value. That's why CIELAB exists.</li>
+</ol>
+<p>I wrote a full breakdown with the actual math (relative luminance formula, WCAG ratio calculation) and built a couple tools to help:</p>
+<ul>
+<li>Contrast checker that explains <em>why</em> two colors pass or fail: https://hexcolorpro.pages.dev/contrast-checker</li>
+<li>Color shades generator for building token systems: https://hexcolorpro.pages.dev/color-shades-generator</li>
+<li>Full article with dark mode system examples: https://hexcolorpro.pages.dev/blog/dark-mode-color-scheme-guide</li>
+</ul>
+<p>Curious how other design teams handle this — do you have separate light/dark palettes or generate them procedurally?</p>
+    </div>
+  </div>
+</div>
+
+<script>
+function copyText(id) {
+  const el = document.getElementById(id);
+  // 提取纯文本，保留基本格式
+  let text = '';
+  el.childNodes.forEach(node => {
+    if (node.tagName === 'H2') text += node.textContent + '\n\n';
+    else if (node.tagName === 'H3') text += node.textContent + '\n';
+    else if (node.tagName === 'P') text += node.textContent + '\n\n';
+    else if (node.tagName === 'UL' || node.tagName === 'OL') {
+      node.querySelectorAll('li').forEach((li, i) => {
+        if (node.tagName === 'UL') text += '• ' + li.textContent + '\n';
+        else text += (i+1) + '. ' + li.textContent + '\n';
+      });
+      text += '\n';
+    }
+    else if (node.tagName === 'BLOCKQUOTE') text += node.textContent + '\n\n';
+    else if (node.classList && node.classList.contains('meta-tags')) text += node.innerText + '\n';
+    else if (node.nodeType === 3 && node.textContent.trim()) text += node.textContent.trim() + '\n\n';
+  });
+
+  navigator.clipboard.writeText(text).then(() => {
+    const btn = event.target;
+    const original = btn.textContent;
+    btn.textContent = '✓ 已复制';
+    btn.classList.add('copied');
+    setTimeout(() => {
+      btn.textContent = original;
+      btn.classList.remove('copied');
+    }, 2000);
+  }).catch(err => {
+    // fallback
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand('copy');
+    document.body.removeChild(ta);
+    const btn = event.target;
+    const original = btn.textContent;
+    btn.textContent = '✓ 已复制';
+    btn.classList.add('copied');
+    setTimeout(() => {
+      btn.textContent = original;
+      btn.classList.remove('copied');
+    }, 2000);
+  });
+}
+</script>
+
+</body>
+</html>

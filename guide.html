@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How to Use HexColor Pro — Complete Guide to All Tools</title>
+  <meta name="description" content="A complete step-by-step guide to using every tool on HexColor Pro — color picker, gradient generator, contrast checker, palette builder, and more.">
+  <meta name="keywords" string="true">hex color guide, how to use color picker, gradient generator tutorial, color tools guide">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="canonical" href="https://hexcolorpro.pages.dev/guide">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #0f172a; --surface: #1e293b; --surface-light: #334155;
+      --text: #f1f5f9; --text-muted: #94a3b8; --accent: #6366f1;
+      --radius: 12px;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg); color: var(--text); line-height: 1.7;
+    }
+    .container { max-width: 1100px; margin: 0 auto; padding: 20px; }
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 16px 0; margin-bottom: 20px; }
+    .logo {
+      font-size: 1.4rem; font-weight: 700;
+      background: linear-gradient(135deg, #6366f1, #ec4899);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+      text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 20px; }
+    .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 0.95rem; }
+    .nav-links a:hover { color: var(--text); }
+    .page-header { text-align: center; padding: 40px 20px 30px; }
+    .page-header h1 { font-size: 2.2rem; font-weight: 800; margin-bottom: 12px; }
+    .page-header p { color: var(--text-muted); font-size: 1.1rem; max-width: 600px; margin: 0 auto; }
+    .toc {
+      background: var(--surface); border-radius: var(--radius); padding: 24px; margin-bottom: 30px;
+      border: 1px solid var(--surface-light);
+    }
+    .toc h3 { margin-bottom: 12px; color: var(--accent); }
+    .toc ul { list-style: none; columns: 2; column-gap: 24px; }
+    .toc li { margin-bottom: 8px; }
+    .toc a { color: var(--text); text-decoration: none; font-size: 0.95rem; }
+    .toc a:hover { color: var(--accent); }
+    .toc .num {
+      display: inline-block; width: 24px; height: 24px; background: var(--accent);
+      color: white; border-radius: 50%; text-align: center; line-height: 24px;
+      font-size: 0.75rem; font-weight: 700; margin-right: 8px;
+    }
+    .guide-section {
+      background: var(--surface); border-radius: var(--radius); padding: 28px;
+      margin-bottom: 24px; border: 1px solid var(--surface-light);
+    }
+    .guide-section h2 {
+      font-size: 1.5rem; margin-bottom: 12px;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .guide-section h2 .emoji { font-size: 1.8rem; }
+    .guide-section h3 { font-size: 1.15rem; margin: 20px 0 10px; color: var(--accent); }
+    .guide-section p { color: #cbd5e1; margin-bottom: 12px; }
+    .guide-section ul, .guide-section ol { margin: 12px 0 16px 24px; color: #cbd5e1; }
+    .guide-section li { margin-bottom: 6px; }
+    .guide-section code {
+      background: #0f172a; padding: 2px 8px; border-radius: 4px;
+      font-family: 'Courier New', monospace; font-size: 0.9rem; color: #a5f3fc;
+    }
+    .btn-guide {
+      display: inline-block; padding: 10px 20px; background: var(--accent);
+      color: white; border-radius: 8px; text-decoration: none;
+      font-weight: 600; font-size: 0.95rem; margin-top: 12px;
+      transition: background 0.2s;
+    }
+    .btn-guide:hover { background: #818cf8; }
+    .pro-tip {
+      background: rgba(99,102,241,0.1); border-left: 4px solid var(--accent);
+      padding: 12px 16px; border-radius: 0 8px 8px 0; margin: 16px 0;
+    }
+    .pro-tip strong { color: var(--accent); }
+    .faq {
+      background: var(--surface); border-radius: var(--radius); padding: 28px;
+      margin-top: 30px; border: 1px solid var(--surface-light);
+    }
+    .faq h2 { margin-bottom: 20px; }
+    .faq-item { margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid var(--surface-light); }
+    .faq-item:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+    .faq-item h3 { color: var(--accent); margin-bottom: 8px; }
+    .faq-item p { color: #cbd5e1; }
+    .ad-placeholder {
+      background: var(--surface); border: 2px dashed var(--surface-light);
+      border-radius: var(--radius); padding: 24px; text-align: center;
+      margin: 30px 0; color: var(--text-muted); font-size: 0.85rem;
+      min-height: 90px; display: flex; align-items: center; justify-content: center;
+    }
+    .ad-slot.ad-live { margin: 30px 0; text-align: center; min-height: 0; display: block; background: transparent; border: none; padding: 0; }
+    footer {
+      margin-top: 60px; padding: 30px 20px; border-top: 1px solid var(--surface-light);
+      color: var(--text-muted); font-size: 0.9rem; text-align: center;
+    }
+    footer a { color: var(--accent); text-decoration: none; margin: 0 8px; }
+    @media (max-width: 768px) {
+      .toc ul { columns: 1; }
+      .page-header h1 { font-size: 1.6rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <nav>
+      <a href="index" class="logo">🎨 HexColor Pro</a>
+      <div class="nav-links">
+        <a href="index#tools">All Tools</a>
+        <a href="blog">Blog</a>
+      </div>
+    </nav>
+
+    <div class="page-header">
+      <h1>📖 Complete Guide to HexColor Pro</h1>
+      <p>Everything you need to know to get the most out of every color tool on this site.</p>
+    </div>
+
+    <div class="ad-slot" data-ad-slot="top" id="adTop">
+      <div class="ad-placeholder">Advertisement</div>
+    </div>
+
+    <div class="toc">
+      <h3>📋 Table of Contents</h3>
+      <ul>
+        <li><a href="#picker"><span class="num">1</span>Color Picker</a></li>
+        <li><a href="#converter"><span class="num">2</span>Color Converter</a></li>
+        <li><a href="#gradient"><span class="num">3</span>Gradient Generator</a></li>
+        <li><a href="#contrast"><span class="num">4</span>Contrast Checker</a></li>
+        <li><a href="#palette"><span class="num">5</span>Palette Generator</a></li>
+        <li><a href="#schemes"><span class="num">6</span>Color Schemes</a></li>
+        <li><a href="#names"><span class="num">7</span>Color Names Finder</a></li>
+        <li><a href="#shadow"><span class="num">8</span>Shadow Generator</a></li>
+        <li><a href="#keyboard"><span class="num">9</span>Keyboard Shortcuts</a></li>
+        <li><a href="#faq"><span class="num">?</span>FAQ</a></li>
+      </ul>
+    </div>
+
+    <div class="guide-section" id="picker">
+      <h2><span class="emoji">🎨</span> 1. Color Picker</h2>
+      <p>The Color Picker is our flagship tool. It lets you explore any color in detail — see its hex, RGB, HSL, and CMYK values, plus a full palette of related colors.</p>
+      <h3>How to use it:</h3>
+      <ol>
+        <li>Click the color wheel or type a hex code (like <code>#6366F1</code>) in the input box.</li>
+        <li>Use the sliders to fine-tune hue, saturation, and lightness.</li>
+        <li>Scroll down to see automatically generated harmonies: complementary, analogous, triadic, and more.</li>
+        <li>Click any color value to copy it to your clipboard.</li>
+        <li>Use the shade/tint palette to find lighter or darker versions of the same color.</li>
+      </ol>
+      <div class="pro-tip">
+        <strong>💡 Pro tip:</strong> Click the eyedropper icon (in supported browsers) to pick a color from anywhere on your screen — even from outside the browser window.
+      </div>
+      <a class="btn-guide" href="color-picker">Open Color Picker →</a>
+    </div>
+
+    <div class="guide-section" id="converter">
+      <h2><span class="emoji">🔄</span> 2. Color Converter</h2>
+      <p>Convert between 8 different color formats instantly: HEX, RGB, HSL, CMYK, HSV, HWB, LAB, and XYZ.</p>
+      <h3>How to use it:</h3>
+      <ol>
+        <li>Enter a color value in any of the input fields — it doesn't matter which one.</li>
+        <li>All other formats update automatically as you type.</li>
+        <li>Click the copy button next to any value to copy it to your clipboard.</li>
+        <li>Use the preview area to see how the color looks in context.</li>
+      </ol>
+      <p><strong>Supported formats:</strong> HEX, RGB, RGBA, HSL, HSLA, CMYK, HSV, HWB, LAB, XYZ</p>
+      <div class="pro-tip">
+        <strong>💡 Pro tip:</strong> You can paste any valid CSS color value — even named colors like <code>rebeccapurple</code> or <code>tomato</code> — and the converter will recognize it.
+      </div>
+      <a class="btn-guide" href="color-converter">Open Color Converter →</a>
+    </div>
+
+    <div class="guide-section" id="gradient">
+      <h2><span class="emoji">🌈</span> 3. Gradient Generator</h2>
+      <p>Create beautiful CSS gradients in seconds. Supports linear, radial, and conic gradients with up to 5 color stops.</p>
+      <h3>How to use it:</h3>
+      <ol>
+        <li>Choose a gradient type: Linear, Radial, or Conic.</li>
+        <li>Add or remove color stops using the + and – buttons (2-5 stops supported).</li>
+        <li>Click each color stop to change its color and position.</li>
+        <li>Use the angle slider (for linear) or shape controls (for radial) to adjust the gradient direction.</li>
+        <li>Click "Copy CSS" to copy the full gradient code to your clipboard.</li>
+        <li>Try a preset from the gallery below to get started fast.</li>
+      </ol>
+      <div class="pro-tip">
+        <strong>💡 Pro tip:</strong> For subtle, professional gradients, choose two colors that are close in hue — like blue to purple, or pink to orange. The closer the hues, the smoother the blend.
+      </div>
+      <a class="btn-guide" href="gradient-generator">Open Gradient Generator →</a>
+    </div>
+
+    <div class="guide-section" id="contrast">
+      <h2><span class="emoji">👁️</span> 4. Contrast Checker</h2>
+      <p>Check if your text and background colors meet WCAG accessibility standards. Essential for making sure your website is usable by everyone.</p>
+      <h3>How to use it:</h3>
+      <ol>
+        <li>Enter a text color and a background color (or click to use the color picker).</li>
+        <li>Instantly see the contrast ratio and pass/fail status for WCAG AA and AAA standards.</li>
+        <li>Use the live preview to see how sample text looks with your color pair.</li>
+        <li>Try the "auto-adjust" feature — we'll nudge the colors slightly to make them pass while staying as close as possible to your original.</li>
+      </ol>
+      <p><strong>WCAG standards at a glance:</strong></p>
+      <ul>
+        <li><strong>AA Normal:</strong> 4.5:1 minimum contrast for body text</li>
+        <li><strong>AA Large:</strong> 3:1 minimum for large text (18pt+ or 14pt bold+)</li>
+        <li><strong>AAA Normal:</strong> 7:1 minimum for enhanced accessibility</li>
+        <li><strong>AAA Large:</strong> 4.5:1 minimum for large text</li>
+      </ul>
+      <div class="pro-tip">
+        <strong>💡 Pro tip:</strong> Contrast requirements are lower for large text because larger text is inherently easier to read. Text counts as "large" at 18pt (24px) or above, or 14pt (18.66px) bold or above.
+      </div>
+      <a class="btn-guide" href="contrast-checker">Open Contrast Checker →</a>
+    </div>
+
+    <div class="guide-section" id="palette">
+      <h2><span class="emoji">🎯</span> 5. Palette Generator</h2>
+      <p>Generate beautiful, cohesive color palettes from a single base color. Perfect for finding a full design system palette in seconds.</p>
+      <h3>How to use it:</h3>
+      <ol>
+        <li>Enter a base color — this will be the "anchor" of your palette.</li>
+        <li>Choose a palette style: Complementary, Analogous, Triadic, Split Complementary, Tetradic, Monochromatic, or Random.</li>
+        <li>Your palette generates instantly. Click any color to copy its hex code.</li>
+        <li>Use the shuffle button to generate variations.</li>
+        <li>Export as CSS, SCSS, or JSON for use in your project.</li>
+      </ol>
+      <div class="pro-tip">
+        <strong>💡 Pro tip:</strong> Start with a monochromatic palette for a clean, professional look. It's nearly impossible to make something that looks bad with a single hue.
+      </div>
+      <a class="btn-guide" href="palette-generator">Open Palette Generator →</a>
+    </div>
+
+    <div class="guide-section" id="schemes">
+      <h2><span class="emoji">✨</span> 6. Color Schemes</h2>
+      <p>Browse curated color schemes for different moods and use cases — from warm and energetic to calm and professional.</p>
+      <h3>How to use it:</h3>
+      <ol>
+        <li>Scroll through the categorized color scheme gallery.</li>
+        <li>Click a category tag (Warm, Cool, Pastel, Dark, Vibrant, Minimal) to filter.</li>
+        <li>Click any color in a scheme to copy its hex code.</li>
+        <li>Use the "Apply to Palette" button to send a scheme to the Palette Generator for further customization.</li>
+      </ol>
+      <a class="btn-guide" href="color-schemes">Browse Color Schemes →</a>
+    </div>
+
+    <div class="guide-section" id="names">
+      <h2><span class="emoji">📚</span> 7. Color Names Finder</h2>
+      <p>Find the name of any color. We match your color against a library of over 1,500 named colors to find the closest match.</p>
+      <h3>How to use it:</h3>
+      <ol>
+        <li>Enter a hex code or use the color picker to select a color.</li>
+        <li>Instantly see the closest named color match, along with the color's hex, RGB, and HSL values.</li>
+        <li>Scroll down to see similar named colors ranked by similarity.</li>
+        <li>Click any color name to copy its hex code.</li>
+      </ol>
+      <p>Our color name database includes:</p>
+      <ul>
+        <li>All 148 standard CSS/HTML named colors</li>
+        <li>X11 color names</li>
+        <li>Popular designer palette colors</li>
+        <li>Pantone-inspired names</li>
+      </ul>
+      <div class="pro-tip">
+        <strong>💡 Pro tip:</strong> Need to communicate a color to a client or teammate? Use the color name instead of the hex code — "dusty rose" is much easier to remember than "#D4869C."
+      </div>
+      <a class="btn-guide" href="color-names">Open Color Names →</a>
+    </div>
+
+    <div class="guide-section" id="shadow">
+      <h2><span class="emoji">🌓</span> 8. Shadow Generator</h2>
+      <p>Create beautiful CSS box-shadows with a visual editor. Adjust blur, spread, distance, color, and opacity in real time.</p>
+      <h3>How to use it:</h3>
+      <ol>
+        <li>Use the sliders to adjust offset-X, offset-Y, blur radius, spread radius, and opacity.</li>
+        <li>Choose a shadow color — try colored shadows for a modern look.</li>
+        <li>Add multiple shadow layers for depth (click "Add Layer").</li>
+        <li>See a live preview of the shadow on the demo card.</li>
+        <li>Click "Copy CSS" to copy the full box-shadow code.</li>
+      </ol>
+      <div class="pro-tip">
+        <strong>💡 Pro tip:</strong> For natural-looking shadows, use multiple layers: a soft, large shadow (far light) and a sharper, smaller shadow (near light). This mimics how real light works.
+      </div>
+      <a class="btn-guide" href="shadow-generator">Open Shadow Generator →</a>
+    </div>
+
+    <div class="guide-section" id="keyboard">
+      <h2><span class="emoji">⌨️</span> 9. Tips & Shortcuts</h2>
+      <p>All HexColor Pro tools support these common shortcuts and features:</p>
+      <ul>
+        <li><strong>Click to copy:</strong> Click any hex, RGB, or HSL value to copy it to your clipboard.</li>
+        <li><strong>Color input:</strong> You can paste any valid CSS color — hex, rgb(), hsl(), or even color names.</li>
+        <li><strong># is optional:</strong> When typing a hex code, you can skip the # symbol.</li>
+        <li><strong>3-digit hex:</strong> Short hex codes like <code>#f00</code> work everywhere.</li>
+        <li><strong>Dark mode:</strong> The site follows your system's dark mode preference automatically.</li>
+      </ul>
+    </div>
+
+    <div class="faq" id="faq">
+      <h2>❓ Frequently Asked Questions</h2>
+
+      <div class="faq-item">
+        <h3>Is HexColor Pro free to use?</h3>
+        <p>Yes! All tools on HexColor Pro are completely free to use. There's no sign-up required and no hidden fees.</p>
+      </div>
+
+      <div class="faq-item">
+        <h3>Do I need to install anything?</h3>
+        <p>No. HexColor Pro runs entirely in your web browser. Just visit the site and start using the tools — no downloads, no plugins, no account needed.</p>
+      </div>
+
+      <div class="faq-item">
+        <h3>Does HexColor Pro work offline?</h3>
+        <p>Most of our tools work even if your internet connection drops, since all the color calculations happen in your browser. Just bookmark the page and you're good to go.</p>
+      </div>
+
+      <div class="faq-item">
+        <h3>Are the colors accurate?</h3>
+        <p>All color conversions use standard math formulas (sRGB color space). Your display will affect how colors look, but the values are mathematically correct.</p>
+      </div>
+
+      <div class="faq-item">
+        <h3>Can I suggest a new tool?</h3>
+        <p>Absolutely! We're always adding new tools. Use the <a href="contact" style="color:var(--accent)">contact page</a> to send us your suggestions.</p>
+      </div>
+
+      <div class="faq-item">
+        <h3>What browsers are supported?</h3>
+        <p>All modern browsers: Chrome, Firefox, Safari, Edge, and Brave. Some advanced features (like the eyedropper tool) may only work in Chromium-based browsers.</p>
+      </div>
+    </div>
+
+    <div class="ad-slot" data-ad-slot="bottom" id="adBottom">
+      <div class="ad-placeholder">Advertisement</div>
+    </div>
+
+    <footer>
+      <p>© 2026 HexColor Pro · <a href="index">Home</a> · <a href="blog">Blog</a> · <a href="privacy">Privacy</a> · <a href="terms">Terms</a> · <a href="contact">Contact</a></p>
+    </footer>
+  </div>
+  <script src="ads.js?v=3"></script>
+</body>
+</html>

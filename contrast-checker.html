@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Color Contrast Checker - WCAG Accessibility Test | HexColor Pro</title>
+  <meta name="description" content="Check color contrast ratio and WCAG compliance. Test text on background colors for AA and AAA accessibility standards. Real-time results.">
+  <meta name="keywords" content="contrast checker, wcag checker, color contrast, accessibility checker, aa aaa contrast, text contrast">
+  <link rel="canonical" href="https://hexcolorpro.pages.dev/contrast-checker">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #0f172a; --surface: #1e293b; --surface-light: #334155;
+      --text: #f1f5f9; --text-muted: #94a3b8; --accent: #6366f1;
+      --success: #10b981; --warning: #f59e0b; --danger: #ef4444;
+      --radius: 12px; --shadow: 0 4px 20px rgba(0,0,0,0.3);
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg); color: var(--text); line-height: 1.6; min-height: 100vh;
+    }
+    .container { max-width: 1000px; margin: 0 auto; padding: 20px; }
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 16px 0; margin-bottom: 20px; }
+    .logo {
+      font-size: 1.4rem; font-weight: 700;
+      background: linear-gradient(135deg, #6366f1, #ec4899);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+      text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 20px; }
+    .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 0.95rem; }
+    .nav-links a:hover { color: var(--text); }
+    .page-header { text-align: center; margin: 20px 0 30px; }
+    .page-header h1 {
+      font-size: 2.2rem; font-weight: 700;
+      background: linear-gradient(135deg, #6366f1, #ec4899);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .page-header p { color: var(--text-muted); margin-top: 8px; font-size: 1.05rem; }
+    .card {
+      background: var(--surface); border-radius: var(--radius); padding: 28px;
+      box-shadow: var(--shadow); margin-bottom: 24px;
+    }
+    .card h2 { font-size: 1.3rem; margin-bottom: 16px; }
+    .breadcrumb { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 16px; }
+    .breadcrumb a { color: var(--accent); text-decoration: none; }
+
+    .color-pickers-row {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 24px;
+    }
+    @media (max-width: 600px) { .color-pickers-row { grid-template-columns: 1fr; } }
+    .picker-group label {
+      display: block; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 6px;
+      font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;
+    }
+    .picker-input {
+      display: flex; gap: 8px; align-items: center;
+      background: var(--bg); padding: 8px; border-radius: 8px;
+      border: 2px solid var(--surface-light);
+    }
+    .picker-input input[type="color"] {
+      width: 44px; height: 44px; border: none; border-radius: 6px; cursor: pointer; background: none;
+    }
+    .picker-input input[type="text"] {
+      flex: 1; padding: 8px; background: none; border: none; color: var(--text);
+      font-family: 'Courier New', monospace; font-size: 1rem;
+    }
+    .picker-input input[type="text"]:focus { outline: none; }
+
+    .preview-box {
+      border-radius: var(--radius); padding: 40px; text-align: center;
+      margin-bottom: 24px; border: 2px solid var(--surface-light);
+      transition: background-color 0.2s, color 0.2s;
+    }
+    .preview-box .preview-text-lg { font-size: 2rem; font-weight: 700; margin-bottom: 8px; }
+    .preview-box .preview-text-sm { font-size: 1rem; font-weight: 400; opacity: 0.9; }
+
+    .ratio-display {
+      text-align: center; margin-bottom: 24px;
+    }
+    .ratio-number { font-size: 3.5rem; font-weight: 800; line-height: 1; }
+    .ratio-label { color: var(--text-muted); font-size: 0.95rem; margin-top: 4px; }
+
+    .badges-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-bottom: 20px;
+    }
+    @media (max-width: 500px) { .badges-grid { grid-template-columns: 1fr; } }
+    .badge {
+      padding: 14px; border-radius: 8px; text-align: center;
+      display: flex; flex-direction: column; justify-content: center;
+      transition: all 0.2s;
+    }
+    .badge-pass { background: rgba(16, 185, 129, 0.15); border: 2px solid var(--success); }
+    .badge-fail { background: rgba(239, 68, 68, 0.15); border: 2px solid var(--danger); }
+    .badge-level { font-size: 1.1rem; font-weight: 700; margin-bottom: 4px; }
+    .badge-pass .badge-level { color: var(--success); }
+    .badge-fail .badge-level { color: var(--danger); }
+    .badge-status { font-size: 0.85rem; }
+
+    .suggestion-box {
+      background: rgba(99, 102, 241, 0.1); border: 2px solid var(--accent);
+      border-radius: 8px; padding: 16px; margin-top: 16px;
+    }
+    .suggestion-box h4 { color: var(--accent); margin-bottom: 8px; }
+    .suggestion-swatch {
+      display: inline-flex; align-items: center; gap: 8px; margin-right: 12px;
+      padding: 6px 12px; background: var(--bg); border-radius: 6px; cursor: pointer;
+      font-family: 'Courier New', monospace; font-size: 0.9rem;
+    }
+    .suggestion-swatch span {
+      width: 18px; height: 18px; border-radius: 4px; display: inline-block;
+    }
+
+    .ad-placeholder {
+      background: var(--surface); border: 2px dashed var(--surface-light);
+      border-radius: var(--radius); padding: 24px; text-align: center;
+      margin: 24px 0; color: var(--text-muted); font-size: 0.85rem;
+      min-height: 90px; display: flex; align-items: center; justify-content: center;
+    }
+    .ad-slot.ad-live {
+      margin: 24px 0; text-align: center; min-height: 0;
+      display: block; background: transparent; border: none; padding: 0;
+    }
+    .ad-slot.ad-live ins, .ad-slot.ad-live iframe { margin: 0 auto; display: block; }
+
+    .guide-section { margin-top: 40px; }
+    .guide-section h2 { font-size: 1.5rem; margin-bottom: 16px; }
+    .guide-section h3 { font-size: 1.2rem; margin: 20px 0 10px; color: var(--accent); }
+    .guide-section p { color: var(--text-muted); margin-bottom: 12px; }
+    .guide-section ul { margin: 12px 0 16px 20px; color: var(--text-muted); }
+    .guide-section li { margin-bottom: 6px; }
+    .guide-section code { background: var(--surface-light); padding: 2px 8px; border-radius: 4px; font-family: 'Courier New', monospace; font-size: 0.9em; }
+
+    footer {
+      margin-top: 60px; padding: 30px 20px; border-top: 1px solid var(--surface-light);
+      color: var(--text-muted); font-size: 0.9rem; text-align: center;
+    }
+    footer a { color: var(--accent); text-decoration: none; margin: 0 8px; }
+
+    #toast {
+      position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%);
+      background: #10b981; color: white; padding: 12px 24px; border-radius: 8px;
+      font-size: 0.9rem; font-weight: 600; z-index: 1000; box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      opacity: 0; pointer-events: none; transition: opacity 0.3s;
+    }
+    #toast.show { opacity: 1; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <nav>
+      <a href="index" class="logo">🎨 HexColor Pro</a>
+      <div class="nav-links">
+        <a href="index#tools">All Tools</a>
+        <a href="blog">Blog</a>
+      </div>
+    </nav>
+
+    <div class="breadcrumb">
+      <a href="index">Home</a> / Contrast Checker
+    </div>
+
+    <div class="page-header">
+      <h1>Color Contrast Checker</h1>
+      <p>Test WCAG accessibility compliance. AA & AAA contrast ratios in real time.</p>
+    </div>
+
+    <div class="ad-slot" data-ad-slot="top" id="adTop">
+      <div class="ad-placeholder">Advertisement</div>
+    </div>
+
+    <div class="card">
+      <div class="color-pickers-row">
+        <div class="picker-group">
+          <label>Text Color</label>
+          <div class="picker-input">
+            <input type="color" id="fgPicker" value="#ffffff">
+            <input type="text" id="fgHex" value="#ffffff">
+          </div>
+        </div>
+        <div class="picker-group">
+          <label>Background Color</label>
+          <div class="picker-input">
+            <input type="color" id="bgPicker" value="#6366f1">
+            <input type="text" id="bgHex" value="#6366f1">
+          </div>
+        </div>
+      </div>
+
+      <div class="preview-box" id="previewBox" style="background-color: #6366f1; color: #ffffff;">
+        <div class="preview-text-lg">Sample Text Large</div>
+        <div class="preview-text-sm">This is sample body text to preview contrast.</div>
+      </div>
+
+      <div class="ratio-display">
+        <div class="ratio-number" id="ratioNumber">5.21</div>
+        <div class="ratio-label">Contrast Ratio</div>
+      </div>
+
+      <div class="badges-grid">
+        <div class="badge" id="badgeAANormal">
+          <div class="badge-level">AA (Normal)</div>
+          <div class="badge-status" id="statusAANormal">Pass — 4.5:1 required</div>
+        </div>
+        <div class="badge" id="badgeAALarge">
+          <div class="badge-level">AA (Large)</div>
+          <div class="badge-status" id="statusAALarge">Pass — 3:1 required</div>
+        </div>
+        <div class="badge" id="badgeAAANormal">
+          <div class="badge-level">AAA (Normal)</div>
+          <div class="badge-status" id="statusAAANormal">Fail — 7:1 required</div>
+        </div>
+        <div class="badge" id="badgeAAALarge">
+          <div class="badge-level">AAA (Large)</div>
+          <div class="badge-status" id="statusAAALarge">Pass — 4.5:1 required</div>
+        </div>
+      </div>
+
+      <div class="suggestion-box" id="suggestionBox" style="display: none;">
+        <h4>💡 Suggested Fixes</h4>
+        <p style="margin-bottom: 10px; color: var(--text-muted); font-size: 0.95rem;">Try these adjustments to pass AA:</p>
+        <div id="suggestions"></div>
+      </div>
+    </div>
+
+    <div class="ad-slot" data-ad-slot="bottom" id="adBottom">
+      <div class="ad-placeholder">Advertisement</div>
+    </div>
+
+    <div class="guide-section">
+      <h2>Understanding WCAG Contrast Standards</h2>
+
+      <h3>📏 What is Contrast Ratio?</h3>
+      <p>Contrast ratio measures the difference in luminance between two colors. The scale ranges from 1:1 (same color) to 21:1 (black on white). Higher ratios mean easier readability.</p>
+
+      <h3>🏆 WCAG Levels Explained</h3>
+      <ul>
+        <li><strong>AA Normal</strong> — 4.5:1 minimum. Standard for body text (< 18pt / < 14pt bold).</li>
+        <li><strong>AA Large</strong> — 3:1 minimum. For large text (≥ 18pt / ≥ 14pt bold).</li>
+        <li><strong>AAA Normal</strong> — 7:1 minimum. Enhanced accessibility for body text.</li>
+        <li><strong>AAA Large</strong> — 4.5:1 minimum. Enhanced for large text.</li>
+      </ul>
+
+      <h3>🔤 What Counts as "Large Text"?</h3>
+      <p>WCAG defines large text as at least 18pt (24px) regular weight, or 14pt (18.66px) bold. If text is below that threshold, it falls under "Normal" requirements.</p>
+
+      <h3>💡 Pro Tips for Better Contrast</h3>
+      <ul>
+        <li>Dark text on light backgrounds is generally more readable than the reverse</li>
+        <li>Use the 60-30-10 rule: 60% dominant, 30% secondary, 10% accent color</li>
+        <li>Test on actual screens — different displays vary in brightness and calibration</li>
+        <li>Don't rely on color alone to convey information (e.g., use icons + color for status)</li>
+      </ul>
+
+      <h3>🔗 Related Tools</h3>
+      <p>Try the <a href="palette-generator">Palette Generator</a> for harmonious color schemes, and the <a href="color-picker">Color Picker</a> to find perfect colors.</p>
+    </div>
+
+    <footer>
+      <p>© 2026 HexColor Pro · <a href="index">Home</a> · <a href="privacy">Privacy</a> · <a href="terms">Terms</a> · <a href="contact">Contact</a></p>
+    </footer>
+  </div>
+
+  <div id="toast"></div>
+
+  <script>
+    function hexToRgb(hex) {
+      hex = hex.replace('#', '');
+      if (hex.length === 3) hex = hex.split('').map(c => c + c).join('');
+      return {
+        r: parseInt(hex.substring(0, 2), 16),
+        g: parseInt(hex.substring(2, 4), 16),
+        b: parseInt(hex.substring(4, 6), 16)
+      };
+    }
+
+    function rgbToHex(r, g, b) {
+      return '#' + [r, g, b].map(x => {
+        const h = Math.round(Math.max(0, Math.min(255, x))).toString(16);
+        return h.length === 1 ? '0' + h : h;
+      }).join('');
+    }
+
+    function luminance(r, g, b) {
+      const a = [r, g, b].map(v => {
+        v /= 255;
+        return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4);
+      });
+      return a[0] * 0.2126 + a[1] * 0.7152 + a[2] * 0.0722;
+    }
+
+    function contrastRatio(hex1, hex2) {
+      const c1 = hexToRgb(hex1), c2 = hexToRgb(hex2);
+      const l1 = luminance(c1.r, c1.g, c1.b);
+      const l2 = luminance(c2.r, c2.g, c2.b);
+      const lighter = Math.max(l1, l2), darker = Math.min(l1, l2);
+      return (lighter + 0.05) / (darker + 0.05);
+    }
+
+    function isValidHex(hex) {
+      return /^#?([0-9A-Fa-f]{3}|[0-9A-Fa-f]{6})$/.test(hex);
+    }
+
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg; t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 1500);
+    }
+
+    function findBetterColor(fgHex, bgHex, targetRatio) {
+      const bg = hexToRgb(bgHex);
+      const fg = hexToRgb(fgHex);
+      const bgLum = luminance(bg.r, bg.g, bg.b);
+      
+      // Try darkening/lightening foreground
+      const isFgLighter = luminance(fg.r, fg.g, fg.b) > bgLum;
+      let best = null, bestRatio = contrastRatio(fgHex, bgHex);
+      
+      for (let step = 1; step <= 100; step++) {
+        const factor = isFgLighter ? 1 + step * 0.01 : 1 - step * 0.01;
+        let newColor;
+        if (isFgLighter) {
+          newColor = rgbToHex(
+            Math.min(255, fg.r + (255 - fg.r) * step * 0.02),
+            Math.min(255, fg.g + (255 - fg.g) * step * 0.02),
+            Math.min(255, fg.b + (255 - fg.b) * step * 0.02)
+          );
+        } else {
+          newColor = rgbToHex(
+            Math.max(0, fg.r * (1 - step * 0.02)),
+            Math.max(0, fg.g * (1 - step * 0.02)),
+            Math.max(0, fg.b * (1 - step * 0.02))
+          );
+        }
+        const r = contrastRatio(newColor, bgHex);
+        if (r >= targetRatio) {
+          return newColor;
+        }
+      }
+      return null;
+    }
+
+    function update() {
+      let fg = document.getElementById('fgHex').value.trim();
+      let bg = document.getElementById('bgHex').value.trim();
+      if (!fg.startsWith('#')) fg = '#' + fg;
+      if (!bg.startsWith('#')) bg = '#' + bg;
+      if (!isValidHex(fg) || !isValidHex(bg)) return;
+
+      fg = fg.toLowerCase(); bg = bg.toLowerCase();
+      
+      document.getElementById('fgPicker').value = fg;
+      document.getElementById('bgPicker').value = bg;
+      
+      const preview = document.getElementById('previewBox');
+      preview.style.backgroundColor = bg;
+      preview.style.color = fg;
+
+      const ratio = contrastRatio(fg, bg);
+      document.getElementById('ratioNumber').textContent = ratio.toFixed(2) + ':1';
+
+      const aaNormal = ratio >= 4.5;
+      const aaLarge = ratio >= 3;
+      const aaaNormal = ratio >= 7;
+      const aaaLarge = ratio >= 4.5;
+
+      function setBadge(id, statusId, pass, label, required) {
+        const el = document.getElementById(id);
+        const s = document.getElementById(statusId);
+        el.className = 'badge ' + (pass ? 'badge-pass' : 'badge-fail');
+        s.textContent = (pass ? '✓ PASS' : '✗ FAIL') + ` — ${required}:1 required`;
+      }
+
+      setBadge('badgeAANormal', 'statusAANormal', aaNormal, 'AA Normal', '4.5');
+      setBadge('badgeAALarge', 'statusAALarge', aaLarge, 'AA Large', '3');
+      setBadge('badgeAAANormal', 'statusAAANormal', aaaNormal, 'AAA Normal', '7');
+      setBadge('badgeAAALarge', 'statusAAALarge', aaaLarge, 'AAA Large', '4.5');
+
+      // Suggestions
+      const sugBox = document.getElementById('suggestionBox');
+      const sugEl = document.getElementById('suggestions');
+      if (!aaNormal) {
+        sugBox.style.display = 'block';
+        const betterFg = findBetterColor(fg, bg, 4.5);
+        const betterBg = findBetterColor(bg, fg, 4.5);
+        let html = '';
+        if (betterFg) {
+          html += `<span class="suggestion-swatch" onclick="document.getElementById('fgHex').value='${betterFg}';update()">
+            <span style="background:${betterFg};"></span> ${betterFg} (text)
+          </span>`;
+        }
+        if (betterBg) {
+          html += `<span class="suggestion-swatch" onclick="document.getElementById('bgHex').value='${betterBg}';update()">
+            <span style="background:${betterBg};"></span> ${betterBg} (bg)
+          </span>`;
+        }
+        sugEl.innerHTML = html || 'Try increasing the difference between the two colors.';
+      } else {
+        sugBox.style.display = 'none';
+      }
+    }
+
+    document.getElementById('fgPicker').addEventListener('input', e => {
+      document.getElementById('fgHex').value = e.target.value;
+      update();
+    });
+    document.getElementById('bgPicker').addEventListener('input', e => {
+      document.getElementById('bgHex').value = e.target.value;
+      update();
+    });
+    document.getElementById('fgHex').addEventListener('input', update);
+    document.getElementById('bgHex').addEventListener('input', update);
+    document.getElementById('fgHex').addEventListener('blur', function() {
+      let v = this.value; if (!v.startsWith('#')) v = '#' + v;
+      if (isValidHex(v)) this.value = v.toLowerCase();
+    });
+    document.getElementById('bgHex').addEventListener('blur', function() {
+      let v = this.value; if (!v.startsWith('#')) v = '#' + v;
+      if (isValidHex(v)) this.value = v.toLowerCase();
+    });
+
+    update();
+  </script>
+  <script src="ads.js?v=3"></script>
+</body>
+</html>

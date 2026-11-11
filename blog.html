@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Color Design Blog - Tips, Tutorials & Guides | HexColor Pro</title>
+  <meta name="description" content="Learn color theory, web design tips, UI best practices, and more. Practical guides for designers and developers.">
+  <meta name="keywords" string="true">color design blog, color theory, web design, ui design, color psychology, design tips">
+  <link rel="canonical" href="https://hexcolorpro.pages.dev/blog">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #0f172a; --surface: #1e293b; --surface-light: #334155;
+      --text: #f1f5f9; --text-muted: #94a3b8; --accent: #6366f1;
+      --radius: 12px; --shadow: 0 4px 20px rgba(0,0,0,0.3);
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg); color: var(--text); line-height: 1.6; min-height: 100vh;
+    }
+    .container { max-width: 1100px; margin: 0 auto; padding: 20px; }
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 16px 0; margin-bottom: 20px; }
+    .logo {
+      font-size: 1.4rem; font-weight: 700;
+      background: linear-gradient(135deg, #6366f1, #ec4899);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+      text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 20px; }
+    .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 0.95rem; }
+    .nav-links a:hover { color: var(--text); }
+    .blog-header { text-align: center; margin: 30px 0 40px; }
+    .blog-header h1 {
+      font-size: 2.5rem; font-weight: 800;
+      background: linear-gradient(135deg, #6366f1, #ec4899);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .blog-header p { color: var(--text-muted); margin-top: 10px; font-size: 1.1rem; }
+    .breadcrumb { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 16px; }
+    .breadcrumb a { color: var(--accent); text-decoration: none; }
+
+    .posts-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px; margin-bottom: 40px;
+    }
+    .post-card {
+      background: var(--surface); border-radius: var(--radius); overflow: hidden;
+      box-shadow: var(--shadow); cursor: pointer; transition: transform 0.2s, box-shadow 0.2s;
+      text-decoration: none; color: inherit; display: flex; flex-direction: column;
+    }
+    .post-card:hover { transform: translateY(-4px); box-shadow: 0 8px 30px rgba(0,0,0,0.4); }
+    .post-cover {
+      height: 160px; display: flex; align-items: center; justify-content: center;
+      font-size: 3rem; position: relative;
+    }
+    .post-cover::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(to bottom, transparent 50%, rgba(0,0,0,0.3));
+    }
+    .post-body { padding: 20px; flex: 1; display: flex; flex-direction: column; }
+    .post-tag {
+      display: inline-block; padding: 4px 10px; background: var(--accent);
+      color: white; border-radius: 20px; font-size: 0.75rem; font-weight: 600;
+      margin-bottom: 10px; align-self: flex-start;
+    }
+    .post-card h3 { font-size: 1.15rem; margin-bottom: 8px; line-height: 1.4; }
+    .post-card p { color: var(--text-muted); font-size: 0.9rem; flex: 1; }
+    .post-meta {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-top: 12px; font-size: 0.8rem; color: var(--text-muted);
+    }
+
+    .ad-placeholder {
+      background: var(--surface); border: 2px dashed var(--surface-light);
+      border-radius: var(--radius); padding: 24px; text-align: center;
+      margin: 24px 0; color: var(--text-muted); font-size: 0.85rem;
+      min-height: 90px; display: flex; align-items: center; justify-content: center;
+    }
+    .ad-slot.ad-live {
+      margin: 24px 0; text-align: center; min-height: 0;
+      display: block; background: transparent; border: none; padding: 0;
+    }
+
+    footer {
+      margin-top: 60px; padding: 30px 20px; border-top: 1px solid var(--surface-light);
+      color: var(--text-muted); font-size: 0.9rem; text-align: center;
+    }
+    footer a { color: var(--accent); text-decoration: none; margin: 0 8px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <nav>
+      <a href="index" class="logo">🎨 HexColor Pro</a>
+      <div class="nav-links">
+        <a href="index#tools">All Tools</a>
+        <a href="blog">Blog</a>
+      </div>
+    </nav>
+
+    <div class="breadcrumb"><a href="index">Home</a> / Blog</div>
+
+    <div class="blog-header">
+      <h1>Color Design Blog</h1>
+      <p>Color theory, design tips, and practical guides for creators</p>
+    </div>
+
+    <div class="ad-slot" data-ad-slot="top" id="adTop">
+      <div class="ad-placeholder">Advertisement</div>
+    </div>
+
+    <div class="posts-grid">
+      <a class="post-card" href="blog/accessible-color-palette-healthcare">
+        <div class="post-cover" style="background: linear-gradient(135deg, #10b981, #3b82f6);">🏥</div>
+        <div class="post-body">
+          <span class="post-tag">Accessibility</span>
+          <h3>Accessible Color Palettes for Healthcare & Government Websites</h3>
+          <p>How to build WCAG-compliant color systems for healthcare, government, and public services where accessibility is the law.</p>
+          <div class="post-meta"><span>Nov 8, 2026</span><span>10 min read</span></div>
+        </div>
+      </a>
+      <a class="post-card" href="blog/saas-dashboard-color-palette">
+        <div class="post-cover" style="background: linear-gradient(135deg, #6366f1, #8b5cf6);">📊</div>
+        <div class="post-body">
+          <span class="post-tag">Design Systems</span>
+          <h3>Best Color Palettes for SaaS Dashboards in 2026</h3>
+          <p>Data visualization, status indicators, brand alignment — everything you need to pick dashboard colors that convert and clarify.</p>
+          <div class="post-meta"><span>Nov 8, 2026</span><span>9 min read</span></div>
+        </div>
+      </a>
+      <a class="post-card" href="blog/monochromatic-color-palette-generator">
+        <div class="post-cover" style="background: linear-gradient(135deg, #64748b, #334155);">⚫</div>
+        <div class="post-body">
+          <span class="post-tag">Design Tips</span>
+          <h3>How to Generate a Monochromatic Color Palette (With Tools)</h3>
+          <p>Monochrome palettes are elegant, but easy to get wrong. Learn the math behind tints, shades, and tones — plus a generator tool.</p>
+          <div class="post-meta"><span>Nov 8, 2026</span><span>8 min read</span></div>
+        </div>
+      </a>
+      <a class="post-card" href="blog/dark-mode-color-scheme-guide">
+        <div class="post-cover" style="background: linear-gradient(135deg, #1e293b, #64748b);">🌙</div>
+        <div class="post-body">
+          <span class="post-tag">Design Tips</span>
+          <h3>Dark Mode Color Schemes: A Complete Engineering Guide</h3>
+          <p>The technical side of dark mode: contrast math, surface levels, elevation, and how to build schemes that don't strain eyes.</p>
+          <div class="post-meta"><span>Nov 8, 2026</span><span>8 min read</span></div>
+        </div>
+      </a>
+      <a class="post-card" href="blog/wcag-contrast-ratio-guide">
+        <div class="post-cover" style="background: linear-gradient(135deg, #f59e0b, #10b981);">♿</div>
+        <div class="post-body">
+          <span class="post-tag">Accessibility</span>
+          <h3>WCAG Contrast Ratio: How to Calculate & Pass Every Test</h3>
+          <p>The full guide to WCAG 2.2 contrast requirements — AA vs AAA, how the math works, and the fastest way to fix failing colors.</p>
+          <div class="post-meta"><span>Nov 8, 2026</span><span>7 min read</span></div>
+        </div>
+      </a>
+      <a class="post-card" href="blog/hex-to-rgb-conversion-guide">
+        <div class="post-cover" style="background: linear-gradient(135deg, #ef4444, #8b5cf6);">🔢</div>
+        <div class="post-body">
+          <span class="post-tag">Color Basics</span>
+          <h3>Hex to RGB: Complete Conversion Guide (With Formula)</h3>
+          <p>Everything you need to know about converting hex codes to RGB — the formula, the code, the shortcuts, and real-world examples.</p>
+          <div class="post-meta"><span>Nov 8, 2026</span><span>6 min read</span></div>
+        </div>
+      </a>
+      <a class="post-card" href="blog/what-is-hsl-color">
+        <div class="post-cover" style="background: linear-gradient(135deg, #22c55e, #eab308);">🌈</div>
+        <div class="post-body">
+          <span class="post-tag">Color Theory</span>
+          <h3>What Is HSL Color? A Developer-Friendly Guide</h3>
+          <p>Hue, Saturation, Lightness — why HSL is the most intuitive color model for UI work, and how to use it like a pro.</p>
+          <div class="post-meta"><span>Nov 8, 2026</span><span>6 min read</span></div>
+        </div>
+      </a>
+      <a class="post-card" href="blog/how-many-hex-colors-are-there">
+        <div class="post-cover" style="background: linear-gradient(135deg, #06b6d4, #ec4899);">🧮</div>
+        <div class="post-body">
+          <span class="post-tag">Color Basics</span>
+          <h3>How Many Hex Colors Are There? (It's More Than You Think)</h3>
+          <p>16,777,216 — or is it? Let's unpack the true number of hex colors, including alpha, named colors, and browser quirks.</p>
+          <div class="post-meta"><span>Nov 8, 2026</span><span>5 min read</span></div>
+        </div>
+      </a>
+      <a class="post-card" href="blog/what-color-is-ff0000">
+        <div class="post-cover" style="background: linear-gradient(135deg, #dc2626, #f97316);">❤️</div>
+        <div class="post-body">
+          <span class="post-tag">Color Basics</span>
+          <h3>What Color Is #FF0000? Understanding Hex Color Codes</h3>
+          <p>#FF0000 is red — but why? Learn how hex codes work, how to read them at a glance, and 50+ common hex colors memorized fast.</p>
+          <div class="post-meta"><span>Nov 8, 2026</span><span>7 min read</span></div>
+        </div>
+      </a>
+      <a class="post-card" href="blog/cmyk-to-rgb-difference">
+        <div class="post-cover" style="background: linear-gradient(135deg, #0ea5e9, #f472b6);">🖨️</div>
+        <div class="post-body">
+          <span class="post-tag">Color Theory</span>
+          <h3>CMYK vs RGB: Why Colors Look Different On Screen vs Print</h3>
+          <p>Why your printed flyer never matches the screen. Understand the physics of additive vs subtractive color, and how to fix it.</p>
+          <div class="post-meta"><span>Nov 8, 2026</span><span>7 min read</span></div>
+        </div>
+      </a>
+      <a class="post-card" href="blog/color-psychology-branding">
+        <div class="post-cover" style="background: linear-gradient(135deg, #ec4899, #8b5cf6);">🧠</div>
+        <div class="post-body">
+          <span class="post-tag">Color Theory</span>
+          <h3>Color Psychology in Branding: What Your Colors Say About You</h3>
+          <p>From trust (blue) to urgency (red) — how colors shape perception and how to choose brand colors that match your message.</p>
+          <div class="post-meta"><span>Nov 7, 2026</span><span>7 min read</span></div>
+        </div>
+      </a>
+      <a class="post-card" href="blog/dark-mode-design-best-practices">
+        <div class="post-cover" style="background: linear-gradient(135deg, #1e1b4b, #6366f1);">🌃</div>
+        <div class="post-body">
+          <span class="post-tag">Design Tips</span>
+          <h3>Dark Mode Design Best Practices for 2026</h3>
+          <p>Dark mode isn't just inverting colors. Here are the 12 rules every designer should follow for accessible, beautiful dark UIs.</p>
+          <div class="post-meta"><span>Nov 7, 2026</span><span>8 min read</span></div>
+        </div>
+      </a>
+      <a class="post-card" href="blog/web-color-palette-guide">
+        <div class="post-cover" style="background: linear-gradient(135deg, #0d9488, #4f46e5);">🎨</div>
+        <div class="post-body">
+          <span class="post-tag">Design Tips</span>
+          <h3>Web Color Palette Guide: Pick Colors Users Will Love</h3>
+          <p>A step-by-step guide to building effective web color palettes — from primary colors to neutrals to accent shades.</p>
+          <div class="post-meta"><span>Nov 7, 2026</span><span>8 min read</span></div>
+        </div>
+      </a>
+      <a class="post-card" href="blog/gradient-design-trends-2026">
+        <div class="post-cover" style="background: linear-gradient(135deg, #f59e0b, #ec4899);">✨</div>
+        <div class="post-body">
+          <span class="post-tag">Trends</span>
+          <h3>Gradient Design Trends 2026: What's In & What's Out</h3>
+          <p>Mesh gradients, grain gradients, aurora effects — the gradient styles taking over UI design in 2026, and how to make them.</p>
+          <div class="post-meta"><span>Nov 7, 2026</span><span>6 min read</span></div>
+        </div>
+      </a>
+      <a class="post-card" href="blog/color-theory-basics">
+        <div class="post-cover" style="background: linear-gradient(135deg, #6366f1, #ec4899);">🎨</div>
+        <div class="post-body">
+          <span class="post-tag">Color Theory</span>
+          <h3>Color Theory Basics Every Designer Should Know</h3>
+          <p>The fundamentals: color wheel, harmonies, temperature, value, and how to combine colors that actually look good together.</p>
+          <div class="post-meta"><span>Nov 7, 2026</span><span>8 min read</span></div>
+        </div>
+      </a>
+      <a class="post-card" href="blog/contrast-accessibility-guide">
+        <div class="post-cover" style="background: linear-gradient(135deg, #f59e0b, #ef4444);">♿</div>
+        <div class="post-body">
+          <span class="post-tag">Accessibility</span>
+          <h3>The Complete Guide to Color Contrast & Accessibility</h3>
+          <p>Everything you need to know about color contrast, WCAG compliance, and building websites that work for everyone.</p>
+          <div class="post-meta"><span>Nov 7, 2026</span><span>7 min read</span></div>
+        </div>
+      </a>
+    </div>
+
+    <div class="ad-slot" data-ad-slot="bottom" id="adBottom">
+      <div class="ad-placeholder">Advertisement</div>
+    </div>
+
+    <footer>
+      <p>© 2026 HexColor Pro · <a href="index">Home</a> · <a href="privacy">Privacy</a> · <a href="terms">Terms</a> · <a href="contact">Contact</a></p>
+    </footer>
+  </div>
+  <script src="ads.js?v=3"></script>
+</body>
+</html>

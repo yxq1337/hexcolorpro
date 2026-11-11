@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Color Picker - Free Online HEX, RGB, HSL Color Picker | HexColor Pro</title>
+  <meta name="description" content="Free online color picker. Pick any color and get HEX, RGB, HSL, HSV, CMYK values instantly. Save recent colors and copy to clipboard.">
+  <meta name="keywords" content="color picker, hex color picker, rgb picker, hsl picker, color selector, eye dropper">
+  <link rel="canonical" href="https://hexcolorpro.pages.dev/color-picker">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #0f172a; --surface: #1e293b; --surface-light: #334155;
+      --text: #f1f5f9; --text-muted: #94a3b8; --accent: #6366f1;
+      --accent-hover: #818cf8; --radius: 12px; --shadow: 0 4px 20px rgba(0,0,0,0.3);
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg); color: var(--text); line-height: 1.6; min-height: 100vh;
+    }
+    .container { max-width: 1000px; margin: 0 auto; padding: 20px; }
+    nav {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 16px 0; margin-bottom: 20px;
+    }
+    .logo {
+      font-size: 1.4rem; font-weight: 700;
+      background: linear-gradient(135deg, #6366f1, #ec4899);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+      text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 20px; }
+    .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 0.95rem; }
+    .nav-links a:hover { color: var(--text); }
+
+    .page-header { text-align: center; margin: 20px 0 30px; }
+    .page-header h1 {
+      font-size: 2.2rem; font-weight: 700;
+      background: linear-gradient(135deg, #6366f1, #ec4899);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .page-header p { color: var(--text-muted); margin-top: 8px; font-size: 1.05rem; }
+
+    .card {
+      background: var(--surface); border-radius: var(--radius);
+      padding: 28px; box-shadow: var(--shadow); margin-bottom: 24px;
+    }
+    .card h2 { font-size: 1.3rem; margin-bottom: 16px; }
+
+    .color-display {
+      width: 100%; height: 200px; border-radius: var(--radius);
+      margin-bottom: 20px; border: 2px solid var(--surface-light);
+      transition: background-color 0.15s;
+    }
+
+    .color-inputs {
+      display: grid; grid-template-columns: 1fr auto; gap: 12px; align-items: center;
+      margin-bottom: 20px;
+    }
+
+    input[type="color"] {
+      width: 64px; height: 52px; border: none; border-radius: 8px;
+      cursor: pointer; background: none;
+    }
+
+    input[type="text"] {
+      width: 100%; padding: 14px 16px; border: 2px solid var(--surface-light);
+      border-radius: 8px; background: var(--bg); color: var(--text);
+      font-size: 1rem; font-family: 'Courier New', monospace;
+    }
+    input[type="text"]:focus { outline: none; border-color: var(--accent); }
+
+    .color-values-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px;
+    }
+    @media (max-width: 600px) { .color-values-grid { grid-template-columns: 1fr; } }
+
+    .value-row {
+      background: var(--bg); border-radius: 8px; padding: 12px 16px;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .value-row .label {
+      font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase;
+      letter-spacing: 0.5px; font-weight: 600;
+    }
+    .value-row .value {
+      font-family: 'Courier New', monospace; font-size: 0.95rem;
+      font-weight: 600; cursor: pointer; padding: 4px 10px;
+      border-radius: 4px; transition: background 0.2s;
+    }
+    .value-row .value:hover { background: var(--surface-light); }
+
+    .section-title {
+      margin-top: 30px; margin-bottom: 12px; font-size: 1.1rem; color: var(--text-muted);
+      text-transform: uppercase; letter-spacing: 0.5px; font-size: 0.85rem;
+    }
+
+    .recent-colors {
+      display: flex; flex-wrap: wrap; gap: 8px;
+    }
+    .recent-color {
+      width: 40px; height: 40px; border-radius: 8px; cursor: pointer;
+      border: 2px solid var(--surface-light); transition: transform 0.15s;
+    }
+    .recent-color:hover { transform: scale(1.15); }
+
+    .copy-btn {
+      padding: 12px 24px; background: var(--accent); color: white;
+      border: none; border-radius: 8px; cursor: pointer; font-size: 0.95rem;
+      font-weight: 600; transition: background 0.2s; width: 100%;
+    }
+    .copy-btn:hover { background: var(--accent-hover); }
+
+    .ad-placeholder {
+      background: var(--surface); border: 2px dashed var(--surface-light);
+      border-radius: var(--radius); padding: 24px; text-align: center;
+      margin: 24px 0; color: var(--text-muted); font-size: 0.85rem;
+      min-height: 90px; display: flex; align-items: center; justify-content: center;
+    }
+    .ad-slot.ad-live {
+      margin: 24px 0; text-align: center; min-height: 0;
+      display: block; background: transparent; border: none; padding: 0;
+    }
+    .ad-slot.ad-live ins, .ad-slot.ad-live iframe { margin: 0 auto; display: block; }
+
+    .guide-section { margin-top: 40px; }
+    .guide-section h2 {
+      font-size: 1.5rem; margin-bottom: 16px;
+    }
+    .guide-section h3 {
+      font-size: 1.2rem; margin: 20px 0 10px; color: var(--accent);
+    }
+    .guide-section p { color: var(--text-muted); margin-bottom: 12px; }
+    .guide-section ul { margin: 12px 0 16px 20px; color: var(--text-muted); }
+    .guide-section li { margin-bottom: 6px; }
+    .guide-section code {
+      background: var(--surface-light); padding: 2px 8px; border-radius: 4px;
+      font-family: 'Courier New', monospace; font-size: 0.9em;
+    }
+
+    footer {
+      margin-top: 60px; padding: 30px 20px; border-top: 1px solid var(--surface-light);
+      color: var(--text-muted); font-size: 0.9rem; text-align: center;
+    }
+    footer a { color: var(--accent); text-decoration: none; margin: 0 8px; }
+
+    #toast {
+      position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%);
+      background: #10b981; color: white; padding: 12px 24px; border-radius: 8px;
+      font-size: 0.9rem; font-weight: 600; z-index: 1000; box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      opacity: 0; pointer-events: none; transition: opacity 0.3s;
+    }
+    #toast.show { opacity: 1; }
+
+    .breadcrumb {
+      color: var(--text-muted); font-size: 0.9rem; margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--accent); text-decoration: none; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <nav>
+      <a href="index" class="logo">🎨 HexColor Pro</a>
+      <div class="nav-links">
+        <a href="index#tools">All Tools</a>
+        <a href="blog">Blog</a>
+      </div>
+    </nav>
+
+    <div class="breadcrumb">
+      <a href="index">Home</a> / Color Picker
+    </div>
+
+    <div class="page-header">
+      <h1>Color Picker</h1>
+      <p>Pick any color and get instant HEX, RGB, HSL, HSV & CMYK values</p>
+    </div>
+
+    <div class="ad-slot" data-ad-slot="top" id="adTop">
+      <div class="ad-placeholder">Advertisement</div>
+    </div>
+
+    <div class="card">
+      <div class="color-display" id="colorDisplay" style="background-color: #6366f1;"></div>
+      
+      <div class="color-inputs">
+        <input type="text" id="hexInput" value="#6366f1" maxlength="7" aria-label="Hex color code">
+        <input type="color" id="colorPicker" value="#6366f1" aria-label="Color picker">
+      </div>
+
+      <h3 class="section-title">Color Values</h3>
+      <div class="color-values-grid">
+        <div class="value-row">
+          <span class="label">HEX</span>
+          <span class="value" id="hexValue">#6366f1</span>
+        </div>
+        <div class="value-row">
+          <span class="label">RGB</span>
+          <span class="value" id="rgbValue">99, 102, 241</span>
+        </div>
+        <div class="value-row">
+          <span class="label">HSL</span>
+          <span class="value" id="hslValue">239°, 84%, 67%</span>
+        </div>
+        <div class="value-row">
+          <span class="label">HSV</span>
+          <span class="value" id="hsvValue">239°, 59%, 95%</span>
+        </div>
+        <div class="value-row">
+          <span class="label">CMYK</span>
+          <span class="value" id="cmykValue">59%, 58%, 0%, 5%</span>
+        </div>
+        <div class="value-row">
+          <span class="label">Name</span>
+          <span class="value" id="nameValue">Royal Blue</span>
+        </div>
+      </div>
+
+      <h3 class="section-title">Recent Colors</h3>
+      <div class="recent-colors" id="recentColors"></div>
+    </div>
+
+    <div class="ad-slot" data-ad-slot="bottom" id="adBottom">
+      <div class="ad-placeholder">Advertisement</div>
+    </div>
+
+    <div class="guide-section">
+      <h2>How to Use the Color Picker</h2>
+      
+      <h3>🎯 What is a Color Picker?</h3>
+      <p>A color picker is a tool that lets you select and identify colors. It's essential for designers, developers, and anyone working with digital color. Our color picker gives you every color format you need in real-time.</p>
+
+      <h3>📋 What Do the Color Formats Mean?</h3>
+      <ul>
+        <li><strong>HEX (#RRGGBB)</strong> — The most common format for web design. Six hexadecimal digits representing red, green, and blue channels.</li>
+        <li><strong>RGB (Red, Green, Blue)</strong> — Additive color model used in screens. Each value ranges from 0-255.</li>
+        <li><strong>HSL (Hue, Saturation, Lightness)</strong> — Human-friendly color model. Hue = color (0-360°), Saturation = intensity, Lightness = brightness.</li>
+        <li><strong>HSV (Hue, Saturation, Value)</strong> — Similar to HSL but uses Value/brightness instead of lightness. Popular in design tools.</li>
+        <li><strong>CMYK (Cyan, Magenta, Yellow, Key)</strong> — Subtractive color model used for print. Key = black.</li>
+      </ul>
+
+      <h3>💡 Pro Tips</h3>
+      <ul>
+        <li>Click any value to copy it to your clipboard instantly</li>
+        <li>Your recent colors are saved automatically (in your browser)</li>
+        <li>Use the palette generator to build full color schemes from one color</li>
+        <li>Check contrast to make sure your text is accessible</li>
+      </ul>
+
+      <h3>🔗 Related Tools</h3>
+      <p>Check out our <a href="gradient-generator">Gradient Generator</a>, <a href="contrast-checker">Contrast Checker</a>, and <a href="palette-generator">Palette Generator</a> to take your color work to the next level.</p>
+    </div>
+
+    <footer>
+      <p>© 2026 HexColor Pro · <a href="index">Home</a> · <a href="privacy">Privacy</a> · <a href="terms">Terms</a> · <a href="contact">Contact</a></p>
+    </footer>
+  </div>
+
+  <div id="toast"></div>
+
+  <script>
+    // Color name database (subset of closest matches)
+    const colorNames = [
+      { name: "Crimson", hex: "#dc143c" }, { name: "Tomato", hex: "#ff6347" },
+      { name: "Orange Red", hex: "#ff4500" }, { name: "Dark Orange", hex: "#ff8c00" },
+      { name: "Orange", hex: "#ffa500" }, { name: "Gold", hex: "#ffd700" },
+      { name: "Yellow", hex: "#ffff00" }, { name: "Yellow Green", hex: "#9acd32" },
+      { name: "Lawn Green", hex: "#7cfc00" }, { name: "Lime", hex: "#00ff00" },
+      { name: "Spring Green", hex: "#00ff7f" }, { name: "Medium Spring Green", hex: "#00fa9a" },
+      { name: "Turquoise", hex: "#40e0d0" }, { name: "Cyan", hex: "#00ffff" },
+      { name: "Deep Sky Blue", hex: "#00bfff" }, { name: "Dodger Blue", hex: "#1e90ff" },
+      { name: "Royal Blue", hex: "#4169e1" }, { name: "Medium Blue", hex: "#0000cd" },
+      { name: "Blue", hex: "#0000ff" }, { name: "Dark Blue", hex: "#00008b" },
+      { name: "Midnight Blue", hex: "#191970" }, { name: "Indigo", hex: "#4b0082" },
+      { name: "Dark Violet", hex: "#9400d3" }, { name: "Purple", hex: "#800080" },
+      { name: "Magenta", hex: "#ff00ff" }, { name: "Deep Pink", hex: "#ff1493" },
+      { name: "Hot Pink", hex: "#ff69b4" }, { name: "Pink", hex: "#ffc0cb" },
+      { name: "Red", hex: "#ff0000" }, { name: "Fire Brick", hex: "#b22222" },
+      { name: "Dark Red", hex: "#8b0000" }, { name: "Maroon", hex: "#800000" },
+      { name: "Brown", hex: "#a52a2a" }, { name: "Saddle Brown", hex: "#8b4513" },
+      { name: "Chocolate", hex: "#d2691e" }, { name: "Peru", hex: "#cd853f" },
+      { name: "Sandy Brown", hex: "#f4a460" }, { name: "Burly Wood", hex: "#deb887" },
+      { name: "Tan", hex: "#d2b48c" }, { name: "Wheat", hex: "#f5deb3" },
+      { name: "Khaki", hex: "#f0e68c" }, { name: "Olive", hex: "#808000" },
+      { name: "Olive Drab", hex: "#6b8e23" }, { name: "Forest Green", hex: "#228b22" },
+      { name: "Sea Green", hex: "#2e8b57" }, { name: "Teal", hex: "#008080" },
+      { name: "Dark Cyan", hex: "#008b8b" }, { name: "Steel Blue", hex: "#4682b4" },
+      { name: "Slate Blue", hex: "#6a5acd" }, { name: "Blue Violet", hex: "#8a2be2" },
+      { name: "Medium Orchid", hex: "#ba55d3" }, { name: "Pale Violet Red", hex: "#db7093" },
+      { name: "Indian Red", hex: "#cd5c5c" }, { name: "Light Coral", hex: "#f08080" },
+      { name: "Dark Salmon", hex: "#e9967a" }, { name: "Coral", hex: "#ff7f50" },
+      { name: "Light Salmon", hex: "#ffa07a" }, { name: "Peach Puff", hex: "#ffdab9" },
+      { name: "Moccasin", hex: "#ffe4b5" }, { name: "Pale Goldenrod", hex: "#eee8aa" },
+      { name: "Light Yellow", hex: "#ffffe0" }, { name: "Light Green", hex: "#90ee90" },
+      { name: "Pale Green", hex: "#98fb98" }, { name: "Aquamarine", hex: "#7fffd4" },
+      { name: "Pale Turquoise", hex: "#afeeee" }, { name: "Light Blue", hex: "#add8e6" },
+      { name: "Light Sky Blue", hex: "#87cefa" }, { name: "Lavender", hex: "#e6e6fa" },
+      { name: "Thistle", hex: "#d8bfd8" }, { name: "Plum", hex: "#dda0dd" },
+      { name: "Violet", hex: "#ee82ee" }, { name: "Orchid", hex: "#da70d6" },
+      { name: "Light Pink", hex: "#ffb6c1" }, { name: "Misty Rose", hex: "#ffe4e1" },
+      { name: "White", hex: "#ffffff" }, { name: "Snow", hex: "#fffafa" },
+      { name: "Ghost White", hex: "#f8f8ff" }, { name: "Alice Blue", hex: "#f0f8ff" },
+      { name: "Azure", hex: "#f0ffff" }, { name: "Ivory", hex: "#fffff0" },
+      { name: "Beige", hex: "#f5f5dc" }, { name: "Linen", hex: "#faf0e6" },
+      { name: "Lavender Blush", hex: "#fff0f5" }, { name: "Old Lace", hex: "#fdf5e6" },
+      { name: "Silver", hex: "#c0c0c0" }, { name: "Gainsboro", hex: "#dcdcdc" },
+      { name: "Light Gray", hex: "#d3d3d3" }, { name: "Dark Gray", hex: "#a9a9a9" },
+      { name: "Gray", hex: "#808080" }, { name: "Dim Gray", hex: "#696969" },
+      { name: "Slate Gray", hex: "#708090" }, { name: "Dark Slate Gray", hex: "#2f4f4f" },
+      { name: "Black", hex: "#000000" }
+    ];
+
+    function findClosestColor(hex) {
+      const rgb = hexToRgb(hex);
+      let minDist = Infinity, closest = colorNames[0];
+      for (const c of colorNames) {
+        const cRgb = hexToRgb(c.hex);
+        const dist = Math.sqrt(
+          Math.pow(rgb.r - cRgb.r, 2) +
+          Math.pow(rgb.g - cRgb.g, 2) +
+          Math.pow(rgb.b - cRgb.b, 2)
+        );
+        if (dist < minDist) { minDist = dist; closest = c; }
+      }
+      return closest.name;
+    }
+
+    function hexToRgb(hex) {
+      hex = hex.replace('#', '');
+      if (hex.length === 3) hex = hex.split('').map(c => c + c).join('');
+      return {
+        r: parseInt(hex.substring(0, 2), 16),
+        g: parseInt(hex.substring(2, 4), 16),
+        b: parseInt(hex.substring(4, 6), 16)
+      };
+    }
+
+    function rgbToHex(r, g, b) {
+      return '#' + [r, g, b].map(x => {
+        const h = Math.round(Math.max(0, Math.min(255, x))).toString(16);
+        return h.length === 1 ? '0' + h : h;
+      }).join('');
+    }
+
+    function rgbToHsl(r, g, b) {
+      r /= 255; g /= 255; b /= 255;
+      const max = Math.max(r, g, b), min = Math.min(r, g, b);
+      let h, s, l = (max + min) / 2;
+      if (max === min) { h = s = 0; }
+      else {
+        const d = max - min;
+        s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+        switch (max) {
+          case r: h = (g - b) / d + (g < b ? 6 : 0); break;
+          case g: h = (b - r) / d + 2; break;
+          case b: h = (r - g) / d + 4; break;
+        }
+        h /= 6;
+      }
+      return { h: Math.round(h * 360), s: Math.round(s * 100), l: Math.round(l * 100) };
+    }
+
+    function rgbToHsv(r, g, b) {
+      r /= 255; g /= 255; b /= 255;
+      const max = Math.max(r, g, b), min = Math.min(r, g, b);
+      let h, s, v = max;
+      const d = max - min;
+      s = max === 0 ? 0 : d / max;
+      if (max === min) { h = 0; }
+      else {
+        switch (max) {
+          case r: h = (g - b) / d + (g < b ? 6 : 0); break;
+          case g: h = (b - r) / d + 2; break;
+          case b: h = (r - g) / d + 4; break;
+        }
+        h /= 6;
+      }
+      return { h: Math.round(h * 360), s: Math.round(s * 100), v: Math.round(v * 100) };
+    }
+
+    function rgbToCmyk(r, g, b) {
+      r /= 255; g /= 255; b /= 255;
+      const k = 1 - Math.max(r, g, b);
+      if (k === 1) return { c: 0, m: 0, y: 0, k: 100 };
+      const c = (1 - r - k) / (1 - k);
+      const m = (1 - g - k) / (1 - k);
+      const y = (1 - b - k) / (1 - k);
+      return {
+        c: Math.round(c * 100), m: Math.round(m * 100),
+        y: Math.round(y * 100), k: Math.round(k * 100)
+      };
+    }
+
+    function isValidHex(hex) {
+      return /^#?([0-9A-Fa-f]{3}|[0-9A-Fa-f]{6})$/.test(hex);
+    }
+
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg; t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 1500);
+    }
+
+    let currentColor = '#6366f1';
+    let recentColors = JSON.parse(localStorage.getItem('recentColors') || '[]');
+
+    function updateColor(hex) {
+      if (!isValidHex(hex)) return;
+      hex = hex.startsWith('#') ? hex.toLowerCase() : '#' + hex.toLowerCase();
+      currentColor = hex;
+
+      document.getElementById('colorDisplay').style.backgroundColor = hex;
+      document.getElementById('colorPicker').value = hex;
+      document.getElementById('hexInput').value = hex;
+      document.getElementById('hexValue').textContent = hex;
+
+      const rgb = hexToRgb(hex);
+      document.getElementById('rgbValue').textContent = `${rgb.r}, ${rgb.g}, ${rgb.b}`;
+
+      const hsl = rgbToHsl(rgb.r, rgb.g, rgb.b);
+      document.getElementById('hslValue').textContent = `${hsl.h}°, ${hsl.s}%, ${hsl.l}%`;
+
+      const hsv = rgbToHsv(rgb.r, rgb.g, rgb.b);
+      document.getElementById('hsvValue').textContent = `${hsv.h}°, ${hsv.s}%, ${hsv.v}%`;
+
+      const cmyk = rgbToCmyk(rgb.r, rgb.g, rgb.b);
+      document.getElementById('cmykValue').textContent = `${cmyk.c}%, ${cmyk.m}%, ${cmyk.y}%, ${cmyk.k}%`;
+
+      document.getElementById('nameValue').textContent = findClosestColor(hex);
+
+      addRecentColor(hex);
+    }
+
+    function addRecentColor(hex) {
+      recentColors = recentColors.filter(c => c !== hex);
+      recentColors.unshift(hex);
+      recentColors = recentColors.slice(0, 20);
+      localStorage.setItem('recentColors', JSON.stringify(recentColors));
+      renderRecent();
+    }
+
+    function renderRecent() {
+      const el = document.getElementById('recentColors');
+      el.innerHTML = recentColors.map(c =>
+        `<div class="recent-color" style="background:${c};" onclick="updateColor('${c}')" title="${c}"></div>`
+      ).join('');
+    }
+
+    // Copy values
+    document.querySelectorAll('.value').forEach(el => {
+      el.addEventListener('click', () => {
+        navigator.clipboard.writeText(el.textContent).then(() => {
+          showToast('Copied: ' + el.textContent);
+        });
+      });
+    });
+
+    document.getElementById('colorPicker').addEventListener('input', e => updateColor(e.target.value));
+    document.getElementById('hexInput').addEventListener('input', e => {
+      let v = e.target.value;
+      if (!v.startsWith('#')) v = '#' + v;
+      if (isValidHex(v)) updateColor(v);
+    });
+    document.getElementById('hexInput').addEventListener('blur', e => {
+      e.target.value = currentColor;
+    });
+
+    updateColor(currentColor);
+    renderRecent();
+  </script>
+  <script src="ads.js?v=3"></script>
+</body>
+</html>

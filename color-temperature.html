@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Color Temperature Calculator - Kelvin to RGB/HEX Converter | HexColor Pro</title>
+  <meta name="description" content="Convert color temperature in Kelvin to RGB and HEX values. Explore warm to cool lighting temperatures from candlelight to deep blue sky.">
+  <meta name="keywords" content="color temperature calculator, kelvin to rgb, color temperature chart, warm color temperature, cool color temperature">
+  <link rel="canonical" href="https://hexcolorpro.pages.dev/color-temperature">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #0f172a; --surface: #1e293b; --surface-light: #334155;
+      --text: #f1f5f9; --text-muted: #94a3b8; --accent: #6366f1;
+      --radius: 12px; --shadow: 0 4px 20px rgba(0,0,0,0.3);
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg); color: var(--text); line-height: 1.6; min-height: 100vh;
+    }
+    .container { max-width: 1000px; margin: 0 auto; padding: 20px; }
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 16px 0; margin-bottom: 20px; }
+    .logo {
+      font-size: 1.4rem; font-weight: 700;
+      background: linear-gradient(135deg, #6366f1, #ec4899);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+      text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 20px; }
+    .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 0.95rem; }
+    .nav-links a:hover { color: var(--text); }
+    .page-header { text-align: center; margin: 20px 0 30px; }
+    .page-header h1 {
+      font-size: 2.2rem; font-weight: 700;
+      background: linear-gradient(135deg, #6366f1, #ec4899);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .page-header p { color: var(--text-muted); margin-top: 8px; font-size: 1.05rem; }
+    .breadcrumb { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 16px; }
+    .breadcrumb a { color: var(--accent); text-decoration: none; }
+
+    .preview-row {
+      display: flex; gap: 20px; margin-bottom: 24px;
+      background: var(--surface); border-radius: var(--radius); padding: 28px;
+      box-shadow: var(--shadow);
+    }
+    .preview-swatch {
+      width: 140px; height: 140px; border-radius: var(--radius); flex-shrink: 0;
+      border: 3px solid var(--surface-light); background: #6366f1;
+    }
+    .preview-info { flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 8px; }
+    .preview-info .title { font-size: 0.85rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; }
+    .preview-info .value { font-size: 1.4rem; font-family: 'Courier New', monospace; font-weight: 700; }
+
+    .converter-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px;
+      margin-bottom: 24px;
+    }
+    .converter-card {
+      background: var(--surface); border-radius: var(--radius); padding: 20px;
+      box-shadow: var(--shadow);
+    }
+    .converter-card h3 {
+      font-size: 1rem; margin-bottom: 12px; color: var(--accent);
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .copy-btn {
+      padding: 4px 10px; font-size: 0.75rem; border: none; border-radius: 5px;
+      background: var(--surface-light); color: var(--text); cursor: pointer; font-weight: 600;
+    }
+    .copy-btn:hover { background: #475569; }
+    .converter-card .field { margin-bottom: 8px; }
+    .converter-card label {
+      display: block; font-size: 0.75rem; color: var(--text-muted);
+      margin-bottom: 3px; text-transform: uppercase; letter-spacing: 0.5px;
+    }
+    .converter-card input {
+      width: 100%; padding: 8px 10px; border: 2px solid var(--surface-light);
+      border-radius: 6px; background: var(--bg); color: var(--text);
+      font-family: 'Courier New', monospace; font-size: 0.9rem;
+    }
+    .converter-card input:focus { outline: none; border-color: var(--accent); }
+
+    .picker-row {
+      display: flex; gap: 12px; align-items: center;
+      background: var(--surface); border-radius: var(--radius); padding: 20px;
+      box-shadow: var(--shadow); margin-bottom: 24px;
+    }
+    .picker-row input[type="color"] {
+      width: 50px; height: 50px; border: none; border-radius: 8px; cursor: pointer; background: none;
+    }
+    .picker-row input[type="text"] {
+      flex: 1; padding: 14px 16px; border: 2px solid var(--surface-light);
+      border-radius: 8px; background: var(--bg); color: var(--text);
+      font-family: 'Courier New', monospace; font-size: 1rem;
+    }
+    .picker-row input[type="text"]:focus { outline: none; border-color: var(--accent); }
+    .btn {
+      padding: 14px 20px; border: none; border-radius: 8px; cursor: pointer;
+      font-size: 0.9rem; font-weight: 600; transition: background 0.2s;
+    }
+    .btn-secondary { background: var(--surface-light); color: var(--text); }
+    .btn-secondary:hover { background: #475569; }
+
+    .ad-placeholder {
+      background: var(--surface); border: 2px dashed var(--surface-light);
+      border-radius: var(--radius); padding: 24px; text-align: center;
+      margin: 24px 0; color: var(--text-muted); font-size: 0.85rem;
+      min-height: 90px; display: flex; align-items: center; justify-content: center;
+    }
+    .ad-slot.ad-live {
+      margin: 24px 0; text-align: center; min-height: 0;
+      display: block; background: transparent; border: none; padding: 0;
+    }
+
+    .guide-section { margin-top: 40px; }
+    .guide-section h2 { font-size: 1.5rem; margin-bottom: 16px; }
+    .guide-section h3 { font-size: 1.2rem; margin: 20px 0 10px; color: var(--accent); }
+    .guide-section p { color: var(--text-muted); margin-bottom: 12px; }
+    .guide-section ul { margin: 12px 0 16px 20px; color: var(--text-muted); }
+    .guide-section li { margin-bottom: 6px; }
+
+    footer {
+      margin-top: 60px; padding: 30px 20px; border-top: 1px solid var(--surface-light);
+      color: var(--text-muted); font-size: 0.9rem; text-align: center;
+    }
+    footer a { color: var(--accent); text-decoration: none; margin: 0 8px; }
+
+    #toast {
+      position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%);
+      background: #10b981; color: white; padding: 12px 24px; border-radius: 8px;
+      font-size: 0.9rem; font-weight: 600; z-index: 1000; opacity: 0; pointer-events: none;
+      transition: opacity 0.3s;
+    }
+    #toast.show { opacity: 1; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <nav>
+      <a href="index" class="logo">🎨 HexColor Pro</a>
+      <div class="nav-links">
+        <a href="index#tools">All Tools</a>
+        <a href="blog">Blog</a>
+      </div>
+    </nav>
+
+    <div class="breadcrumb"><a href="index">Home</a> / Color Converter</div>
+
+    <div class="page-header">
+      <h1>Color Temperature Calculator</h1>
+      <p>Convert Kelvin temperature to RGB/HEX color. From warm candlelight to cool blue sky.</p>
+    </div>
+
+    <div class="ad-slot" data-ad-slot="top" id="adTop">
+      <div class="ad-placeholder">Advertisement</div>
+    </div>
+
+    
+
+
+    <div class="ad-slot" data-ad-slot="top" id="adTop">
+      <div class="ad-placeholder">Advertisement</div>
+    </div>
+
+    <div style="background: var(--surface); border-radius: var(--radius); padding: 28px; box-shadow: var(--shadow); margin-bottom: 24px;">
+      <h3 style="margin-bottom: 8px;">Color Temperature Calculator</h3>
+      <p style="color: var(--text-muted); margin-bottom: 24px;">Convert between Kelvin temperature and RGB/HEX color values. From warm candlelight to cool daylight.</p>
+      
+      <div style="display: flex; gap: 24px; flex-wrap: wrap; align-items: stretch;">
+        <div style="flex: 1; min-width: 250px;">
+          <label style="display: block; margin-bottom: 8px; color: var(--text-muted); font-size: 0.9rem;">Temperature (Kelvin)</label>
+          <div style="display: flex; align-items: center; gap: 12px;">
+            <input type="range" id="tempSlider" min="1000" max="40000" value="6500" step="100" style="flex: 1; accent-color: var(--accent);">
+            <input type="number" id="tempInput" value="6500" min="1000" max="40000" 
+                   style="width: 100px; padding: 8px; text-align: center; background: var(--surface-light); border: 1px solid var(--surface-light); color: var(--text); border-radius: 6px; font-size: 1rem; font-weight: 600;">
+            <span style="color: var(--text-muted);">K</span>
+          </div>
+          <div style="display: flex; justify-content: space-between; margin-top: 8px; color: var(--text-muted); font-size: 0.8rem;">
+            <span>Warm</span>
+            <span>Cool</span>
+          </div>
+        </div>
+        
+        <div style="flex: 1; min-width: 200px; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+          <div id="tempSwatch" style="width: 140px; height: 140px; border-radius: 50%; background: #fff5e6; border: 4px solid var(--surface-light); margin-bottom: 12px; box-shadow: 0 0 30px rgba(255,200,100,0.3);"></div>
+          <div class="value" id="tempHex" style="cursor: pointer; font-size: 1.3rem;">#FFF5E6</div>
+          <div style="color: var(--text-muted); font-size: 0.85rem; margin-top: 4px;">(click to copy)</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="converter-grid">
+      <div class="converter-card">
+        <div class="card-title">RGB</div>
+        <div class="value" id="tempRgb">rgb(255, 245, 230)</div>
+      </div>
+      <div class="converter-card">
+        <div class="card-title">HSL</div>
+        <div class="value" id="tempHsl">hsl(38, 100%, 95%)</div>
+      </div>
+      <div class="converter-card">
+        <div class="card-title">Description</div>
+        <div id="tempDesc" style="margin-top: 8px;">Daylight Neutral</div>
+      </div>
+    </div>
+
+    <div style="background: var(--surface); border-radius: var(--radius); padding: 24px; margin-bottom: 24px;">
+      <h3 style="margin-bottom: 16px;">Common Color Temperatures</h3>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px;">
+        <div class="preset-item" data-temp="1850" style="cursor: pointer; padding: 12px; border-radius: 8px; background: var(--surface-light); display: flex; align-items: center; gap: 12px;">
+          <div style="width: 36px; height: 36px; border-radius: 50%; background: #ff7b00;"></div>
+          <div><div style="font-weight: 600; font-size: 0.9rem;">Candle</div><div style="font-size: 0.8rem; color: var(--text-muted);">1850K</div></div>
+        </div>
+        <div class="preset-item" data-temp="2700" style="cursor: pointer; padding: 12px; border-radius: 8px; background: var(--surface-light); display: flex; align-items: center; gap: 12px;">
+          <div style="width: 36px; height: 36px; border-radius: 50%; background: #ffb46b;"></div>
+          <div><div style="font-weight: 600; font-size: 0.9rem;">Warm Bulb</div><div style="font-size: 0.8rem; color: var(--text-muted);">2700K</div></div>
+        </div>
+        <div class="preset-item" data-temp="3000" style="cursor: pointer; padding: 12px; border-radius: 8px; background: var(--surface-light); display: flex; align-items: center; gap: 12px;">
+          <div style="width: 36px; height: 36px; border-radius: 50%; background: #ffc58f;"></div>
+          <div><div style="font-weight: 600; font-size: 0.9rem;">Soft White</div><div style="font-size: 0.8rem; color: var(--text-muted);">3000K</div></div>
+        </div>
+        <div class="preset-item" data-temp="4000" style="cursor: pointer; padding: 12px; border-radius: 8px; background: var(--surface-light); display: flex; align-items: center; gap: 12px;">
+          <div style="width: 36px; height: 36px; border-radius: 50%; background: #ffe5c9;"></div>
+          <div><div style="font-weight: 600; font-size: 0.9rem;">Cool White</div><div style="font-size: 0.8rem; color: var(--text-muted);">4000K</div></div>
+        </div>
+        <div class="preset-item" data-temp="5000" style="cursor: pointer; padding: 12px; border-radius: 8px; background: var(--surface-light); display: flex; align-items: center; gap: 12px;">
+          <div style="width: 36px; height: 36px; border-radius: 50%; background: #fff2e0;"></div>
+          <div><div style="font-weight: 600; font-size: 0.9rem;">Daylight</div><div style="font-size: 0.8rem; color: var(--text-muted);">5000K</div></div>
+        </div>
+        <div class="preset-item" data-temp="6500" style="cursor: pointer; padding: 12px; border-radius: 8px; background: var(--surface-light); display: flex; align-items: center; gap: 12px;">
+          <div style="width: 36px; height: 36px; border-radius: 50%; background: #fff5e6; border: 1px solid var(--text-muted);"></div>
+          <div><div style="font-weight: 600; font-size: 0.9rem;">Neutral White</div><div style="font-size: 0.8rem; color: var(--text-muted);">6500K</div></div>
+        </div>
+        <div class="preset-item" data-temp="7500" style="cursor: pointer; padding: 12px; border-radius: 8px; background: var(--surface-light); display: flex; align-items: center; gap: 12px;">
+          <div style="width: 36px; height: 36px; border-radius: 50%; background: #e8f1ff;"></div>
+          <div><div style="font-weight: 600; font-size: 0.9rem;">Cool Daylight</div><div style="font-size: 0.8rem; color: var(--text-muted);">7500K</div></div>
+        </div>
+        <div class="preset-item" data-temp="10000" style="cursor: pointer; padding: 12px; border-radius: 8px; background: var(--surface-light); display: flex; align-items: center; gap: 12px;">
+          <div style="width: 36px; height: 36px; border-radius: 50%; background: #c9e0ff;"></div>
+          <div><div style="font-weight: 600; font-size: 0.9rem;">Sky Blue</div><div style="font-size: 0.8rem; color: var(--text-muted);">10000K</div></div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+  <script>
+    
+    function showToast(msg) {
+      var t = document.getElementById('toast');
+      t.textContent = msg; t.classList.add('show');
+      setTimeout(function(){ t.classList.remove('show'); }, 1500);
+    }
+    function copyText(text) {
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(text).then(function(){ showToast('Copied!'); });
+      } else {
+        var ta = document.createElement('textarea');
+        ta.value = text; document.body.appendChild(ta);
+        ta.select(); document.execCommand('copy');
+        document.body.removeChild(ta);
+        showToast('Copied!');
+      }
+    }
+    function rgbToHex(r, g, b) {
+      return '#' + [r,g,b].map(function(v) {
+        v = Math.max(0, Math.min(255, Math.round(v)));
+        return v.toString(16).padStart(2,'0');
+      }).join('');
+    }
+    function rgbToHsl(r,g,b) {
+      r/=255; g/=255; b/=255;
+      var max=Math.max(r,g,b), min=Math.min(r,g,b);
+      var h,s,l=(max+min)/2;
+      if (max===min) { h=s=0; }
+      else {
+        var d=max-min;
+        s=l>0.5?d/(2-max-min):d/(max+min);
+        switch(max) {
+          case r: h=(g-b)/d+(g<b?6:0); break;
+          case g: h=(b-r)/d+2; break;
+          case b: h=(r-g)/d+4; break;
+        }
+        h/=6;
+      }
+      return { h:Math.round(h*360), s:Math.round(s*100), l:Math.round(l*100) };
+    }
+    // Tanner Helland approximation for black body color
+    function kelvinToRgb(kelvin) {
+      var temp = kelvin / 100;
+      var r, g, b;
+      if (temp <= 66) {
+        r = 255;
+        g = temp;
+        g = 99.4708025861 * Math.log(g) - 161.1195681661;
+        if (temp <= 19) b = 0;
+        else {
+          b = temp - 10;
+          b = 138.5177312231 * Math.log(b) - 305.0447927307;
+        }
+      } else {
+        r = temp - 60;
+        r = 329.698727446 * Math.pow(r, -0.1332047592);
+        g = temp - 60;
+        g = 288.1221695283 * Math.pow(g, -0.0755148492);
+        b = 255;
+      }
+      return {
+        r: Math.max(0, Math.min(255, Math.round(r))),
+        g: Math.max(0, Math.min(255, Math.round(g))),
+        b: Math.max(0, Math.min(255, Math.round(b)))
+      };
+    }
+    function getTempDescription(k) {
+      if (k < 2000) return 'Candlelight';
+      if (k < 3000) return 'Warm Incandescent';
+      if (k < 4000) return 'Soft White';
+      if (k < 5000) return 'Cool White';
+      if (k < 6500) return 'Natural Daylight';
+      if (k < 8000) return 'Neutral White';
+      if (k < 12000) return 'Cool Blue Daylight';
+      if (k < 20000) return 'Overcast Sky';
+      return 'Deep Blue Sky';
+    }
+    function updateTemp() {
+      var k = parseInt(document.getElementById('tempSlider').value);
+      document.getElementById('tempInput').value = k;
+      var rgb = kelvinToRgb(k);
+      var hex = rgbToHex(rgb.r, rgb.g, rgb.b);
+      var hsl = rgbToHsl(rgb.r, rgb.g, rgb.b);
+      document.getElementById('tempSwatch').style.background = hex;
+      document.getElementById('tempSwatch').style.boxShadow = '0 0 30px ' + hex + '66';
+      document.getElementById('tempHex').textContent = hex.toUpperCase();
+      document.getElementById('tempRgb').textContent = 'rgb(' + rgb.r + ', ' + rgb.g + ', ' + rgb.b + ')';
+      document.getElementById('tempHsl').textContent = 'hsl(' + hsl.h + ', ' + hsl.s + '%, ' + hsl.l + '%)';
+      document.getElementById('tempDesc').textContent = getTempDescription(k);
+    }
+    document.getElementById('tempSlider').addEventListener('input', function() {
+      document.getElementById('tempInput').value = this.value;
+      updateTemp();
+    });
+    document.getElementById('tempInput').addEventListener('input', function() {
+      var v = parseInt(this.value);
+      if (v >= 1000 && v <= 40000) {
+        document.getElementById('tempSlider').value = v;
+        updateTemp();
+      }
+    });
+    document.getElementById('tempHex').addEventListener('click', function() {
+      copyText(this.textContent);
+    });
+    document.querySelectorAll('.preset-item').forEach(function(el) {
+      el.addEventListener('click', function() {
+        var t = this.getAttribute('data-temp');
+        document.getElementById('tempSlider').value = t;
+        document.getElementById('tempInput').value = t;
+        updateTemp();
+      });
+    });
+    updateTemp();
+    
+  </script>
+  <script src="ads.js?v=3"></script>
+</body>
+</html>

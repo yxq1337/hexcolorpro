@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dark Mode Design: Best Practices for Color Systems That Work | HexColor Pro Blog</title>
+  <meta name="description" content="How to design beautiful, usable dark mode interfaces — from choosing the right background black to handling accents, elevation, and accessibility.">
+  <meta name="keywords" string="true">dark mode design, dark theme, dark mode colors, UI design, color system dark mode">
+  <link rel="canonical" href="https://hexcolorpro.pages.dev/blog/dark-mode-design-best-practices">
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #0f172a; --surface: #1e293b; --surface-light: #334155;
+      --text: #f1f5f9; --text-muted: #94a3b8; --accent: #6366f1;
+      --radius: 12px;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg); color: var(--text); line-height: 1.7; min-height: 100vh;
+    }
+    .container { max-width: 800px; margin: 0 auto; padding: 20px; }
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 16px 0; margin-bottom: 20px; }
+    .logo {
+      font-size: 1.4rem; font-weight: 700;
+      background: linear-gradient(135deg, #6366f1, #ec4899);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+      text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 20px; }
+    .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 0.95rem; }
+    .nav-links a:hover { color: var(--text); }
+    .breadcrumb { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 24px; }
+    .breadcrumb a { color: var(--accent); text-decoration: none; }
+    .hero {
+      text-align: center; margin: 30px 0 40px;
+      padding: 40px 30px; border-radius: var(--radius);
+      background: linear-gradient(135deg, rgba(15,23,42,0.8), rgba(51,65,85,0.4));
+      border: 1px solid var(--surface-light);
+    }
+    .hero .tag {
+      display: inline-block; padding: 6px 14px; background: #0ea5e9;
+      color: white; border-radius: 20px; font-size: 0.8rem; font-weight: 600;
+      margin-bottom: 16px;
+    }
+    .hero h1 { font-size: 2rem; font-weight: 800; line-height: 1.3; margin-bottom: 12px; }
+    .hero p { color: var(--text-muted); margin-bottom: 16px; }
+    .hero .meta { font-size: 0.85rem; color: var(--text-muted); }
+    .article-body { font-size: 1.05rem; }
+    .article-body h2 { font-size: 1.6rem; margin: 36px 0 16px; color: #0ea5e9; }
+    .article-body h3 { font-size: 1.25rem; margin: 28px 0 12px; }
+    .article-body p { margin-bottom: 16px; color: #cbd5e1; }
+    .article-body ul, .article-body ol { margin: 16px 0 20px 24px; color: #cbd5e1; }
+    .article-body li { margin-bottom: 8px; }
+    .article-body strong { color: var(--text); }
+    .article-body code {
+      background: var(--surface); padding: 2px 8px; border-radius: 4px;
+      font-family: 'Courier New', monospace; font-size: 0.9rem;
+    }
+    .tip-box {
+      background: rgba(14,165,233,0.1); border-left: 4px solid #0ea5e9;
+      padding: 16px 20px; border-radius: 0 8px 8px 0; margin: 20px 0;
+    }
+    .tip-box strong { color: #0ea5e9; }
+    .bad-box {
+      background: rgba(239,68,68,0.1); border-left: 4px solid #ef4444;
+      padding: 16px 20px; border-radius: 0 8px 8px 0; margin: 20px 0;
+    }
+    .bad-box strong { color: #ef4444; }
+    .good-box {
+      background: rgba(16,185,129,0.1); border-left: 4px solid #10b981;
+      padding: 16px 20px; border-radius: 0 8px 8px 0; margin: 20px 0;
+    }
+    .good-box strong { color: #10b981; }
+    .color-swatch-row {
+      display: flex; gap: 8px; margin: 12px 0 20px;
+    }
+    .swatch {
+      flex: 1; height: 60px; border-radius: 6px;
+      display: flex; align-items: flex-end; justify-content: center;
+      padding-bottom: 4px; font-family: 'Courier New', monospace;
+      font-size: 0.7rem; color: rgba(255,255,255,0.8);
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+    .related { margin-top: 50px; padding-top: 30px; border-top: 1px solid var(--surface-light); }
+    .related h3 { margin-bottom: 16px; }
+    .related-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .related-card {
+      background: var(--surface); padding: 16px; border-radius: 8px; text-decoration: none;
+      color: inherit; transition: background 0.2s;
+    }
+    .related-card:hover { background: var(--surface-light); }
+    .related-card h4 { font-size: 0.95rem; margin-bottom: 4px; }
+    .related-card span { font-size: 0.8rem; color: var(--text-muted); }
+    .ad-placeholder {
+      background: var(--surface); border: 2px dashed var(--surface-light);
+      border-radius: var(--radius); padding: 24px; text-align: center;
+      margin: 30px 0; color: var(--text-muted); font-size: 0.85rem;
+      min-height: 90px; display: flex; align-items: center; justify-content: center;
+    }
+    .ad-slot.ad-live { margin: 30px 0; text-align: center; min-height: 0; display: block; background: transparent; border: none; padding: 0; }
+    footer {
+      margin-top: 60px; padding: 30px 20px; border-top: 1px solid var(--surface-light);
+      color: var(--text-muted); font-size: 0.9rem; text-align: center;
+    }
+    footer a { color: var(--accent); text-decoration: none; margin: 0 8px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <nav>
+      <a href="../index" class="logo">🎨 HexColor Pro</a>
+      <div class="nav-links">
+        <a href="../index#tools">All Tools</a>
+        <a href="../blog">Blog</a>
+      </div>
+    </nav>
+
+    <div class="breadcrumb"><a href="../index">Home</a> / <a href="../blog">Blog</a> / Design Tips</div>
+
+    <div class="hero">
+      <span class="tag">Design Tips</span>
+      <h1>Dark Mode Design: Best Practices for Color Systems That Work</h1>
+      <p>Everything you need to know to design beautiful, accessible dark mode interfaces.</p>
+      <div class="meta">Nov 7, 2026 · 10 min read</div>
+    </div>
+
+    <div class="ad-slot" data-ad-slot="top" id="adTop">
+      <div class="ad-placeholder">Advertisement</div>
+    </div>
+
+    <div class="article-body">
+      <p>Dark mode has gone from "nice to have" to table stakes. Users expect it. Operating systems support it natively. But designing a great dark mode is harder than just inverting colors — there are traps everywhere.</p>
+
+      <p>Let's break down the best practices for designing dark mode interfaces that look great, feel good to use, and pass accessibility standards.</p>
+
+      <h2>1. Don't Use Pure Black</h2>
+      <p>This is the #1 mistake people make when designing dark mode. Pure black (#000000) backgrounds cause a few problems:</p>
+
+      <ul>
+        <li><strong>Eye strain on OLED screens</strong> — Pure black causes high contrast that makes text harder to read for long periods.</li>
+        <li><strong>Black crush</strong> — Shadows and depth disappear against true black. Everything looks flat.</li>
+        <li><strong>Halation</strong> — Bright white text on pure black bleeds and glows, especially on OLED displays.</li>
+      </ul>
+
+      <p>Instead, use a dark gray background. Most design systems use something in the #0F172A to #1A1A1A range.</p>
+
+      <div class="bad-box">
+        <strong>❌ Bad:</strong> #000000 pure black background
+      </div>
+      <div class="good-box">
+        <strong>✅ Good:</strong> #0F172A (slate-900) or #18181B (zinc-900)
+      </div>
+
+      <p>Here's a good starting point for dark mode surfaces:</p>
+      <div class="color-swatch-row">
+        <div class="swatch" style="background:#0f172a">#0F172A</div>
+        <div class="swatch" style="background:#1e293b">#1E293B</div>
+        <div class="swatch" style="background:#334155">#334155</div>
+        <div class="swatch" style="background:#475569">#475569</div>
+        <div class="swatch" style="background:#64748b">#64748B</div>
+      </div>
+
+      <h2>2. Reduce Saturation in Dark Mode</h2>
+      <p>Colors appear more vivid on dark backgrounds. A blue that looks great on white might feel blinding or garish on dark gray.</p>
+
+      <p>Best practice: desaturate your accent colors by 10-30% for dark mode. Or shift them toward the lighter end of the spectrum (the 200-400 range instead of 500-700).</p>
+
+      <p>Material Design recommends using the 200 weight of your primary color for dark mode instead of the 500 you use in light mode.</p>
+
+      <h2>3. Rethink Elevation</h2>
+      <p>In light mode, you create depth with shadows. In dark mode, shadows barely register — you need a different approach.</p>
+
+      <p>Dark mode elevation works by <strong>lightening the background</strong>. A card sits above the page background, so it should be slightly lighter. A modal sits above everything, so it's lighter still.</p>
+
+      <p>A typical dark mode elevation scale:</p>
+      <ul>
+        <li><strong>Background (level 0):</strong> #0F172A — the page background</li>
+        <li><strong>Card (level 1):</strong> #1E293B — cards, inputs, nav bars</li>
+        <li><strong>Raised (level 2):</strong> #334155 — hovered cards, dropdowns</li>
+        <li><strong>Modal (level 3):</strong> #475569 — modals, popovers</li>
+      </ul>
+
+      <p>Some design systems add a subtle colored tint to elevated surfaces (a hint of blue or purple) to make the elevation feel more intentional.</p>
+
+      <h2>4. Pay Attention to Text Contrast</h2>
+      <p>Dark mode text contrast is trickier than it seems. Here's what you need to know:</p>
+
+      <h3>Don't use pure white text</h3>
+      <p>Pure white (#FFFFFF) on dark backgrounds creates halation — the text appears to glow and bleed into the background. Use off-white instead: #F8FAFC or #E2E8F0.</p>
+
+      <h3>Create a text hierarchy</h3>
+      <p>You need multiple text shades, just like in light mode:</p>
+      <ul>
+        <li><strong>Primary text:</strong> #F1F5F9 — body copy, headings</li>
+        <li><strong>Secondary text:</strong> #CBD5E1 — descriptions, metadata</li>
+        <li><strong>Muted text:</strong> #94A3B8 — captions, timestamps, disabled states</li>
+        <li><strong>Subtle text:</strong> #64748B — very subtle information</li>
+      </ul>
+
+      <div class="tip-box">
+        <strong>💡 Always test with a contrast checker.</strong> Dark mode contrast can be deceptive. What "feels" readable might fail WCAG AA. Use our <a href="../contrast-checker" style="color:#0ea5e9">Contrast Checker</a> to verify.
+      </div>
+
+      <h2>5. Watch Out for "Vibrating" Colors</h2>
+      <p>Certain color combinations in dark mode produce a vibrating, uncomfortable effect — especially saturated warm colors (red, orange, yellow) on dark backgrounds. The colors appear to flicker or buzz.</p>
+
+      <p>Fix it by:</p>
+      <ul>
+        <li>Desaturating the color</li>
+        <li>Making the color slightly lighter or slightly darker</li>
+        <li>Using a tint of the color instead of the pure hue</li>
+      </ul>
+
+      <h2>6. Borders & Dividers</h2>
+      <p>Dark mode borders should be subtle — but not invisible. Common mistake: borders that are too dark and disappear, or too light and look like fence posts.</p>
+
+      <p>A good rule: your default border should be just barely visible. If you can see it from across the room, it's too strong. Aim for something like #334155 on a #0F172A background.</p>
+
+      <p>For dividers between items, use even subtler borders — or skip borders entirely and use background color changes instead.</p>
+
+      <h2>7. Images in Dark Mode</h2>
+      <p>Images don't automatically work in dark mode. A bright photo on a dark background can be jarring. Options:</p>
+
+      <ul>
+        <li><strong>Dim images</strong> — Add a subtle dark overlay or reduce brightness in dark mode.</li>
+        <li><strong>Use dark mode specific images</strong> — If you control the images, provide both light and dark versions.</li>
+        <li><strong>Add a background</strong> — Put images inside a card so the transition from dark background to bright image is softer.</li>
+      </ul>
+
+      <h2>8. Icons & Illustrations</h2>
+      <p>Icons need the same treatment as text — make sure they have enough contrast but aren't harsh. Use the same color hierarchy you use for text (primary, secondary, muted).</p>
+
+      <p>For illustrations, consider swapping to darker versions. Many illustration libraries now provide both light and dark variants.</p>
+
+      <h2>9. System Color Scheme Support</h2>
+      <p>On the web, use <code>prefers-color-scheme</code> to automatically match the user's system preference:</p>
+
+      <p><code>@media (prefers-color-scheme: dark) { /* dark mode styles */ }</code></p>
+
+      <p>But always provide a manual toggle too. Some users prefer light mode at night or dark mode during the day. Don't force it.</p>
+
+      <h2>10. Test on Real Devices</h2>
+      <p>Dark mode looks different on every screen. OLED screens have deeper blacks and more vibrant colors. LCD screens wash out dark grays. Cheap laptop screens make everything look muddy.</p>
+
+      <p>Test your dark mode on:</p>
+      <ul>
+        <li>An OLED phone (most modern Android and iPhone Pro models)</li>
+        <li>A cheap LCD laptop</li>
+        <li>A high-end desktop monitor</li>
+        <li>Outside in bright sunlight (yes, people use dark mode outside too)</li>
+      </ul>
+
+      <h2>Common Dark Mode Mistakes</h2>
+
+      <h3>❌ Inverting everything</h3>
+      <p>Light mode white = dark mode black. Light mode gray = dark mode lighter gray. That's not how it works. Dark mode has its own logic — you need to rethink the whole system.</p>
+
+      <h3>❌ Too much pure white</h3>
+      <p>Pure white text causes halation. Use #F1F5F9 or #F8FAFC instead. Reserve pure white for tiny elements that need maximum contrast.</p>
+
+      <h3>❌ No depth</h3>
+      <p>If everything is the same shade of gray, the interface feels flat. Use lighter backgrounds for elevated elements.</p>
+
+      <h3>❌ Oversaturated accents</h3>
+      <p>Colors pop more on dark backgrounds. Tone them down. Your 500-weight primary in light mode should probably be a 300 or 400 in dark mode.</p>
+
+      <h3>❌ Ignoring focus states</h3>
+      <p>Focus rings are easy to see on white. On dark backgrounds? They disappear. Make focus states visible — use a bright ring or a glow effect.</p>
+
+      <h2>Dark Mode Color System Template</h2>
+
+      <p>Here's a complete dark mode color system to get you started, built on Tailwind's slate palette:</p>
+
+      <ul>
+        <li><strong>Background:</strong> slate-900 (#0F172A)</li>
+        <li><strong>Surface (cards, inputs):</strong> slate-800 (#1E293B)</li>
+        <li><strong>Surface hover:</strong> slate-700 (#334155)</li>
+        <li><strong>Border / divider:</strong> slate-700 (#334155)</li>
+        <li><strong>Primary text:</strong> slate-100 (#F1F5F9)</li>
+        <li><strong>Secondary text:</strong> slate-300 (#CBD5E1)</li>
+        <li><strong>Muted text:</strong> slate-400 (#94A3B8)</li>
+        <li><strong>Primary accent:</strong> indigo-400 (#818CF8)</li>
+        <li><strong>Success:</strong> emerald-400 (#34D399)</li>
+        <li><strong>Error:</strong> rose-400 (#FB7185)</li>
+      </ul>
+
+      <p>Build your own system with our <a href="../color-converter" style="color:#0ea5e9">Color Converter</a> and <a href="../palette-generator" style="color:#0ea5e9">Palette Generator</a> — both support dark mode preview.</p>
+
+      <h2>Final Thought</h2>
+      <p>Great dark mode design isn't about "turning off the lights." It's about creating a whole new visual system that respects how human vision works in low-light environments. Take the time to do it right — your users will thank you.</p>
+    </div>
+
+    <div class="ad-slot" data-ad-slot="bottom" id="adBottom">
+      <div class="ad-placeholder">Advertisement</div>
+    </div>
+
+    <div class="related">
+      <h3>Related Articles</h3>
+      <div class="related-grid">
+        <a class="related-card" href="contrast-accessibility-guide">
+          <h4>Accessibility & Contrast: A Complete Guide for Web Designers</h4>
+          <span>Accessibility · 9 min</span>
+        </a>
+        <a class="related-card" href="web-color-palette-guide">
+          <h4>How to Choose a Perfect Color Palette for Your Website</h4>
+          <span>Design Tips · 11 min</span>
+        </a>
+      </div>
+    </div>
+
+
+    <section class="related-posts">
+      <h2>Related Articles</h2>
+      <div class="related-grid">
+      <a class="related-card" href="dark-mode-color-scheme-guide">
+        <div class="related-cover" style="background: linear-gradient(135deg, #1e293b, #64748b);">📖</div>
+        <div>
+          <span class="related-tag">Design Tips</span>
+          <h4>Dark Mode Color Schemes: Engineering Guide</h4>
+        </div>
+      </a>
+      <a class="related-card" href="contrast-accessibility-guide">
+        <div class="related-cover" style="background: linear-gradient(135deg, #f59e0b, #ef4444);">📖</div>
+        <div>
+          <span class="related-tag">Accessibility</span>
+          <h4>Color Contrast & Accessibility Guide</h4>
+        </div>
+      </a>
+      <a class="related-card" href="gradient-design-trends-2026">
+        <div class="related-cover" style="background: linear-gradient(135deg, #f59e0b, #ec4899);">📖</div>
+        <div>
+          <span class="related-tag">Trends</span>
+          <h4>Gradient Design Trends 2026</h4>
+        </div>
+      </a>
+      </div>
+    </section>
+
+    <footer>
+      <p>© 2026 HexColor Pro · <a href="../index">Home</a> · <a href="../privacy">Privacy</a> · <a href="../terms">Terms</a> · <a href="../contact">Contact</a></p>
+    </footer>
+  </div>
+  <script src="../ads.js?v=3"></script>
+</body>
+</html>

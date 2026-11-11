@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WCAG Contrast Ratio Explained: How to Check & Fix Color Accessibility | HexColor Pro Blog</title>
+  <meta name="description" content="Complete guide to WCAG 2.2 contrast ratios, AA vs AAA standards, how to measure contrast, and common mistakes that make your site inaccessible.">
+  <meta name="keywords" content="WCAG contrast ratio, color accessibility, WCAG 2.2 AA AAA, contrast checker">
+  <link rel="canonical" href="https://hexcolorpro.pages.dev/blog/wcag-contrast-ratio-guide">
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #0f172a; --surface: #1e293b; --surface-light: #334155;
+      --text: #f1f5f9; --text-muted: #94a3b8; --accent: #6366f1;
+      --radius: 12px; --shadow: 0 4px 20px rgba(0,0,0,0.3);
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg); color: var(--text); line-height: 1.7; min-height: 100vh;
+    }
+    .container { max-width: 800px; margin: 0 auto; padding: 20px; }
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 16px 0; margin-bottom: 20px; }
+    .logo {
+      font-size: 1.4rem; font-weight: 700;
+      background: linear-gradient(135deg, #6366f1, #ec4899);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+      text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 20px; }
+    .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 0.95rem; }
+    .nav-links a:hover { color: var(--text); }
+    .breadcrumb { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 24px; }
+    .breadcrumb a { color: var(--accent); text-decoration: none; }
+    .hero {
+      text-align: center; margin: 30px 0 40px;
+      padding: 40px 30px; border-radius: var(--radius);
+      background: linear-gradient(135deg, rgba(16,185,129,0.2), rgba(59,130,246,0.2));
+    }
+    .hero .tag {
+      display: inline-block; padding: 6px 14px; background: #10b981;
+      color: white; border-radius: 20px; font-size: 0.8rem; font-weight: 600;
+      margin-bottom: 16px;
+    }
+    .hero h1 { font-size: 2rem; font-weight: 800; line-height: 1.3; margin-bottom: 12px; }
+    .hero p { color: var(--text-muted); margin-bottom: 16px; }
+    .hero .meta { font-size: 0.85rem; color: var(--text-muted); }
+    .article-body { font-size: 1.05rem; }
+    .article-body h2 { font-size: 1.6rem; margin: 36px 0 16px; color: #10b981; }
+    .article-body h3 { font-size: 1.25rem; margin: 28px 0 12px; }
+    .article-body p { margin-bottom: 16px; color: #cbd5e1; }
+    .article-body ul, .article-body ol { margin: 16px 0 20px 24px; color: #cbd5e1; }
+    .article-body li { margin-bottom: 8px; }
+    .article-body strong { color: var(--text); }
+    .article-body code {
+      background: var(--surface); padding: 2px 8px; border-radius: 4px;
+      font-family: 'Courier New', monospace; font-size: 0.9rem;
+    }
+    .article-body pre {
+      background: var(--surface); padding: 16px; border-radius: 8px;
+      overflow-x: auto; margin: 20px 0; font-size: 0.9rem;
+      font-family: 'Courier New', monospace; color: #e2e8f0;
+    }
+    .tip-box {
+      background: rgba(16,185,129,0.1); border-left: 4px solid #10b981;
+      padding: 16px 20px; border-radius: 0 8px 8px 0; margin: 20px 0;
+    }
+    .tip-box strong { color: #10b981; }
+    .warn-box {
+      background: rgba(239,68,68,0.1); border-left: 4px solid #ef4444;
+      padding: 16px 20px; border-radius: 0 8px 8px 0; margin: 20px 0;
+    }
+    .warn-box strong { color: #ef4444; }
+    .ratio-table {
+      width: 100%; border-collapse: collapse; margin: 20px 0;
+      background: var(--surface); border-radius: 8px; overflow: hidden;
+    }
+    .ratio-table th, .ratio-table td {
+      padding: 12px 16px; text-align: left; border-bottom: 1px solid var(--surface-light);
+    }
+    .ratio-table th { background: var(--surface-light); font-weight: 600; }
+    .ratio-table .pass { color: #10b981; font-weight: 600; }
+    .ratio-table .fail { color: #ef4444; font-weight: 600; }
+    .related { margin-top: 50px; padding-top: 30px; border-top: 1px solid var(--surface-light); }
+    .related h3 { margin-bottom: 16px; }
+    .related-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .related-card {
+      background: var(--surface); padding: 16px; border-radius: 8px; text-decoration: none;
+      color: inherit; transition: background 0.2s;
+    }
+    .related-card:hover { background: var(--surface-light); }
+    .related-card h4 { font-size: 0.95rem; margin-bottom: 4px; }
+    .related-card span { font-size: 0.8rem; color: var(--text-muted); }
+    .ad-placeholder {
+      background: var(--surface); border: 2px dashed var(--surface-light);
+      border-radius: var(--radius); padding: 24px; text-align: center;
+      margin: 30px 0; color: var(--text-muted); font-size: 0.85rem;
+      min-height: 90px; display: flex; align-items: center; justify-content: center;
+    }
+    .ad-slot.ad-live { margin: 30px 0; text-align: center; min-height: 0; display: block; background: transparent; border: none; padding: 0; }
+    footer {
+      margin-top: 60px; padding: 30px 20px; border-top: 1px solid var(--surface-light);
+      color: var(--text-muted); font-size: 0.9rem; text-align: center;
+    }
+    footer a { color: var(--accent); text-decoration: none; margin: 0 8px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <nav>
+      <a href="../index" class="logo">🎨 HexColor Pro</a>
+      <div class="nav-links">
+        <a href="../index#tools">All Tools</a>
+        <a href="../blog">Blog</a>
+      </div>
+    </nav>
+
+    <div class="breadcrumb">
+      <a href="../index">Home</a> / <a href="../blog">Blog</a> / WCAG Contrast Ratio Explained
+    </div>
+
+    <div class="hero">
+      <span class="tag">ACCESSIBILITY</span>
+      <h1>WCAG Contrast Ratio Explained: How to Check & Fix Color Accessibility</h1>
+      <p>Complete guide to WCAG 2.2 contrast ratios, AA vs AAA standards, how to measure contrast, and common mistakes that make your site inaccessible.</p>
+      <div class="meta">Nov 8, 2026 · 1900 words · 8 min read</div>
+    </div>
+
+    <div class="ad-slot" data-ad-slot="top" id="adTop">
+      <div class="ad-placeholder">Advertisement</div>
+    </div>
+
+    <div class="article-body">
+    
+    <h2>What Is WCAG and Why Does It Matter?</h2>
+    <p>The Web Content Accessibility Guidelines (WCAG) are a set of recommendations for making web content accessible to people with disabilities. Published by the W3C, they're the global standard for digital accessibility.</p>
+    <p>Color contrast is one of the most basic — and most commonly violated — accessibility requirements. An estimated <strong>1 in 12 men and 1 in 200 women</strong> have some form of color vision deficiency. Poor contrast doesn't just affect them: it affects everyone using your site in bright sunlight, on low-brightness screens, or at small font sizes.</p>
+
+    <div class="tip-box">
+      <strong>📊 Legal note:</strong> WCAG 2.1 AA is the legal standard in the EU (EN 301 549), the US (for federal and many state websites under ADA), Canada, Australia, and many other countries. Failing contrast can lead to lawsuits.
+    </div>
+
+    <h2>WCAG Contrast Ratio Standards: AA vs AAA</h2>
+    <p>WCAG 2.2 defines two compliance levels for text contrast:</p>
+    <table class="ratio-table">
+      <tr><th>Level</th><th>Normal Text</th><th>Large Text</th><th>Required For</th></tr>
+      <tr><td><strong>AA</strong></td><td class="pass">4.5:1 minimum</td><td class="pass">3:1 minimum</td><td>Most legal requirements</td></tr>
+      <tr><td><strong>AAA</strong></td><td class="pass">7:1 minimum</td><td class="pass">4.5:1 minimum</td><td>Highest standard, recommended</td></tr>
+    </table>
+    <p>"Large text" is defined as at least 18pt (24px) bold or 24pt (32px) regular weight. Icons and UI components like form borders or checkboxes also need a 3:1 contrast ratio against their background under WCAG 2.2.</p>
+
+    <h2>How Contrast Ratio Is Calculated</h2>
+    <p>The contrast ratio is calculated using the relative luminance of two colors. Luminance is not the same as brightness — it's the perceived brightness of a color, weighted according to how the human eye responds to different wavelengths.</p>
+    <p>The formula uses the sRGB color space and weights green the most (since our eyes are most sensitive to green light), red medium, and blue the least:</p>
+    <p><code>Luminance = 0.2126 × R + 0.7152 × G + 0.0722 × B</code></p>
+    <p>Where R, G, and B are gamma-corrected values from 0 to 1 (not the raw 0-255 values). The contrast ratio is then:</p>
+    <p><code>(L1 + 0.05) / (L2 + 0.05)</code></p>
+    <p>Where L1 is the lighter color's luminance and L2 is the darker one's. The 0.05 accounts for flare in real-world viewing conditions.</p>
+
+    <h2>What Counts as "Text" Under WCAG?</h2>
+    <p>Not every text element needs to meet the contrast standard. Here are the exceptions:</p>
+    <ul>
+      <li><strong>Logos:</strong> Text that is part of a logo or brand name has no contrast requirement.</li>
+      <li><strong>Incidental text:</strong> Text in inactive UI components, or text that is purely decorative and not interacted with.</li>
+      <li><strong>Placeholder text:</strong> Form field placeholders are exempt, but it's still good practice to make them readable.</li>
+      <li><strong>Disabled controls:</strong> Buttons or inputs in a disabled state.</li>
+    </ul>
+    <p>That said, the exceptions are narrow. All body text, headings, navigation links, form labels, and button text must meet the minimum contrast.</p>
+
+    <h2>5 Common Contrast Mistakes (and How to Fix Them)</h2>
+    <h3>1. Low-contrast placeholder text</h3>
+    <p>Many designers use light gray placeholders that fail 4.5:1. While technically exempt, users with low vision can't read them. Fix: Use a medium gray with at least 3:1 contrast.</p>
+    <h3>2. Colored text on colored backgrounds</h3>
+    <p>Yellow text on white, or light blue on dark blue — both look fine in design software but fail in practice. Always check with a contrast checker.</p>
+    <h3>3. Text over images or gradients</h3>
+    <p>White text on a hero image might pass in the center but fail near light areas. Fix: Add a semi-transparent overlay or text shadow to ensure consistent contrast.</p>
+    <h3>4. Thin font at small sizes</h3>
+    <p>A 14px light font weight might technically pass 4.5:1 but still be hard to read. Consider AAA (7:1) for body text to add visual buffer.</p>
+    <h3>5. Disregarding color blindness</h3>
+    <p>Contrast ratio alone doesn't guarantee colorblind accessibility. Red-green combinations might have good contrast but be indistinguishable to 8% of men. Always check with a color blindness simulator.</p>
+
+    <div class="warn-box">
+      <strong>⚠️ Don't rely on your eyes:</strong> What "looks readable" is often wrong. Human eyes adapt and compensate, so you can't judge contrast by eye alone. Always use a tool.
+    </div>
+
+    <h2>How to Check Contrast on Your Website</h2>
+    <p>There are several ways to audit your site's contrast:</p>
+    <ol>
+      <li><strong>Our <a href="../contrast-checker">Color Contrast Checker</a>:</strong> Paste your foreground and background hex codes. Instantly see if you pass AA and AAA, with WCAG 2.2 validation.</li>
+      <li><strong>Browser DevTools:</strong> In Chrome DevTools, inspect any text element and look for the "Contrast" line in the color picker. It shows the ratio and pass/fail.</li>
+      <li><strong>Lighthouse:</strong> Google's Lighthouse audit (in DevTools → Lighthouse tab) scans all text contrast on a page.</li>
+      <li><strong>axe DevTools:</strong> A browser extension that does comprehensive accessibility audits, including contrast.</li>
+    </ol>
+
+    <h2>The Difference Between WCAG 2.1 and 2.2 for Contrast</h2>
+    <p>WCAG 2.2 (published in October 2023) added one new success criterion related to visual appearance: <strong>2.4.11 Focus Not Obscured (Minimum)</strong> at level AA. It requires that focus indicators aren't completely hidden by other content — not directly a contrast issue, but related to visibility.</p>
+    <p>For contrast ratios specifically, WCAG 2.2 keeps the same AA and AAA thresholds as 2.0 and 2.1. The standards are stable; what changes is how we test for them and what UI elements they apply to.</p>
+
+    <h2>Practical Tips for Better Contrast</h2>
+    <ul>
+      <li><strong>Design with contrast first, not last:</strong> Build your color palette to meet standards from the start, rather than fixing issues at the end.</li>
+      <li><strong>Use 8-point tints and shades:</strong> A systematic palette (like Tailwind's 50-950 scale) ensures you always have accessible options.</li>
+      <li><strong>Test both themes:</strong> If you have light and dark mode, test contrast for both — dark mode is not automatically more accessible.</li>
+      <li><strong>Check edge cases:</strong> Error states, success messages, disabled buttons, and link colors all need contrast checks.</li>
+    </ul>
+
+    <h2>Start Testing Now</h2>
+    <p>Ready to check if your colors are accessible? Use our <a href="../contrast-checker">free Color Contrast Checker</a> — it takes two seconds, gives you instant WCAG 2.2 AA/AAA results, and even suggests adjustments if your colors fail.</p>
+
+    </div>
+
+    
+    <div class="tip-box" style="margin-top: 40px;">
+      <strong>🧰 Related Tools</strong><br><br>
+      <a href="../contrast-checker">Color Contrast Checker</a> — Test your colors against WCAG standards<br>
+      <a href="../palette-generator">Palette Generator</a> — Generate harmonious color schemes
+    </div>
+    
+
+    <div class="ad-slot" data-ad-slot="bottom" id="adBottom">
+      <div class="ad-placeholder">Advertisement</div>
+    </div>
+
+    <div class="related">
+      <h3>Related Articles</h3>
+      <div class="related-grid">
+          <a href="hex-to-rgb-conversion-guide" class="related-card">
+        <h4>Hex to RGB</h4>
+        <span>COLOR THEORY</span>
+      </a>
+          <a href="what-is-hsl-color" class="related-card">
+        <h4>What Is HSL Color? A Beginner's Guide to Hue, Saturation & Lightness</h4>
+        <span>COLOR THEORY</span>
+      </a>
+          <a href="how-many-hex-colors-are-there" class="related-card">
+        <h4>How Many Hex Colors Are There? (And Why It's Not Exactly 16 Million)</h4>
+        <span>COLOR BASICS</span>
+      </a>
+          <a href="saas-dashboard-color-palette" class="related-card">
+        <h4>Best Color Palettes for SaaS Dashboards in 2026</h4>
+        <span>DESIGN</span>
+      </a>
+    
+      </div>
+    </div>
+
+
+    <section class="related-posts">
+      <h2>Related Articles</h2>
+      <div class="related-grid">
+      <a class="related-card" href="contrast-accessibility-guide">
+        <div class="related-cover" style="background: linear-gradient(135deg, #f59e0b, #ef4444);">📖</div>
+        <div>
+          <span class="related-tag">Accessibility</span>
+          <h4>Color Contrast & Accessibility Guide</h4>
+        </div>
+      </a>
+      <a class="related-card" href="accessible-color-palette-healthcare">
+        <div class="related-cover" style="background: linear-gradient(135deg, #10b981, #3b82f6);">📖</div>
+        <div>
+          <span class="related-tag">Accessibility</span>
+          <h4>Accessible Color Palettes for Healthcare</h4>
+        </div>
+      </a>
+      <a class="related-card" href="dark-mode-color-scheme-guide">
+        <div class="related-cover" style="background: linear-gradient(135deg, #1e293b, #64748b);">📖</div>
+        <div>
+          <span class="related-tag">Design Tips</span>
+          <h4>Dark Mode Color Schemes: Engineering Guide</h4>
+        </div>
+      </a>
+      </div>
+    </section>
+
+    <footer>
+      <p>© 2026 HexColor Pro · <a href="../index">Home</a> · <a href="../privacy">Privacy</a> · <a href="../terms">Terms</a> · <a href="../contact">Contact</a></p>
+    </footer>
+  </div>
+
+  <div id="toast"></div>
+  <script src="../assets/ads.js"></script>
+  <script src="../assets/toast.js"></script>
+  <script>
+    // Init ads
+    if (typeof initAds === 'function') initAds();
+  </script>
+</body>
+</html>

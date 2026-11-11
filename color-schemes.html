@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Color Scheme Generator - Color Palette Ideas | HexColor Pro</title>
+  <meta name="description" content="Generate harmonious color schemes from any base color. Complementary, analogous, triadic, monochromatic, tetradic, and split-complementary palettes.">
+  <meta name="keywords" content="color scheme, color palette, complementary colors, analogous colors, triadic, color harmony, color theory">
+  <link rel="canonical" href="https://hexcolorpro.pages.dev/color-schemes">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #0f172a; --surface: #1e293b; --surface-light: #334155;
+      --text: #f1f5f9; --text-muted: #94a3b8; --accent: #6366f1;
+      --radius: 12px; --shadow: 0 4px 20px rgba(0,0,0,0.3);
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg); color: var(--text); line-height: 1.6; min-height: 100vh;
+    }
+    .container { max-width: 1100px; margin: 0 auto; padding: 20px; }
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 16px 0; margin-bottom: 20px; }
+    .logo {
+      font-size: 1.4rem; font-weight: 700;
+      background: linear-gradient(135deg, #6366f1, #ec4899);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+      text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 20px; }
+    .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 0.95rem; }
+    .nav-links a:hover { color: var(--text); }
+    .page-header { text-align: center; margin: 20px 0 30px; }
+    .page-header h1 {
+      font-size: 2.2rem; font-weight: 700;
+      background: linear-gradient(135deg, #6366f1, #ec4899);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .page-header p { color: var(--text-muted); margin-top: 8px; font-size: 1.05rem; }
+    .breadcrumb { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 16px; }
+    .breadcrumb a { color: var(--accent); text-decoration: none; }
+
+    .base-picker {
+      background: var(--surface); border-radius: var(--radius); padding: 24px;
+      box-shadow: var(--shadow); margin-bottom: 24px;
+      display: flex; gap: 16px; align-items: center; flex-wrap: wrap;
+    }
+    .base-picker label { font-weight: 600; }
+    .base-picker input[type="color"] {
+      width: 60px; height: 50px; border: none; border-radius: 8px; cursor: pointer; background: none;
+    }
+    .base-picker input[type="text"] {
+      padding: 12px 16px; border: 2px solid var(--surface-light); border-radius: 8px;
+      background: var(--bg); color: var(--text); font-family: 'Courier New', monospace; font-size: 1rem;
+      width: 140px;
+    }
+    .base-picker input:focus { outline: none; border-color: var(--accent); }
+    .base-picker .btn {
+      padding: 12px 20px; border: none; border-radius: 8px; cursor: pointer;
+      font-size: 0.9rem; font-weight: 600; background: var(--surface-light); color: var(--text);
+    }
+    .base-picker .btn:hover { background: #475569; }
+    .base-swatch {
+      width: 50px; height: 50px; border-radius: 8px;
+      margin-left: auto; border: 2px solid var(--surface-light);
+    }
+
+    .scheme-tabs {
+      display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px;
+      overflow-x: auto; padding-bottom: 4px;
+    }
+    .scheme-tab {
+      padding: 10px 18px; border: 2px solid var(--surface-light); border-radius: 8px;
+      background: var(--surface); color: var(--text-muted); cursor: pointer;
+      font-size: 0.85rem; font-weight: 600; white-space: nowrap; transition: all 0.2s;
+    }
+    .scheme-tab:hover { border-color: var(--accent); color: var(--text); }
+    .scheme-tab.active { background: var(--accent); color: white; border-color: var(--accent); }
+
+    .scheme-card {
+      background: var(--surface); border-radius: var(--radius); padding: 24px;
+      box-shadow: var(--shadow); margin-bottom: 24px;
+    }
+    .scheme-title {
+      display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;
+    }
+    .scheme-title h2 { font-size: 1.3rem; }
+    .scheme-title .btn {
+      padding: 8px 16px; font-size: 0.8rem; border: none; border-radius: 6px;
+      background: var(--accent); color: white; cursor: pointer; font-weight: 600;
+    }
+
+    .palette-row {
+      display: flex; height: 120px; border-radius: 8px; overflow: hidden; margin-bottom: 16px;
+    }
+    .palette-color {
+      flex: 1; display: flex; align-items: flex-end; justify-content: center;
+      padding-bottom: 8px; color: rgba(255,255,255,0.9); font-size: 0.75rem;
+      font-family: 'Courier New', monospace; cursor: pointer; transition: flex 0.2s;
+      position: relative;
+    }
+    .palette-color:hover { flex: 1.5; }
+    .palette-color .hex-label {
+      background: rgba(0,0,0,0.5); padding: 3px 6px; border-radius: 4px;
+      font-weight: 600;
+    }
+
+    .color-codes {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px;
+    }
+    .color-code {
+      display: flex; align-items: center; gap: 10px;
+      padding: 10px; background: var(--bg); border-radius: 6px; cursor: pointer;
+      transition: background 0.2s;
+    }
+    .color-code:hover { background: var(--surface-light); }
+    .color-code .swatch-sm {
+      width: 24px; height: 24px; border-radius: 4px; flex-shrink: 0;
+    }
+    .color-code .code-text {
+      font-family: 'Courier New', monospace; font-size: 0.8rem; flex: 1;
+    }
+
+    .scheme-desc {
+      margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--surface-light);
+      color: var(--text-muted); font-size: 0.9rem; line-height: 1.7;
+    }
+
+    .ad-placeholder {
+      background: var(--surface); border: 2px dashed var(--surface-light);
+      border-radius: var(--radius); padding: 24px; text-align: center;
+      margin: 24px 0; color: var(--text-muted); font-size: 0.85rem;
+      min-height: 90px; display: flex; align-items: center; justify-content: center;
+    }
+    .ad-slot.ad-live {
+      margin: 24px 0; text-align: center; min-height: 0;
+      display: block; background: transparent; border: none; padding: 0;
+    }
+
+    .guide-section { margin-top: 40px; }
+    .guide-section h2 { font-size: 1.5rem; margin-bottom: 16px; }
+    .guide-section h3 { font-size: 1.2rem; margin: 20px 0 10px; color: var(--accent); }
+    .guide-section p { color: var(--text-muted); margin-bottom: 12px; }
+    .guide-section ul { margin: 12px 0 16px 20px; color: var(--text-muted); }
+    .guide-section li { margin-bottom: 6px; }
+
+    footer {
+      margin-top: 60px; padding: 30px 20px; border-top: 1px solid var(--surface-light);
+      color: var(--text-muted); font-size: 0.9rem; text-align: center;
+    }
+    footer a { color: var(--accent); text-decoration: none; margin: 0 8px; }
+
+    #toast {
+      position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%);
+      background: #10b981; color: white; padding: 12px 24px; border-radius: 8px;
+      font-size: 0.9rem; font-weight: 600; z-index: 1000; opacity: 0; pointer-events: none;
+      transition: opacity 0.3s;
+    }
+    #toast.show { opacity: 1; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <nav>
+      <a href="index" class="logo">🎨 HexColor Pro</a>
+      <div class="nav-links">
+        <a href="index#tools">All Tools</a>
+        <a href="blog">Blog</a>
+      </div>
+    </nav>
+
+    <div class="breadcrumb"><a href="index">Home</a> / Color Schemes</div>
+
+    <div class="page-header">
+      <h1>Color Scheme Generator</h1>
+      <p>Pick a base color and explore 6 classic color harmony schemes. Instant results, ready to copy.</p>
+    </div>
+
+    <div class="ad-slot" data-ad-slot="top" id="adTop">
+      <div class="ad-placeholder">Advertisement</div>
+    </div>
+
+    <div class="base-picker">
+      <label for="baseColor">Base Color:</label>
+      <input type="color" id="baseColor" value="#6366f1">
+      <input type="text" id="baseHex" value="#6366f1">
+      <button class="btn" onclick="randomBase()">🎲 Random</button>
+      <div class="base-swatch" id="baseSwatch"></div>
+    </div>
+
+    <div class="scheme-tabs">
+      <div class="scheme-tab active" data-scheme="analogous">Analogous</div>
+      <div class="scheme-tab" data-scheme="complementary">Complementary</div>
+      <div class="scheme-tab" data-scheme="triadic">Triadic</div>
+      <div class="scheme-tab" data-scheme="monochromatic">Monochromatic</div>
+      <div class="scheme-tab" data-scheme="split">Split Comp.</div>
+      <div class="scheme-tab" data-scheme="tetradic">Tetradic</div>
+    </div>
+
+    <div class="scheme-card">
+      <div class="scheme-title">
+        <h2 id="schemeName">Analogous</h2>
+        <button class="btn" onclick="copyAll()">📋 Copy All HEX</button>
+      </div>
+      <div class="palette-row" id="paletteRow"></div>
+      <div class="color-codes" id="colorCodes"></div>
+      <div class="scheme-desc" id="schemeDesc"></div>
+    </div>
+
+    <div class="ad-slot" data-ad-slot="bottom" id="adBottom">
+      <div class="ad-placeholder">Advertisement</div>
+    </div>
+
+    <div class="guide-section">
+      <h2>Color Theory: The 6 Classic Schemes</h2>
+
+      <h3>🌈 Analogous</h3>
+      <p>Colors next to each other on the color wheel. Creates a harmonious, serene feel. Think sunsets, ocean blues, forest greens. Great for backgrounds and ambient designs.</p>
+
+      <h3>⚡ Complementary</h3>
+      <p>Colors opposite each other on the wheel. High contrast, high energy. Think red-green, blue-orange, purple-yellow. Use sparingly for maximum impact — great for CTAs and highlights.</p>
+
+      <h3>🔺 Triadic</h3>
+      <p>Three colors evenly spaced around the wheel (120° apart). Vibrant and balanced. The classic "primary colors" scheme is triadic. Good for playful, youthful designs.</p>
+
+      <h3>🎚️ Monochromatic</h3>
+      <p>Variations of a single hue — different lightness and saturation. Super elegant and easy to get right. Perfect for minimalist designs, portfolios, and luxury brands.</p>
+
+      <h3>🔀 Split Complementary</h3>
+      <p>A base color plus the two colors adjacent to its complement. Less intense than complementary but still has good contrast. Versatile and visually interesting.</p>
+
+      <h3>🔷 Tetradic (Double Complementary)</h3>
+      <p>Four colors arranged as two complementary pairs. Rich with possibilities but trickier to balance. Best when one color is dominant and the rest support it.</p>
+
+      <h3>💡 Pro Tips for Using Color Schemes</h3>
+      <ul>
+        <li>Follow the 60-30-10 rule: 60% dominant color, 30% secondary, 10% accent</li>
+        <li>Start with the mood you want — calm? energetic? luxurious? — then pick a scheme</li>
+        <li>Use neutral colors (white, gray, black) as your base, add color accents on top</li>
+        <li>Always check accessibility — use our Contrast Checker tool to verify readability</li>
+        <li>Less is more: start with 2-3 colors before adding more</li>
+      </ul>
+    </div>
+
+    <footer>
+      <p>© 2026 HexColor Pro · <a href="index">Home</a> · <a href="privacy">Privacy</a> · <a href="terms">Terms</a> · <a href="contact">Contact</a></p>
+    </footer>
+  </div>
+
+  <div id="toast"></div>
+
+  <script>
+    // Color conversion helpers
+    function hexToHsl(hex) {
+      hex = hex.replace('#', '');
+      if (hex.length === 3) hex = hex[0]+hex[0]+hex[1]+hex[1]+hex[2]+hex[2];
+      let r = parseInt(hex.slice(0,2),16)/255;
+      let g = parseInt(hex.slice(2,4),16)/255;
+      let b = parseInt(hex.slice(4,6),16)/255;
+      const max = Math.max(r,g,b), min = Math.min(r,g,b);
+      let h, s, l = (max+min)/2;
+      if (max === min) { h = s = 0; }
+      else {
+        const d = max - min;
+        s = l > 0.5 ? d / (2-max-min) : d / (max+min);
+        switch(max) {
+          case r: h = ((g-b)/d + (g<b ? 6 : 0)) / 6; break;
+          case g: h = ((b-r)/d + 2) / 6; break;
+          case b: h = ((r-g)/d + 4) / 6; break;
+        }
+      }
+      return { h: Math.round(h*360), s: Math.round(s*100), l: Math.round(l*100) };
+    }
+
+    function hslToHex(h, s, l) {
+      h = ((h % 360) + 360) % 360;
+      s /= 100; l /= 100;
+      const c = (1 - Math.abs(2*l - 1)) * s;
+      const x = c * (1 - Math.abs((h/60) % 2 - 1));
+      const m = l - c/2;
+      let r=0, g=0, b=0;
+      if (h < 60) { r=c; g=x; b=0; }
+      else if (h < 120) { r=x; g=c; b=0; }
+      else if (h < 180) { r=0; g=c; b=x; }
+      else if (h < 240) { r=0; g=x; b=c; }
+      else if (h < 300) { r=x; g=0; b=c; }
+      else { r=c; g=0; b=x; }
+      const toHex = n => { const h = Math.round((n+m)*255).toString(16); return h.length===1 ? '0'+h : h; };
+      return '#' + toHex(r) + toHex(g) + toHex(b);
+    }
+
+    function getLuminance(hex) {
+      hex = hex.replace('#', '');
+      const r = parseInt(hex.slice(0,2),16)/255;
+      const g = parseInt(hex.slice(2,4),16)/255;
+      const b = parseInt(hex.slice(4,6),16)/255;
+      const lin = c => c <= 0.03928 ? c/12.92 : Math.pow((c+0.055)/1.055, 2.4);
+      return 0.2126*lin(r) + 0.7152*lin(g) + 0.0722*lin(b);
+    }
+
+    const schemes = {
+      analogous: {
+        name: 'Analogous',
+        desc: 'Colors next to each other on the color wheel create a harmonious, natural, and calming palette. Great for backgrounds, branding, and designs where you want a cohesive feel without tension. Examples: sunset oranges, ocean blues, forest greens.',
+        generate: hsl => {
+          const colors = [];
+          for (let i = -2; i <= 2; i++) {
+            colors.push(hslToHex(hsl.h + i * 30, hsl.s, hsl.l));
+          }
+          return colors;
+        }
+      },
+      complementary: {
+        name: 'Complementary',
+        desc: 'Colors opposite each other on the color wheel create maximum contrast and vibrancy. Use carefully — too much can be jarring. Best for CTAs, highlights, and when you want something to pop. Examples: red & green, blue & orange, purple & yellow.',
+        generate: hsl => {
+          const base = hslToHex(hsl.h, hsl.s, hsl.l);
+          const comp = hslToHex(hsl.h + 180, hsl.s, hsl.l);
+          const baseLight = hslToHex(hsl.h, hsl.s, Math.min(hsl.l + 20, 95));
+          const baseDark = hslToHex(hsl.h, hsl.s, Math.max(hsl.l - 20, 10));
+          const compLight = hslToHex(hsl.h + 180, hsl.s, Math.min(hsl.l + 20, 95));
+          return [baseLight, base, baseDark, compLight, comp];
+        }
+      },
+      triadic: {
+        name: 'Triadic',
+        desc: 'Three colors evenly spaced 120° apart on the wheel create a vibrant, balanced palette. Playful and energetic — think of primary colors. Great for children\'s designs, creative projects, and anything that needs a fun vibe.',
+        generate: hsl => {
+          const c1 = hslToHex(hsl.h, hsl.s, hsl.l);
+          const c2 = hslToHex(hsl.h + 120, hsl.s, hsl.l);
+          const c3 = hslToHex(hsl.h + 240, hsl.s, hsl.l);
+          const c1l = hslToHex(hsl.h, hsl.s - 10, hsl.l + 25);
+          const c2l = hslToHex(hsl.h + 120, hsl.s - 10, hsl.l + 25);
+          return [c1l, c1, c2, c3, c2l];
+        }
+      },
+      monochromatic: {
+        name: 'Monochromatic',
+        desc: 'A single hue with varying lightness and saturation. Elegant, minimalist, and foolproof — you can\'t really go wrong. Perfect for portfolios, luxury brands, and clean modern designs. Add depth through value contrast.',
+        generate: hsl => {
+          const colors = [];
+          const lightSteps = [15, 30, 50, 70, 88];
+          lightSteps.forEach(l => {
+            colors.push(hslToHex(hsl.h, hsl.s, l));
+          });
+          return colors;
+        }
+      },
+      split: {
+        name: 'Split Complementary',
+        desc: 'A base color plus the two colors adjacent to its complement. Less aggressive than complementary but still has good contrast. Versatile and sophisticated — a great choice when complementary feels too intense.',
+        generate: hsl => {
+          const base = hslToHex(hsl.h, hsl.s, hsl.l);
+          const baseLight = hslToHex(hsl.h, hsl.s - 10, hsl.l + 20);
+          const s1 = hslToHex(hsl.h + 150, hsl.s, hsl.l);
+          const s2 = hslToHex(hsl.h + 210, hsl.s, hsl.l);
+          const dark = hslToHex(hsl.h, hsl.s, Math.max(hsl.l - 25, 10));
+          return [baseLight, base, s1, s2, dark];
+        }
+      },
+      tetradic: {
+        name: 'Tetradic (Double Complementary)',
+        desc: 'Four colors arranged as two complementary pairs. The richest of all schemes with lots of variety. Trickier to balance — choose one dominant color and use the others as accents. Works best with one warm + one cool pair.',
+        generate: hsl => {
+          const c1 = hslToHex(hsl.h, hsl.s, hsl.l);
+          const c2 = hslToHex(hsl.h + 90, hsl.s, hsl.l);
+          const c3 = hslToHex(hsl.h + 180, hsl.s, hsl.l);
+          const c4 = hslToHex(hsl.h + 270, hsl.s, hsl.l);
+          const light = hslToHex(hsl.h, hsl.s - 20, 92);
+          return [c1, c2, light, c3, c4];
+        }
+      }
+    };
+
+    let currentScheme = 'analogous';
+    let currentColors = [];
+
+    function updateScheme() {
+      const hex = document.getElementById('baseHex').value.trim();
+      if (!/^#[0-9A-Fa-f]{6}$/.test(hex)) return;
+      const hsl = hexToHsl(hex);
+      const scheme = schemes[currentScheme];
+      currentColors = scheme.generate(hsl);
+
+      document.getElementById('schemeName').textContent = scheme.name;
+      document.getElementById('schemeDesc').textContent = scheme.desc;
+
+      // Palette row
+      const row = document.getElementById('paletteRow');
+      row.innerHTML = '';
+      currentColors.forEach(color => {
+        const div = document.createElement('div');
+        div.className = 'palette-color';
+        div.style.background = color;
+        const textColor = getLuminance(color) > 0.5 ? '#000' : '#fff';
+        div.innerHTML = `<span class="hex-label" style="color:${textColor}">${color.toUpperCase()}</span>`;
+        div.onclick = () => copyColor(color);
+        row.appendChild(div);
+      });
+
+      // Color codes
+      const codes = document.getElementById('colorCodes');
+      codes.innerHTML = '';
+      currentColors.forEach(color => {
+        const div = document.createElement('div');
+        div.className = 'color-code';
+        div.onclick = () => copyColor(color);
+        div.innerHTML = `
+          <div class="swatch-sm" style="background:${color}"></div>
+          <div class="code-text">${color.toUpperCase()}</div>
+        `;
+        codes.appendChild(div);
+      });
+    }
+
+    document.getElementById('baseColor').addEventListener('input', e => {
+      document.getElementById('baseHex').value = e.target.value;
+      document.getElementById('baseSwatch').style.background = e.target.value;
+      updateScheme();
+    });
+
+    document.getElementById('baseHex').addEventListener('input', e => {
+      let v = e.target.value.trim();
+      if (!v.startsWith('#')) v = '#' + v;
+      if (/^#[0-9A-Fa-f]{6}$/.test(v)) {
+        document.getElementById('baseColor').value = v;
+        document.getElementById('baseSwatch').style.background = v;
+        updateScheme();
+      }
+    });
+
+    document.querySelectorAll('.scheme-tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        document.querySelectorAll('.scheme-tab').forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        currentScheme = tab.dataset.scheme;
+        updateScheme();
+      });
+    });
+
+    function randomBase() {
+      const hex = '#' + Math.floor(Math.random()*16777215).toString(16).padStart(6,'0');
+      document.getElementById('baseColor').value = hex;
+      document.getElementById('baseHex').value = hex;
+      document.getElementById('baseSwatch').style.background = hex;
+      updateScheme();
+    }
+
+    function copyColor(hex) {
+      navigator.clipboard.writeText(hex).then(() => showToast('Copied ' + hex));
+    }
+
+    function copyAll() {
+      const text = currentColors.join('\n');
+      navigator.clipboard.writeText(text).then(() => showToast('All colors copied!'));
+    }
+
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg; t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 1500);
+    }
+
+    // Init
+    document.getElementById('baseSwatch').style.background = '#6366f1';
+    updateScheme();
+  </script>
+  <script src="ads.js?v=3"></script>
+</body>
+</html>

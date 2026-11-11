@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HexColor Pro - Free Color Picker, Palette Generator & Color Tools</title>
+  <meta name="description" content="Free online color tools: color picker, gradient generator, contrast checker, palette generator, color name finder, and more. Beautiful, fast, and no signup required.">
+  <meta name="keywords" content="color picker, hex color, gradient generator, contrast checker, color palette, color name finder, RGB converter, HSL converter, WCAG, web design tools">
+  <meta name="google-site-verification" content="Dy4Y-5n_YCnyV_rESq1vo5qZgIE5SNioIHrdbd-VFNE" />
+  <meta property="og:title" content="HexColor Pro - Free Color Tools for Designers & Developers">
+  <meta property="og:description" content="Pick colors, generate gradients, check contrast, find color names — 10+ tools in one place.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://hexcolorpro.pages.dev/">
+  <meta property="og:image" content="https://hexcolorpro.pages.dev/assets/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="HexColor Pro - Free Color Tools">
+  <meta name="twitter:description" content="Color picker, gradient generator, contrast checker, palette generator & more. Free, fast, no signup.">
+  <meta name="twitter:image" content="https://hexcolorpro.pages.dev/assets/og-image.png">
+  <link rel="canonical" href="https://hexcolorpro.pages.dev/">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "HexColor Pro",
+    "url": "https://hexcolorpro.pages.dev/",
+    "description": "Free online color tools: color picker, gradient generator, contrast checker, palette generator, and more."
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "HexColor Pro",
+    "applicationCategory": "DesignApplication",
+    "operatingSystem": "Web",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "url": "https://hexcolorpro.pages.dev/"
+  }
+  </script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    :root {
+      --bg: #0f172a;
+      --surface: #1e293b;
+      --surface-light: #334155;
+      --text: #f1f5f9;
+      --text-muted: #94a3b8;
+      --accent: #6366f1;
+      --accent-hover: #818cf8;
+      --accent-pink: #ec4899;
+      --radius: 12px;
+      --shadow: 0 4px 20px rgba(0,0,0,0.3);
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    /* Navbar */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 0;
+      margin-bottom: 20px;
+    }
+
+    .logo {
+      font-size: 1.4rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #6366f1, #ec4899);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.95rem;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    /* Hero */
+    header.hero {
+      text-align: center;
+      padding: 40px 20px 20px;
+    }
+
+    header.hero h1 {
+      font-size: 3rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #6366f1, #ec4899, #f59e0b);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 12px;
+      line-height: 1.2;
+    }
+
+    header.hero p {
+      color: var(--text-muted);
+      font-size: 1.2rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .hero-badges {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 20px;
+      flex-wrap: wrap;
+    }
+
+    .hero-badge {
+      background: var(--surface);
+      color: var(--text-muted);
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      border: 1px solid var(--surface-light);
+    }
+
+    /* Quick Picker */
+    .quick-picker {
+      max-width: 500px;
+      margin: 30px auto 0;
+      background: var(--surface);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .quick-picker .color-display {
+      width: 100%;
+      height: 120px;
+      border-radius: var(--radius);
+      margin-bottom: 16px;
+      transition: background-color 0.15s;
+      border: 2px solid var(--surface-light);
+    }
+
+    .quick-picker .color-inputs {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 12px;
+      align-items: center;
+    }
+
+    input[type="color"] {
+      width: 60px;
+      height: 48px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      background: none;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 12px 16px;
+      border: 2px solid var(--surface-light);
+      border-radius: 8px;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 1rem;
+      font-family: 'Courier New', monospace;
+    }
+
+    input[type="text"]:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+
+    /* Tools Grid */
+    .section-title {
+      text-align: center;
+      margin: 50px 0 8px;
+      font-size: 1.8rem;
+      font-weight: 700;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      color: var(--text-muted);
+      margin-bottom: 30px;
+      font-size: 1rem;
+    }
+
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .tool-card {
+      background: var(--surface);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--shadow);
+      text-decoration: none;
+      color: inherit;
+      transition: transform 0.2s, box-shadow 0.2s;
+      display: block;
+      border: 2px solid transparent;
+    }
+
+    .tool-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--accent);
+      box-shadow: 0 8px 30px rgba(99, 102, 241, 0.2);
+    }
+
+    .tool-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      margin-bottom: 14px;
+    }
+
+    .tool-card h3 {
+      font-size: 1.15rem;
+      margin-bottom: 8px;
+      color: var(--text);
+    }
+
+    .tool-card p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .tool-tag {
+      display: inline-block;
+      margin-top: 12px;
+      font-size: 0.75rem;
+      color: var(--accent);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* Blog Section */
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .blog-card {
+      background: var(--surface);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--shadow);
+      text-decoration: none;
+      color: inherit;
+      transition: transform 0.2s;
+      display: block;
+    }
+
+    .blog-card:hover {
+      transform: translateY(-3px);
+    }
+
+    .blog-tag {
+      display: inline-block;
+      background: var(--accent);
+      color: white;
+      padding: 4px 10px;
+      border-radius: 4px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 12px;
+    }
+
+    .blog-card h3 {
+      font-size: 1.1rem;
+      margin-bottom: 8px;
+      line-height: 1.4;
+    }
+
+    .blog-card p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .blog-meta {
+      margin-top: 14px;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    /* Ad */
+    .ad-placeholder {
+      background: var(--surface);
+      border: 2px dashed var(--surface-light);
+      border-radius: var(--radius);
+      padding: 24px;
+      text-align: center;
+      margin: 30px 0;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      min-height: 90px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .ad-slot.ad-live {
+      margin: 30px 0;
+      text-align: center;
+      min-height: 0;
+      display: block;
+      background: transparent;
+      border: none;
+      padding: 0;
+    }
+
+    .ad-slot.ad-live ins,
+    .ad-slot.ad-live iframe {
+      margin: 0 auto;
+      display: block;
+    }
+
+    /* Footer */
+    footer {
+      margin-top: 60px;
+      padding: 40px 20px;
+      border-top: 1px solid var(--surface-light);
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .footer-col h4 {
+      color: var(--text);
+      margin-bottom: 14px;
+      font-size: 0.95rem;
+    }
+
+    .footer-col a {
+      display: block;
+      color: var(--text-muted);
+      text-decoration: none;
+      padding: 4px 0;
+      transition: color 0.2s;
+    }
+
+    .footer-col a:hover {
+      color: var(--text);
+    }
+
+    .footer-bottom {
+      text-align: center;
+      margin-top: 30px;
+      padding-top: 20px;
+      border-top: 1px solid var(--surface-light);
+      font-size: 0.85rem;
+    }
+
+    .copy-btn {
+      padding: 10px 20px;
+      background: var(--accent);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      font-weight: 600;
+      transition: background 0.2s;
+    }
+
+    .copy-btn:hover {
+      background: var(--accent-hover);
+    }
+
+    .color-values {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .value-item {
+      background: var(--bg);
+      padding: 10px;
+      border-radius: 8px;
+      text-align: center;
+    }
+
+    .value-item .label {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .value-item .value {
+      font-family: 'Courier New', monospace;
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-top: 4px;
+      cursor: pointer;
+      user-select: all;
+    }
+
+    /* Toast */
+    #toast {
+      position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%);
+      background: #10b981; color: white; padding: 12px 24px; border-radius: 8px;
+      font-size: 0.9rem; font-weight: 600; z-index: 1000;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      opacity: 0; pointer-events: none; transition: opacity 0.3s, transform 0.3s;
+    }
+    #toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+    @media (max-width: 768px) {
+      header.hero h1 { font-size: 2rem; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .nav-links { gap: 12px; font-size: 0.85rem; }
+      .tools-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 480px) {
+      .tools-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <nav>
+      <a href="index" class="logo">🎨 HexColor Pro</a>
+      <div class="nav-links">
+        <a href="index#tools">Tools</a>
+        <a href="blog">Blog</a>
+        <a href="contrast-checker">Contrast</a>
+        <a href="palette-generator">Palette</a>
+        <a href="color-shades-generator">Shades</a>
+      </div>
+    </nav>
+
+    <header class="hero">
+      <h1>Your All-in-One Color Toolkit</h1>
+      <p>15+ free color tools for designers, developers, and creators. Fast, beautiful, and no signup required.</p>
+      <div class="hero-badges">
+        <span class="hero-badge">✓ 100% Free</span>
+        <span class="hero-badge">✓ No Signup</span>
+        <span class="hero-badge">✓ Works Offline</span>
+        <span class="hero-badge">✓ Privacy-First</span>
+      </div>
+    </header>
+
+    <!-- Quick Color Picker -->
+    <div class="quick-picker">
+      <div class="color-display" id="colorDisplay" style="background-color: #6366f1;"></div>
+      <div class="color-inputs">
+        <input type="text" id="hexInput" value="#6366f1" maxlength="7" aria-label="Hex color code">
+        <input type="color" id="colorPicker" value="#6366f1" aria-label="Color picker">
+      </div>
+      <div class="color-values">
+        <div class="value-item">
+          <div class="label">HEX</div>
+          <div class="value" id="hexValue" onclick="copyText(this.textContent)">#6366f1</div>
+        </div>
+        <div class="value-item">
+          <div class="label">RGB</div>
+          <div class="value" id="rgbValue" onclick="copyText(this.textContent)">99, 102, 241</div>
+        </div>
+        <div class="value-item">
+          <div class="label">HSL</div>
+          <div class="value" id="hslValue" onclick="copyText(this.textContent)">239°, 84%, 67%</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Top Ad -->
+    <div class="ad-slot" data-ad-slot="top" id="adTop">
+      <div class="ad-placeholder">Advertisement</div>
+    </div>
+
+    <!-- Tools Section -->
+    <h2 class="section-title" id="tools">All Color Tools</h2>
+    <p class="section-subtitle">Everything you need to work with colors — all in one place</p>
+
+    <div class="tools-grid">
+      <a href="color-picker" class="tool-card">
+        <div class="tool-icon" style="background: linear-gradient(135deg, #6366f1, #8b5cf6);">🎨</div>
+        <h3>Color Picker</h3>
+        <p>Pick any color and instantly get HEX, RGB, HSL, HSV, and CMYK values. Save your favorites.</p>
+        <span class="tool-tag">POPULAR →</span>
+      </a>
+
+      <a href="gradient-generator" class="tool-card">
+        <div class="tool-icon" style="background: linear-gradient(135deg, #ec4899, #f59e0b);">🌈</div>
+        <h3>Gradient Generator</h3>
+        <p>Create beautiful CSS gradients with multiple color stops. Linear, radial, and conic gradients.</p>
+        <span class="tool-tag">POPULAR →</span>
+      </a>
+
+      <a href="contrast-checker" class="tool-card">
+        <div class="tool-icon" style="background: linear-gradient(135deg, #10b981, #059669);">✅</div>
+        <h3>Contrast Checker</h3>
+        <p>Check WCAG accessibility compliance. Ensure your text is readable against any background.</p>
+        <span class="tool-tag">POPULAR →</span>
+      </a>
+
+      <a href="palette-generator" class="tool-card">
+        <div class="tool-icon" style="background: linear-gradient(135deg, #f59e0b, #ef4444);">🎯</div>
+        <h3>Palette Generator</h3>
+        <p>Generate harmonious color palettes from one color. Analogous, complementary, triadic, and more.</p>
+        <span class="tool-tag">→</span>
+      </a>
+
+      <a href="color-names" class="tool-card">
+        <div class="tool-icon" style="background: linear-gradient(135deg, #06b6d4, #0891b2);">🔍</div>
+        <h3>Color Name Finder</h3>
+        <p>Find the closest named color for any hex code. Over 1,500 color names in our database.</p>
+        <span class="tool-tag">→</span>
+      </a>
+
+      <a href="color-converter" class="tool-card">
+        <div class="tool-icon" style="background: linear-gradient(135deg, #8b5cf6, #7c3aed);">🔄</div>
+        <h3>Color Converter</h3>
+        <p>Convert between HEX, RGB, HSL, HSV, CMYK, and more. Bulk conversion supported.</p>
+        <span class="tool-tag">→</span>
+      </a>
+
+      <a href="color-shades-generator" class="tool-card">
+        <div class="tool-icon" style="background: linear-gradient(135deg, #3b82f6, #1e40af);">🌗</div>
+        <h3>Color Shades Generator</h3>
+        <p>Generate tints and shades from any color. Perfect for design systems and UI palettes.</p>
+        <span class="tool-tag">→</span>
+      </a>
+
+      <a href="random-color-generator" class="tool-card">
+        <div class="tool-icon" style="background: linear-gradient(135deg, #f59e0b, #ec4899);">🎲</div>
+        <h3>Random Color Generator</h3>
+        <p>Generate random colors, palettes, and gradients. Great for inspiration and brainstorming.</p>
+        <span class="tool-tag">→</span>
+      </a>
+
+      <a href="color-mixer" class="tool-card">
+        <div class="tool-icon" style="background: linear-gradient(135deg, #10b981, #8b5cf6);">🎨</div>
+        <h3>Color Mixer</h3>
+        <p>Mix two colors together with adjustable ratio. Find the perfect middle ground.</p>
+        <span class="tool-tag">→</span>
+      </a>
+
+      <a href="text-color-generator" class="tool-card">
+        <div class="tool-icon" style="background: linear-gradient(135deg, #ef4444, #f59e0b);">📝</div>
+        <h3>Text Color Generator</h3>
+        <p>Automatically pick the best text color for any background. WCAG-compliant results.</p>
+        <span class="tool-tag">→</span>
+      </a>
+
+      <a href="color-temperature" class="tool-card">
+        <div class="tool-icon" style="background: linear-gradient(135deg, #f97316, #3b82f6);">🌡️</div>
+        <h3>Color Temperature</h3>
+        <p>Calculate color temperature from any hex code or convert Kelvin to RGB instantly.</p>
+        <span class="tool-tag">→</span>
+      </a>
+
+    </div>
+
+    <!-- Middle Ad -->
+    <div class="ad-slot" data-ad-slot="middle" id="adMiddle">
+      <div class="ad-placeholder">Advertisement</div>
+    </div>
+
+    <!-- Blog Section -->
+    <h2 class="section-title">Learn & Explore</h2>
+    <p class="section-subtitle">Tips, guides, and inspiration for working with color</p>
+
+    <div class="blog-grid">
+      <a href="blog/accessible-color-palette-healthcare" class="blog-card">
+        <span class="blog-tag">Accessibility</span>
+        <h3>Accessible Color Palettes for Healthcare & Government Websites</h3>
+        <p>How to build WCAG-compliant color systems for healthcare, government, and public services where accessibility is the law.</p>
+        <div class="blog-meta">10 min read · Accessibility</div>
+      </a>
+
+      <a href="blog/saas-dashboard-color-palette" class="blog-card">
+        <span class="blog-tag">Design Systems</span>
+        <h3>Best Color Palettes for SaaS Dashboards in 2026</h3>
+        <p>Data visualization, status indicators, brand alignment — everything you need to pick dashboard colors that convert and clarify.</p>
+        <div class="blog-meta">9 min read · Design Systems</div>
+      </a>
+
+      <a href="blog/wcag-contrast-ratio-guide" class="blog-card">
+        <span class="blog-tag">Accessibility</span>
+        <h3>WCAG Contrast Ratio: How to Calculate & Pass Every Test</h3>
+        <p>The full guide to WCAG 2.2 contrast requirements — AA vs AAA, how the math works, and the fastest way to fix failing colors.</p>
+        <div class="blog-meta">7 min read · Accessibility</div>
+      </a>
+
+      <a href="blog/dark-mode-color-scheme-guide" class="blog-card">
+        <span class="blog-tag">Design Tips</span>
+        <h3>Dark Mode Color Schemes: A Complete Engineering Guide</h3>
+        <p>The technical side of dark mode: contrast math, surface levels, elevation, and how to build schemes that don't strain eyes.</p>
+        <div class="blog-meta">8 min read · Dark Mode</div>
+      </a>
+    </div>
+
+    <p style="text-align: center; margin-top: 24px;">
+      <a href="blog" style="color: var(--accent); text-decoration: none; font-weight: 600;">View all articles →</a>
+    </p>
+
+    <!-- Bottom Ad -->
+    <div class="ad-slot" data-ad-slot="bottom" id="adBottom">
+      <div class="ad-placeholder">Advertisement</div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>🎨 HexColor Pro</h4>
+        <p style="margin-bottom: 12px;">Free, fast, and beautiful color tools for designers and developers. Built with ❤️ for the creative community.</p>
+        <p style="font-size: 0.8rem;">No data collection. No signup required. Just colors.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Tools</h4>
+        <a href="color-picker">Color Picker</a>
+        <a href="gradient-generator">Gradient Generator</a>
+        <a href="contrast-checker">Contrast Checker</a>
+        <a href="palette-generator">Palette Generator</a>
+        <a href="color-names">Color Names</a>
+      </div>
+      <div class="footer-col">
+        <h4>More Tools</h4>
+        <a href="color-converter">Color Converter</a>
+        <a href="color-shades-generator">Color Shades</a>
+        <a href="random-color-generator">Random Color</a>
+        <a href="color-mixer">Color Mixer</a>
+        <a href="color-schemes">Color Schemes</a>
+        <a href="shadow-generator">Shadow Generator</a>
+        <a href="color-temperature">Color Temperature</a>
+        <a href="text-color-generator">Text Color</a>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="blog">Blog</a>
+        <a href="privacy">Privacy Policy</a>
+        <a href="terms">Terms of Service</a>
+        <a href="contact">Contact</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 HexColor Pro. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <div id="toast"></div>
+
+  <script>
+    // Color utilities
+    function hexToRgb(hex) {
+      hex = hex.replace('#', '');
+      if (hex.length === 3) hex = hex.split('').map(c => c + c).join('');
+      return {
+        r: parseInt(hex.substring(0, 2), 16),
+        g: parseInt(hex.substring(2, 4), 16),
+        b: parseInt(hex.substring(4, 6), 16)
+      };
+    }
+
+    function rgbToHex(r, g, b) {
+      return '#' + [r, g, b].map(x => {
+        const h = Math.round(Math.max(0, Math.min(255, x))).toString(16);
+        return h.length === 1 ? '0' + h : h;
+      }).join('');
+    }
+
+    function rgbToHsl(r, g, b) {
+      r /= 255; g /= 255; b /= 255;
+      const max = Math.max(r, g, b), min = Math.min(r, g, b);
+      let h, s, l = (max + min) / 2;
+      if (max === min) { h = s = 0; }
+      else {
+        const d = max - min;
+        s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+        switch (max) {
+          case r: h = (g - b) / d + (g < b ? 6 : 0); break;
+          case g: h = (b - r) / d + 2; break;
+          case b: h = (r - g) / d + 4; break;
+        }
+        h /= 6;
+      }
+      return { h: Math.round(h * 360), s: Math.round(s * 100), l: Math.round(l * 100) };
+    }
+
+    function isValidHex(hex) {
+      return /^#?([0-9A-Fa-f]{3}|[0-9A-Fa-f]{6})$/.test(hex);
+    }
+
+    function updateColor(hex) {
+      if (!isValidHex(hex)) return;
+      hex = hex.startsWith('#') ? hex.toLowerCase() : '#' + hex.toLowerCase();
+      document.getElementById('colorDisplay').style.backgroundColor = hex;
+      document.getElementById('colorPicker').value = hex;
+      document.getElementById('hexInput').value = hex;
+      document.getElementById('hexValue').textContent = hex;
+      const rgb = hexToRgb(hex);
+      document.getElementById('rgbValue').textContent = `${rgb.r}, ${rgb.g}, ${rgb.b}`;
+      const hsl = rgbToHsl(rgb.r, rgb.g, rgb.b);
+      document.getElementById('hslValue').textContent = `${hsl.h}°, ${hsl.s}%, ${hsl.l}%`;
+    }
+
+    function copyText(text) {
+      navigator.clipboard.writeText(text).then(() => showToast('Copied: ' + text));
+    }
+
+    function showToast(message) {
+      const t = document.getElementById('toast');
+      t.textContent = message;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 1500);
+    }
+
+    document.getElementById('colorPicker').addEventListener('input', e => updateColor(e.target.value));
+    document.getElementById('hexInput').addEventListener('input', e => {
+      let val = e.target.value;
+      if (!val.startsWith('#')) val = '#' + val;
+      if (isValidHex(val)) updateColor(val);
+    });
+    document.getElementById('hexInput').addEventListener('blur', e => {
+      e.target.value = document.getElementById('colorPicker').value;
+    });
+  </script>
+  <script src="ads.js?v=3"></script>
+</body>
+</html>
