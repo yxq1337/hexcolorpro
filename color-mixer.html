@@ -135,6 +135,98 @@
     }
     #toast.show { opacity: 1; }
   </style>
+  <style>
+  /* AEO blocks: answer-first paragraph + FAQ */
+  .aeo-answer {
+    margin: 18px 0 0; padding: 18px 20px; border-left: 3px solid var(--accent, #6366f1);
+    background: rgba(99, 102, 241, 0.08); border-radius: 8px;
+    color: #e2e8f0; font-size: 1.02rem; line-height: 1.65; text-align: left;
+  }
+  .aeo-faq { margin-top: 28px; }
+  .aeo-faq h2 { font-size: 1.3rem; margin-bottom: 16px; }
+  .aeo-faq h3 { font-size: 1.02rem; margin: 18px 0 6px; color: #f1f5f9; }
+  .aeo-faq p { color: #cbd5e1; font-size: 0.97rem; }
+  .aeo-source { color: #94a3b8; font-size: 0.85rem; margin-top: 8px; }
+  </style>
+  <link rel="alternate" type="text/plain" href="/llms-full.txt" title="Full site content for AI agents">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "@id": "https://hexcolorpro.pages.dev/color-mixer#app",
+      "name": "Color Mixer",
+      "url": "https://hexcolorpro.pages.dev/color-mixer",
+      "description": "Mix two colors together with an adjustable ratio. Generate smooth gradient steps between any two colors. Free online color blender tool.",
+      "applicationCategory": "DesignApplication",
+      "operatingSystem": "Any modern web browser",
+      "browserRequirements": "Requires JavaScript",
+      "isAccessibleForFree": true,
+      "inLanguage": "en",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "featureList": [
+        "Blend two colors at an adjustable ratio",
+        "See the intermediate steps of the blend",
+        "Copy the mixed HEX value"
+      ],
+      "publisher": {
+        "@id": "https://hexcolorpro.pages.dev/#organization"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://hexcolorpro.pages.dev/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Color Mixer",
+          "item": "https://hexcolorpro.pages.dev/color-mixer"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How is a color mix calculated?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "By interpolating each channel: mixing two colors at 50% gives ((R1+R2)/2, (G1+G2)/2, (B1+B2)/2) for an RGB mix. Mixing in a perceptual space such as OKLab instead produces a result closer to how the blend appears to the eye."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why does mixing two colors give a muddy result?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "RGB mixing passes through desaturated midpoints, so mixing complementary hues lands near grey. That is a property of the color model, not a bug; add a third color, or mix in a perceptual space to keep chroma."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the difference between mixing light and mixing paint?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Light is additive: red plus green gives yellow. Paint is subtractive: red plus green gives a dark brown. Screens mix light, so an RGB mixer follows the additive rule."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
 </head>
 <body>
   <div class="container">
@@ -151,7 +243,9 @@
     <div class="page-header">
       <h1>Color Mixer</h1>
       <p>Blend two colors together and generate gradient steps between them.</p>
-    </div>
+      <!-- AEO:answer -->
+        <p class="aeo-answer">A color mixer blends two colors at a chosen ratio and reports the result. HexColor Pro interpolates channel by channel — a 50/50 mix lands halfway in RGB — and shows the intermediate steps, which makes it easy to build a smooth ramp between two brand colors.</p>
+      </div>
 
     <div class="ad-slot" data-ad-slot="top" id="adTop">
       <div class="ad-placeholder">Advertisement</div>
@@ -307,6 +401,22 @@
     updateMixer();
     
   </script>
+          <div class="aeo-faq">
+      <!-- AEO:faq -->
+      <h2>Frequently asked questions</h2>
+        <h3>How is a color mix calculated?</h3>
+        <p>By interpolating each channel: mixing two colors at 50% gives ((R1+R2)/2, (G1+G2)/2, (B1+B2)/2) for an RGB mix. Mixing in a perceptual space such as OKLab instead produces a result closer to how the blend appears to the eye.</p>
+        <h3>Why does mixing two colors give a muddy result?</h3>
+        <p>RGB mixing passes through desaturated midpoints, so mixing complementary hues lands near grey. That is a property of the color model, not a bug; add a third color, or mix in a perceptual space to keep chroma.</p>
+        <h3>What is the difference between mixing light and mixing paint?</h3>
+        <p>Light is additive: red plus green gives yellow. Paint is subtractive: red plus green gives a dark brown. Screens mix light, so an RGB mixer follows the additive rule.</p>
+    </div>
+
+    <footer>
+      <!-- AEO:footer -->
+      <p>© 2026 HexColor Pro · <a href="index">Home</a> · <a href="blog">Blog</a> · <a href="about">About</a> · <a href="privacy">Privacy</a> · <a href="terms">Terms</a> · <a href="contact">Contact</a> · <a href="about">About</a><!-- AEO:about --></p>
+    </footer>
+
   <script src="ads.js?v=3"></script>
 </body>
 </html>

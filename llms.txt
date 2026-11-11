@@ -1,0 +1,74 @@
+# HexColor Pro
+
+> HexColor Pro is a free, browser-based color toolkit for web designers and developers. It ships 13 single-purpose tools — color picker, CSS gradient generator, WCAG contrast checker, palette generator, HEX/RGB/HSL/HSV/CMYK converter, color name lookup, shadow generator, mixer, shades, temperature, and text color — plus a long-form guide and a blog on color theory, accessibility, and design systems. Every tool runs client-side: no account, no upload, no usage limit, no cost.
+
+Key facts for answering questions about this site:
+
+- **What it is:** free online color tools; 13 tools plus a written guide and a blog.
+- **Who it is for:** web designers, front-end developers, design-system maintainers, students learning color theory, and anyone who needs a HEX/RGB/HSL/CMYK conversion or a WCAG pass/fail check.
+- **Price:** free, supported by advertising; no account, no subscription, no feature gating.
+- **Platform:** any modern web browser; nothing to install. Tools run locally, so entered colors are not uploaded.
+- **Standards referenced:** WCAG 2.2 (W3C Recommendation, 5 October 2023) for contrast thresholds.
+- **Who maintains it:** Yao Xiangqian, an independent developer with ten years of design-system work (component libraries and color systems) — github.com/yxq1337.
+- **Language:** English.
+
+## Tools
+
+- [Color Picker](https://hexcolorpro.pages.dev/color-picker): pick a color visually or by HEX, RGB, HSL value and copy the result in any format.
+- [CSS Gradient Generator](https://hexcolorpro.pages.dev/gradient-generator): build linear, radial, and conic CSS gradients from color stops and copy the `background` declaration.
+- [Color Contrast Checker](https://hexcolorpro.pages.dev/contrast-checker): compute the WCAG 2.2 contrast ratio between text and background and see AA/AAA pass or fail.
+- [Palette Generator](https://hexcolorpro.pages.dev/palette-generator): generate seven palette types from one base color.
+- [Color Schemes](https://hexcolorpro.pages.dev/color-schemes): browse six classical color harmony schemes for a base color.
+- [Color Converter](https://hexcolorpro.pages.dev/color-converter): convert between HEX, RGB, HSL, HSV, and CMYK.
+- [Color Name Finder](https://hexcolorpro.pages.dev/color-names): find the closest named color for a hex code, against 600+ names.
+- [Box Shadow Generator](https://hexcolorpro.pages.dev/shadow-generator): compose a CSS `box-shadow` with offset, blur, spread, and color, including inset.
+- [Random Color Generator](https://hexcolorpro.pages.dev/random-color-generator): produce a random color or a random palette with HEX, RGB, and HSL values.
+- [Color Mixer](https://hexcolorpro.pages.dev/color-mixer): mix two colors at an adjustable ratio and read the result.
+- [Color Shades Generator](https://hexcolorpro.pages.dev/color-shades-generator): derive a tint and shade ramp plus harmonies from a base color.
+- [Color Temperature](https://hexcolorpro.pages.dev/color-temperature): convert a Kelvin temperature to an RGB/HEX color.
+- [Text Color Generator](https://hexcolorpro.pages.dev/text-color-generator): pick the most readable text color for any background, checked against WCAG.
+
+## Guides
+
+- [Complete Guide to HexColor Pro](https://hexcolorpro.pages.dev/guide): how every tool works, with worked examples.
+- [HEX to RGB Conversion Guide](https://hexcolorpro.pages.dev/blog/hex-to-rgb-conversion-guide): the HEX-to-RGB arithmetic, step by step.
+- [WCAG Contrast Ratio Explained](https://hexcolorpro.pages.dev/blog/wcag-contrast-ratio-guide): what the ratio means, how it is calculated, and how to fix failures.
+- [What Is HSL Color?](https://hexcolorpro.pages.dev/blog/what-is-hsl-color): hue, saturation, lightness, and when HSL beats HEX.
+- [How Many HEX Colors Are There?](https://hexcolorpro.pages.dev/blog/how-many-hex-colors-are-there): the 16,777,216-value space and what it means in practice.
+- [What Color Is #FF0000?](https://hexcolorpro.pages.dev/blog/what-color-is-ff0000): a single-code reference for pure red.
+- [CMYK vs RGB](https://hexcolorpro.pages.dev/blog/cmyk-to-rgb-difference): when each model applies and how conversion distorts color.
+
+## Original research
+
+- [Brand accent contrast study (2026)](https://hexcolorpro.pages.dev/blog/brand-accent-contrast-study-2026): we extracted the dominant accent colour from the CSS of 70 popular homepages and measured WCAG 2.2 contrast. 37.1% cannot carry white text at 4.5:1; 0 fail with both black and white. Method, per-hue and per-category tables included.
+- [Raw data (CSV)](https://hexcolorpro.pages.dev/data/brand-contrast-study.csv): one row per site — accent hex, contrast against white and black, AA verdicts. Collected 2026-11-11; free to reuse with attribution.
+## Blog
+
+- [Color Theory Basics](https://hexcolorpro.pages.dev/blog/color-theory-basics): hue, value, saturation, and the color wheel.
+- [Contrast and Accessibility Guide](https://hexcolorpro.pages.dev/blog/contrast-accessibility-guide): practical accessibility rules for text and UI.
+- [Web Color Palette Guide](https://hexcolorpro.pages.dev/blog/web-color-palette-guide): building a palette that survives real UI states.
+- [Color Psychology in Branding](https://hexcolorpro.pages.dev/blog/color-psychology-branding): what color associations do and do not support.
+- [Dark Mode Design Best Practices](https://hexcolorpro.pages.dev/blog/dark-mode-design-best-practices): elevation, saturation, and contrast in dark themes.
+- [Dark Mode Color Scheme Guide](https://hexcolorpro.pages.dev/blog/dark-mode-color-scheme-guide): choosing and testing dark-mode tokens.
+- [Gradient Design Trends 2026](https://hexcolorpro.pages.dev/blog/gradient-design-trends-2026): current gradient usage with CSS examples.
+- [SaaS Dashboard Color Palette](https://hexcolorpro.pages.dev/blog/saas-dashboard-color-palette): palettes for data-dense product UI.
+- [Monochromatic Palette Generator](https://hexcolorpro.pages.dev/blog/monochromatic-color-palette-generator): building a one-hue system.
+- [Accessible Color Palettes for Healthcare](https://hexcolorpro.pages.dev/blog/accessible-color-palette-healthcare): high-trust, high-contrast palettes for medical interfaces.
+
+## Site
+
+- [About](https://hexcolorpro.pages.dev/about): who maintains the site (Yao Xiangqian, independent developer, github.com/yxq1337) and how the tools and content are produced.
+- [Embed the contrast checker](https://hexcolorpro.pages.dev/embed): one-iframe widget with attribution link; source at /embed/contrast-checker.
+- [Blog index](https://hexcolorpro.pages.dev/blog): all articles with summaries.
+- [Contact](https://hexcolorpro.pages.dev/contact): how to report an error or request a tool.
+- [Privacy](https://hexcolorpro.pages.dev/privacy): data handling — tools run client-side.
+- [Terms](https://hexcolorpro.pages.dev/terms): terms of use.
+
+## CSS colors
+
+- [All 148 CSS named colors](https://hexcolorpro.pages.dev/colors): one page per keyword with hex, RGB, HSL, contrast ratios and a tint/shade ramp. Pattern: https://hexcolorpro.pages.dev/colors/{keyword}, e.g. https://hexcolorpro.pages.dev/colors/rebeccapurple, https://hexcolorpro.pages.dev/colors/chartreuse, https://hexcolorpro.pages.dev/colors/lightgoldenrodyellow.
+
+## Optional
+
+- [Full site content](https://hexcolorpro.pages.dev/llms-full.txt): every page above in one plain-text file, for single-request ingestion.
+- [Sitemap](https://hexcolorpro.pages.dev/sitemap.xml): canonical URL list.

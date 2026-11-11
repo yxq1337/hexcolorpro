@@ -192,6 +192,98 @@
       .gradient-preview { height: 180px; }
     }
   </style>
+  <style>
+  /* AEO blocks: answer-first paragraph + FAQ */
+  .aeo-answer {
+    margin: 18px 0 0; padding: 18px 20px; border-left: 3px solid var(--accent, #6366f1);
+    background: rgba(99, 102, 241, 0.08); border-radius: 8px;
+    color: #e2e8f0; font-size: 1.02rem; line-height: 1.65; text-align: left;
+  }
+  .aeo-faq { margin-top: 28px; }
+  .aeo-faq h2 { font-size: 1.3rem; margin-bottom: 16px; }
+  .aeo-faq h3 { font-size: 1.02rem; margin: 18px 0 6px; color: #f1f5f9; }
+  .aeo-faq p { color: #cbd5e1; font-size: 0.97rem; }
+  .aeo-source { color: #94a3b8; font-size: 0.85rem; margin-top: 8px; }
+  </style>
+  <link rel="alternate" type="text/plain" href="/llms-full.txt" title="Full site content for AI agents">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "@id": "https://hexcolorpro.pages.dev/gradient-generator#app",
+      "name": "CSS Gradient Generator",
+      "url": "https://hexcolorpro.pages.dev/gradient-generator",
+      "description": "Create beautiful CSS gradients with our free gradient generator. Linear, radial, and conic gradients with multiple color stops. Copy CSS code instantly.",
+      "applicationCategory": "DesignApplication",
+      "operatingSystem": "Any modern web browser",
+      "browserRequirements": "Requires JavaScript",
+      "isAccessibleForFree": true,
+      "inLanguage": "en",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "featureList": [
+        "Build linear, radial, and conic CSS gradients",
+        "Add, move, and remove color stops",
+        "Copy the finished CSS background declaration"
+      ],
+      "publisher": {
+        "@id": "https://hexcolorpro.pages.dev/#organization"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://hexcolorpro.pages.dev/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "CSS Gradient Generator",
+          "item": "https://hexcolorpro.pages.dev/gradient-generator"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is the difference between linear, radial, and conic gradients?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Linear blends colors along a straight line at a set angle, radial blends outward from a center point, and conic sweeps colors around a center like a clock face. CSS exposes them as linear-gradient(), radial-gradient(), and conic-gradient(), all supported in current browsers."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How many color stops should a gradient have?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Two stops are the minimum and stay predictable across browsers; three or four let you control the midpoint. Past about six stops a gradient starts to band on 8-bit displays, so add noise or interpolate in a wider color space instead of adding more stops."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why does my gradient look banded?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Banding comes from 8-bit color steps: a slow transition between similar colors shows visible stripes. Shorten the transition distance, add a subtle noise overlay, or interpolate in a wider color space such as oklab with CSS color interpolation."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
 </head>
 <body>
   <div class="container">
@@ -210,7 +302,9 @@
     <div class="page-header">
       <h1>CSS Gradient Generator</h1>
       <p>Create stunning CSS gradients. Linear, radial, and conic — with live preview and one-click copy.</p>
-    </div>
+      <!-- AEO:answer -->
+        <p class="aeo-answer">A CSS gradient generator turns a set of color stops into a linear, radial, or conic gradient and writes the CSS for you. In HexColor Pro you add or move stops, watch the result live, and copy the finished background declaration — it stays pure CSS, so it scales without image files.</p>
+      </div>
 
     <div class="ad-slot" data-ad-slot="top" id="adTop">
       <div class="ad-placeholder">Advertisement</div>
@@ -285,8 +379,19 @@
       <p>Try our <a href="palette-generator">Palette Generator</a> to build full color schemes, or the <a href="contrast-checker">Contrast Checker</a> to ensure accessibility.</p>
     </div>
 
+        <div class="aeo-faq">
+      <!-- AEO:faq -->
+      <h2>Frequently asked questions</h2>
+        <h3>What is the difference between linear, radial, and conic gradients?</h3>
+        <p>Linear blends colors along a straight line at a set angle, radial blends outward from a center point, and conic sweeps colors around a center like a clock face. CSS exposes them as linear-gradient(), radial-gradient(), and conic-gradient(), all supported in current browsers.</p>
+        <h3>How many color stops should a gradient have?</h3>
+        <p>Two stops are the minimum and stay predictable across browsers; three or four let you control the midpoint. Past about six stops a gradient starts to band on 8-bit displays, so add noise or interpolate in a wider color space instead of adding more stops.</p>
+        <h3>Why does my gradient look banded?</h3>
+        <p>Banding comes from 8-bit color steps: a slow transition between similar colors shows visible stripes. Shorten the transition distance, add a subtle noise overlay, or interpolate in a wider color space such as oklab with CSS color interpolation.</p>
+    </div>
+
     <footer>
-      <p>© 2026 HexColor Pro · <a href="index">Home</a> · <a href="privacy">Privacy</a> · <a href="terms">Terms</a> · <a href="contact">Contact</a></p>
+      <p>© 2026 HexColor Pro · <a href="index">Home</a> · <a href="privacy">Privacy</a> · <a href="terms">Terms</a> · <a href="contact">Contact</a> · <a href="about">About</a><!-- AEO:about --></p>
     </footer>
   </div>
 

@@ -99,6 +99,78 @@
     }
     footer a { color: var(--accent); text-decoration: none; margin: 0 8px; }
   </style>
+  <style>
+  /* AEO blocks: answer-first paragraph + FAQ */
+  .aeo-answer {
+    margin: 18px 0 0; padding: 18px 20px; border-left: 3px solid var(--accent, #6366f1);
+    background: rgba(99, 102, 241, 0.08); border-radius: 8px;
+    color: #e2e8f0; font-size: 1.02rem; line-height: 1.65; text-align: left;
+  }
+  .aeo-faq { margin-top: 28px; }
+  .aeo-faq h2 { font-size: 1.3rem; margin-bottom: 16px; }
+  .aeo-faq h3 { font-size: 1.02rem; margin: 18px 0 6px; color: #f1f5f9; }
+  .aeo-faq p { color: #cbd5e1; font-size: 0.97rem; }
+  .aeo-source { color: #94a3b8; font-size: 0.85rem; margin-top: 8px; }
+  </style>
+  <link rel="alternate" type="text/plain" href="/llms-full.txt" title="Full site content for AI agents">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BlogPosting",
+      "@id": "https://hexcolorpro.pages.dev/blog/contrast-accessibility-guide#article",
+      "headline": "The Complete Guide to Color Contrast & Accessibility",
+      "description": "Everything you need to know about WCAG contrast ratios, how to measure contrast, common accessibility mistakes, and practical design tips.",
+      "url": "https://hexcolorpro.pages.dev/blog/contrast-accessibility-guide",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://hexcolorpro.pages.dev/blog/contrast-accessibility-guide"
+      },
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "datePublished": "2026-11-07",
+      "dateModified": "2026-11-07",
+      "author": {
+        "@type": "Person",
+        "name": "Yao Xiangqian",
+        "url": "https://hexcolorpro.pages.dev/about",
+        "jobTitle": "Design-systems developer and maintainer of HexColor Pro",
+        "sameAs": [
+          "https://github.com/yxq1337"
+        ]
+      },
+      "publisher": {
+        "@id": "https://hexcolorpro.pages.dev/#organization"
+      },
+      "image": "https://hexcolorpro.pages.dev/assets/og-image.png"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://hexcolorpro.pages.dev/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Blog",
+          "item": "https://hexcolorpro.pages.dev/blog"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "The Complete Guide to Color Contrast & Accessibility",
+          "item": "https://hexcolorpro.pages.dev/blog/contrast-accessibility-guide"
+        }
+      ]
+    }
+  ]
+}
+</script>
 </head>
 <body>
   <div class="container">
@@ -116,7 +188,7 @@
       <span class="tag">Accessibility</span>
       <h1>The Complete Guide to Color Contrast & Accessibility</h1>
       <p>WCAG standards explained, plus how to measure contrast and avoid common mistakes.</p>
-      <div class="meta">Nov 7, 2026 · 10 min read</div>
+      <div class="meta"><!-- AEO:byline -->By <a href="../about">Yao Xiangqian</a> · <time datetime="2026-11-07">Nov 7, 2026</time> · 10 min read</div>
     </div>
 
     <div class="ad-slot" data-ad-slot="top" id="adTop">
@@ -259,7 +331,7 @@
     </section>
 
     <footer>
-      <p>© 2026 HexColor Pro · <a href="../index">Home</a> · <a href="../privacy">Privacy</a> · <a href="../terms">Terms</a> · <a href="../contact">Contact</a></p>
+      <p>© 2026 HexColor Pro · <a href="../index">Home</a> · <a href="../privacy">Privacy</a> · <a href="../terms">Terms</a> · <a href="../contact">Contact</a> · <a href="../about">About</a><!-- AEO:about --></p>
     </footer>
   </div>
   <script src="../ads.js?v=3"></script>

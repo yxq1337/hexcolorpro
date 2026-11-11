@@ -158,6 +158,106 @@
     }
     .breadcrumb a { color: var(--accent); text-decoration: none; }
   </style>
+  <style>
+  /* AEO blocks: answer-first paragraph + FAQ */
+  .aeo-answer {
+    margin: 18px 0 0; padding: 18px 20px; border-left: 3px solid var(--accent, #6366f1);
+    background: rgba(99, 102, 241, 0.08); border-radius: 8px;
+    color: #e2e8f0; font-size: 1.02rem; line-height: 1.65; text-align: left;
+  }
+  .aeo-faq { margin-top: 28px; }
+  .aeo-faq h2 { font-size: 1.3rem; margin-bottom: 16px; }
+  .aeo-faq h3 { font-size: 1.02rem; margin: 18px 0 6px; color: #f1f5f9; }
+  .aeo-faq p { color: #cbd5e1; font-size: 0.97rem; }
+  .aeo-source { color: #94a3b8; font-size: 0.85rem; margin-top: 8px; }
+  </style>
+  <link rel="alternate" type="text/plain" href="/llms-full.txt" title="Full site content for AI agents">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "@id": "https://hexcolorpro.pages.dev/color-picker#app",
+      "name": "Color Picker",
+      "url": "https://hexcolorpro.pages.dev/color-picker",
+      "description": "Free online color picker. Pick any color and get HEX, RGB, HSL, HSV, CMYK values instantly. Save recent colors and copy to clipboard.",
+      "applicationCategory": "DesignApplication",
+      "operatingSystem": "Any modern web browser",
+      "browserRequirements": "Requires JavaScript",
+      "isAccessibleForFree": true,
+      "inLanguage": "en",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "featureList": [
+        "Pick a color visually or by code",
+        "Show HEX, RGB, HSL, HSV, and CMYK for one color",
+        "Copy any format with one click"
+      ],
+      "publisher": {
+        "@id": "https://hexcolorpro.pages.dev/#organization"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://hexcolorpro.pages.dev/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Color Picker",
+          "item": "https://hexcolorpro.pages.dev/color-picker"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is a hex color code?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A hex code is a six-digit hexadecimal notation for an sRGB color, written #RRGGBB. Each pair runs from 00 to FF, so #FF0000 means red 255, green 0, blue 0. Three-digit shorthand such as #F00 expands to #FF0000."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How many colors can a color picker represent?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "An 8-bit-per-channel picker covers 256 × 256 × 256 = 16,777,216 colors, usually written as 16.7 million. Adding an alpha channel multiplies that by 256 for transparency levels."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Should I use HEX or HSL in CSS?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Both are valid. HEX is compact and universally supported; HSL is easier to reason about when you need lighter, darker, or desaturated variants of one hue. Pick one convention per project and convert only when you need to share a value."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why do the same HEX values look different on my phone?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Screens differ in gamma, white point, calibration, and brightness, so identical codes render differently. Check critical colors on a calibrated display, and never judge contrast by eye alone — measure the ratio instead."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
 </head>
 <body>
   <div class="container">
@@ -176,7 +276,9 @@
     <div class="page-header">
       <h1>Color Picker</h1>
       <p>Pick any color and get instant HEX, RGB, HSL, HSV & CMYK values</p>
-    </div>
+      <!-- AEO:answer -->
+        <p class="aeo-answer">A color picker lets you choose a color visually or by typing a code, then copy it in any format you need. HexColor Pro returns HEX, RGB, HSL, HSV, and CMYK for the same color and updates every field the moment you edit one of them.</p>
+      </div>
 
     <div class="ad-slot" data-ad-slot="top" id="adTop">
       <div class="ad-placeholder">Advertisement</div>
@@ -253,8 +355,21 @@
       <p>Check out our <a href="gradient-generator">Gradient Generator</a>, <a href="contrast-checker">Contrast Checker</a>, and <a href="palette-generator">Palette Generator</a> to take your color work to the next level.</p>
     </div>
 
+        <div class="aeo-faq">
+      <!-- AEO:faq -->
+      <h2>Frequently asked questions</h2>
+        <h3>What is a hex color code?</h3>
+        <p>A hex code is a six-digit hexadecimal notation for an sRGB color, written #RRGGBB. Each pair runs from 00 to FF, so #FF0000 means red 255, green 0, blue 0. Three-digit shorthand such as #F00 expands to #FF0000.</p>
+        <h3>How many colors can a color picker represent?</h3>
+        <p>An 8-bit-per-channel picker covers 256 × 256 × 256 = 16,777,216 colors, usually written as 16.7 million. Adding an alpha channel multiplies that by 256 for transparency levels.</p>
+        <h3>Should I use HEX or HSL in CSS?</h3>
+        <p>Both are valid. HEX is compact and universally supported; HSL is easier to reason about when you need lighter, darker, or desaturated variants of one hue. Pick one convention per project and convert only when you need to share a value.</p>
+        <h3>Why do the same HEX values look different on my phone?</h3>
+        <p>Screens differ in gamma, white point, calibration, and brightness, so identical codes render differently. Check critical colors on a calibrated display, and never judge contrast by eye alone — measure the ratio instead.</p>
+    </div>
+
     <footer>
-      <p>© 2026 HexColor Pro · <a href="index">Home</a> · <a href="privacy">Privacy</a> · <a href="terms">Terms</a> · <a href="contact">Contact</a></p>
+      <p>© 2026 HexColor Pro · <a href="index">Home</a> · <a href="privacy">Privacy</a> · <a href="terms">Terms</a> · <a href="contact">Contact</a> · <a href="about">About</a><!-- AEO:about --></p>
     </footer>
   </div>
 

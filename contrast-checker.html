@@ -146,6 +146,114 @@
     }
     #toast.show { opacity: 1; }
   </style>
+  <style>
+  /* AEO blocks: answer-first paragraph + FAQ */
+  .aeo-answer {
+    margin: 18px 0 0; padding: 18px 20px; border-left: 3px solid var(--accent, #6366f1);
+    background: rgba(99, 102, 241, 0.08); border-radius: 8px;
+    color: #e2e8f0; font-size: 1.02rem; line-height: 1.65; text-align: left;
+  }
+  .aeo-faq { margin-top: 28px; }
+  .aeo-faq h2 { font-size: 1.3rem; margin-bottom: 16px; }
+  .aeo-faq h3 { font-size: 1.02rem; margin: 18px 0 6px; color: #f1f5f9; }
+  .aeo-faq p { color: #cbd5e1; font-size: 0.97rem; }
+  .aeo-source { color: #94a3b8; font-size: 0.85rem; margin-top: 8px; }
+  </style>
+  <link rel="alternate" type="text/plain" href="/llms-full.txt" title="Full site content for AI agents">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "@id": "https://hexcolorpro.pages.dev/contrast-checker#app",
+      "name": "Color Contrast Checker",
+      "url": "https://hexcolorpro.pages.dev/contrast-checker",
+      "description": "Check color contrast ratio and WCAG compliance. Test text on background colors for AA and AAA accessibility standards. Real-time results.",
+      "applicationCategory": "DesignApplication",
+      "operatingSystem": "Any modern web browser",
+      "browserRequirements": "Requires JavaScript",
+      "isAccessibleForFree": true,
+      "inLanguage": "en",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "featureList": [
+        "Compute the WCAG 2.2 contrast ratio for any two colors",
+        "Show AA and AAA pass or fail for normal and large text",
+        "Suggest adjustments that reach the target ratio"
+      ],
+      "publisher": {
+        "@id": "https://hexcolorpro.pages.dev/#organization"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://hexcolorpro.pages.dev/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Color Contrast Checker",
+          "item": "https://hexcolorpro.pages.dev/contrast-checker"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is a good contrast ratio for body text?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "For body text, aim for at least 4.5:1, the WCAG 2.2 AA minimum for normal-size text. Many accessibility teams target 7:1 for long-form reading. A ratio of 3:1 is not enough for paragraph text — it only satisfies the large-text and UI-component rules."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does a 4.5:1 ratio apply to buttons and borders?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Buttons, borders, icons, and other essential UI graphics fall under WCAG 1.4.11, which requires 3:1 against adjacent colors. The 4.5:1 requirement in 1.4.3 covers text; large text may use 3:1."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is contrast ratio always the same as perceived readability?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Close, but not identical. The ratio uses relative luminance and ignores font weight, letter spacing, and ambient light. A 4.5:1 pair in a thin 12px typeface can read worse than a 4:1 pair in a heavy 20px one, so treat the minimum as a floor."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why does black on white score 21:1 and not 100:1?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The scale is capped by the formula (L1 + 0.05) / (L2 + 0.05). With black at luminance 0 and white at 1, the result is 1.05 / 0.05 = 21. There is no higher value in WCAG, which is why 21:1 is the practical maximum."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do transparency and opacity affect the ratio?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. WCAG is evaluated on the final rendered colors, so a 60% opaque overlay over a background must be resolved to one solid color first. Blend the alpha channel over the layer beneath it, then test the resulting pair."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
 </head>
 <body>
   <div class="container">
@@ -164,7 +272,9 @@
     <div class="page-header">
       <h1>Color Contrast Checker</h1>
       <p>Test WCAG accessibility compliance. AA & AAA contrast ratios in real time.</p>
-    </div>
+      <!-- AEO:answer -->
+        <p class="aeo-answer">The WCAG contrast ratio measures the luminance difference between text and its background on a scale from 1:1 to 21:1. WCAG 2.2 Level AA requires 4.5:1 for normal text and 3:1 for large text; Level AAA raises those thresholds to 7:1 and 4.5:1.</p>
+      </div>
 
     <div class="ad-slot" data-ad-slot="top" id="adTop">
       <div class="ad-placeholder">Advertisement</div>
@@ -257,8 +367,23 @@
       <p>Try the <a href="palette-generator">Palette Generator</a> for harmonious color schemes, and the <a href="color-picker">Color Picker</a> to find perfect colors.</p>
     </div>
 
+        <div class="aeo-faq">
+      <!-- AEO:faq -->
+      <h2>Frequently asked questions</h2>
+        <h3>What is a good contrast ratio for body text?</h3>
+        <p>For body text, aim for at least 4.5:1, the WCAG 2.2 AA minimum for normal-size text. Many accessibility teams target 7:1 for long-form reading. A ratio of 3:1 is not enough for paragraph text — it only satisfies the large-text and UI-component rules.</p>
+        <h3>Does a 4.5:1 ratio apply to buttons and borders?</h3>
+        <p>No. Buttons, borders, icons, and other essential UI graphics fall under WCAG 1.4.11, which requires 3:1 against adjacent colors. The 4.5:1 requirement in 1.4.3 covers text; large text may use 3:1.</p>
+        <h3>Is contrast ratio always the same as perceived readability?</h3>
+        <p>Close, but not identical. The ratio uses relative luminance and ignores font weight, letter spacing, and ambient light. A 4.5:1 pair in a thin 12px typeface can read worse than a 4:1 pair in a heavy 20px one, so treat the minimum as a floor.</p>
+        <h3>Why does black on white score 21:1 and not 100:1?</h3>
+        <p>The scale is capped by the formula (L1 + 0.05) / (L2 + 0.05). With black at luminance 0 and white at 1, the result is 1.05 / 0.05 = 21. There is no higher value in WCAG, which is why 21:1 is the practical maximum.</p>
+        <h3>Do transparency and opacity affect the ratio?</h3>
+        <p>Yes. WCAG is evaluated on the final rendered colors, so a 60% opaque overlay over a background must be resolved to one solid color first. Blend the alpha channel over the layer beneath it, then test the resulting pair.</p>
+    </div>
+
     <footer>
-      <p>© 2026 HexColor Pro · <a href="index">Home</a> · <a href="privacy">Privacy</a> · <a href="terms">Terms</a> · <a href="contact">Contact</a></p>
+      <p>© 2026 HexColor Pro · <a href="index">Home</a> · <a href="privacy">Privacy</a> · <a href="terms">Terms</a> · <a href="contact">Contact</a> · <a href="about">About</a><!-- AEO:about --></p>
     </footer>
   </div>
 

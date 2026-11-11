@@ -135,6 +135,98 @@
     }
     #toast.show { opacity: 1; }
   </style>
+  <style>
+  /* AEO blocks: answer-first paragraph + FAQ */
+  .aeo-answer {
+    margin: 18px 0 0; padding: 18px 20px; border-left: 3px solid var(--accent, #6366f1);
+    background: rgba(99, 102, 241, 0.08); border-radius: 8px;
+    color: #e2e8f0; font-size: 1.02rem; line-height: 1.65; text-align: left;
+  }
+  .aeo-faq { margin-top: 28px; }
+  .aeo-faq h2 { font-size: 1.3rem; margin-bottom: 16px; }
+  .aeo-faq h3 { font-size: 1.02rem; margin: 18px 0 6px; color: #f1f5f9; }
+  .aeo-faq p { color: #cbd5e1; font-size: 0.97rem; }
+  .aeo-source { color: #94a3b8; font-size: 0.85rem; margin-top: 8px; }
+  </style>
+  <link rel="alternate" type="text/plain" href="/llms-full.txt" title="Full site content for AI agents">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "@id": "https://hexcolorpro.pages.dev/text-color-generator#app",
+      "name": "Text Color Generator",
+      "url": "https://hexcolorpro.pages.dev/text-color-generator",
+      "description": "Instantly find the most readable text color for any background. WCAG-compliant contrast ratio checker with AA and AAA level results.",
+      "applicationCategory": "DesignApplication",
+      "operatingSystem": "Any modern web browser",
+      "browserRequirements": "Requires JavaScript",
+      "isAccessibleForFree": true,
+      "inLanguage": "en",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "featureList": [
+        "Pick the most readable text color for a background",
+        "Compare light and dark candidates by contrast ratio",
+        "Report whether the pair passes WCAG AA"
+      ],
+      "publisher": {
+        "@id": "https://hexcolorpro.pages.dev/#organization"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://hexcolorpro.pages.dev/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Text Color Generator",
+          "item": "https://hexcolorpro.pages.dev/text-color-generator"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How do I choose the best text color for a background?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Pick the candidate that maximizes contrast ratio: black text on light backgrounds, white on dark, computed with the WCAG relative-luminance formula. Then verify the ratio clears 4.5:1 for body text rather than trusting the choice by eye."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is black or white always the best choice?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Near-black (#111827) and near-white (#f8fafc) usually read softer than the pure values and avoid the harsh edge pure black and white produce on large text areas. Both still need a measured contrast check."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What about text over images or gradients?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Contrast is judged against the worst-case pixel behind each glyph. Add a scrim or solid overlay, or test the lightest and darkest regions separately; a single average value hides the failures."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
 </head>
 <body>
   <div class="container">
@@ -151,7 +243,9 @@
     <div class="page-header">
       <h1>Text Color Generator</h1>
       <p>Get the most readable text color for any background. WCAG contrast compliant.</p>
-    </div>
+      <!-- AEO:answer -->
+        <p class="aeo-answer">A text color generator picks the most readable text color for a given background. HexColor Pro tests light and dark candidates against the background, returns the pair with the highest contrast ratio, and reports whether that pair clears the WCAG AA threshold.</p>
+      </div>
 
     <div class="ad-slot" data-ad-slot="top" id="adTop">
       <div class="ad-placeholder">Advertisement</div>
@@ -325,6 +419,22 @@
     updateTextColor();
     
   </script>
+          <div class="aeo-faq">
+      <!-- AEO:faq -->
+      <h2>Frequently asked questions</h2>
+        <h3>How do I choose the best text color for a background?</h3>
+        <p>Pick the candidate that maximizes contrast ratio: black text on light backgrounds, white on dark, computed with the WCAG relative-luminance formula. Then verify the ratio clears 4.5:1 for body text rather than trusting the choice by eye.</p>
+        <h3>Is black or white always the best choice?</h3>
+        <p>No. Near-black (#111827) and near-white (#f8fafc) usually read softer than the pure values and avoid the harsh edge pure black and white produce on large text areas. Both still need a measured contrast check.</p>
+        <h3>What about text over images or gradients?</h3>
+        <p>Contrast is judged against the worst-case pixel behind each glyph. Add a scrim or solid overlay, or test the lightest and darkest regions separately; a single average value hides the failures.</p>
+    </div>
+
+    <footer>
+      <!-- AEO:footer -->
+      <p>© 2026 HexColor Pro · <a href="index">Home</a> · <a href="blog">Blog</a> · <a href="about">About</a> · <a href="privacy">Privacy</a> · <a href="terms">Terms</a> · <a href="contact">Contact</a> · <a href="about">About</a><!-- AEO:about --></p>
+    </footer>
+
   <script src="ads.js?v=3"></script>
 </body>
 </html>

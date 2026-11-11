@@ -2,212 +2,1126 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
         <loc>https://hexcolorpro.pages.dev/</loc>
-        <lastmod>2026-11-07</lastmod>
+        <lastmod>2026-11-11</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
     </url>
     <url>
         <loc>https://hexcolorpro.pages.dev/color-picker</loc>
-        <lastmod>2026-11-07</lastmod>
+        <lastmod>2026-11-11</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
     </url>
     <url>
         <loc>https://hexcolorpro.pages.dev/gradient-generator</loc>
-        <lastmod>2026-11-07</lastmod>
+        <lastmod>2026-11-11</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
     </url>
     <url>
         <loc>https://hexcolorpro.pages.dev/contrast-checker</loc>
-        <lastmod>2026-11-07</lastmod>
+        <lastmod>2026-11-11</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
     </url>
     <url>
         <loc>https://hexcolorpro.pages.dev/palette-generator</loc>
-        <lastmod>2026-11-07</lastmod>
+        <lastmod>2026-11-11</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
     </url>
     <url>
         <loc>https://hexcolorpro.pages.dev/color-schemes</loc>
-        <lastmod>2026-11-07</lastmod>
+        <lastmod>2026-11-11</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://hexcolorpro.pages.dev/color-converter</loc>
-        <lastmod>2026-11-07</lastmod>
+        <lastmod>2026-11-11</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://hexcolorpro.pages.dev/color-names</loc>
-        <lastmod>2026-11-07</lastmod>
+        <lastmod>2026-11-11</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://hexcolorpro.pages.dev/shadow-generator</loc>
-        <lastmod>2026-11-08</lastmod>
+        <lastmod>2026-11-11</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://hexcolorpro.pages.dev/random-color-generator</loc>
-        <lastmod>2026-11-08</lastmod>
+        <lastmod>2026-11-11</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://hexcolorpro.pages.dev/color-mixer</loc>
-        <lastmod>2026-11-08</lastmod>
+        <lastmod>2026-11-11</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://hexcolorpro.pages.dev/color-shades-generator</loc>
-        <lastmod>2026-11-08</lastmod>
+        <lastmod>2026-11-11</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://hexcolorpro.pages.dev/color-temperature</loc>
-        <lastmod>2026-11-08</lastmod>
+        <lastmod>2026-11-11</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://hexcolorpro.pages.dev/text-color-generator</loc>
-        <lastmod>2026-11-08</lastmod>
+        <lastmod>2026-11-11</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://hexcolorpro.pages.dev/guide</loc>
-        <lastmod>2026-11-07</lastmod>
+        <lastmod>2026-11-11</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://hexcolorpro.pages.dev/blog</loc>
-        <lastmod>2026-11-07</lastmod>
+        <lastmod>2026-11-11</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://hexcolorpro.pages.dev/blog/color-theory-basics</loc>
-        <lastmod>2026-11-07</lastmod>
+        <lastmod>2026-11-11</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.6</priority>
     </url>
     <url>
         <loc>https://hexcolorpro.pages.dev/blog/contrast-accessibility-guide</loc>
-        <lastmod>2026-11-07</lastmod>
+        <lastmod>2026-11-11</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.6</priority>
     </url>
     <url>
         <loc>https://hexcolorpro.pages.dev/blog/web-color-palette-guide</loc>
-        <lastmod>2026-11-07</lastmod>
+        <lastmod>2026-11-11</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.6</priority>
     </url>
     <url>
         <loc>https://hexcolorpro.pages.dev/blog/color-psychology-branding</loc>
-        <lastmod>2026-11-07</lastmod>
+        <lastmod>2026-11-11</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.6</priority>
     </url>
     <url>
         <loc>https://hexcolorpro.pages.dev/blog/dark-mode-design-best-practices</loc>
-        <lastmod>2026-11-07</lastmod>
+        <lastmod>2026-11-11</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.6</priority>
     </url>
     <url>
         <loc>https://hexcolorpro.pages.dev/blog/gradient-design-trends-2026</loc>
-        <lastmod>2026-11-07</lastmod>
+        <lastmod>2026-11-11</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.6</priority>
     </url>
     <url>
         <loc>https://hexcolorpro.pages.dev/privacy</loc>
-        <lastmod>2026-11-07</lastmod>
+        <lastmod>2026-11-11</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.3</priority>
     </url>
     <url>
         <loc>https://hexcolorpro.pages.dev/terms</loc>
-        <lastmod>2026-11-07</lastmod>
+        <lastmod>2026-11-11</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.3</priority>
     </url>
     <url>
         <loc>https://hexcolorpro.pages.dev/contact</loc>
-        <lastmod>2026-11-07</lastmod>
+        <lastmod>2026-11-11</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.3</priority>
     </url>
     <url>
         <loc>https://hexcolorpro.pages.dev/blog/hex-to-rgb-conversion-guide</loc>
-        <lastmod>2026-11-08</lastmod>
+        <lastmod>2026-11-11</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://hexcolorpro.pages.dev/blog/wcag-contrast-ratio-guide</loc>
-        <lastmod>2026-11-08</lastmod>
+        <lastmod>2026-11-11</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://hexcolorpro.pages.dev/blog/what-is-hsl-color</loc>
-        <lastmod>2026-11-08</lastmod>
+        <lastmod>2026-11-11</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://hexcolorpro.pages.dev/blog/how-many-hex-colors-are-there</loc>
-        <lastmod>2026-11-08</lastmod>
+        <lastmod>2026-11-11</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://hexcolorpro.pages.dev/blog/saas-dashboard-color-palette</loc>
-        <lastmod>2026-11-08</lastmod>
+        <lastmod>2026-11-11</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://hexcolorpro.pages.dev/blog/dark-mode-color-scheme-guide</loc>
-        <lastmod>2026-11-08</lastmod>
+        <lastmod>2026-11-11</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://hexcolorpro.pages.dev/blog/what-color-is-ff0000</loc>
-        <lastmod>2026-11-08</lastmod>
+        <lastmod>2026-11-11</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://hexcolorpro.pages.dev/blog/cmyk-to-rgb-difference</loc>
-        <lastmod>2026-11-08</lastmod>
+        <lastmod>2026-11-11</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://hexcolorpro.pages.dev/blog/monochromatic-color-palette-generator</loc>
-        <lastmod>2026-11-08</lastmod>
+        <lastmod>2026-11-11</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://hexcolorpro.pages.dev/blog/accessible-color-palette-healthcare</loc>
-        <lastmod>2026-11-08</lastmod>
+        <lastmod>2026-11-11</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://hexcolorpro.pages.dev/about</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+  <!-- COLOR-PAGES-BEGIN -->
+    <url>
+        <loc>https://hexcolorpro.pages.dev/colors/aliceblue</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://hexcolorpro.pages.dev/colors/antiquewhite</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://hexcolorpro.pages.dev/colors/aqua</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://hexcolorpro.pages.dev/colors/aquamarine</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://hexcolorpro.pages.dev/colors/azure</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://hexcolorpro.pages.dev/colors/beige</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://hexcolorpro.pages.dev/colors/bisque</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://hexcolorpro.pages.dev/colors/black</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://hexcolorpro.pages.dev/colors/blanchedalmond</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://hexcolorpro.pages.dev/colors/blue</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://hexcolorpro.pages.dev/colors/blueviolet</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://hexcolorpro.pages.dev/colors/brown</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://hexcolorpro.pages.dev/colors/burlywood</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://hexcolorpro.pages.dev/colors/cadetblue</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://hexcolorpro.pages.dev/colors/chartreuse</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://hexcolorpro.pages.dev/colors/chocolate</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://hexcolorpro.pages.dev/colors/coral</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://hexcolorpro.pages.dev/colors/cornflowerblue</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://hexcolorpro.pages.dev/colors/cornsilk</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://hexcolorpro.pages.dev/colors/crimson</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://hexcolorpro.pages.dev/colors/cyan</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://hexcolorpro.pages.dev/colors/darkblue</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://hexcolorpro.pages.dev/colors/darkcyan</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://hexcolorpro.pages.dev/colors/darkgoldenrod</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://hexcolorpro.pages.dev/colors/darkgray</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://hexcolorpro.pages.dev/colors/darkgreen</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://hexcolorpro.pages.dev/colors/darkgrey</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://hexcolorpro.pages.dev/colors/darkkhaki</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://hexcolorpro.pages.dev/colors/darkmagenta</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://hexcolorpro.pages.dev/colors/darkolivegreen</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://hexcolorpro.pages.dev/colors/darkorange</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://hexcolorpro.pages.dev/colors/darkorchid</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://hexcolorpro.pages.dev/colors/darkred</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://hexcolorpro.pages.dev/colors/darksalmon</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://hexcolorpro.pages.dev/colors/darkseagreen</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://hexcolorpro.pages.dev/colors/darkslateblue</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://hexcolorpro.pages.dev/colors/darkslategray</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://hexcolorpro.pages.dev/colors/darkslategrey</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://hexcolorpro.pages.dev/colors/darkturquoise</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://hexcolorpro.pages.dev/colors/darkviolet</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://hexcolorpro.pages.dev/colors/deeppink</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://hexcolorpro.pages.dev/colors/deepskyblue</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://hexcolorpro.pages.dev/colors/dimgray</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://hexcolorpro.pages.dev/colors/dimgrey</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://hexcolorpro.pages.dev/colors/dodgerblue</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://hexcolorpro.pages.dev/colors/firebrick</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://hexcolorpro.pages.dev/colors/floralwhite</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://hexcolorpro.pages.dev/colors/forestgreen</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://hexcolorpro.pages.dev/colors/fuchsia</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://hexcolorpro.pages.dev/colors/gainsboro</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://hexcolorpro.pages.dev/colors/ghostwhite</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://hexcolorpro.pages.dev/colors/gold</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://hexcolorpro.pages.dev/colors/goldenrod</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://hexcolorpro.pages.dev/colors/gray</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://hexcolorpro.pages.dev/colors/green</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://hexcolorpro.pages.dev/colors/greenyellow</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://hexcolorpro.pages.dev/colors/grey</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://hexcolorpro.pages.dev/colors/honeydew</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://hexcolorpro.pages.dev/colors/hotpink</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://hexcolorpro.pages.dev/colors/indianred</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://hexcolorpro.pages.dev/colors/indigo</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://hexcolorpro.pages.dev/colors/ivory</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://hexcolorpro.pages.dev/colors/khaki</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://hexcolorpro.pages.dev/colors/lavender</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://hexcolorpro.pages.dev/colors/lavenderblush</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://hexcolorpro.pages.dev/colors/lawngreen</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://hexcolorpro.pages.dev/colors/lemonchiffon</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://hexcolorpro.pages.dev/colors/lightblue</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://hexcolorpro.pages.dev/colors/lightcoral</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://hexcolorpro.pages.dev/colors/lightcyan</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://hexcolorpro.pages.dev/colors/lightgoldenrodyellow</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://hexcolorpro.pages.dev/colors/lightgray</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://hexcolorpro.pages.dev/colors/lightgreen</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://hexcolorpro.pages.dev/colors/lightgrey</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://hexcolorpro.pages.dev/colors/lightpink</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://hexcolorpro.pages.dev/colors/lightsalmon</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://hexcolorpro.pages.dev/colors/lightseagreen</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://hexcolorpro.pages.dev/colors/lightskyblue</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://hexcolorpro.pages.dev/colors/lightslategray</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://hexcolorpro.pages.dev/colors/lightslategrey</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://hexcolorpro.pages.dev/colors/lightsteelblue</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://hexcolorpro.pages.dev/colors/lightyellow</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://hexcolorpro.pages.dev/colors/lime</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://hexcolorpro.pages.dev/colors/limegreen</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://hexcolorpro.pages.dev/colors/linen</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://hexcolorpro.pages.dev/colors/magenta</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://hexcolorpro.pages.dev/colors/maroon</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://hexcolorpro.pages.dev/colors/mediumaquamarine</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://hexcolorpro.pages.dev/colors/mediumblue</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://hexcolorpro.pages.dev/colors/mediumorchid</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://hexcolorpro.pages.dev/colors/mediumpurple</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://hexcolorpro.pages.dev/colors/mediumseagreen</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://hexcolorpro.pages.dev/colors/mediumslateblue</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://hexcolorpro.pages.dev/colors/mediumspringgreen</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://hexcolorpro.pages.dev/colors/mediumturquoise</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://hexcolorpro.pages.dev/colors/mediumvioletred</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://hexcolorpro.pages.dev/colors/midnightblue</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://hexcolorpro.pages.dev/colors/mintcream</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://hexcolorpro.pages.dev/colors/mistyrose</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://hexcolorpro.pages.dev/colors/moccasin</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://hexcolorpro.pages.dev/colors/navajowhite</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://hexcolorpro.pages.dev/colors/navy</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://hexcolorpro.pages.dev/colors/oldlace</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://hexcolorpro.pages.dev/colors/olive</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://hexcolorpro.pages.dev/colors/olivedrab</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://hexcolorpro.pages.dev/colors/orange</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://hexcolorpro.pages.dev/colors/orangered</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://hexcolorpro.pages.dev/colors/orchid</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://hexcolorpro.pages.dev/colors/palegoldenrod</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://hexcolorpro.pages.dev/colors/palegreen</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://hexcolorpro.pages.dev/colors/paleturquoise</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://hexcolorpro.pages.dev/colors/palevioletred</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://hexcolorpro.pages.dev/colors/papayawhip</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://hexcolorpro.pages.dev/colors/peachpuff</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://hexcolorpro.pages.dev/colors/peru</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://hexcolorpro.pages.dev/colors/pink</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://hexcolorpro.pages.dev/colors/plum</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://hexcolorpro.pages.dev/colors/powderblue</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://hexcolorpro.pages.dev/colors/purple</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://hexcolorpro.pages.dev/colors/rebeccapurple</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://hexcolorpro.pages.dev/colors/red</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://hexcolorpro.pages.dev/colors/rosybrown</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://hexcolorpro.pages.dev/colors/royalblue</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://hexcolorpro.pages.dev/colors/saddlebrown</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://hexcolorpro.pages.dev/colors/salmon</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://hexcolorpro.pages.dev/colors/sandybrown</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://hexcolorpro.pages.dev/colors/seagreen</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://hexcolorpro.pages.dev/colors/seashell</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://hexcolorpro.pages.dev/colors/sienna</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://hexcolorpro.pages.dev/colors/silver</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://hexcolorpro.pages.dev/colors/skyblue</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://hexcolorpro.pages.dev/colors/slateblue</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://hexcolorpro.pages.dev/colors/slategray</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://hexcolorpro.pages.dev/colors/slategrey</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://hexcolorpro.pages.dev/colors/snow</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://hexcolorpro.pages.dev/colors/springgreen</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://hexcolorpro.pages.dev/colors/steelblue</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://hexcolorpro.pages.dev/colors/tan</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://hexcolorpro.pages.dev/colors/teal</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://hexcolorpro.pages.dev/colors/thistle</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://hexcolorpro.pages.dev/colors/tomato</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://hexcolorpro.pages.dev/colors/turquoise</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://hexcolorpro.pages.dev/colors/violet</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://hexcolorpro.pages.dev/colors/wheat</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://hexcolorpro.pages.dev/colors/white</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://hexcolorpro.pages.dev/colors/whitesmoke</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://hexcolorpro.pages.dev/colors/yellow</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://hexcolorpro.pages.dev/colors/yellowgreen</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://hexcolorpro.pages.dev/colors</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+  <!-- COLOR-PAGES-END -->
+    <url>
+        <loc>https://hexcolorpro.pages.dev/embed</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://hexcolorpro.pages.dev/blog/brand-accent-contrast-study-2026</loc>
+        <lastmod>2026-11-11</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
     </url>
 </urlset>

@@ -1,0 +1,10 @@
+# Serve machine-readable data with the right type (Cloudflare Pages honours this file)
+/data/*.csv
+  Content-Type: text/csv; charset=utf-8
+  Access-Control-Allow-Origin: *
+
+/llms.txt
+  Content-Type: text/plain; charset=utf-8
+
+/llms-full.txt
+  Content-Type: text/plain; charset=utf-8

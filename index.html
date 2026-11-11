@@ -27,21 +27,6 @@
     "description": "Free online color tools: color picker, gradient generator, contrast checker, palette generator, and more."
   }
   </script>
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "HexColor Pro",
-    "applicationCategory": "DesignApplication",
-    "operatingSystem": "Web",
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "USD"
-    },
-    "url": "https://hexcolorpro.pages.dev/"
-  }
-  </script>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     
@@ -471,6 +456,73 @@
       .nav-links { display: none; }
     }
   </style>
+  <style>
+  /* AEO blocks: answer-first paragraph + FAQ */
+  .aeo-answer {
+    margin: 18px 0 0; padding: 18px 20px; border-left: 3px solid var(--accent, #6366f1);
+    background: rgba(99, 102, 241, 0.08); border-radius: 8px;
+    color: #e2e8f0; font-size: 1.02rem; line-height: 1.65; text-align: left;
+  }
+  .aeo-faq { margin-top: 28px; }
+  .aeo-faq h2 { font-size: 1.3rem; margin-bottom: 16px; }
+  .aeo-faq h3 { font-size: 1.02rem; margin: 18px 0 6px; color: #f1f5f9; }
+  .aeo-faq p { color: #cbd5e1; font-size: 0.97rem; }
+  .aeo-source { color: #94a3b8; font-size: 0.85rem; margin-top: 8px; }
+  </style>
+  <link rel="alternate" type="text/plain" href="/llms-full.txt" title="Full site content for AI agents">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://hexcolorpro.pages.dev/#organization",
+      "name": "HexColor Pro",
+      "url": "https://hexcolorpro.pages.dev/",
+      "description": "Free browser-based color tools for designers and developers: color picker, gradient generator, WCAG contrast checker, palette generator, and color converters.",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://hexcolorpro.pages.dev/assets/favicon.svg"
+      },
+      "founder": {
+        "@type": "Person",
+        "name": "Yao Xiangqian",
+        "url": "https://hexcolorpro.pages.dev/about",
+        "jobTitle": "Design-systems developer and maintainer of HexColor Pro",
+        "sameAs": [
+          "https://github.com/yxq1337"
+        ]
+      },
+      "sameAs": [
+        "https://github.com/yxq1337"
+      ]
+    },
+    {
+      "@type": "WebApplication",
+      "@id": "https://hexcolorpro.pages.dev/#app",
+      "name": "HexColor Pro",
+      "url": "https://hexcolorpro.pages.dev/",
+      "applicationCategory": "DesignApplication",
+      "operatingSystem": "Any modern web browser",
+      "isAccessibleForFree": true,
+      "inLanguage": "en",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "featureList": [
+        "13 free color tools: picker, gradients, contrast, palettes, converters",
+        "Runs client-side in the browser with no account",
+        "Copy HEX, RGB, HSL, HSV, and CMYK values"
+      ],
+      "publisher": {
+        "@id": "https://hexcolorpro.pages.dev/#organization"
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
   <div class="container">
@@ -494,7 +546,8 @@
         <span class="hero-badge">✓ Works Offline</span>
         <span class="hero-badge">✓ Privacy-First</span>
       </div>
-    </header>
+          <p class="aeo-answer" style="margin-top:16px">HexColor Pro is a free color toolkit for designers and developers: pick colors, generate CSS gradients and palettes, check WCAG contrast, convert HEX to RGB, HSL, or CMYK, and look up color names. All 13 tools run in the browser — no signup, no install, no usage limit.</p>
+    </header><!-- AEO:answer -->
 
     <!-- Quick Color Picker -->
     <div class="quick-picker">
@@ -672,6 +725,7 @@
         <a href="contrast-checker">Contrast Checker</a>
         <a href="palette-generator">Palette Generator</a>
         <a href="color-names">Color Names</a>
+        <a href="/colors">All CSS Colors</a>
       </div>
       <div class="footer-col">
         <h4>More Tools</h4>
@@ -689,7 +743,7 @@
         <a href="blog">Blog</a>
         <a href="privacy">Privacy Policy</a>
         <a href="terms">Terms of Service</a>
-        <a href="contact">Contact</a>
+        <a href="contact">Contact</a> · <a href="about">About</a><!-- AEO:about -->
       </div>
     </div>
     <div class="footer-bottom">

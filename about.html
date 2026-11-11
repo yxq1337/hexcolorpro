@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About HexColor Pro - Who Builds These Color Tools</title>
+    <meta name="description" content="HexColor Pro is an independent, free color toolkit: 13 browser-based tools for picking colors, building gradients, checking WCAG contrast, and converting HEX, RGB, HSL, and CMYK.">
+    <link rel="canonical" href="https://hexcolorpro.pages.dev/about">
+    <!-- Note: this page is hand-written; tools/apply-aeo.mjs only adds the head
+         link and the About footer link here. Update the name in both the visible
+         copy and the Person node below if the maintainer changes. -->
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0f172a;
+            color: #e2e8f0;
+            line-height: 1.65;
+            padding: 2rem;
+            max-width: 760px;
+            margin: 0 auto;
+        }
+        h1 { color: #a855f7; margin-bottom: 1.25rem; font-size: 2rem; }
+        h2 { color: #818cf8; margin-top: 2rem; margin-bottom: 0.75rem; font-size: 1.25rem; }
+        p { margin-bottom: 1rem; color: #cbd5e1; }
+        ul { margin: 0 0 1rem 1.25rem; color: #cbd5e1; }
+        li { margin-bottom: 0.4rem; }
+        a { color: #60a5fa; }
+        .lead {
+            padding: 18px 20px; border-left: 3px solid #6366f1;
+            background: rgba(99, 102, 241, 0.08); border-radius: 8px;
+            color: #e2e8f0; margin-bottom: 1.5rem;
+        }
+        .byline { color: #94a3b8; font-size: 0.9rem; margin-bottom: 1.5rem; }
+        .back { margin-top: 2rem; display: inline-block; }
+        footer { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid #334155; color: #94a3b8; font-size: 0.9rem; }
+        footer a { margin: 0 6px; }
+    </style>
+  <style>
+  /* AEO blocks: answer-first paragraph + FAQ */
+  .aeo-answer {
+    margin: 18px 0 0; padding: 18px 20px; border-left: 3px solid var(--accent, #6366f1);
+    background: rgba(99, 102, 241, 0.08); border-radius: 8px;
+    color: #e2e8f0; font-size: 1.02rem; line-height: 1.65; text-align: left;
+  }
+  .aeo-faq { margin-top: 28px; }
+  .aeo-faq h2 { font-size: 1.3rem; margin-bottom: 16px; }
+  .aeo-faq h3 { font-size: 1.02rem; margin: 18px 0 6px; color: #f1f5f9; }
+  .aeo-faq p { color: #cbd5e1; font-size: 0.97rem; }
+  .aeo-source { color: #94a3b8; font-size: 0.85rem; margin-top: 8px; }
+  </style>
+</head>
+<body>
+    <h1>About HexColor Pro</h1>
+    <p class="byline">Maintained by <a href="https://github.com/yxq1337">Yao Xiangqian</a> · Last updated November 11, 2026</p>
+
+    <p class="lead">
+      HexColor Pro is an independent, free color toolkit for web designers and developers. It offers 13
+      browser-based tools for picking colors, generating CSS gradients and palettes, checking WCAG
+      contrast, and converting between HEX, RGB, HSL, HSV, and CMYK — plus a written guide and a blog on
+      color theory and accessibility.
+    </p>
+
+    <h2>What is on this site</h2>
+    <ul>
+      <li><strong>13 tools</strong> — color picker, gradient generator, contrast checker, palette generator, color schemes, converter, color names, shadow generator, random color, mixer, shades, temperature, and text color.</li>
+      <li><strong>A <a href="guide">complete guide</a></strong> walking through every tool with worked examples.</li>
+      <li><strong>A <a href="blog">blog</a></strong> covering color theory, WCAG accessibility, palettes, and design systems.</li>
+    </ul>
+
+    <h2>How the tools work</h2>
+    <p>
+      Every tool runs entirely in your browser. Nothing is uploaded: colors you enter are processed by
+      JavaScript on your device, and no account is required to use any feature. The pages are static HTML
+      served from a CDN, so they load fast and work the same on any modern browser.
+    </p>
+    <p>
+      HexColor Pro is free and supported by advertising. Ads never gate a tool and never change a computed
+      result — the color math is plain JavaScript you can inspect in the page source.
+    </p>
+
+    <h2>Who builds it</h2>
+    <p>
+      HexColor Pro is built and maintained by <strong>Yao Xiangqian</strong>, an independent developer
+      (<a href="https://github.com/yxq1337">github.com/yxq1337</a>). It started as a set of internal
+      utility pages for everyday design work — checking a contrast pair, converting a hex value, building a
+      quick gradient — and was published so other people could use them without a signup or a paywall.
+    </p>
+    <p>
+      Every tool is written and tested by the same person who writes the articles, so a claim on a blog
+      page and the behavior of the tool on the adjacent page come from the same implementation.
+      Questions, corrections, and tool requests go to the <a href="contact">contact page</a>.
+    </p>
+
+    <h2>Background</h2>
+    <p>
+      Yao Xiangqian is an independent developer who builds small, self-contained browser tools. Every tool
+      on this site — the WCAG contrast math, the HEX/RGB/HSL/HSV/CMYK conversions, the mixing and ramp
+      generation — is plain JavaScript written for that page, with no framework and no build step. The
+      articles come from the same person, so a claim about how a ratio is computed can be checked against
+      the code that computes it, one click away.
+    </p>
+    <p>
+      The work here is front-end — semantic HTML, plain CSS, and client-side JavaScript — and behind it sit
+      ten years of design-system work: component libraries and color systems where a token that fails
+      contrast is a bug, not a taste difference.
+    </p>
+
+    <h2>How the content is written and updated</h2>
+    <p>
+      The tool pages and articles are written by the maintainer. Where a claim depends on a standard, it
+      cites the primary source — accessibility thresholds follow the W3C
+      <cite>Web Content Accessibility Guidelines (WCAG) 2.2</cite>, published 5 October 2023, rather than
+      secondary summaries. Articles show a publication date, and are revised when a cited standard or
+      browser behavior changes.
+    </p>
+    <p>
+      If you spot an error, say which page and what is wrong; corrections are made on the page itself
+      rather than in a reply, so the next reader sees the fix.
+    </p>
+
+    <h2>Using this site's content</h2>
+    <p>
+      You are welcome to quote or cite these pages with a link back. Machine-readable descriptions for AI
+      agents are published at <a href="/llms.txt">llms.txt</a> and <a href="/llms-full.txt">llms-full.txt</a>.
+    </p>
+
+    <footer>
+      <p>© 2026 HexColor Pro ·
+        <a href="index">Home</a> ·
+        <a href="blog">Blog</a> ·
+        <a href="guide">Guide</a> ·
+        <a href="privacy">Privacy</a> ·
+        <a href="terms">Terms</a> ·
+        <a href="contact">Contact</a> · <a href="about">About</a><!-- AEO:about -->
+      </p>
+    </footer>
+
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "AboutPage",
+      "@id": "https://hexcolorpro.pages.dev/about#page",
+      "name": "About HexColor Pro",
+      "url": "https://hexcolorpro.pages.dev/about",
+      "description": "HexColor Pro is an independent, free color toolkit: 13 browser-based tools for picking colors, building gradients, checking WCAG contrast, and converting HEX, RGB, HSL, and CMYK.",
+      "inLanguage": "en",
+      "isPartOf": { "@id": "https://hexcolorpro.pages.dev/#website" },
+      "publisher": { "@id": "https://hexcolorpro.pages.dev/#organization" },
+      "about": { "@id": "https://hexcolorpro.pages.dev/#organization" },
+      "mainEntity": { "@id": "https://hexcolorpro.pages.dev/#person" }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://hexcolorpro.pages.dev/#person",
+      "name": "Yao Xiangqian",
+      "url": "https://hexcolorpro.pages.dev/about",
+      "jobTitle": "Independent developer (design systems) and maintainer of HexColor Pro",
+      "description": "Independent developer with ten years of design-system work — component libraries and color systems. Wrote and maintains all 13 tools on HexColor Pro: the WCAG contrast math, color conversions, mixing and ramp generation are plain client-side JavaScript. Writes the site's articles on color and accessibility.",
+      "knowsAbout": [
+        "Design systems",
+        "Component libraries",
+        "Front-end development",
+        "CSS color",
+        "Web accessibility (WCAG 2.2)"
+      ],
+      "worksFor": { "@id": "https://hexcolorpro.pages.dev/#organization" },
+      "sameAs": ["https://github.com/yxq1337"],
+      "mainEntityOfPage": { "@id": "https://hexcolorpro.pages.dev/about#page" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://hexcolorpro.pages.dev/" },
+        { "@type": "ListItem", "position": 2, "name": "About", "item": "https://hexcolorpro.pages.dev/about" }
+      ]
+    }
+  ]
+}
+    </script>
+</body>
+</html>

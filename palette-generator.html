@@ -163,6 +163,98 @@
     }
     #toast.show { opacity: 1; }
   </style>
+  <style>
+  /* AEO blocks: answer-first paragraph + FAQ */
+  .aeo-answer {
+    margin: 18px 0 0; padding: 18px 20px; border-left: 3px solid var(--accent, #6366f1);
+    background: rgba(99, 102, 241, 0.08); border-radius: 8px;
+    color: #e2e8f0; font-size: 1.02rem; line-height: 1.65; text-align: left;
+  }
+  .aeo-faq { margin-top: 28px; }
+  .aeo-faq h2 { font-size: 1.3rem; margin-bottom: 16px; }
+  .aeo-faq h3 { font-size: 1.02rem; margin: 18px 0 6px; color: #f1f5f9; }
+  .aeo-faq p { color: #cbd5e1; font-size: 0.97rem; }
+  .aeo-source { color: #94a3b8; font-size: 0.85rem; margin-top: 8px; }
+  </style>
+  <link rel="alternate" type="text/plain" href="/llms-full.txt" title="Full site content for AI agents">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "@id": "https://hexcolorpro.pages.dev/palette-generator#app",
+      "name": "Color Palette Generator",
+      "url": "https://hexcolorpro.pages.dev/palette-generator",
+      "description": "Generate beautiful color palettes from one color. Complementary, analogous, triadic, monochromatic, and more. Export as CSS, SCSS, or image.",
+      "applicationCategory": "DesignApplication",
+      "operatingSystem": "Any modern web browser",
+      "browserRequirements": "Requires JavaScript",
+      "isAccessibleForFree": true,
+      "inLanguage": "en",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "featureList": [
+        "Generate seven palette types from one base color",
+        "Preview complementary, analogous, triadic, and tetradic sets",
+        "Copy HEX values for every swatch"
+      ],
+      "publisher": {
+        "@id": "https://hexcolorpro.pages.dev/#organization"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://hexcolorpro.pages.dev/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Color Palette Generator",
+          "item": "https://hexcolorpro.pages.dev/palette-generator"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What makes a color palette harmonious?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Harmony comes from a consistent relationship on the color wheel plus a deliberate contrast budget. Complementary, analogous, and triadic schemes each fix one kind of relationship; a usable palette then adds one accent and enough lightness separation for text and UI states."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How many colors should a website palette have?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Most production interfaces settle on five to seven: one or two neutrals for surfaces and text, one primary, one accent, and one or two semantic colors for success and error. A larger token set is fine, but the visible colors on one screen stay small."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the 60-30-10 rule?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It is a proportion guideline: 60% of the visual area in a dominant color, 30% in a secondary, 10% in an accent. It keeps a palette from feeling evenly weighted, and it maps cleanly onto CSS custom properties for background, surface, and accent."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
 </head>
 <body>
   <div class="container">
@@ -179,7 +271,9 @@
     <div class="page-header">
       <h1>Color Palette Generator</h1>
       <p>Pick one color, get 7+ harmonious palettes. Complementary, analogous, triadic, and more.</p>
-    </div>
+      <!-- AEO:answer -->
+        <p class="aeo-answer">A palette generator derives colors that work together from a single base color. HexColor Pro applies seven harmony rules — complementary, analogous, triadic, split-complementary, tetradic, monochromatic, and shades — and returns ready-to-copy HEX values for each palette.</p>
+      </div>
 
     <div class="ad-slot" data-ad-slot="top" id="adTop">
       <div class="ad-placeholder">Advertisement</div>
@@ -248,8 +342,19 @@
       <p>From light tint to dark shade of the same color. Useful for UI elements like buttons, cards, and text hierarchy.</p>
     </div>
 
+        <div class="aeo-faq">
+      <!-- AEO:faq -->
+      <h2>Frequently asked questions</h2>
+        <h3>What makes a color palette harmonious?</h3>
+        <p>Harmony comes from a consistent relationship on the color wheel plus a deliberate contrast budget. Complementary, analogous, and triadic schemes each fix one kind of relationship; a usable palette then adds one accent and enough lightness separation for text and UI states.</p>
+        <h3>How many colors should a website palette have?</h3>
+        <p>Most production interfaces settle on five to seven: one or two neutrals for surfaces and text, one primary, one accent, and one or two semantic colors for success and error. A larger token set is fine, but the visible colors on one screen stay small.</p>
+        <h3>What is the 60-30-10 rule?</h3>
+        <p>It is a proportion guideline: 60% of the visual area in a dominant color, 30% in a secondary, 10% in an accent. It keeps a palette from feeling evenly weighted, and it maps cleanly onto CSS custom properties for background, surface, and accent.</p>
+    </div>
+
     <footer>
-      <p>© 2026 HexColor Pro · <a href="index">Home</a> · <a href="privacy">Privacy</a> · <a href="terms">Terms</a> · <a href="contact">Contact</a></p>
+      <p>© 2026 HexColor Pro · <a href="index">Home</a> · <a href="privacy">Privacy</a> · <a href="terms">Terms</a> · <a href="contact">Contact</a> · <a href="about">About</a><!-- AEO:about --></p>
     </footer>
   </div>
 

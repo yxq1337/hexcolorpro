@@ -135,6 +135,98 @@
     }
     #toast.show { opacity: 1; }
   </style>
+  <style>
+  /* AEO blocks: answer-first paragraph + FAQ */
+  .aeo-answer {
+    margin: 18px 0 0; padding: 18px 20px; border-left: 3px solid var(--accent, #6366f1);
+    background: rgba(99, 102, 241, 0.08); border-radius: 8px;
+    color: #e2e8f0; font-size: 1.02rem; line-height: 1.65; text-align: left;
+  }
+  .aeo-faq { margin-top: 28px; }
+  .aeo-faq h2 { font-size: 1.3rem; margin-bottom: 16px; }
+  .aeo-faq h3 { font-size: 1.02rem; margin: 18px 0 6px; color: #f1f5f9; }
+  .aeo-faq p { color: #cbd5e1; font-size: 0.97rem; }
+  .aeo-source { color: #94a3b8; font-size: 0.85rem; margin-top: 8px; }
+  </style>
+  <link rel="alternate" type="text/plain" href="/llms-full.txt" title="Full site content for AI agents">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "@id": "https://hexcolorpro.pages.dev/color-shades-generator#app",
+      "name": "Color Shades & Harmonies Generator",
+      "url": "https://hexcolorpro.pages.dev/color-shades-generator",
+      "description": "Generate lighten and darken shades from any base color. Explore complementary, analogous, and triadic color harmonies. Free online color scheme tool.",
+      "applicationCategory": "DesignApplication",
+      "operatingSystem": "Any modern web browser",
+      "browserRequirements": "Requires JavaScript",
+      "isAccessibleForFree": true,
+      "inLanguage": "en",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "featureList": [
+        "Derive a tint and shade ramp from a base color",
+        "Generate harmony sets alongside the ramp",
+        "Copy any step as HEX"
+      ],
+      "publisher": {
+        "@id": "https://hexcolorpro.pages.dev/#organization"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://hexcolorpro.pages.dev/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Color Shades & Harmonies Generator",
+          "item": "https://hexcolorpro.pages.dev/color-shades-generator"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is the difference between tints, shades, and tones?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A tint mixes the base color with white, a shade mixes it with black, and a tone mixes it with grey. Tints step toward pastel, shades toward deep and dark, tones toward muted."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How many steps should a color ramp have?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Ten steps is the usual default because it maps cleanly onto 50–900 token naming. Fewer than five gives too little control over hover and disabled states; more than twelve rarely earns its maintenance cost."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Should a shade ramp be linear in lightness?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Not necessarily. Linear mixing in sRGB compresses perceived lightness at the dark end, so many design systems space the steps perceptually using OKLCH or HSL lightness, so that 500 and 600 look evenly separated."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
 </head>
 <body>
   <div class="container">
@@ -151,7 +243,9 @@
     <div class="page-header">
       <h1>Color Shades & Harmonies Generator</h1>
       <p>Generate tints, shades, and color harmonies from any base color.</p>
-    </div>
+      <!-- AEO:answer -->
+        <p class="aeo-answer">A shades generator derives tints (mixed toward white) and shades (mixed toward black) from a base color, usually as a stepped ramp. HexColor Pro outputs the full ramp plus harmony sets, so one token can produce hover, active, and disabled states that stay in step.</p>
+      </div>
 
     <div class="ad-slot" data-ad-slot="top" id="adTop">
       <div class="ad-placeholder">Advertisement</div>
@@ -359,6 +453,22 @@
     updateShades();
     
   </script>
+          <div class="aeo-faq">
+      <!-- AEO:faq -->
+      <h2>Frequently asked questions</h2>
+        <h3>What is the difference between tints, shades, and tones?</h3>
+        <p>A tint mixes the base color with white, a shade mixes it with black, and a tone mixes it with grey. Tints step toward pastel, shades toward deep and dark, tones toward muted.</p>
+        <h3>How many steps should a color ramp have?</h3>
+        <p>Ten steps is the usual default because it maps cleanly onto 50–900 token naming. Fewer than five gives too little control over hover and disabled states; more than twelve rarely earns its maintenance cost.</p>
+        <h3>Should a shade ramp be linear in lightness?</h3>
+        <p>Not necessarily. Linear mixing in sRGB compresses perceived lightness at the dark end, so many design systems space the steps perceptually using OKLCH or HSL lightness, so that 500 and 600 look evenly separated.</p>
+    </div>
+
+    <footer>
+      <!-- AEO:footer -->
+      <p>© 2026 HexColor Pro · <a href="index">Home</a> · <a href="blog">Blog</a> · <a href="about">About</a> · <a href="privacy">Privacy</a> · <a href="terms">Terms</a> · <a href="contact">Contact</a> · <a href="about">About</a><!-- AEO:about --></p>
+    </footer>
+
   <script src="ads.js?v=3"></script>
 </body>
 </html>

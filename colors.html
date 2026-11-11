@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>All 148 CSS Named Colors — Hex, RGB &amp; HSL Reference | HexColor Pro</title>
+  <meta name="description" content="Every CSS named color with its hex code, RGB and HSL values, contrast ratio on black and white, tints and shades. 148 keywords, searchable by name.">
+  <link rel="canonical" href="https://hexcolorpro.pages.dev/colors">
+  <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+  <link rel="alternate" type="text/plain" href="/llms-full.txt" title="Full site content for AI agents">
+  <style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --bg: #0f172a; --surface: #1e293b; --surface-light: #334155;
+    --text: #f1f5f9; --text-muted: #94a3b8; --accent: #6366f1; --radius: 12px;
+  }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: var(--bg); color: var(--text); line-height: 1.6; min-height: 100vh; }
+  .container { max-width: 900px; margin: 0 auto; padding: 20px; }
+  nav { display: flex; justify-content: space-between; align-items: center; padding: 16px 0; margin-bottom: 20px; }
+  .logo { font-size: 1.3rem; font-weight: 700;
+    background: linear-gradient(135deg, #6366f1, #ec4899);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    text-decoration: none; }
+  .nav-links { display: flex; gap: 18px; }
+  .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 0.95rem; }
+  .nav-links a:hover { color: var(--text); }
+  .breadcrumb { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 16px; }
+  .breadcrumb a { color: var(--accent); text-decoration: none; }
+  h1 { font-size: 2rem; line-height: 1.25; margin-bottom: 10px; }
+  h1 .code { font-family: 'Courier New', monospace; }
+  .swatch { height: 160px; border-radius: var(--radius); border: 1px solid var(--surface-light); margin: 18px 0; }
+  .aeo-answer { margin: 18px 0; padding: 16px 18px; border-left: 3px solid var(--accent);
+    background: rgba(99,102,241,0.08); border-radius: 8px; font-size: 1rem; }
+  h2 { font-size: 1.25rem; margin: 28px 0 12px; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
+  th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--surface-light); }
+  th { color: var(--text-muted); font-weight: 600; }
+  td code { font-family: 'Courier New', monospace; }
+  .pass { color: #10b981; } .fail { color: #ef4444; }
+  .ramp { display: flex; gap: 6px; margin: 12px 0; flex-wrap: wrap; }
+  .ramp figure { flex: 1 1 70px; margin: 0; }
+  .ramp .chip { height: 64px; border-radius: 8px; border: 1px solid var(--surface-light); }
+  .ramp figcaption { font-size: 0.72rem; color: var(--text-muted); font-family: 'Courier New', monospace; }
+  .aeo-faq h3 { font-size: 1rem; margin: 16px 0 6px; }
+  .aeo-faq p { color: #cbd5e1; font-size: 0.95rem; }
+  .related { display: flex; gap: 10px; flex-wrap: wrap; margin: 10px 0; }
+  .related a { color: var(--accent); text-decoration: none; border: 1px solid var(--surface-light);
+    padding: 6px 12px; border-radius: 999px; font-size: 0.9rem; }
+  footer { margin-top: 48px; padding: 24px 0; border-top: 1px solid var(--surface-light);
+    color: var(--text-muted); font-size: 0.9rem; }
+  footer a { color: var(--accent); text-decoration: none; }
+
+  .colorlist { list-style: none; display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 8px; }
+  .colorlist a { display: flex; align-items: center; gap: 8px; text-decoration: none; color: var(--text);
+    border: 1px solid var(--surface-light); border-radius: 8px; padding: 6px 10px; font-size: .9rem; }
+  .colorlist a:hover { border-color: var(--accent); }
+  .dot { width: 16px; height: 16px; border-radius: 4px; border: 1px solid rgba(255,255,255,.25); flex: 0 0 auto; }
+  .colorlist code { margin-left: auto; color: var(--text-muted); font-size: .8rem; }
+  </style>
+  <style>
+  /* AEO blocks: answer-first paragraph + FAQ */
+  .aeo-answer {
+    margin: 18px 0 0; padding: 18px 20px; border-left: 3px solid var(--accent, #6366f1);
+    background: rgba(99, 102, 241, 0.08); border-radius: 8px;
+    color: #e2e8f0; font-size: 1.02rem; line-height: 1.65; text-align: left;
+  }
+  .aeo-faq { margin-top: 28px; }
+  .aeo-faq h2 { font-size: 1.3rem; margin-bottom: 16px; }
+  .aeo-faq h3 { font-size: 1.02rem; margin: 18px 0 6px; color: #f1f5f9; }
+  .aeo-faq p { color: #cbd5e1; font-size: 0.97rem; }
+  .aeo-source { color: #94a3b8; font-size: 0.85rem; margin-top: 8px; }
+  </style>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "CollectionPage",
+      "@id": "https://hexcolorpro.pages.dev/colors#page",
+      "url": "https://hexcolorpro.pages.dev/colors",
+      "name": "All 148 CSS named colors — hex, RGB and HSL values",
+      "description": "A complete reference of the 148 CSS named colors with hex, RGB, HSL, contrast ratios, tints and shades.",
+      "inLanguage": "en",
+      "isPartOf": {
+        "@id": "https://hexcolorpro.pages.dev/#website"
+      },
+      "publisher": {
+        "@id": "https://hexcolorpro.pages.dev/#organization"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://hexcolorpro.pages.dev/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "CSS colors",
+          "item": "https://hexcolorpro.pages.dev/colors"
+        }
+      ]
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+  <div class="container">
+    <nav>
+      <a href="/index" class="logo">🎨 HexColor Pro</a>
+      <div class="nav-links">
+        <a href="/color-names">Name finder</a>
+        <a href="/contrast-checker">Contrast</a>
+        <a href="/blog">Blog</a>
+      </div>
+    </nav>
+    <div class="breadcrumb"><a href="/index">Home</a> / CSS colors</div>
+    <h1>All 148 CSS named colors</h1>
+    <p class="aeo-answer">CSS defines 148 named colors — keywords such as rebeccapurple, chartreuse, and lightgoldenrodyellow — each mapping to one exact sRGB value. Every entry below lists its hex code, RGB and HSL values, WCAG contrast on black and white, and a nine-step tint-and-shade ramp.</p>
+    <p style="color:#94a3b8;margin-top:12px">Grouped by hue. Names are case-insensitive in CSS: <code>RebeccaPurple</code> and <code>rebeccapurple</code> are the same color.</p>
+    <h2>Light / white <span style="color:#94a3b8;font-weight:400;font-size:.9rem">(23)</span></h2>
+    <ul class="colorlist">
+      <li><a href="/colors/aliceblue"><span class="dot" style="background:#F0F8FF"></span><strong>Alice Blue</strong><code>#F0F8FF</code></a></li>
+      <li><a href="/colors/azure"><span class="dot" style="background:#F0FFFF"></span><strong>Azure</strong><code>#F0FFFF</code></a></li>
+      <li><a href="/colors/beige"><span class="dot" style="background:#F5F5DC"></span><strong>Beige</strong><code>#F5F5DC</code></a></li>
+      <li><a href="/colors/blanchedalmond"><span class="dot" style="background:#FFEBCD"></span><strong>Blanched Almond</strong><code>#FFEBCD</code></a></li>
+      <li><a href="/colors/cornsilk"><span class="dot" style="background:#FFF8DC"></span><strong>Cornsilk</strong><code>#FFF8DC</code></a></li>
+      <li><a href="/colors/floralwhite"><span class="dot" style="background:#FFFAF0"></span><strong>Floral White</strong><code>#FFFAF0</code></a></li>
+      <li><a href="/colors/ghostwhite"><span class="dot" style="background:#F8F8FF"></span><strong>Ghost White</strong><code>#F8F8FF</code></a></li>
+      <li><a href="/colors/honeydew"><span class="dot" style="background:#F0FFF0"></span><strong>Honeydew</strong><code>#F0FFF0</code></a></li>
+      <li><a href="/colors/ivory"><span class="dot" style="background:#FFFFF0"></span><strong>Ivory</strong><code>#FFFFF0</code></a></li>
+      <li><a href="/colors/lavenderblush"><span class="dot" style="background:#FFF0F5"></span><strong>Lavender Blush</strong><code>#FFF0F5</code></a></li>
+      <li><a href="/colors/lemonchiffon"><span class="dot" style="background:#FFFACD"></span><strong>Lemon Chiffon</strong><code>#FFFACD</code></a></li>
+      <li><a href="/colors/lightcyan"><span class="dot" style="background:#E0FFFF"></span><strong>Light Cyan</strong><code>#E0FFFF</code></a></li>
+      <li><a href="/colors/lightgoldenrodyellow"><span class="dot" style="background:#FAFAD2"></span><strong>Light Goldenrod Yellow</strong><code>#FAFAD2</code></a></li>
+      <li><a href="/colors/lightyellow"><span class="dot" style="background:#FFFFE0"></span><strong>Light Yellow</strong><code>#FFFFE0</code></a></li>
+      <li><a href="/colors/linen"><span class="dot" style="background:#FAF0E6"></span><strong>Linen</strong><code>#FAF0E6</code></a></li>
+      <li><a href="/colors/mintcream"><span class="dot" style="background:#F5FFFA"></span><strong>Mint Cream</strong><code>#F5FFFA</code></a></li>
+      <li><a href="/colors/oldlace"><span class="dot" style="background:#FDF5E6"></span><strong>Old Lace</strong><code>#FDF5E6</code></a></li>
+      <li><a href="/colors/papayawhip"><span class="dot" style="background:#FFEFD5"></span><strong>Papaya Whip</strong><code>#FFEFD5</code></a></li>
+      <li><a href="/colors/seashell"><span class="dot" style="background:#FFF5EE"></span><strong>Seashell</strong><code>#FFF5EE</code></a></li>
+      <li><a href="/colors/snow"><span class="dot" style="background:#FFFAFA"></span><strong>Snow</strong><code>#FFFAFA</code></a></li>
+      <li><a href="/colors/white"><span class="dot" style="background:#FFFFFF"></span><strong>White</strong><code>#FFFFFF</code></a></li>
+      <li><a href="/colors/whitesmoke"><span class="dot" style="background:#F5F5F5"></span><strong>White Smoke</strong><code>#F5F5F5</code></a></li>
+      <li><a href="/colors/yellow"><span class="dot" style="background:#FFFF00"></span><strong>Yellow</strong><code>#FFFF00</code></a></li>
+    </ul>
+    <h2>Grays <span style="color:#94a3b8;font-weight:400;font-size:.9rem">(11)</span></h2>
+    <ul class="colorlist">
+      <li><a href="/colors/black"><span class="dot" style="background:#000000"></span><strong>Black</strong><code>#000000</code></a></li>
+      <li><a href="/colors/darkgray"><span class="dot" style="background:#A9A9A9"></span><strong>Dark Gray</strong><code>#A9A9A9</code></a></li>
+      <li><a href="/colors/darkgrey"><span class="dot" style="background:#A9A9A9"></span><strong>Dark Grey</strong><code>#A9A9A9</code></a></li>
+      <li><a href="/colors/dimgray"><span class="dot" style="background:#696969"></span><strong>Dim Gray</strong><code>#696969</code></a></li>
+      <li><a href="/colors/dimgrey"><span class="dot" style="background:#696969"></span><strong>Dim Grey</strong><code>#696969</code></a></li>
+      <li><a href="/colors/gainsboro"><span class="dot" style="background:#DCDCDC"></span><strong>Gainsboro</strong><code>#DCDCDC</code></a></li>
+      <li><a href="/colors/gray"><span class="dot" style="background:#808080"></span><strong>Gray</strong><code>#808080</code></a></li>
+      <li><a href="/colors/grey"><span class="dot" style="background:#808080"></span><strong>Grey</strong><code>#808080</code></a></li>
+      <li><a href="/colors/lightgray"><span class="dot" style="background:#D3D3D3"></span><strong>Light Gray</strong><code>#D3D3D3</code></a></li>
+      <li><a href="/colors/lightgrey"><span class="dot" style="background:#D3D3D3"></span><strong>Light Grey</strong><code>#D3D3D3</code></a></li>
+      <li><a href="/colors/silver"><span class="dot" style="background:#C0C0C0"></span><strong>Silver</strong><code>#C0C0C0</code></a></li>
+    </ul>
+    <h2>Red / pink <span style="color:#94a3b8;font-weight:400;font-size:.9rem">(21)</span></h2>
+    <ul class="colorlist">
+      <li><a href="/colors/brown"><span class="dot" style="background:#A52A2A"></span><strong>Brown</strong><code>#A52A2A</code></a></li>
+      <li><a href="/colors/coral"><span class="dot" style="background:#FF7F50"></span><strong>Coral</strong><code>#FF7F50</code></a></li>
+      <li><a href="/colors/crimson"><span class="dot" style="background:#DC143C"></span><strong>Crimson</strong><code>#DC143C</code></a></li>
+      <li><a href="/colors/darkred"><span class="dot" style="background:#8B0000"></span><strong>Dark Red</strong><code>#8B0000</code></a></li>
+      <li><a href="/colors/darksalmon"><span class="dot" style="background:#E9967A"></span><strong>Dark Salmon</strong><code>#E9967A</code></a></li>
+      <li><a href="/colors/firebrick"><span class="dot" style="background:#B22222"></span><strong>Firebrick</strong><code>#B22222</code></a></li>
+      <li><a href="/colors/hotpink"><span class="dot" style="background:#FF69B4"></span><strong>Hot Pink</strong><code>#FF69B4</code></a></li>
+      <li><a href="/colors/indianred"><span class="dot" style="background:#CD5C5C"></span><strong>Indian Red</strong><code>#CD5C5C</code></a></li>
+      <li><a href="/colors/lightcoral"><span class="dot" style="background:#F08080"></span><strong>Light Coral</strong><code>#F08080</code></a></li>
+      <li><a href="/colors/lightpink"><span class="dot" style="background:#FFB6C1"></span><strong>Light Pink</strong><code>#FFB6C1</code></a></li>
+      <li><a href="/colors/lightsalmon"><span class="dot" style="background:#FFA07A"></span><strong>Light Salmon</strong><code>#FFA07A</code></a></li>
+      <li><a href="/colors/maroon"><span class="dot" style="background:#800000"></span><strong>Maroon</strong><code>#800000</code></a></li>
+      <li><a href="/colors/mistyrose"><span class="dot" style="background:#FFE4E1"></span><strong>Misty Rose</strong><code>#FFE4E1</code></a></li>
+      <li><a href="/colors/orangered"><span class="dot" style="background:#FF4500"></span><strong>Orange Red</strong><code>#FF4500</code></a></li>
+      <li><a href="/colors/palevioletred"><span class="dot" style="background:#DB7093"></span><strong>Pale Violet Red</strong><code>#DB7093</code></a></li>
+      <li><a href="/colors/pink"><span class="dot" style="background:#FFC0CB"></span><strong>Pink</strong><code>#FFC0CB</code></a></li>
+      <li><a href="/colors/red"><span class="dot" style="background:#FF0000"></span><strong>Red</strong><code>#FF0000</code></a></li>
+      <li><a href="/colors/rosybrown"><span class="dot" style="background:#BC8F8F"></span><strong>Rosy Brown</strong><code>#BC8F8F</code></a></li>
+      <li><a href="/colors/salmon"><span class="dot" style="background:#FA8072"></span><strong>Salmon</strong><code>#FA8072</code></a></li>
+      <li><a href="/colors/sienna"><span class="dot" style="background:#A0522D"></span><strong>Sienna</strong><code>#A0522D</code></a></li>
+      <li><a href="/colors/tomato"><span class="dot" style="background:#FF6347"></span><strong>Tomato</strong><code>#FF6347</code></a></li>
+    </ul>
+    <h2>Orange / brown <span style="color:#94a3b8;font-weight:400;font-size:.9rem">(18)</span></h2>
+    <ul class="colorlist">
+      <li><a href="/colors/antiquewhite"><span class="dot" style="background:#FAEBD7"></span><strong>Antique White</strong><code>#FAEBD7</code></a></li>
+      <li><a href="/colors/bisque"><span class="dot" style="background:#FFE4C4"></span><strong>Bisque</strong><code>#FFE4C4</code></a></li>
+      <li><a href="/colors/burlywood"><span class="dot" style="background:#DEB887"></span><strong>Burlywood</strong><code>#DEB887</code></a></li>
+      <li><a href="/colors/chocolate"><span class="dot" style="background:#D2691E"></span><strong>Chocolate</strong><code>#D2691E</code></a></li>
+      <li><a href="/colors/darkgoldenrod"><span class="dot" style="background:#B8860B"></span><strong>Dark Goldenrod</strong><code>#B8860B</code></a></li>
+      <li><a href="/colors/darkorange"><span class="dot" style="background:#FF8C00"></span><strong>Dark Orange</strong><code>#FF8C00</code></a></li>
+      <li><a href="/colors/gold"><span class="dot" style="background:#FFD700"></span><strong>Gold</strong><code>#FFD700</code></a></li>
+      <li><a href="/colors/goldenrod"><span class="dot" style="background:#DAA520"></span><strong>Goldenrod</strong><code>#DAA520</code></a></li>
+      <li><a href="/colors/khaki"><span class="dot" style="background:#F0E68C"></span><strong>Khaki</strong><code>#F0E68C</code></a></li>
+      <li><a href="/colors/moccasin"><span class="dot" style="background:#FFE4B5"></span><strong>Moccasin</strong><code>#FFE4B5</code></a></li>
+      <li><a href="/colors/navajowhite"><span class="dot" style="background:#FFDEAD"></span><strong>Navajo White</strong><code>#FFDEAD</code></a></li>
+      <li><a href="/colors/orange"><span class="dot" style="background:#FFA500"></span><strong>Orange</strong><code>#FFA500</code></a></li>
+      <li><a href="/colors/peachpuff"><span class="dot" style="background:#FFDAB9"></span><strong>Peach Puff</strong><code>#FFDAB9</code></a></li>
+      <li><a href="/colors/peru"><span class="dot" style="background:#CD853F"></span><strong>Peru</strong><code>#CD853F</code></a></li>
+      <li><a href="/colors/saddlebrown"><span class="dot" style="background:#8B4513"></span><strong>Saddle Brown</strong><code>#8B4513</code></a></li>
+      <li><a href="/colors/sandybrown"><span class="dot" style="background:#F4A460"></span><strong>Sandy Brown</strong><code>#F4A460</code></a></li>
+      <li><a href="/colors/tan"><span class="dot" style="background:#D2B48C"></span><strong>Tan</strong><code>#D2B48C</code></a></li>
+      <li><a href="/colors/wheat"><span class="dot" style="background:#F5DEB3"></span><strong>Wheat</strong><code>#F5DEB3</code></a></li>
+    </ul>
+    <h2>Yellow / olive <span style="color:#94a3b8;font-weight:400;font-size:.9rem">(3)</span></h2>
+    <ul class="colorlist">
+      <li><a href="/colors/darkkhaki"><span class="dot" style="background:#BDB76B"></span><strong>Dark Khaki</strong><code>#BDB76B</code></a></li>
+      <li><a href="/colors/olive"><span class="dot" style="background:#808000"></span><strong>Olive</strong><code>#808000</code></a></li>
+      <li><a href="/colors/palegoldenrod"><span class="dot" style="background:#EEE8AA"></span><strong>Pale Goldenrod</strong><code>#EEE8AA</code></a></li>
+    </ul>
+    <h2>Green <span style="color:#94a3b8;font-weight:400;font-size:.9rem">(20)</span></h2>
+    <ul class="colorlist">
+      <li><a href="/colors/aquamarine"><span class="dot" style="background:#7FFFD4"></span><strong>Aquamarine</strong><code>#7FFFD4</code></a></li>
+      <li><a href="/colors/chartreuse"><span class="dot" style="background:#7FFF00"></span><strong>Chartreuse</strong><code>#7FFF00</code></a></li>
+      <li><a href="/colors/darkgreen"><span class="dot" style="background:#006400"></span><strong>Dark Green</strong><code>#006400</code></a></li>
+      <li><a href="/colors/darkolivegreen"><span class="dot" style="background:#556B2F"></span><strong>Dark Olive Green</strong><code>#556B2F</code></a></li>
+      <li><a href="/colors/darkseagreen"><span class="dot" style="background:#8FBC8F"></span><strong>Dark Sea Green</strong><code>#8FBC8F</code></a></li>
+      <li><a href="/colors/forestgreen"><span class="dot" style="background:#228B22"></span><strong>Forest Green</strong><code>#228B22</code></a></li>
+      <li><a href="/colors/green"><span class="dot" style="background:#008000"></span><strong>Green</strong><code>#008000</code></a></li>
+      <li><a href="/colors/greenyellow"><span class="dot" style="background:#ADFF2F"></span><strong>Green Yellow</strong><code>#ADFF2F</code></a></li>
+      <li><a href="/colors/lawngreen"><span class="dot" style="background:#7CFC00"></span><strong>Lawn Green</strong><code>#7CFC00</code></a></li>
+      <li><a href="/colors/lightgreen"><span class="dot" style="background:#90EE90"></span><strong>Light Green</strong><code>#90EE90</code></a></li>
+      <li><a href="/colors/lime"><span class="dot" style="background:#00FF00"></span><strong>Lime</strong><code>#00FF00</code></a></li>
+      <li><a href="/colors/limegreen"><span class="dot" style="background:#32CD32"></span><strong>Lime Green</strong><code>#32CD32</code></a></li>
+      <li><a href="/colors/mediumaquamarine"><span class="dot" style="background:#66CDAA"></span><strong>Medium Aquamarine</strong><code>#66CDAA</code></a></li>
+      <li><a href="/colors/mediumseagreen"><span class="dot" style="background:#3CB371"></span><strong>Medium Sea Green</strong><code>#3CB371</code></a></li>
+      <li><a href="/colors/mediumspringgreen"><span class="dot" style="background:#00FA9A"></span><strong>Medium Spring Green</strong><code>#00FA9A</code></a></li>
+      <li><a href="/colors/olivedrab"><span class="dot" style="background:#6B8E23"></span><strong>Olive Drab</strong><code>#6B8E23</code></a></li>
+      <li><a href="/colors/palegreen"><span class="dot" style="background:#98FB98"></span><strong>Pale Green</strong><code>#98FB98</code></a></li>
+      <li><a href="/colors/seagreen"><span class="dot" style="background:#2E8B57"></span><strong>Sea Green</strong><code>#2E8B57</code></a></li>
+      <li><a href="/colors/springgreen"><span class="dot" style="background:#00FF7F"></span><strong>Spring Green</strong><code>#00FF7F</code></a></li>
+      <li><a href="/colors/yellowgreen"><span class="dot" style="background:#9ACD32"></span><strong>Yellow Green</strong><code>#9ACD32</code></a></li>
+    </ul>
+    <h2>Cyan / teal <span style="color:#94a3b8;font-weight:400;font-size:.9rem">(16)</span></h2>
+    <ul class="colorlist">
+      <li><a href="/colors/aqua"><span class="dot" style="background:#00FFFF"></span><strong>Aqua</strong><code>#00FFFF</code></a></li>
+      <li><a href="/colors/cadetblue"><span class="dot" style="background:#5F9EA0"></span><strong>Cadet Blue</strong><code>#5F9EA0</code></a></li>
+      <li><a href="/colors/cyan"><span class="dot" style="background:#00FFFF"></span><strong>Cyan</strong><code>#00FFFF</code></a></li>
+      <li><a href="/colors/darkcyan"><span class="dot" style="background:#008B8B"></span><strong>Dark Cyan</strong><code>#008B8B</code></a></li>
+      <li><a href="/colors/darkslategray"><span class="dot" style="background:#2F4F4F"></span><strong>Dark Slate Gray</strong><code>#2F4F4F</code></a></li>
+      <li><a href="/colors/darkslategrey"><span class="dot" style="background:#2F4F4F"></span><strong>Dark Slate Grey</strong><code>#2F4F4F</code></a></li>
+      <li><a href="/colors/darkturquoise"><span class="dot" style="background:#00CED1"></span><strong>Dark Turquoise</strong><code>#00CED1</code></a></li>
+      <li><a href="/colors/deepskyblue"><span class="dot" style="background:#00BFFF"></span><strong>Deep Sky Blue</strong><code>#00BFFF</code></a></li>
+      <li><a href="/colors/lightblue"><span class="dot" style="background:#ADD8E6"></span><strong>Light Blue</strong><code>#ADD8E6</code></a></li>
+      <li><a href="/colors/lightseagreen"><span class="dot" style="background:#20B2AA"></span><strong>Light Sea Green</strong><code>#20B2AA</code></a></li>
+      <li><a href="/colors/mediumturquoise"><span class="dot" style="background:#48D1CC"></span><strong>Medium Turquoise</strong><code>#48D1CC</code></a></li>
+      <li><a href="/colors/paleturquoise"><span class="dot" style="background:#AFEEEE"></span><strong>Pale Turquoise</strong><code>#AFEEEE</code></a></li>
+      <li><a href="/colors/powderblue"><span class="dot" style="background:#B0E0E6"></span><strong>Powder Blue</strong><code>#B0E0E6</code></a></li>
+      <li><a href="/colors/skyblue"><span class="dot" style="background:#87CEEB"></span><strong>Sky Blue</strong><code>#87CEEB</code></a></li>
+      <li><a href="/colors/teal"><span class="dot" style="background:#008080"></span><strong>Teal</strong><code>#008080</code></a></li>
+      <li><a href="/colors/turquoise"><span class="dot" style="background:#40E0D0"></span><strong>Turquoise</strong><code>#40E0D0</code></a></li>
+    </ul>
+    <h2>Blue <span style="color:#94a3b8;font-weight:400;font-size:.9rem">(19)</span></h2>
+    <ul class="colorlist">
+      <li><a href="/colors/blue"><span class="dot" style="background:#0000FF"></span><strong>Blue</strong><code>#0000FF</code></a></li>
+      <li><a href="/colors/cornflowerblue"><span class="dot" style="background:#6495ED"></span><strong>Cornflower Blue</strong><code>#6495ED</code></a></li>
+      <li><a href="/colors/darkblue"><span class="dot" style="background:#00008B"></span><strong>Dark Blue</strong><code>#00008B</code></a></li>
+      <li><a href="/colors/darkslateblue"><span class="dot" style="background:#483D8B"></span><strong>Dark Slate Blue</strong><code>#483D8B</code></a></li>
+      <li><a href="/colors/dodgerblue"><span class="dot" style="background:#1E90FF"></span><strong>Dodger Blue</strong><code>#1E90FF</code></a></li>
+      <li><a href="/colors/lavender"><span class="dot" style="background:#E6E6FA"></span><strong>Lavender</strong><code>#E6E6FA</code></a></li>
+      <li><a href="/colors/lightskyblue"><span class="dot" style="background:#87CEFA"></span><strong>Light Sky Blue</strong><code>#87CEFA</code></a></li>
+      <li><a href="/colors/lightslategray"><span class="dot" style="background:#778899"></span><strong>Light Slate Gray</strong><code>#778899</code></a></li>
+      <li><a href="/colors/lightslategrey"><span class="dot" style="background:#778899"></span><strong>Light Slate Grey</strong><code>#778899</code></a></li>
+      <li><a href="/colors/lightsteelblue"><span class="dot" style="background:#B0C4DE"></span><strong>Light Steel Blue</strong><code>#B0C4DE</code></a></li>
+      <li><a href="/colors/mediumblue"><span class="dot" style="background:#0000CD"></span><strong>Medium Blue</strong><code>#0000CD</code></a></li>
+      <li><a href="/colors/mediumslateblue"><span class="dot" style="background:#7B68EE"></span><strong>Medium Slate Blue</strong><code>#7B68EE</code></a></li>
+      <li><a href="/colors/midnightblue"><span class="dot" style="background:#191970"></span><strong>Midnight Blue</strong><code>#191970</code></a></li>
+      <li><a href="/colors/navy"><span class="dot" style="background:#000080"></span><strong>Navy</strong><code>#000080</code></a></li>
+      <li><a href="/colors/royalblue"><span class="dot" style="background:#4169E1"></span><strong>Royal Blue</strong><code>#4169E1</code></a></li>
+      <li><a href="/colors/slateblue"><span class="dot" style="background:#6A5ACD"></span><strong>Slate Blue</strong><code>#6A5ACD</code></a></li>
+      <li><a href="/colors/slategray"><span class="dot" style="background:#708090"></span><strong>Slate Gray</strong><code>#708090</code></a></li>
+      <li><a href="/colors/slategrey"><span class="dot" style="background:#708090"></span><strong>Slate Grey</strong><code>#708090</code></a></li>
+      <li><a href="/colors/steelblue"><span class="dot" style="background:#4682B4"></span><strong>Steel Blue</strong><code>#4682B4</code></a></li>
+    </ul>
+    <h2>Purple / violet <span style="color:#94a3b8;font-weight:400;font-size:.9rem">(17)</span></h2>
+    <ul class="colorlist">
+      <li><a href="/colors/blueviolet"><span class="dot" style="background:#8A2BE2"></span><strong>Blue Violet</strong><code>#8A2BE2</code></a></li>
+      <li><a href="/colors/darkmagenta"><span class="dot" style="background:#8B008B"></span><strong>Dark Magenta</strong><code>#8B008B</code></a></li>
+      <li><a href="/colors/darkorchid"><span class="dot" style="background:#9932CC"></span><strong>Dark Orchid</strong><code>#9932CC</code></a></li>
+      <li><a href="/colors/darkviolet"><span class="dot" style="background:#9400D3"></span><strong>Dark Violet</strong><code>#9400D3</code></a></li>
+      <li><a href="/colors/deeppink"><span class="dot" style="background:#FF1493"></span><strong>Deep Pink</strong><code>#FF1493</code></a></li>
+      <li><a href="/colors/fuchsia"><span class="dot" style="background:#FF00FF"></span><strong>Fuchsia</strong><code>#FF00FF</code></a></li>
+      <li><a href="/colors/indigo"><span class="dot" style="background:#4B0082"></span><strong>Indigo</strong><code>#4B0082</code></a></li>
+      <li><a href="/colors/magenta"><span class="dot" style="background:#FF00FF"></span><strong>Magenta</strong><code>#FF00FF</code></a></li>
+      <li><a href="/colors/mediumorchid"><span class="dot" style="background:#BA55D3"></span><strong>Medium Orchid</strong><code>#BA55D3</code></a></li>
+      <li><a href="/colors/mediumpurple"><span class="dot" style="background:#9370DB"></span><strong>Medium Purple</strong><code>#9370DB</code></a></li>
+      <li><a href="/colors/mediumvioletred"><span class="dot" style="background:#C71585"></span><strong>Medium Violet Red</strong><code>#C71585</code></a></li>
+      <li><a href="/colors/orchid"><span class="dot" style="background:#DA70D6"></span><strong>Orchid</strong><code>#DA70D6</code></a></li>
+      <li><a href="/colors/plum"><span class="dot" style="background:#DDA0DD"></span><strong>Plum</strong><code>#DDA0DD</code></a></li>
+      <li><a href="/colors/purple"><span class="dot" style="background:#800080"></span><strong>Purple</strong><code>#800080</code></a></li>
+      <li><a href="/colors/rebeccapurple"><span class="dot" style="background:#663399"></span><strong>Rebecca Purple</strong><code>#663399</code></a></li>
+      <li><a href="/colors/thistle"><span class="dot" style="background:#D8BFD8"></span><strong>Thistle</strong><code>#D8BFD8</code></a></li>
+      <li><a href="/colors/violet"><span class="dot" style="background:#EE82EE"></span><strong>Violet</strong><code>#EE82EE</code></a></li>
+    </ul>
+    <footer>
+      <p>© 2026 HexColor Pro · <a href="/index">Home</a> · <a href="/blog">Blog</a> · <a href="/about">About</a> · <a href="/contrast-checker">Contrast checker</a></p>
+    </footer>
+  </div>
+</body>
+</html>

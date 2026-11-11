@@ -158,6 +158,98 @@
     }
     #toast.show { opacity: 1; }
   </style>
+  <style>
+  /* AEO blocks: answer-first paragraph + FAQ */
+  .aeo-answer {
+    margin: 18px 0 0; padding: 18px 20px; border-left: 3px solid var(--accent, #6366f1);
+    background: rgba(99, 102, 241, 0.08); border-radius: 8px;
+    color: #e2e8f0; font-size: 1.02rem; line-height: 1.65; text-align: left;
+  }
+  .aeo-faq { margin-top: 28px; }
+  .aeo-faq h2 { font-size: 1.3rem; margin-bottom: 16px; }
+  .aeo-faq h3 { font-size: 1.02rem; margin: 18px 0 6px; color: #f1f5f9; }
+  .aeo-faq p { color: #cbd5e1; font-size: 0.97rem; }
+  .aeo-source { color: #94a3b8; font-size: 0.85rem; margin-top: 8px; }
+  </style>
+  <link rel="alternate" type="text/plain" href="/llms-full.txt" title="Full site content for AI agents">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "@id": "https://hexcolorpro.pages.dev/color-schemes#app",
+      "name": "Color Scheme Generator",
+      "url": "https://hexcolorpro.pages.dev/color-schemes",
+      "description": "Generate harmonious color schemes from any base color. Complementary, analogous, triadic, monochromatic, tetradic, and split-complementary palettes.",
+      "applicationCategory": "DesignApplication",
+      "operatingSystem": "Any modern web browser",
+      "browserRequirements": "Requires JavaScript",
+      "isAccessibleForFree": true,
+      "inLanguage": "en",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "featureList": [
+        "Show six classical color harmony schemes at once",
+        "Recalculate every scheme from a single base color",
+        "Copy HEX codes per swatch"
+      ],
+      "publisher": {
+        "@id": "https://hexcolorpro.pages.dev/#organization"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://hexcolorpro.pages.dev/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Color Scheme Generator",
+          "item": "https://hexcolorpro.pages.dev/color-schemes"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What are the classic color schemes?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Complementary (opposite on the wheel), analogous (adjacent), triadic (three colors evenly spaced), split-complementary (opposite plus its two neighbors), tetradic (two complementary pairs), and monochromatic (one hue at several lightness levels)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which color scheme is best for a website?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Analogous and monochromatic schemes read as calm and are easiest to keep accessible; complementary and triadic give stronger contrast but need more discipline. Most sites use one dominant scheme plus a complementary accent rather than a pure scheme throughout."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do color schemes work the same in dark mode?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Dark surfaces change perceived saturation and contrast: the same hue looks brighter against #0f172a than against white. Re-derive lightness for the dark theme and re-check contrast ratios instead of reusing the light-mode hex values."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
 </head>
 <body>
   <div class="container">
@@ -174,7 +266,9 @@
     <div class="page-header">
       <h1>Color Scheme Generator</h1>
       <p>Pick a base color and explore 6 classic color harmony schemes. Instant results, ready to copy.</p>
-    </div>
+      <!-- AEO:answer -->
+        <p class="aeo-answer">A color scheme generator applies classical color-wheel relationships to one base color: complementary sits opposite it, analogous beside it, triadic at 120° intervals. HexColor Pro shows six of these schemes side by side so you can compare them before copying any HEX code.</p>
+      </div>
 
     <div class="ad-slot" data-ad-slot="top" id="adTop">
       <div class="ad-placeholder">Advertisement</div>
@@ -242,8 +336,19 @@
       </ul>
     </div>
 
+        <div class="aeo-faq">
+      <!-- AEO:faq -->
+      <h2>Frequently asked questions</h2>
+        <h3>What are the classic color schemes?</h3>
+        <p>Complementary (opposite on the wheel), analogous (adjacent), triadic (three colors evenly spaced), split-complementary (opposite plus its two neighbors), tetradic (two complementary pairs), and monochromatic (one hue at several lightness levels).</p>
+        <h3>Which color scheme is best for a website?</h3>
+        <p>Analogous and monochromatic schemes read as calm and are easiest to keep accessible; complementary and triadic give stronger contrast but need more discipline. Most sites use one dominant scheme plus a complementary accent rather than a pure scheme throughout.</p>
+        <h3>Do color schemes work the same in dark mode?</h3>
+        <p>No. Dark surfaces change perceived saturation and contrast: the same hue looks brighter against #0f172a than against white. Re-derive lightness for the dark theme and re-check contrast ratios instead of reusing the light-mode hex values.</p>
+    </div>
+
     <footer>
-      <p>© 2026 HexColor Pro · <a href="index">Home</a> · <a href="privacy">Privacy</a> · <a href="terms">Terms</a> · <a href="contact">Contact</a></p>
+      <p>© 2026 HexColor Pro · <a href="index">Home</a> · <a href="privacy">Privacy</a> · <a href="terms">Terms</a> · <a href="contact">Contact</a> · <a href="about">About</a><!-- AEO:about --></p>
     </footer>
   </div>
 

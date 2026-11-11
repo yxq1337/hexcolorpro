@@ -165,6 +165,98 @@
     }
     #toast.show { opacity: 1; }
   </style>
+  <style>
+  /* AEO blocks: answer-first paragraph + FAQ */
+  .aeo-answer {
+    margin: 18px 0 0; padding: 18px 20px; border-left: 3px solid var(--accent, #6366f1);
+    background: rgba(99, 102, 241, 0.08); border-radius: 8px;
+    color: #e2e8f0; font-size: 1.02rem; line-height: 1.65; text-align: left;
+  }
+  .aeo-faq { margin-top: 28px; }
+  .aeo-faq h2 { font-size: 1.3rem; margin-bottom: 16px; }
+  .aeo-faq h3 { font-size: 1.02rem; margin: 18px 0 6px; color: #f1f5f9; }
+  .aeo-faq p { color: #cbd5e1; font-size: 0.97rem; }
+  .aeo-source { color: #94a3b8; font-size: 0.85rem; margin-top: 8px; }
+  </style>
+  <link rel="alternate" type="text/plain" href="/llms-full.txt" title="Full site content for AI agents">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "@id": "https://hexcolorpro.pages.dev/shadow-generator#app",
+      "name": "CSS Box Shadow Generator",
+      "url": "https://hexcolorpro.pages.dev/shadow-generator",
+      "description": "Create beautiful CSS box shadows with live preview. Adjust offset, blur, spread, color, and opacity. Copy the CSS code with one click.",
+      "applicationCategory": "DesignApplication",
+      "operatingSystem": "Any modern web browser",
+      "browserRequirements": "Requires JavaScript",
+      "isAccessibleForFree": true,
+      "inLanguage": "en",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "featureList": [
+        "Compose box-shadow from offset, blur, spread, and color",
+        "Preview the shadow live, including inset",
+        "Copy the CSS declaration"
+      ],
+      "publisher": {
+        "@id": "https://hexcolorpro.pages.dev/#organization"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://hexcolorpro.pages.dev/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "CSS Box Shadow Generator",
+          "item": "https://hexcolorpro.pages.dev/shadow-generator"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What do the four box-shadow values mean?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "offset-x and offset-y move the shadow, blur-radius softens its edge, and spread-radius grows or shrinks the shadow before blurring. Positive spread expands it, negative spread contracts it. An optional inset keyword draws the shadow inside the element."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why does my CSS shadow look cheap?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Usually too much opacity and too little blur. Real light produces soft, low-contrast shadows: opacity around 0.08–0.15 with a large blur and a slight vertical offset reads as natural, while pure black at 0.5 reads as a sticker."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I layer multiple shadows?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. box-shadow accepts a comma-separated list, and layering two or three shadows — a tight contact shadow plus a wide ambient one — is the usual way to get realistic elevation without filters."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
 </head>
 <body>
   <div class="container">
@@ -181,7 +273,9 @@
     <div class="page-header">
       <h1>CSS Box Shadow Generator</h1>
       <p>Create beautiful, smooth shadows with live preview. Copy the CSS in one click.</p>
-    </div>
+      <!-- AEO:answer -->
+        <p class="aeo-answer">A box-shadow generator builds the CSS box-shadow property from four parameters — offset X, offset Y, blur, and spread — plus a color. HexColor Pro previews the shadow live, including the inset variant, and copies the finished declaration in one click.</p>
+      </div>
 
     <div class="ad-slot" data-ad-slot="top" id="adTop">
       <div class="ad-placeholder">Advertisement</div>
@@ -287,8 +381,19 @@
   0 20px 40px rgba(0,0,0,0.15);</div>
     </div>
 
+        <div class="aeo-faq">
+      <!-- AEO:faq -->
+      <h2>Frequently asked questions</h2>
+        <h3>What do the four box-shadow values mean?</h3>
+        <p>offset-x and offset-y move the shadow, blur-radius softens its edge, and spread-radius grows or shrinks the shadow before blurring. Positive spread expands it, negative spread contracts it. An optional inset keyword draws the shadow inside the element.</p>
+        <h3>Why does my CSS shadow look cheap?</h3>
+        <p>Usually too much opacity and too little blur. Real light produces soft, low-contrast shadows: opacity around 0.08–0.15 with a large blur and a slight vertical offset reads as natural, while pure black at 0.5 reads as a sticker.</p>
+        <h3>Can I layer multiple shadows?</h3>
+        <p>Yes. box-shadow accepts a comma-separated list, and layering two or three shadows — a tight contact shadow plus a wide ambient one — is the usual way to get realistic elevation without filters.</p>
+    </div>
+
     <footer>
-      <p>© 2026 HexColor Pro · <a href="index">Home</a> · <a href="privacy">Privacy</a> · <a href="terms">Terms</a> · <a href="contact">Contact</a></p>
+      <p>© 2026 HexColor Pro · <a href="index">Home</a> · <a href="privacy">Privacy</a> · <a href="terms">Terms</a> · <a href="contact">Contact</a> · <a href="about">About</a><!-- AEO:about --></p>
     </footer>
   </div>
 

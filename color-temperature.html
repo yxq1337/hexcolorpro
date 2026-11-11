@@ -135,6 +135,98 @@
     }
     #toast.show { opacity: 1; }
   </style>
+  <style>
+  /* AEO blocks: answer-first paragraph + FAQ */
+  .aeo-answer {
+    margin: 18px 0 0; padding: 18px 20px; border-left: 3px solid var(--accent, #6366f1);
+    background: rgba(99, 102, 241, 0.08); border-radius: 8px;
+    color: #e2e8f0; font-size: 1.02rem; line-height: 1.65; text-align: left;
+  }
+  .aeo-faq { margin-top: 28px; }
+  .aeo-faq h2 { font-size: 1.3rem; margin-bottom: 16px; }
+  .aeo-faq h3 { font-size: 1.02rem; margin: 18px 0 6px; color: #f1f5f9; }
+  .aeo-faq p { color: #cbd5e1; font-size: 0.97rem; }
+  .aeo-source { color: #94a3b8; font-size: 0.85rem; margin-top: 8px; }
+  </style>
+  <link rel="alternate" type="text/plain" href="/llms-full.txt" title="Full site content for AI agents">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "@id": "https://hexcolorpro.pages.dev/color-temperature#app",
+      "name": "Color Temperature Calculator",
+      "url": "https://hexcolorpro.pages.dev/color-temperature",
+      "description": "Convert color temperature in Kelvin to RGB and HEX values. Explore warm to cool lighting temperatures from candlelight to deep blue sky.",
+      "applicationCategory": "DesignApplication",
+      "operatingSystem": "Any modern web browser",
+      "browserRequirements": "Requires JavaScript",
+      "isAccessibleForFree": true,
+      "inLanguage": "en",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "featureList": [
+        "Convert Kelvin to RGB and HEX",
+        "Cover candlelight through daylight to blue sky",
+        "Use the result for lighting and UI references"
+      ],
+      "publisher": {
+        "@id": "https://hexcolorpro.pages.dev/#organization"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://hexcolorpro.pages.dev/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Color Temperature Calculator",
+          "item": "https://hexcolorpro.pages.dev/color-temperature"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What does color temperature measure?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It describes the color of light on the Kelvin scale, from about 1,800K for candlelight through 6,500K for daylight to over 10,000K for clear sky. Lower values read warm and orange, higher values cool and blue."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why does 6,500K look different on my screen than in a photo?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Camera white balance, display calibration, and surrounding colors all shift perception. The Kelvin value describes the light source objectively; it does not guarantee how a particular screen renders it."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I use color temperature in UI design?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Use warm tints for calm, ambient surfaces and cool tints for technical or focus-heavy ones, and keep the shift consistent across a theme. Re-check contrast after shifting temperature, since luminance changes with it."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
 </head>
 <body>
   <div class="container">
@@ -151,7 +243,9 @@
     <div class="page-header">
       <h1>Color Temperature Calculator</h1>
       <p>Convert Kelvin temperature to RGB/HEX color. From warm candlelight to cool blue sky.</p>
-    </div>
+      <!-- AEO:answer -->
+        <p class="aeo-answer">Color temperature converts a Kelvin value into an RGB or HEX color, based on the light a black body emits at that temperature: roughly 1,000K reads as candlelight, 6,500K as daylight, and 10,000K as clear blue sky. HexColor Pro maps Kelvin to hex for lighting and UI references.</p>
+      </div>
 
     <div class="ad-slot" data-ad-slot="top" id="adTop">
       <div class="ad-placeholder">Advertisement</div>
@@ -363,6 +457,22 @@
     updateTemp();
     
   </script>
+          <div class="aeo-faq">
+      <!-- AEO:faq -->
+      <h2>Frequently asked questions</h2>
+        <h3>What does color temperature measure?</h3>
+        <p>It describes the color of light on the Kelvin scale, from about 1,800K for candlelight through 6,500K for daylight to over 10,000K for clear sky. Lower values read warm and orange, higher values cool and blue.</p>
+        <h3>Why does 6,500K look different on my screen than in a photo?</h3>
+        <p>Camera white balance, display calibration, and surrounding colors all shift perception. The Kelvin value describes the light source objectively; it does not guarantee how a particular screen renders it.</p>
+        <h3>How do I use color temperature in UI design?</h3>
+        <p>Use warm tints for calm, ambient surfaces and cool tints for technical or focus-heavy ones, and keep the shift consistent across a theme. Re-check contrast after shifting temperature, since luminance changes with it.</p>
+    </div>
+
+    <footer>
+      <!-- AEO:footer -->
+      <p>© 2026 HexColor Pro · <a href="index">Home</a> · <a href="blog">Blog</a> · <a href="about">About</a> · <a href="privacy">Privacy</a> · <a href="terms">Terms</a> · <a href="contact">Contact</a> · <a href="about">About</a><!-- AEO:about --></p>
+    </footer>
+
   <script src="ads.js?v=3"></script>
 </body>
 </html>
