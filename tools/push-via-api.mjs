@@ -110,6 +110,8 @@ try {
   }
 
   const entries = [];
+  const deletions = (process.env.DELETE ?? "").split(",").map((x) => x.trim()).filter(Boolean);
+  for (const path of deletions) { entries.push({ path, mode: "100644", type: "blob", sha: null }); log("delete: " + path); }
   const LIMIT = 6;
   let cursor = 0;
   let done = 0;
